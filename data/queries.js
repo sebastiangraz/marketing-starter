@@ -155,14 +155,6 @@ export const site = `
       "link": link->{"type": _type, "slug": slug.current}
     },
     "header": *[_type == "headerSettings"][0]{
-      "promo": *[_type == "promoSettings"][0]{
-        enabled,
-        display,
-        text,
-        "link": link->{
-          ${page}
-        }
-      },
       menuDesktopLeft->{
         items[]{
           ${link},

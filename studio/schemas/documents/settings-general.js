@@ -14,17 +14,6 @@ export default {
       description: 'This page will show at the root of your domain'
     },
     {
-      title: 'Shop Page',
-      name: 'shop',
-      type: 'reference',
-      to: [{ type: 'collection' }],
-      description: (
-        <>
-          This collection will show at: <code>/shop</code>
-        </>
-      )
-    },
-    {
       title: 'Error Page (404)',
       name: 'error',
       type: 'reference',

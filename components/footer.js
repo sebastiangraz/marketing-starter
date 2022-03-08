@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Newsletter from '@components/newsletter'
-import ThemeSwitch from '@components/theme-switch'
 import Menu from '@components/menu'
 import Icon from '@components/icon'
 
@@ -41,8 +40,6 @@ const Footer = ({ data = {} }) => {
             {/* Put our extras in the last block */}
             {key === 3 && (
               <div className="footer--extras">
-                <ThemeSwitch />
-
                 <div className="footer--disclaimer">
                   <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
                 </div>

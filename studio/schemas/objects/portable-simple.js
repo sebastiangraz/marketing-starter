@@ -1,5 +1,3 @@
-import '../../branding/skin.css?raw'
-
 import { Button } from '../../components/block-renders'
 
 export default {
@@ -45,11 +43,7 @@ export default {
                 title: 'Internal Page',
                 name: 'page',
                 type: 'reference',
-                to: [
-                  { type: 'page' },
-                  { type: 'collection' },
-                  { type: 'product' }
-                ],
+                to: [{ type: 'page' }],
                 hidden: ({ parent }) => parent.linkType !== 'internal'
               },
               {

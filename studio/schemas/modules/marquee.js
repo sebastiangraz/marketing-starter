@@ -43,13 +43,7 @@ export default {
             }
           }
         },
-        customImage(),
-        {
-          title: 'Product',
-          name: 'product',
-          type: 'reference',
-          to: [{ type: 'product' }]
-        }
+        customImage()
       ],
       validation: Rule => Rule.min(1).required()
     },

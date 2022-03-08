@@ -3,7 +3,6 @@ import S from '@sanity/desk-tool/structure-builder'
 import {
   Gear,
   PaintBucket,
-  ShoppingCart,
   NavigationArrow,
   AnchorSimple,
   Cookie,
@@ -27,21 +26,6 @@ export const settingsMenu = S.listItem()
               .documentId('generalSettings')
           )
           .icon(Gear),
-        S.divider(),
-        S.listItem()
-          .title('Colors')
-          .child(S.documentTypeList('solidColor').title('Colors'))
-          .icon(PaintBucket),
-        S.divider(),
-        S.listItem()
-          .title('Shop')
-          .child(
-            S.editor()
-              .id('shopSettings')
-              .schemaType('shopSettings')
-              .documentId('shopSettings')
-          )
-          .icon(ShoppingCart),
         S.divider(),
         S.listItem()
           .title('Header')
@@ -71,15 +55,6 @@ export const settingsMenu = S.listItem()
               .documentId('cookieSettings')
           )
           .icon(Cookie),
-        S.listItem()
-          .title('Promo Bar')
-          .child(
-            S.editor()
-              .id('promoSettings')
-              .schemaType('promoSettings')
-              .documentId('promoSettings')
-          )
-          .icon(FlagBanner),
         S.divider(),
         S.listItem()
           .title('Default SEO / Share')

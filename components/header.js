@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { m } from 'framer-motion'
-import FocusTrap from 'focus-trap-react'
 import { useIntersection } from 'use-intersection'
 import { useRect } from '@reach/rect'
 import { useRouter } from 'next/router'
@@ -11,7 +10,6 @@ import { isBrowser } from '@lib/helpers'
 
 import { useSiteContext, useToggleMegaNav } from '@lib/context'
 
-import PromoBar from '@components/promo-bar'
 import Menu from '@components/menu'
 import MegaNavigation from '@components/menu-mega-nav'
 import Icon from '@components/icon'
@@ -19,7 +17,6 @@ import Icon from '@components/icon'
 const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   // expand our header data
   const {
-    promo,
     menuDesktopLeft,
     menuDesktopRight,
     menuMobilePrimary,
@@ -64,8 +61,6 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
         Skip to Content
       </a>
 
-      <PromoBar data={promo} />
-
       <header
         className={cx('header', {
           'is-overlay': isTransparent,
@@ -97,64 +92,62 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
               <nav className="main-navigation" role="navigation">
                 {/* Mobile Header Menu */}
                 <div id="mobile-nav" className="main-navigation--mobile">
-                  <FocusTrap active={isMobileNavOpen}>
-                    <div>
-                      <button
-                        onClick={() => toggleMobileNav(!isMobileNavOpen)}
-                        className={cx('menu-toggle', {
-                          'is-open': isMobileNavOpen,
-                        })}
-                        aria-expanded={isMobileNavOpen}
-                        aria-controls="mobile-nav"
-                        aria-label="Toggle Menu"
-                      >
-                        <span className="hamburger">
-                          <span className="hamburger--icon"></span>
-                        </span>
-                      </button>
-                      <m.div
-                        initial="hide"
-                        animate={isMobileNavOpen ? 'show' : 'hide'}
-                        variants={{
-                          show: {
-                            x: '0%',
-                          },
-                          hide: {
-                            x: '-100%',
-                          },
-                        }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="menu-mobile"
-                      >
-                        <div className="menu-mobile--inner">
-                          <div className="menu-mobile--primary">
-                            {menuMobilePrimary?.items && (
-                              <Menu
-                                items={menuMobilePrimary.items}
-                                onClick={() => toggleMobileNav(false)}
-                              />
-                            )}
-                          </div>
-
-                          <div className="menu-mobile--secondary">
-                            {menuMobileSecondary?.items && (
-                              <Menu
-                                items={menuMobileSecondary.items}
-                                onClick={() => toggleMobileNav(false)}
-                              />
-                            )}
-                          </div>
+                  <div>
+                    <button
+                      onClick={() => toggleMobileNav(!isMobileNavOpen)}
+                      className={cx('menu-toggle', {
+                        'is-open': isMobileNavOpen,
+                      })}
+                      aria-expanded={isMobileNavOpen}
+                      aria-controls="mobile-nav"
+                      aria-label="Toggle Menu"
+                    >
+                      <span className="hamburger">
+                        <span className="hamburger--icon"></span>
+                      </span>
+                    </button>
+                    <m.div
+                      initial="hide"
+                      animate={isMobileNavOpen ? 'show' : 'hide'}
+                      variants={{
+                        show: {
+                          x: '0%',
+                        },
+                        hide: {
+                          x: '-100%',
+                        },
+                      }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="menu-mobile"
+                    >
+                      <div className="menu-mobile--inner">
+                        <div className="menu-mobile--primary">
+                          {menuMobilePrimary?.items && (
+                            <Menu
+                              items={menuMobilePrimary.items}
+                              onClick={() => toggleMobileNav(false)}
+                            />
+                          )}
                         </div>
-                      </m.div>
 
-                      <div
-                        className={cx('menu-mobile--backdrop', {
-                          'is-active': isMobileNavOpen,
-                        })}
-                        onClick={() => toggleMobileNav(false)}
-                      />
-                    </div>
-                  </FocusTrap>
+                        <div className="menu-mobile--secondary">
+                          {menuMobileSecondary?.items && (
+                            <Menu
+                              items={menuMobileSecondary.items}
+                              onClick={() => toggleMobileNav(false)}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </m.div>
+
+                    <div
+                      className={cx('menu-mobile--backdrop', {
+                        'is-active': isMobileNavOpen,
+                      })}
+                      onClick={() => toggleMobileNav(false)}
+                    />
+                  </div>
                 </div>
 
                 {/* Desktop Header Menu */}

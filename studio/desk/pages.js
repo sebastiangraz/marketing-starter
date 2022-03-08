@@ -5,7 +5,7 @@ import { IntentLink, Link } from 'part:@sanity/base/router'
 
 import { Card, Stack, Text } from '@sanity/ui'
 
-import { House, Browser, ShoppingCart, WarningOctagon } from 'phosphor-react'
+import { House, Browser, WarningOctagon } from 'phosphor-react'
 
 import { standardViews } from './previews/standard'
 
@@ -64,33 +64,6 @@ const currentHomePage = S.listItem()
       .views(standardViews)
   })
 
-// Extract our shop page
-const currentShopPage = S.listItem()
-  .title('Shop All Page')
-  .icon(ShoppingCart)
-  .child(async () => {
-    const data = await sanityClient.fetch(`
-    *[_type == "generalSettings"][0]{
-      shop->{_id}
-    }
-  `)
-
-    if (!data?.shop)
-      return S.component(() => (
-        <EmptyNotice
-          title="Shop Page"
-          type="collection"
-          link="settings;general"
-          linkTitle="General Settings"
-        />
-      )).title('Shop All Page')
-
-    return S.document()
-      .id(data.shop._id)
-      .schemaType('collection')
-      .views(standardViews)
-  })
-
 // Extract our error page
 const currentErrorPage = S.listItem()
   .title('Error Page')
@@ -126,7 +99,6 @@ export const pagesMenu = S.listItem()
       .title('Pages')
       .items([
         currentHomePage,
-        currentShopPage,
         currentErrorPage,
         S.listItem()
           .title('Other Pages')
