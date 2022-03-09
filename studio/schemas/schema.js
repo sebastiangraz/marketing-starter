@@ -15,7 +15,6 @@ import redirect from './documents/redirect'
 // Module types
 import grid from './modules/grid'
 import hero from './modules/hero'
-import marquee from './modules/marquee'
 import dividerPhoto from './modules/divider-photo'
 import newsletter from './modules/newsletter'
 
@@ -63,7 +62,6 @@ export default createSchema({
     /* 2: Module types */
     grid,
     hero,
-    marquee,
     dividerPhoto,
     newsletter,
 

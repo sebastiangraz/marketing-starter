@@ -6,7 +6,7 @@ import { isBrowser } from "../lib/helpers";
 import Menu from "../components/menu";
 const style = {
   navStyle: {
-    fontSize: 1,
+    fontSize: 2,
     borderBottom: "1px solid",
   },
   navWrapper: {
@@ -31,6 +31,7 @@ const style = {
     },
     button: {
       appearance: "none",
+      letterSpacing: "inherit",
       border: 0,
       fontFamily: "inherit",
       background: "none",

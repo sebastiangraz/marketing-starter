@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { getStaticRoute, getActive } from "../lib/routes";
 
 import CustomLink from "../components/link";
-import { Flex } from "theme-ui";
 
 const Dropdown = ({ id, title, items, onClick }) => {
   const router = useRouter();
@@ -38,7 +37,6 @@ const Dropdown = ({ id, title, items, onClick }) => {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`dropdown-${id}`}
-        className="dropdown--toggle"
       >
         {title}
         <svg
@@ -61,7 +59,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M1 2L4 5L7 2" stroke="currentColor" stroke-width="1.25" />
+          <path d="M1 2L4 5L7 2" stroke="currentColor" strokeWidth="1.25" />
         </svg>
       </button>
 
@@ -88,6 +86,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
 
             return (
               <m.li
+                sx={{ fontSize: 1 }}
                 variants={listItem}
                 key={key}
                 className={isActive ? "is-active" : null}

@@ -1,13 +1,13 @@
 // Construct our "home" and "error" page GROQ
-export const homeID = `*[_type=="generalSettings"][0].home->_id`
-export const errorID = `*[_type=="generalSettings"][0].error->_id`
+export const homeID = `*[_type=="generalSettings"][0].home->_id`;
+export const errorID = `*[_type=="generalSettings"][0].error->_id`;
 
 // Construct our "page" GROQ
 const page = `
   "type": _type,
   "slug": slug.current,
   "isHome": _id == ${homeID}
-`
+`;
 
 // Construct our "link" GROQ
 const link = `
@@ -18,7 +18,7 @@ const link = `
   "page": page->{
     ${page}
   }
-`
+`;
 
 // Construct our "image meta" GROQ
 export const imageMeta = `
@@ -31,7 +31,7 @@ export const imageMeta = `
   "type": asset->mimeType,
   "aspectRatio": asset->metadata.dimensions.aspectRatio,
   "lqip": asset->metadata.lqip
-`
+`;
 
 // Construct our "portable text content" GROQ
 export const ptContent = `
@@ -50,7 +50,7 @@ export const ptContent = `
   _type == "photo" => {
     ${imageMeta}
   }
-`
+`;
 
 // Construct our "blocks" GROQ
 export const blocks = `
@@ -74,7 +74,7 @@ export const blocks = `
       }
     }
   }
-`
+`;
 
 // Construct our content "modules" GROQ
 export const modules = `
@@ -116,25 +116,6 @@ export const modules = `
       title
     }
   },
-  _type == 'marquee' => {
-    _type,
-    _key,
-    items[]{
-      _type == 'simple' => {
-        _type,
-        text
-      },
-      _type == 'photo' => {
-        _type,
-        "photo": {
-          ${imageMeta}
-        }
-      }
-    },
-    speed,
-    reverse,
-    pausable
-  },
   _type == 'dividerPhoto' => {
     _type,
     _key,
@@ -142,7 +123,7 @@ export const modules = `
       ${imageMeta}
     }
   }
-`
+`;
 
 // Construct our "site" GROQ
 export const site = `
@@ -244,4 +225,4 @@ export const site = `
     },
     "gtmID": *[_type == "generalSettings"][0].gtmID,
   }
-`
+`;
