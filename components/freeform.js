@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-import BlockContent from '@components/block-content'
+import BlockContent from '../components/block-content'
 
 const Freeform = ({ data }) => {
   const { maxWidth, textAlign, content } = data

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useIntersection } from 'use-intersection'
 import cx from 'classnames'
 
-import { buildSrcSet, buildSrc } from '@lib/helpers'
+import { buildSrcSet, buildSrc } from '../lib/helpers'
 
 const Photo = ({
   photo,

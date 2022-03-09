@@ -3,8 +3,8 @@ import { m, AnimatePresence } from 'framer-motion'
 import FocusTrap from 'focus-trap-react'
 import cx from 'classnames'
 
-import RadioGroup from '@components/radio-group'
-import RadioItem from '@components/radio-item'
+import RadioGroup from '../components/radio-group'
+import RadioItem from '../components/radio-item'
 
 const Listbox = ({
   id,

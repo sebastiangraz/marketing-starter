@@ -1,8 +1,8 @@
 import React from 'react'
 
-import BlockContent from '@components/block-content'
-import VideoLoop from '@components/vimeo-loop'
-import Photo from '@components/photo'
+import BlockContent from '../../components/block-content'
+import VideoLoop from '../../components/vimeo-loop'
+import Photo from '../../components/photo'
 
 const Hero = ({ data = {} }) => {
   const { content, bgType, photos, video } = data

@@ -2,8 +2,8 @@ import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import cx from 'classnames'
 
-import Photo from '@components/photo'
-import CustomLink from '@components/link'
+import Photo from '../components/photo'
+import CustomLink from '../components/link'
 
 export const blockSerializers = {
   types: {

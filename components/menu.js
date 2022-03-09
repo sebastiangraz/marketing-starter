@@ -1,11 +1,11 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-import { getStaticRoute, getActive } from '@lib/routes'
+import { getStaticRoute, getActive } from '../lib/routes'
 
-import { MegaDropdownButton } from '@components/menu-mega-nav'
-import Dropdown from '@components/menu-dropdown'
-import CustomLink from '@components/link'
+import { MegaDropdownButton } from '../components/menu-mega-nav'
+import Dropdown from '../components/menu-dropdown'
+import CustomLink from '../components/link'
 
 const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
   const router = useRouter()

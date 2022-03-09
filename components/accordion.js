@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { m } from 'framer-motion'
 import cx from 'classnames'
 
-import Icon from '@components/icon'
+import Icon from '../components/icon'
 
 const accordionAnim = {
   open: {

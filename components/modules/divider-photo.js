@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Photo from '@components/photo'
+import Photo from '../../components/photo'
 
 const DividerPhoto = ({ data = {} }) => {
   const { photo } = data

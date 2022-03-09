@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useIntersection } from 'use-intersection'
 import { Marqy } from 'marqy'
 
-import Photo from '@components/photo'
+import Photo from '../../components/photo'
 
 const Marquee = ({ data = {} }) => {
   const { items, speed, reverse, pausable } = data
@@ -28,7 +28,11 @@ const Marquee = ({ data = {} }) => {
             switch (item._type) {
               case 'simple':
                 return (
-                  <span key={key} className="marquee--text">
+                  <span
+                    sx={{ color: 'primary' }}
+                    key={key}
+                    className="marquee--text"
+                  >
                     {item.text}
                   </span>
                 )

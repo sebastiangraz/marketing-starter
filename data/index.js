@@ -1,4 +1,4 @@
-import { getSanityClient } from '@lib/sanity'
+import { getSanityClient } from '../lib/sanity'
 import * as queries from './queries'
 
 // Fetch all dynamic docs

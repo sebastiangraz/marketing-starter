@@ -4,14 +4,14 @@ import { m } from 'framer-motion'
 import { useRect } from '@reach/rect'
 import cx from 'classnames'
 
-import { isBrowser } from '@lib/helpers'
-import { swipeAnim } from '@lib/animate'
+import { isBrowser } from '../lib/helpers'
+import { swipeAnim } from '../lib/animate'
 
-import { useSiteContext, useToggleMegaNav } from '@lib/context'
+import { useSiteContext, useToggleMegaNav } from '../lib/context'
 
-import Menu from '@components/menu'
+import Menu from '../components/menu'
 
-const MegaNavigation = ({ items = [], headerHeight }) => {
+const MegaNavigation = ({ items = [] }) => {
   const dropdowns = items.filter((item) => {
     return 'dropdownItems' in item
   })
@@ -85,10 +85,8 @@ const MegaNavigation = ({ items = [], headerHeight }) => {
       <div
         className={cx('mega-nav--bg')}
         style={{
-          '--h': meganav.isOpen ? activeNavRect?.height + headerHeight : 0,
-          '--hpx': `${
-            meganav.isOpen ? activeNavRect?.height + headerHeight : 0
-          }px`,
+          '--h': meganav.isOpen ? activeNavRect?.height : 0,
+          '--hpx': `${meganav.isOpen ? activeNavRect?.height : 0}px`,
         }}
       />
 

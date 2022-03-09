@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import Accordion from '@components/accordion'
-import BlockContent from '@components/block-content'
+import Accordion from '../components/accordion'
+import BlockContent from '../components/block-content'
 
 const AccordionList = ({ data }) => {
   const { items } = data

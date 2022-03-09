@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { m } from 'framer-motion'
 import { useRouter } from 'next/router'
 
-import { getStaticRoute, getActive } from '@lib/routes'
+import { getStaticRoute, getActive } from '../lib/routes'
 
-import CustomLink from '@components/link'
+import CustomLink from '../components/link'
 
 const Dropdown = ({ id, title, items, onClick }) => {
   const router = useRouter()

@@ -2,7 +2,7 @@ import React from 'react'
 import NextLink from 'next/link'
 import cx from 'classnames'
 
-import { getStaticRoute, getDynamicRoute } from '@lib/routes'
+import { getStaticRoute, getDynamicRoute } from '../lib/routes'
 
 const Link = ({ link, children, ...rest }) => {
   const isLink = !!link.url

@@ -1,10 +1,10 @@
 import React from 'react'
 import Error from 'next/error'
 
-import { getStaticPage, queries } from '@data'
+import { getStaticPage, queries } from '../data'
 
-import Layout from '@components/layout'
-import { Module } from '@components/modules'
+import Layout from '../components/layout'
+import { Module } from '../components/modules'
 
 const Home = ({ data }) => {
   const { site, page } = data

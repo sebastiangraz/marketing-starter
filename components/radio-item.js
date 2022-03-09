@@ -1,11 +1,11 @@
 import { useRef, useEffect } from 'react'
 
-import { wrap } from '@lib/helpers'
+import { wrap } from '../lib/helpers'
 
 import {
   useRadioGroupContext,
   useRadioItemContext,
-} from '@components/radio-group'
+} from '../components/radio-group'
 
 export default function RadioItem({ title, value, children, ...rest }) {
   const groupContext = useRadioGroupContext()

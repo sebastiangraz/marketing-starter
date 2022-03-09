@@ -1,20 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import { m } from 'framer-motion'
-import { useIntersection } from 'use-intersection'
-import { useRect } from '@reach/rect'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import cx from 'classnames'
 
-import { isBrowser } from '@lib/helpers'
+import { isBrowser } from '../lib/helpers'
 
-import { useSiteContext, useToggleMegaNav } from '@lib/context'
+import { useSiteContext, useToggleMegaNav } from '../lib/context'
 
-import Menu from '@components/menu'
-import MegaNavigation from '@components/menu-mega-nav'
-import Icon from '@components/icon'
+import Menu from '../components/menu'
+import MegaNavigation from '../components/menu-mega-nav'
 
-const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
+const Header = ({ data = {}, onSetup = () => {} }) => {
   // expand our header data
   const {
     menuDesktopLeft,
@@ -25,11 +21,6 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
 
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState(false)
-  const [headerHeight, setHeaderHeight] = useState(null)
-  const observerRef = useRef()
-  const observerIsVisible = useIntersection(observerRef)
-  const headerRef = useRef()
-  const headerRect = useRect(headerRef)
   const router = useRouter()
 
   // setup menu toggle event
@@ -45,48 +36,14 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   const { meganav } = useSiteContext()
   const toggleMegaNav = useToggleMegaNav()
 
-  useEffect(() => {
-    if (headerRect) {
-      setHeaderHeight(headerRect.height)
-    }
-  }, [headerRect])
-
-  useEffect(() => {
-    onSetup({ height: headerHeight })
-  }, [headerHeight])
-
   return (
     <>
-      <a href="#content" className="skip-link">
-        Skip to Content
-      </a>
-
-      <header
-        className={cx('header', {
-          'is-overlay': isTransparent,
-          'is-white': isTransparent && !meganav.isOpen && observerIsVisible,
-          'has-bg': !observerIsVisible,
-        })}
-      >
-        <div ref={headerRef} className="header--outer">
+      <header className={cx('header')}>
+        <div className="header--outer">
           <div className="header--inner">
             <div className="header--content">
               <div className="logo">
-                {router.pathname === '/' ? (
-                  <button
-                    className="logo--link"
-                    aria-label="Go Home"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    <Icon name="Logo" id="header" viewBox="0 0 215 150" />
-                  </button>
-                ) : (
-                  <Link href="/" scroll={false}>
-                    <a className="logo--link" aria-label="Go Home">
-                      <Icon name="Logo" id="header" viewBox="0 0 215 150" />
-                    </a>
-                  </Link>
-                )}
+                {router.pathname === '/' ? 'Already home' : 'Logo'}
               </div>
 
               <nav className="main-navigation" role="navigation">
@@ -187,26 +144,12 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
               ...(menuDesktopLeft?.items || []),
               ...(menuDesktopRight?.items || []),
             ]}
-            headerHeight={
-              isTransparent && observerIsVisible ? headerHeight : false
-            }
           />
         </div>
       </header>
 
-      <span ref={observerRef} className="header--observer" />
+      <span className="header--observer" />
     </>
-  )
-}
-
-const HeaderBackdrop = ({ isActive, onClick }) => {
-  return (
-    <div
-      className={cx('header--backdrop', {
-        'is-active': isActive,
-      })}
-      onClick={onClick}
-    />
   )
 }
 

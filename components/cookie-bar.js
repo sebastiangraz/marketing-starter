@@ -3,9 +3,9 @@ import { AnimatePresence, m } from 'framer-motion'
 import FocusTrap from 'focus-trap-react'
 import Cookies from 'js-cookie'
 
-import { useHasMounted } from '@lib/helpers'
+import { useHasMounted } from '../lib/helpers'
 
-import CustomLink from '@components/link'
+import CustomLink from '../components/link'
 
 const barAnim = {
   show: {

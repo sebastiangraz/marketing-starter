@@ -1,8 +1,8 @@
 import React from 'react'
 import cx from 'classnames'
 
-import Freeform from '@components/freeform'
-import AccordionList from '@components/accordion-list'
+import Freeform from '../../components/freeform'
+import AccordionList from '../../components/accordion-list'
 
 const Grid = ({ data = {} }) => {
   const { size, columns } = data
