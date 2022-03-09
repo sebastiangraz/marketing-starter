@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import Script from 'next/script'
-import { m } from 'framer-motion'
+import React, { useEffect, useState } from "react";
+import Script from "next/script";
+import { m } from "framer-motion";
 
-import { BaseStyles } from 'theme-ui'
+import { BaseStyles } from "theme-ui";
 
-import { isBrowser, useWindowSize } from '../lib/helpers'
-import { pageTransitionSpeed } from '../lib/animate'
+import { isBrowser, useWindowSize } from "../lib/helpers";
+import { pageTransitionSpeed } from "../lib/animate";
 
-import HeadSEO from '../components/head-seo'
-import CookieBar from '../components/cookie-bar'
-import Header from '../components/header'
-import Footer from '../components/footer'
+import HeadSEO from "../components/head-seo";
+import CookieBar from "../components/cookie-bar";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 const variants = {
   initial: {
@@ -21,32 +21,32 @@ const variants = {
     transition: {
       duration: pageTransitionSpeed / 1000,
       delay: 0.2,
-      ease: 'linear',
-      when: 'beforeChildren',
+      ease: "linear",
+      when: "beforeChildren",
     },
   },
   exit: {
     opacity: 0,
     transition: {
       duration: pageTransitionSpeed / 1000,
-      ease: 'linear',
-      when: 'beforeChildren',
+      ease: "linear",
+      when: "beforeChildren",
     },
   },
-}
+};
 
 const Layout = ({ site = {}, page = {}, schema, children }) => {
   // set window height var
-  const { height: windowHeight } = useWindowSize()
+  const { height: windowHeight } = useWindowSize();
 
   // set header height
-  const [headerHeight, setHeaderHeight] = useState(null)
+  const [headerHeight, setHeaderHeight] = useState(null);
 
   useEffect(() => {
     if (isBrowser) {
-      document.body.style.setProperty('--vh', `${windowHeight * 0.01}px`)
+      document.body.style.setProperty("--vh", `${windowHeight * 0.01}px`);
     }
-  }, [windowHeight])
+  }, [windowHeight]);
 
   return (
     <>
@@ -71,7 +71,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           exit="exit"
           variants={variants}
           style={
-            headerHeight ? { '--headerHeight': `${headerHeight}px` } : null
+            headerHeight ? { "--headerHeight": `${headerHeight}px` } : null
           }
         >
           <CookieBar data={site.cookieConsent} />
@@ -80,12 +80,14 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
             isTransparent={page.hasTransparentHeader}
             onSetup={({ height }) => setHeaderHeight(height)}
           />
-          <main id="content">{children}</main>
+          <main sx={{ variant: "layout.row" }} id="content">
+            {children}
+          </main>
           <Footer data={site.footer} />
         </m.div>
       </BaseStyles>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

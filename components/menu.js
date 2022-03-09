@@ -1,35 +1,45 @@
-import React from 'react'
-import { useRouter } from 'next/router'
+import React from "react";
+import { useRouter } from "next/router";
 
-import { getStaticRoute, getActive } from '../lib/routes'
+import { getStaticRoute, getActive } from "../lib/routes";
 
-import { MegaDropdownButton } from '../components/menu-mega-nav'
-import Dropdown from '../components/menu-dropdown'
-import CustomLink from '../components/link'
+import { MegaDropdownButton } from "../components/menu-mega-nav";
+import Dropdown from "../components/menu-dropdown";
+import CustomLink from "../components/link";
 
 const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
-  const router = useRouter()
+  const router = useRouter();
 
-  if (!items) return null
+  if (!items) return null;
 
   return (
-    <ul {...rest}>
+    <ul
+      {...rest}
+      sx={{
+        position: "relative",
+        display: "inline-flex",
+        listStyle: "none",
+        "> * + * ": {
+          pl: 3,
+        },
+      }}
+    >
       {items.map((item, key) => {
-        const isDropdown = !!item.dropdownItems
-        const isStatic = getStaticRoute(item.page?.type)
-        const isActive = getActive(isStatic, item.page?.slug, router)
+        const isDropdown = !!item.dropdownItems;
+        const isStatic = getStaticRoute(item.page?.type);
+        const isActive = getActive(isStatic, item.page?.slug, router);
 
         // Dropdown List
         if (isDropdown) {
-          const { dropdownItems } = item
+          const { dropdownItems } = item;
           const activeDropdown =
             dropdownItems.filter((item) => {
-              const isStatic = getStaticRoute(item.page?.type)
-              return getActive(isStatic, item.page?.slug, router)
-            }).length > 0
+              const isStatic = getStaticRoute(item.page?.type);
+              return getActive(isStatic, item.page?.slug, router);
+            }).length > 0;
 
           return (
-            <li key={key} className={activeDropdown ? 'is-active' : null}>
+            <li key={key} className={activeDropdown ? "is-active" : null}>
               {useMegaNav ? (
                 <MegaDropdownButton title={item.title} id={item._key} />
               ) : (
@@ -41,23 +51,23 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
                 />
               )}
             </li>
-          )
+          );
 
           // single link
         } else {
           return (
-            <li key={key} className={isActive ? 'is-active' : null}>
+            <li key={key} className={isActive ? "is-active" : null}>
               <CustomLink
                 tabIndex={!hasFocus ? -1 : null}
                 link={item}
                 onClick={onClick}
               />
             </li>
-          )
+          );
         }
       })}
     </ul>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
