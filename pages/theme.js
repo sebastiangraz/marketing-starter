@@ -18,7 +18,7 @@ export default {
     monospace: "Menlo, monospace",
   },
   colors: {
-    text: "#000",
+    text: "#040401",
     background: "beige",
     primary: "#33e",
   },

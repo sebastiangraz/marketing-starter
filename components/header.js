@@ -16,6 +16,27 @@ const style = {
     alignItems: "start",
     py: 3,
     height: 10,
+    li: {
+      "&.is-active": {
+        color: "primary",
+      },
+      "&:not(.is-active)": {
+        color: "initial",
+      },
+    },
+    "a, button": {
+      cursor: "pointer",
+      textDecoration: "none",
+      "&:hover": { opacity: 0.6 },
+    },
+    button: {
+      appearance: "none",
+      border: 0,
+      fontFamily: "inherit",
+      background: "none",
+      color: "inherit",
+      fontSize: "inherit",
+    },
   },
 };
 

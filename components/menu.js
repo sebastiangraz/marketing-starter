@@ -7,23 +7,23 @@ import { MegaDropdownButton } from "../components/menu-mega-nav";
 import Dropdown from "../components/menu-dropdown";
 import CustomLink from "../components/link";
 
+const style = {
+  ul: {
+    position: "relative",
+    display: "inline-flex",
+    listStyle: "none",
+    "> * + * ": {
+      pl: 3,
+    },
+  },
+};
 const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
   const router = useRouter();
 
   if (!items) return null;
 
   return (
-    <ul
-      {...rest}
-      sx={{
-        position: "relative",
-        display: "inline-flex",
-        listStyle: "none",
-        "> * + * ": {
-          pl: 3,
-        },
-      }}
-    >
+    <ul {...rest} sx={style.ul}>
       {items.map((item, key) => {
         const isDropdown = !!item.dropdownItems;
         const isStatic = getStaticRoute(item.page?.type);
