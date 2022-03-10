@@ -80,9 +80,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
             isTransparent={page.hasTransparentHeader}
             onSetup={({ height }) => setHeaderHeight(height)}
           />
-          <main sx={{ variant: "layout.row" }} id="content">
-            {children}
-          </main>
+          <main id="content">{children}</main>
           <Footer data={site.footer} />
         </m.div>
       </BaseStyles>

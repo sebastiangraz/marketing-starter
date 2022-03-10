@@ -12,8 +12,8 @@ const n = 10,
 
 const typescale = increment.slice(0, n).map((e, i) => {
   let formula = Math.pow(r, e / n) * f0;
-  let formulaCleaned = formula.toFixed(1);
-  let rem = formulaCleaned / 16;
+  let fixedFormula = formula.toFixed(1);
+  let rem = fixedFormula / 16;
   // let px = formulaCleaned;
   return `${rem}rem`;
 });
@@ -103,6 +103,18 @@ export default {
     },
     img: {
       maxWidth: "100%",
+    },
+
+    //globals
+
+    buttonReset: {
+      appearance: "none",
+      letterSpacing: "inherit",
+      border: 0,
+      fontFamily: "inherit",
+      background: "none",
+      color: "inherit",
+      fontSize: "inherit",
     },
   },
 };

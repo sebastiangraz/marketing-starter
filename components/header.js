@@ -11,8 +11,8 @@ const style = {
   },
   navWrapper: {
     variant: "layout.row",
-    display: "flex",
-    justifyContent: "space-between",
+    display: "grid",
+    gridTemplateColumns: `1fr 1fr 1fr`,
     alignItems: "start",
     py: 3,
     height: 10,
@@ -23,6 +23,17 @@ const style = {
       "&:not(.is-active)": {
         color: "initial",
       },
+    },
+    ".logo": {
+      gridArea: "1/1",
+    },
+    ".menu": {
+      justifySelf: "center",
+      gridArea: "1/2",
+    },
+    ".submenu": {
+      justifySelf: "flex-end",
+      gridArea: "1/3",
     },
     "a, button": {
       cursor: "pointer",
@@ -68,12 +79,14 @@ const Header = ({ data = {} }) => {
 
           {menuMobilePrimary?.items && (
             <Menu
+              className="menu"
               items={menuMobilePrimary.items}
               onClick={() => toggleMobileNav(false)}
             />
           )}
           {menuMobilePrimary?.items && (
             <Menu
+              className="submenu"
               items={menuMobileSecondary.items}
               onClick={() => toggleMobileNav(false)}
             />

@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import Photo from '../../components/photo'
+import Photo from "../../components/photo";
 
 const DividerPhoto = ({ data = {} }) => {
-  const { photo } = data
+  const { photo } = data;
 
-  if (!photo) return null
+  if (!photo) return null;
 
   return (
-    <div className="divider">
+    <div sx={{ position: "relative" }}>
       <Photo
         photo={photo}
         width={1600}
@@ -16,7 +16,7 @@ const DividerPhoto = ({ data = {} }) => {
         sizes="100vw"
       />
     </div>
-  )
-}
+  );
+};
 
-export default DividerPhoto
+export default DividerPhoto;

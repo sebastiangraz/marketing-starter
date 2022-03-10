@@ -9,7 +9,7 @@ const Grid = ({ data = {} }) => {
 
   return (
     <section className="section">
-      <div className="section--content">
+      <div sx={{ variant: "layout.row" }}>
         <div sx={{ display: "grid", gridTemplateColumns: `repeat(12, 1fr)` }}>
           {columns.map((col, key) => {
             const { sizes, blocks } = col;
@@ -18,7 +18,7 @@ const Grid = ({ data = {} }) => {
               <div
                 key={key}
                 sx={{
-                  gridColumn: `1 / span ${sizes[0].width}`,
+                  gridColumn: `span ${sizes[0].width}`,
                 }}
               >
                 {blocks.map((block, key) => (
