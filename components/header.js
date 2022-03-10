@@ -1,9 +1,49 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-
 import { isBrowser } from "../lib/helpers";
-
+import { m } from "framer-motion";
 import Menu from "../components/menu";
+
+const flipAnim = {
+  show: {
+    y: ["-8px", "0px"],
+    transition: {
+      duration: 0.75,
+      ease: [0.16, 1, 0.3, 1],
+      when: "beforeChildren",
+    },
+  },
+  hide: {
+    y: "-8px",
+    transition: {
+      duration: 0.75,
+      ease: [0.16, 1, 0.3, 1],
+      when: "afterChildren",
+    },
+  },
+};
+
+const rotate = {
+  show: {
+    origin: "center",
+    scale: [0.7, 1],
+    transition: {
+      duration: 2,
+      ease: [0.16, 1, 0.3, 1],
+      when: "beforeChildren",
+    },
+  },
+  hide: {
+    origin: "center",
+    scale: 0.7,
+    transition: {
+      duration: 2,
+      ease: [0.16, 1, 0.3, 1],
+      when: "afterChildren",
+    },
+  },
+};
+
 const style = {
   navStyle: {
     fontSize: 2,
@@ -72,9 +112,26 @@ const Header = ({ data = {} }) => {
   return (
     <>
       <header sx={style.navStyle}>
-        <div sx={style.navWrapper}>
+        <m.div
+          initial="show"
+          exit="hide"
+          animate="show"
+          variants={flipAnim}
+          sx={style.navWrapper}
+        >
           <div className="logo">
-            {router.pathname === "/" ? "Already home" : "Logo"}
+            <m.span
+              sx={{
+                display: "inline-block",
+                willChange: "transform",
+              }}
+              initial="show"
+              exit="hide"
+              animate="show"
+              variants={rotate}
+            >
+              Logo
+            </m.span>
           </div>
 
           {menuMobilePrimary?.items && (
@@ -91,7 +148,7 @@ const Header = ({ data = {} }) => {
               onClick={() => toggleMobileNav(false)}
             />
           )}
-        </div>
+        </m.div>
       </header>
 
       <span className="header--observer" />
