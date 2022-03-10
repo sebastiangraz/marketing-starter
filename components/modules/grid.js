@@ -10,14 +10,20 @@ const Grid = ({ data = {} }) => {
   return (
     <section className="section">
       <div sx={{ variant: "layout.row" }}>
-        <div sx={{ display: "grid", gridTemplateColumns: `repeat(12, 1fr)` }}>
+        <div
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
           {columns.map((col, key) => {
             const { sizes, blocks } = col;
             return (
               <div
                 key={key}
                 sx={{
-                  gridColumn: `span ${sizes}`,
+                  width: `calc(100% * (${sizes} / 12))`,
                 }}
               >
                 {blocks.map((block, key) => (

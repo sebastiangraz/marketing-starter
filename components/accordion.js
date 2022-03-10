@@ -29,6 +29,9 @@ const style = {
     py: 4,
     fontSize: 2,
   },
+  accordionContent: {
+    overflow: "hidden",
+  },
 };
 
 const Accordion = ({
@@ -61,7 +64,7 @@ const Accordion = ({
 
       <m.div
         id={`accordion-${id}`}
-        className="accordion--content"
+        sx={style.accordionContent}
         initial={isOpen ? "open" : "closed"}
         animate={isOpen ? "open" : "closed"}
         variants={accordionAnim}
