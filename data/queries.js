@@ -83,13 +83,7 @@ export const modules = `
     _key,
     size,
     columns[]{
-      sizes[]{
-        breakpoint,
-        width,
-        justify,
-        align,
-        start
-      },
+      sizes,
       blocks[]{
         ${blocks}
       }

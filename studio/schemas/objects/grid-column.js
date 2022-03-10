@@ -13,11 +13,23 @@ export default {
     {
       title: 'Column Sizes',
       name: 'sizes',
-      type: 'array',
-      of: [{ type: 'gridSize' }],
-      description:
-        'Define the display size of this column for different screen widths',
-      validation: Rule => Rule.required().min(1)
+      type: 'number',
+      options: {
+        list: [
+          { title: '1', value: 1 },
+          { title: '2', value: 2 },
+          { title: '3', value: 3 },
+          { title: '4', value: 4 },
+          { title: '5', value: 5 },
+          { title: '6', value: 6 },
+          { title: '7', value: 7 },
+          { title: '8', value: 8 },
+          { title: '9', value: 9 },
+          { title: '10', value: 10 },
+          { title: '11', value: 11 },
+          { title: '12', value: 12 }
+        ]
+      }
     },
     {
       title: 'Content Blocks',
@@ -29,11 +41,10 @@ export default {
   ],
   preview: {
     select: {
-      sizes: 'sizes.0',
+      sizes: 'sizes',
       blocks: 'blocks'
     },
     prepare({ sizes, blocks }) {
-      const { width } = sizes
       const types = blocks.map(block => block._type)
 
       const title = getTypeTitles(types)
@@ -42,7 +53,7 @@ export default {
       return {
         title: title || 'Block',
         subtitle: subtitle || '',
-        media: <Avatar initials={width} size={1} />
+        media: <Avatar initials={sizes} size={1} />
       }
     }
   }

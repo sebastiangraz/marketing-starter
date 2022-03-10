@@ -13,12 +13,11 @@ const Grid = ({ data = {} }) => {
         <div sx={{ display: "grid", gridTemplateColumns: `repeat(12, 1fr)` }}>
           {columns.map((col, key) => {
             const { sizes, blocks } = col;
-
             return (
               <div
                 key={key}
                 sx={{
-                  gridColumn: `span ${sizes[0].width}`,
+                  gridColumn: `span ${sizes}`,
                 }}
               >
                 {blocks.map((block, key) => (
