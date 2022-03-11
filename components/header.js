@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { isBrowser } from "../lib/helpers";
 import { motion } from "framer-motion";
 import Menu from "../components/menu";
+import Link from "next/link";
 
 const flipAnim = {
   show: {
@@ -130,7 +131,9 @@ const Header = ({ data = {} }) => {
               animate="show"
               variants={rotate}
             >
-              Logo
+              <Link href="/" scroll={false}>
+                Logo
+              </Link>
             </motion.span>
           </div>
 
