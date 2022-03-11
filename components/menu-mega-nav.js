@@ -1,40 +1,40 @@
-import React, { useRef, useState, useEffect } from 'react'
-import FocusTrap from 'focus-trap-react'
-import { m } from 'framer-motion'
-import { useRect } from '@reach/rect'
-import cx from 'classnames'
+import React, { useRef, useState, useEffect } from "react";
+import FocusTrap from "focus-trap-react";
+import { motion } from "framer-motion";
+import { useRect } from "@reach/rect";
+import cx from "classnames";
 
-import { isBrowser } from '../lib/helpers'
-import { swipeAnim } from '../lib/animate'
+import { isBrowser } from "../lib/helpers";
+import { swipeAnim } from "../lib/animate";
 
-import { useSiteContext, useToggleMegaNav } from '../lib/context'
+import { useSiteContext, useToggleMegaNav } from "../lib/context";
 
-import Menu from '../components/menu'
+import Menu from "../components/menu";
 
 const MegaNavigation = ({ items = [] }) => {
   const dropdowns = items.filter((item) => {
-    return 'dropdownItems' in item
-  })
+    return "dropdownItems" in item;
+  });
 
-  if (!dropdowns.length) return null
+  if (!dropdowns.length) return null;
 
-  const toggleMegaNav = useToggleMegaNav()
-  const { meganav } = useSiteContext()
-  const activeNav = useRef()
-  const activeNavRect = useRect(activeNav, { observe: true })
-  const [hasFocus, setHasFocus] = useState(false)
+  const toggleMegaNav = useToggleMegaNav();
+  const { meganav } = useSiteContext();
+  const activeNav = useRef();
+  const activeNavRect = useRect(activeNav, { observe: true });
+  const [hasFocus, setHasFocus] = useState(false);
 
   const handleKeyDown = (e) => {
     if (e.which === 27) {
-      toggleMegaNav(false)
+      toggleMegaNav(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (isBrowser) {
-      document.body.classList.toggle('overflow-hidden', meganav.isOpen)
+      document.body.classList.toggle("overflow-hidden", meganav.isOpen);
     }
-  }, [meganav.isOpen])
+  }, [meganav.isOpen]);
 
   return (
     <>
@@ -49,23 +49,23 @@ const MegaNavigation = ({ items = [] }) => {
         >
           {dropdowns.map((dropdown, key) => {
             const isActive =
-              meganav.isOpen && meganav.activeID === dropdown._key
+              meganav.isOpen && meganav.activeID === dropdown._key;
 
             return (
               <div
                 key={key}
                 ref={isActive ? (ref) => (activeNav.current = ref) : null}
                 id={`meganav-${dropdown._key}`}
-                className={cx('mega-item', {
-                  'is-active': isActive,
+                className={cx("mega-item", {
+                  "is-active": isActive,
                 })}
               >
                 <div className="mega-item--outer">
                   <div className="mega-item--inner">
-                    <m.div
+                    <motion.div
                       initial="hide"
-                      animate={isActive ? 'show' : 'hide'}
-                      onAnimationComplete={(v) => setHasFocus(v === 'show')}
+                      animate={isActive ? "show" : "hide"}
+                      onAnimationComplete={(v) => setHasFocus(v === "show")}
                       variants={swipeAnim}
                       className="mega-item--content"
                     >
@@ -74,51 +74,51 @@ const MegaNavigation = ({ items = [] }) => {
                         hasFocus={hasFocus && isActive}
                         onClick={() => toggleMegaNav(false)}
                       />
-                    </m.div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </FocusTrap>
       <div
-        className={cx('mega-nav--bg')}
+        className={cx("mega-nav--bg")}
         style={{
-          '--h': meganav.isOpen ? activeNavRect?.height : 0,
-          '--hpx': `${meganav.isOpen ? activeNavRect?.height : 0}px`,
+          "--h": meganav.isOpen ? activeNavRect?.height : 0,
+          "--hpx": `${meganav.isOpen ? activeNavRect?.height : 0}px`,
         }}
       />
 
       <div className="mega-nav--border" />
 
       <div
-        className={cx('mega-nav--backdrop', {
-          'is-active': meganav.isOpen,
+        className={cx("mega-nav--backdrop", {
+          "is-active": meganav.isOpen,
         })}
         onClick={() => toggleMegaNav(false)}
       />
     </>
-  )
-}
+  );
+};
 
 export const MegaDropdownButton = ({ title, id }) => {
-  const toggleMegaNav = useToggleMegaNav()
-  const { meganav } = useSiteContext()
+  const toggleMegaNav = useToggleMegaNav();
+  const { meganav } = useSiteContext();
 
-  const isActive = meganav.activeID === id
+  const isActive = meganav.activeID === id;
 
   return (
     <button
-      className={cx('mega-toggle', { 'is-open': isActive })}
+      className={cx("mega-toggle", { "is-open": isActive })}
       aria-expanded={isActive}
       aria-controls={`meganav-${id}`}
-      onClick={() => toggleMegaNav(!isActive ? true : 'toggle', id)}
+      onClick={() => toggleMegaNav(!isActive ? true : "toggle", id)}
     >
       <span className="mega-toggle--icon" />
       {title}
     </button>
-  )
-}
+  );
+};
 
-export default MegaNavigation
+export default MegaNavigation;

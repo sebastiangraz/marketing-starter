@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { isBrowser } from "../lib/helpers";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import Menu from "../components/menu";
 
 const flipAnim = {
@@ -112,7 +112,7 @@ const Header = ({ data = {} }) => {
   return (
     <>
       <header sx={style.navStyle}>
-        <m.div
+        <motion.div
           initial="show"
           exit="hide"
           animate="show"
@@ -120,7 +120,7 @@ const Header = ({ data = {} }) => {
           sx={style.navWrapper}
         >
           <div className="logo">
-            <m.span
+            <motion.span
               sx={{
                 display: "inline-block",
                 willChange: "transform",
@@ -131,7 +131,7 @@ const Header = ({ data = {} }) => {
               variants={rotate}
             >
               Logo
-            </m.span>
+            </motion.span>
           </div>
 
           {menuMobilePrimary?.items && (
@@ -148,7 +148,7 @@ const Header = ({ data = {} }) => {
               onClick={() => toggleMobileNav(false)}
             />
           )}
-        </m.div>
+        </motion.div>
       </header>
 
       <span className="header--observer" />

@@ -1,55 +1,55 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { m, AnimatePresence } from 'framer-motion'
-import cx from 'classnames'
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { motion, AnimatePresence } from "framer-motion";
+import cx from "classnames";
 
-import { fadeAnim } from '../lib/animate'
+import { fadeAnim } from "../lib/animate";
 
-import BlockContent from '../components/block-content'
-import Icon from '../components/icon'
+import BlockContent from "../components/block-content";
+import Icon from "../components/icon";
 
 const Newsletter = ({ data = {} }) => {
   // Extract our module data
-  const { id, klaviyoListID, terms, submit, successMsg, errorMsg } = data
+  const { id, klaviyoListID, terms, submit, successMsg, errorMsg } = data;
 
-  const [submitting, setSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState(false)
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const {
     handleSubmit,
     register,
     watch,
     reset,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
-  const hasAgreed = watch('acceptTerms')
+  const hasAgreed = watch("acceptTerms");
 
   // Call to reset the form
   const resetForm = (e) => {
-    e.preventDefault()
-    reset()
-    setError(false)
-    setSuccess(false)
-    setSubmitting(false)
-  }
+    e.preventDefault();
+    reset();
+    setError(false);
+    setSuccess(false);
+    setSubmitting(false);
+  };
 
   // handle form submission
   const onSubmit = (data, e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // set an error if there's no Klaviyo list supplied...
-    if (!klaviyoListID) setError(true)
+    if (!klaviyoListID) setError(true);
 
     // ...and bail out if terms active and not agreed to (or just Klaviyo list is missing)
-    if ((!hasAgreed && terms && !klaviyoListID) || !klaviyoListID) return
+    if ((!hasAgreed && terms && !klaviyoListID) || !klaviyoListID) return;
 
-    setSubmitting(true)
-    setError(false)
+    setSubmitting(true);
+    setError(false);
 
-    fetch('/api/klaviyo/newsletter-join', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("/api/klaviyo/newsletter-join", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         listID: klaviyoListID,
         ...data,
@@ -57,29 +57,29 @@ const Newsletter = ({ data = {} }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setSubmitting(false)
-        setSuccess(true)
+        setSubmitting(false);
+        setSuccess(true);
       })
       .catch((error) => {
-        setSubmitting(false)
-        setError(true)
-        console.log(error)
-      })
-  }
+        setSubmitting(false);
+        setError(true);
+        console.log(error);
+      });
+  };
 
-  const email = register('email', {
-    required: 'This field is required.',
+  const email = register("email", {
+    required: "This field is required.",
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-      message: 'Invalid email address.',
+      message: "Invalid email address.",
     },
-  })
+  });
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <AnimatePresence exitBeforeEnter>
         {!error && !success && (
-          <m.div
+          <motion.div
             initial="hide"
             animate="show"
             exit="hide"
@@ -92,10 +92,10 @@ const Newsletter = ({ data = {} }) => {
               autoComplete="off"
               className="control--pot"
               aria-hidden="true"
-              {...register('fullname')}
+              {...register("fullname")}
             />
             <div className="control--group is-inline is-clean">
-              <div className={`control${errors?.email ? ' has-error' : ''}`}>
+              <div className={`control${errors?.email ? " has-error" : ""}`}>
                 <label htmlFor={`email-${id}`} className="control--label">
                   Email Address
                 </label>
@@ -107,17 +107,17 @@ const Newsletter = ({ data = {} }) => {
                   autoComplete="email"
                   ref={email.ref}
                   onFocus={(e) => {
-                    e.target.parentNode.classList.add('is-filled')
+                    e.target.parentNode.classList.add("is-filled");
                   }}
                   onBlur={(e) => {
-                    const value = e.target.value
-                    email.onBlur(e)
-                    e.target.parentNode.classList.toggle('is-filled', value)
+                    const value = e.target.value;
+                    email.onBlur(e);
+                    e.target.parentNode.classList.toggle("is-filled", value);
                   }}
                   onChange={(e) => {
-                    const value = e.target.value
-                    email.onChange(e)
-                    e.target.parentNode.classList.toggle('is-filled', value)
+                    const value = e.target.value;
+                    email.onChange(e);
+                    e.target.parentNode.classList.toggle("is-filled", value);
                   }}
                 />
 
@@ -130,13 +130,13 @@ const Newsletter = ({ data = {} }) => {
 
               <button
                 type="submit"
-                className={cx('btn is-primary', {
-                  'is-loading': submitting,
-                  'is-disabled': terms && !hasAgreed,
+                className={cx("btn is-primary", {
+                  "is-loading": submitting,
+                  "is-disabled": terms && !hasAgreed,
                 })}
                 disabled={submitting || (terms && !hasAgreed)}
               >
-                {submit ? submit : 'Send'}
+                {submit ? submit : "Send"}
               </button>
             </div>
 
@@ -146,7 +146,7 @@ const Newsletter = ({ data = {} }) => {
                   id={`acceptTerms-${id}`}
                   name="acceptTerms"
                   type="checkbox"
-                  {...register('acceptTerms')}
+                  {...register("acceptTerms")}
                 />
                 <label
                   htmlFor={`acceptTerms-${id}`}
@@ -157,11 +157,11 @@ const Newsletter = ({ data = {} }) => {
                 </label>
               </div>
             )}
-          </m.div>
+          </motion.div>
         )}
 
         {success && (
-          <m.div
+          <motion.div
             key="success"
             initial="hide"
             animate="show"
@@ -176,11 +176,11 @@ const Newsletter = ({ data = {} }) => {
                 <h2>Success!</h2>
               )}
             </div>
-          </m.div>
+          </motion.div>
         )}
 
         {error && (
-          <m.div
+          <motion.div
             key="error"
             initial="hide"
             animate="show"
@@ -196,11 +196,11 @@ const Newsletter = ({ data = {} }) => {
                 </button>
               </p>
             </div>
-          </m.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </form>
-  )
-}
+  );
+};
 
-export default Newsletter
+export default Newsletter;

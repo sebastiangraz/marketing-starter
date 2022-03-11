@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 import { getStaticRoute, getActive } from "../lib/routes";
@@ -64,7 +64,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
       </button>
 
       <div id={`dropdown-${id}`} sx={{ width: "0px" }}>
-        <m.ul
+        <motion.ul
           variants={list}
           initial="hidden"
           animate={isOpen ? "visible" : "hidden"}
@@ -85,7 +85,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
             const isActive = getActive(isStatic, item.page?.slug, router);
 
             return (
-              <m.li
+              <motion.li
                 sx={{ fontSize: 1 }}
                 variants={listItem}
                 key={key}
@@ -96,10 +96,10 @@ const Dropdown = ({ id, title, items, onClick }) => {
                   link={item}
                   onClick={onClick}
                 />
-              </m.li>
+              </motion.li>
             );
           })}
-        </m.ul>
+        </motion.ul>
       </div>
     </div>
   );

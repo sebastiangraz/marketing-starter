@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Script from "next/script";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { BaseStyles } from "theme-ui";
 
@@ -65,7 +65,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         />
       )}
       <BaseStyles>
-        <m.div
+        <motion.div
           initial="initial"
           animate="enter"
           exit="exit"
@@ -82,7 +82,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           />
           <main id="content">{children}</main>
           <Footer data={site.footer} />
-        </m.div>
+        </motion.div>
       </BaseStyles>
     </>
   );

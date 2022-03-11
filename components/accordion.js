@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import cx from "classnames";
 
 import Icon from "../components/icon";
@@ -62,7 +62,7 @@ const Accordion = ({
         </button>
       )}
 
-      <m.div
+      <motion.div
         id={`accordion-${id}`}
         sx={style.accordionContent}
         initial={isOpen ? "open" : "closed"}
@@ -74,7 +74,7 @@ const Accordion = ({
         <div className="accordion--inner" hidden={!isOpen && !hasFocus}>
           {children}
         </div>
-      </m.div>
+      </motion.div>
     </div>
   );
 };

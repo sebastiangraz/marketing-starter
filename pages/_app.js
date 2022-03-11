@@ -5,7 +5,7 @@ import { ThemeProvider } from "theme-ui";
 import theme from "./theme";
 import { Reset } from "../components/reset";
 
-import { LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
+import { LazyMotion, AnimatePresence, domMax } from "framer-motion";
 
 import { isBrowser, useScrollRestoration } from "../lib/helpers";
 import { pageTransitionSpeed } from "../lib/animate";
@@ -69,7 +69,7 @@ const Site = ({ Component, pageProps, router }) => {
   }, []);
 
   return (
-    <LazyMotion features={domAnimation}>
+    <>
       {isPageTransition && (
         <Head>
           <title>Loading...</title>
@@ -83,7 +83,7 @@ const Site = ({ Component, pageProps, router }) => {
       >
         <Component key={router.asPath.split("?")[0]} {...pageProps} />
       </AnimatePresence>
-    </LazyMotion>
+    </>
   );
 };
 

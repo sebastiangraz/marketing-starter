@@ -1,19 +1,25 @@
-import React, { useState } from 'react'
-
-import Accordion from '../components/accordion'
-import BlockContent from '../components/block-content'
+import React, { useState } from "react";
+import Accordion from "../components/accordion";
+import BlockContent from "../components/block-content";
+import Reveal from "../components/reveal";
 
 const AccordionList = ({ data }) => {
-  const { items } = data
+  const { items } = data;
 
-  const [activeAccordion, setActiveAccordion] = useState(null)
+  const [activeAccordion, setActiveAccordion] = useState(null);
 
   const onToggle = (id, status) => {
-    setActiveAccordion(status ? id : null)
-  }
+    setActiveAccordion(status ? id : null);
+  };
 
   return (
-    <div className="accordion-group">
+    <Reveal
+      effect={[
+        { opacity: 0, y: -5 },
+        { opacity: 1, y: 0 },
+      ]}
+      childDelay={0.2}
+    >
       {items.map((accordion, key) => {
         return (
           <Accordion
@@ -25,10 +31,10 @@ const AccordionList = ({ data }) => {
           >
             <BlockContent blocks={accordion.content} />
           </Accordion>
-        )
+        );
       })}
-    </div>
-  )
-}
+    </Reveal>
+  );
+};
 
-export default AccordionList
+export default AccordionList;

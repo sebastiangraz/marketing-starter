@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
-import { useKeenSlider } from 'keen-slider/react'
-import cx from 'classnames'
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useKeenSlider } from "keen-slider/react";
+import cx from "classnames";
 
-import { flipAnim } from '../lib/animate'
+import { flipAnim } from "../lib/animate";
 
-import Icon from '../components/icon'
+import Icon from "../components/icon";
 
 const Carousel = ({
   id,
@@ -17,21 +17,21 @@ const Carousel = ({
   className,
   children,
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, slider] = useKeenSlider({
     initial: 0,
-    slides: '.carousel--slide',
+    slides: ".carousel--slide",
     loop: true,
     duration: 800,
     dragSpeed: 0.8,
     controls: hasDrag,
     slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide)
+      setCurrentSlide(s.details().relativeSlide);
     },
-  })
+  });
 
   return (
-    <div className={cx('carousel', { 'has-drag': hasDrag }, className)}>
+    <div className={cx("carousel", { "has-drag": hasDrag }, className)}>
       <div ref={sliderRef} className="carousel--slides">
         {React.Children.map(children, (child, index) => (
           <div className="carousel--slide" key={index}>
@@ -61,8 +61,8 @@ const Carousel = ({
                       key={index}
                       onClick={() => slider.moveToSlideRelative(index)}
                       aria-label={`Go to slide ${index + 1}`}
-                      className={cx('carousel--dot', {
-                        'is-active': currentSlide === index,
+                      className={cx("carousel--dot", {
+                        "is-active": currentSlide === index,
                       })}
                     />
                   ))}
@@ -74,7 +74,7 @@ const Carousel = ({
                   <div className="carousel--counter-item is-current">
                     <div className="counter-flipper">
                       <AnimatePresence initial={false}>
-                        <m.span
+                        <motion.span
                           key={currentSlide + 1}
                           initial="hide"
                           animate="show"
@@ -82,7 +82,7 @@ const Carousel = ({
                           variants={flipAnim}
                         >
                           {currentSlide + 1}
-                        </m.span>
+                        </motion.span>
                       </AnimatePresence>
                     </div>
                   </div>
@@ -106,7 +106,7 @@ const Carousel = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;
