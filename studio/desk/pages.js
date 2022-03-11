@@ -64,6 +64,19 @@ const currentHomePage = S.listItem()
       .views(standardViews)
   })
 
+const productsMenu = S.listItem()
+  .title('Products')
+  .child(
+    S.documentTypeList('product')
+      .title('Products')
+      .child(documentId =>
+        S.document()
+          .documentId(documentId)
+          .schemaType('product')
+          .views(standardViews)
+      )
+  )
+
 // Extract our error page
 const currentErrorPage = S.listItem()
   .title('Error Page')
@@ -99,7 +112,7 @@ export const pagesMenu = S.listItem()
       .title('Pages')
       .items([
         currentHomePage,
-        currentErrorPage,
+        productsMenu,
         S.listItem()
           .title('Other Pages')
           .schemaType('page')
@@ -118,7 +131,8 @@ export const pagesMenu = S.listItem()
                   .schemaType('page')
                   .views(standardViews)
               )
-          )
+          ),
+        currentErrorPage
       ])
   )
   .icon(Browser)
