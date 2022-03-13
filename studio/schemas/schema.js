@@ -3,7 +3,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Document types
 import page from './documents/page'
-import product from './documents/product'
+import article from './documents/article'
 
 import generalSettings from './documents/settings-general'
 import cookieSettings from './documents/settings-cookie'
@@ -51,7 +51,7 @@ export default createSchema({
     /* ----------------- */
     /* 1: Document types */
     page,
-    product,
+    article,
 
     generalSettings,
     cookieSettings,

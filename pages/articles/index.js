@@ -8,7 +8,7 @@ const Blog = ({ data }) => {
   return (
     <Layout site={site} page={page}>
       <div sx={{ variant: "layout.row" }}>
-        <h1>Blog</h1>
+        <h1>Articles</h1>
 
         {page.map(({ id, title = "", slug = "", publishedAt = "" }) => {
           return (
@@ -16,8 +16,8 @@ const Blog = ({ data }) => {
               <li key={id}>
                 <Link
                   scroll={false}
-                  href="/product/[slug]"
-                  as={`/product/${slug.current}`}
+                  href="/articles/[slug]"
+                  as={`/articles/${slug.current}`}
                 >
                   {title}
                 </Link>{" "}
@@ -34,7 +34,7 @@ const Blog = ({ data }) => {
 export async function getStaticProps({ preview, previewData }) {
   const shopData = await getStaticPage(
     `
-      *[_type == "product"] {
+      *[_type == "article"] {
         "id": _id,
         title,
         slug,

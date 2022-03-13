@@ -2,8 +2,8 @@ import React from 'react'
 import { Gift, CloudArrowDown, ArrowsClockwise } from 'phosphor-react'
 
 export default {
-  name: 'product',
-  title: 'Product',
+  name: 'article',
+  title: 'Article',
   type: 'document',
   // __experimental_actions: ['update', 'publish', 'delete'],
   fields: [
@@ -15,7 +15,11 @@ export default {
     {
       title: 'Slug',
       name: 'slug',
-      type: 'slug'
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96
+      }
     },
     {
       title: 'Description',

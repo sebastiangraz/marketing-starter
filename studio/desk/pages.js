@@ -5,7 +5,7 @@ import { IntentLink, Link } from 'part:@sanity/base/router'
 
 import { Card, Stack, Text } from '@sanity/ui'
 
-import { House, Browser, WarningOctagon } from 'phosphor-react'
+import { House, Browser, WarningOctagon, Notebook } from 'phosphor-react'
 
 import { standardViews } from './previews/standard'
 
@@ -64,15 +64,16 @@ const currentHomePage = S.listItem()
       .views(standardViews)
   })
 
-const productsMenu = S.listItem()
-  .title('Products')
+const articlesMenu = S.listItem()
+  .title('Articles')
+  .icon(Notebook)
   .child(
-    S.documentTypeList('product')
-      .title('Products')
+    S.documentTypeList('article')
+      .title('Articles')
       .child(documentId =>
         S.document()
           .documentId(documentId)
-          .schemaType('product')
+          .schemaType('article')
           .views(standardViews)
       )
   )
@@ -112,7 +113,6 @@ export const pagesMenu = S.listItem()
       .title('Pages')
       .items([
         currentHomePage,
-        productsMenu,
         S.listItem()
           .title('Other Pages')
           .schemaType('page')
@@ -132,6 +132,7 @@ export const pagesMenu = S.listItem()
                   .views(standardViews)
               )
           ),
+        articlesMenu,
         currentErrorPage
       ])
   )
