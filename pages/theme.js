@@ -18,7 +18,7 @@ const typescale = increment.slice(0, n).map((e, i) => {
   return `${rem}rem`;
 });
 
-const bp = ["40em", "64em", "120em"];
+const bp = ["40em", "64em", "100em"];
 
 export default {
   spacing: core,
@@ -43,7 +43,7 @@ export default {
   layout: {
     row: {
       width: "88%",
-      maxWidth: "1200px",
+      maxWidth: "1288px",
       margin: "0 auto",
     },
     grid: {

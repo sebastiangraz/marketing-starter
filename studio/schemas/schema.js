@@ -38,6 +38,7 @@ import accordions from './objects/accordions'
 import accordion from './objects/accordion'
 
 import participant from './objects/participant'
+import imageFeature from './objects/image-feature'
 
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
@@ -85,6 +86,7 @@ export default createSchema({
     freeform,
     accordions,
     accordion,
+    imageFeature,
 
     participant
   ])

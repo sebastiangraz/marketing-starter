@@ -1,11 +1,14 @@
 import React, { useRef, useCallback } from "react";
 import Freeform from "../../components/freeform";
 import AccordionList from "../../components/accordion-list";
+import ImageFeature from "../../components/image-feature";
 
 import { motion } from "framer-motion";
 
 const Grid = ({ data = {} }) => {
   const { columns } = data;
+
+  // console.log(columns);
 
   const parentVariant = {
     hidden: { opacity: 0 },
@@ -30,6 +33,10 @@ const Grid = ({ data = {} }) => {
     },
   };
 
+  const gap = 56;
+  const gapmath = (size) => -gap / (12 / size) + gap;
+
+  console.log(gapmath);
   return (
     <section className="section">
       <div sx={{ variant: "layout.row" }}>
@@ -41,16 +48,21 @@ const Grid = ({ data = {} }) => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
+            rowGap: `${gap}px`,
+            columnGap: `${gap}px`,
           }}
         >
           {columns.map((col, key) => {
             const { sizes, blocks } = col;
-
+            console.log(sizes);
             return (
               <motion.div
+                data-size={sizes}
                 key={key}
                 variants={childVariant}
-                sx={{ width: `calc(100% * (${sizes} / 12))` }}
+                sx={{
+                  width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}px )`,
+                }}
               >
                 {blocks.map((block, key) => (
                   <GridBlock key={key} block={block} />
@@ -72,6 +84,8 @@ const GridBlock = ({ block }) => {
       return <Freeform data={block} />;
     case "accordions":
       return <AccordionList data={block} />;
+    case "imageFeature":
+      return <ImageFeature data={block} />;
     default:
       return null;
   }

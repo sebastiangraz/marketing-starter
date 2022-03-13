@@ -36,7 +36,11 @@ export default {
       name: 'blocks',
       type: 'array',
       description: 'The content that exists inside this column',
-      of: [{ type: 'freeform' }, { type: 'accordions' }]
+      of: [
+        { type: 'freeform' },
+        { type: 'accordions' },
+        { type: 'imageFeature' }
+      ]
     }
   ],
   preview: {

@@ -73,7 +73,19 @@ export const blocks = `
         ${ptContent}
       }
     }
+  },
+  _type == 'imageFeature' => {
+    _type,
+    _key,
+    "id": _key,
+    title,
+    content,
+    align,
+    image{
+      ${imageMeta}
+    }
   }
+
 `;
 
 // Construct our content "modules" GROQ
