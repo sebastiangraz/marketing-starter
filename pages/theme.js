@@ -1,3 +1,5 @@
+import { transparentize } from "@theme-ui/color";
+
 const core = [...Array(14).keys()].map((i) => {
   return (i + 1) * 8;
 });
@@ -19,6 +21,26 @@ const typescale = increment.slice(0, n).map((e, i) => {
 });
 
 const bp = ["40em", "64em", "100em"];
+
+const scroll = {
+  overflow: "scroll",
+  "&::-webkit-scrollbar": {
+    width: "6px",
+    height: "6px",
+  },
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "accentuate",
+    borderRadius: "12px",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: (t) => `${transparentize("text", 0.8)(t)}`,
+    cursor: "pointer",
+    borderRadius: "12px",
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    backgroundColor: (t) => `${transparentize("text", 0.7)(t)}`,
+  },
+};
 
 export default {
   spacing: core,
@@ -62,6 +84,7 @@ export default {
       lineHeight: 1,
     },
     root: {
+      ...scroll,
       fontSize: `clamp(12px, 1vw + 8px, 18px)`,
       bg: "background",
       letterSpacing: "body",

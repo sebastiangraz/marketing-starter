@@ -2,16 +2,28 @@ import { getAllDocSlugs, getArticle } from "../../data";
 import BlockContent from "../../components/block-content";
 import Layout from "../../components/layout";
 import Reveal from "../../components/reveal";
+
+//https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
+// do this
+
 const Article = ({ data }) => {
   const { page, site } = data;
 
   return (
     <Layout site={site} page={page}>
       <article sx={{ variant: "layout.row", my: 6 }}>
-        <h1>{page?.title}</h1>
-        <section sx={{ variant: "layout.post" }}>
-          <BlockContent blocks={page?.content} />
-        </section>
+        <Reveal
+          effect={[
+            { opacity: 0, y: -10 },
+            { opacity: 1, y: 0 },
+          ]}
+          childDelay={0.2}
+        >
+          <h1>{page?.title}</h1>
+          <section sx={{ variant: "layout.post" }}>
+            <BlockContent blocks={page?.content} />
+          </section>
+        </Reveal>
       </article>
     </Layout>
   );

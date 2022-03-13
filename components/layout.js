@@ -20,8 +20,8 @@ const variants = {
     opacity: 1,
     transition: {
       duration: pageTransitionSpeed / 1000,
-      delay: 0.2,
-      ease: "linear",
+      delay: 0,
+      ease: [0.83, 0, 0.17, 1],
       when: "beforeChildren",
     },
   },
@@ -29,7 +29,7 @@ const variants = {
     opacity: 0,
     transition: {
       duration: pageTransitionSpeed / 1000,
-      ease: "linear",
+      ease: [0.83, 0, 0.17, 1],
       when: "beforeChildren",
     },
   },
@@ -40,7 +40,6 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
   const { height: windowHeight } = useWindowSize();
 
   // set header height
-  const [headerHeight, setHeaderHeight] = useState(null);
 
   useEffect(() => {
     if (isBrowser) {
@@ -65,21 +64,19 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         />
       )}
       <BaseStyles>
+        <Header
+          data={site.header}
+          isTransparent={page.hasTransparentHeader}
+          onSetup={({ height }) => setHeaderHeight(height)}
+        />
         <motion.div
           initial="initial"
           animate="enter"
           exit="exit"
           variants={variants}
-          style={
-            headerHeight ? { "--headerHeight": `${headerHeight}px` } : null
-          }
         >
           <CookieBar data={site.cookieConsent} />
-          <Header
-            data={site.header}
-            isTransparent={page.hasTransparentHeader}
-            onSetup={({ height }) => setHeaderHeight(height)}
-          />
+
           <main id="content">{children}</main>
           <Footer data={site.footer} />
         </motion.div>

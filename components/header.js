@@ -5,41 +5,23 @@ import { motion } from "framer-motion";
 import Menu from "../components/menu";
 import Link from "next/link";
 
-const flipAnim = {
-  show: {
-    y: ["-8px", "0px"],
-    transition: {
-      duration: 0.75,
-      ease: [0.16, 1, 0.3, 1],
-      when: "beforeChildren",
-    },
-  },
-  hide: {
-    y: "-8px",
-    transition: {
-      duration: 0.75,
-      ease: [0.16, 1, 0.3, 1],
-      when: "afterChildren",
-    },
-  },
-};
-
 const rotate = {
   show: {
     origin: "center",
-    scale: [0.7, 1],
+    rotate: 0,
     transition: {
-      duration: 2,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 1,
+      ease: "linear",
       when: "beforeChildren",
     },
   },
   hide: {
     origin: "center",
-    scale: 0.7,
+    rotate: 360,
     transition: {
-      duration: 2,
-      ease: [0.16, 1, 0.3, 1],
+      // repeat: Infinity,
+      duration: 1,
+      ease: "linear",
       when: "afterChildren",
     },
   },
@@ -113,13 +95,7 @@ const Header = ({ data = {} }) => {
   return (
     <>
       <header sx={style.navStyle}>
-        <motion.div
-          initial="show"
-          exit="hide"
-          animate="show"
-          variants={flipAnim}
-          sx={style.navWrapper}
-        >
+        <div sx={style.navWrapper}>
           <div className="logo">
             <motion.span
               sx={{
@@ -151,7 +127,7 @@ const Header = ({ data = {} }) => {
               onClick={() => toggleMobileNav(false)}
             />
           )}
-        </motion.div>
+        </div>
       </header>
 
       <span className="header--observer" />

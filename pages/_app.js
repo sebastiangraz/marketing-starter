@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Router from "next/router";
 import Head from "next/head";
 import { ThemeProvider } from "theme-ui";
 import theme from "./theme";
 import { Reset } from "../components/reset";
-
-import { LazyMotion, AnimatePresence, domMax } from "framer-motion";
+import { uuid } from "@sanity/uuid";
+import { AnimatePresence } from "framer-motion";
 
 import { isBrowser, useScrollRestoration } from "../lib/helpers";
 import { pageTransitionSpeed } from "../lib/animate";
