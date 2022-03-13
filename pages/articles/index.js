@@ -7,7 +7,7 @@ const Blog = ({ data }) => {
 
   return (
     <Layout site={site} page={page}>
-      <div sx={{ variant: "layout.row" }}>
+      <div sx={{ variant: "layout.row", my: 6 }}>
         <h1>Articles</h1>
 
         {page.map(({ id, title = "", slug = "", publishedAt = "" }) => {
@@ -38,7 +38,7 @@ export async function getStaticProps({ preview, previewData }) {
         "id": _id,
         title,
         slug,
-        modules[]
+        content[]
       }
     `,
     {

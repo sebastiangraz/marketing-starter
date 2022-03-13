@@ -29,7 +29,7 @@ export default {
 
     {
       title: 'Page Content',
-      name: 'modules',
+      name: 'content',
       type: 'complexPortableText'
     }
   ],

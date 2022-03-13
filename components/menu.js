@@ -27,7 +27,8 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
       {items.map((item, key) => {
         const isDropdown = !!item.dropdownItems;
         const isStatic = getStaticRoute(item.page?.type);
-        const isActive = getActive(isStatic, item.page?.slug, router);
+        const isActive = getActive(isStatic, item?.page?.slug, router);
+        const isPostsActive = router.asPath.includes(item?.url?.current);
 
         // Dropdown List
         if (isDropdown) {
@@ -56,7 +57,10 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
           // single link
         } else {
           return (
-            <li key={key} className={isActive ? "is-active" : null}>
+            <li
+              key={key}
+              className={isPostsActive | isActive ? "is-active" : null}
+            >
               <CustomLink
                 tabIndex={!hasFocus ? -1 : null}
                 link={item}

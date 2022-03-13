@@ -50,9 +50,9 @@ export default {
       display: "grid",
       gridTemplateColumns: `repeat(12, 1fr)`,
     },
-    footer: {
-      color: "white",
-      backgroundColor: "black",
+    post: {
+      maxWidth: "65ch",
+      p: { mb: 3 },
     },
   },
   radii: ["8px", "16px", "24px"],
@@ -73,30 +73,34 @@ export default {
       textDecoration: "underline",
       "&:hover": { textDecoration: "none" },
     },
-    "h1,h2,h3,h4": {
-      fontFamily: "heading",
+    "h2,h3,h4": {
+      fontFamily: ["body", "heading"],
       fontWeight: "normal",
       mb: "0.75em",
     },
     h1: {
+      fontFamily: "heading",
+      fontWeight: "normal",
+      mb: "0.75em",
       lineHeight: 1,
       letterSpacing: "heading",
       fontSize: [5, 5, 6],
     },
     h2: { lineHeight: 1.2, letterSpacing: "heading", fontSize: [3, 4, 5] },
     h3: {
-      lineHeight: 1.4,
+      lineHeight: 1.3,
       letterSpacing: "heading",
-      fontSize: [2, 3, 4],
+      fontSize: [3, 3, 4],
     },
     h4: {
-      lineHeight: 1.5,
+      lineHeight: 1.36,
       letterSpacing: "heading",
-      fontSize: [1, 2, 3],
+      fontSize: [2, 2, 3],
     },
     p: {
-      lineHeight: 1.56,
+      lineHeight: 1.4,
       letterSpacing: "body",
+      fontSize: [2, 2, 2],
     },
     a: {
       variant: "styles.link",

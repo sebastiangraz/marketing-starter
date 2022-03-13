@@ -1,20 +1,20 @@
-import { getSanityClient } from '../lib/sanity'
-import * as queries from './queries'
+import { getSanityClient } from "../lib/sanity";
+import * as queries from "./queries";
 
 // Fetch all dynamic docs
 export async function getAllDocSlugs(doc) {
   const data = await getSanityClient().fetch(
     `*[_type == "${doc}" && !(_id in [${queries.homeID}, ${queries.errorID}]) && wasDeleted != true && isDraft != true]{ "slug": slug.current }`
-  )
-  return data
+  );
+  return data;
 }
 
 // Fetch all our page redirects
 export async function getAllRedirects() {
   const data = await getSanityClient().fetch(
     `*[_type == "redirect"]{ from, to }`
-  )
-  return data
+  );
+  return data;
 }
 
 // Fetch a static page with our global data
@@ -24,16 +24,16 @@ export async function getStaticPage(pageData, preview) {
     "page": ${pageData},
     ${queries.site}
   }
-  `
+  `;
 
-  const data = await getSanityClient(preview).fetch(query)
+  const data = await getSanityClient(preview).fetch(query);
 
-  return data
+  return data;
 }
 
 // Fetch a specific dynamic page with our global data
 export async function getPage(slug, preview) {
-  const slugs = [`/${slug}`, slug, `/${slug}/`]
+  const slugs = [`/${slug}`, slug, `/${slug}/`];
 
   const query = `
     {
@@ -49,11 +49,29 @@ export async function getPage(slug, preview) {
       },
       ${queries.site}
     }
-    `
+    `;
 
-  const data = await getSanityClient(preview).fetch(query)
+  const data = await getSanityClient(preview).fetch(query);
 
-  return data
+  return data;
 }
 
-export { queries }
+export async function getArticle(slug, preview) {
+  const query = `
+    {
+      "page": *[_type == "article" && slug.current == "${slug}"][0]{
+        "id": _id,
+        title,
+        slug,
+        content[]
+      },
+      ${queries.site}
+    }
+  `;
+
+  const data = await getSanityClient(preview).fetch(query);
+
+  return data;
+}
+
+export { queries };

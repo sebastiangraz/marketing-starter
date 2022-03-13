@@ -26,6 +26,7 @@ import seo from './objects/seo'
 
 import navDropdown from './objects/nav-dropdown'
 import navPage from './objects/nav-page'
+import navPosts from './objects/nav-posts'
 import navLink from './objects/nav-link'
 import socialLink from './objects/social-link'
 import horizontalRule from './objects/horizontal-rule'
@@ -76,6 +77,7 @@ export default createSchema({
 
     navDropdown,
     navPage,
+    navPosts,
     navLink,
     socialLink,
     horizontalRule,

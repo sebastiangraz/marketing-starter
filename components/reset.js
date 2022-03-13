@@ -20,8 +20,8 @@ export function Reset(props) {
           font-weight: normal;
           font-style: normal;
           font-display: swap;
-          src: url("fonts/relativefaux.woff") format("woff"),
-            url("fonts/relativefaux.woff2") format("woff2");
+          src: url("/fonts/relativefaux.woff") format("woff"),
+            url("/fonts/relativefaux.woff2") format("woff2");
         }
 
         @font-face {
@@ -29,8 +29,8 @@ export function Reset(props) {
           font-weight: normal;
           font-style: normal;
           font-display: swap;
-          src: url("fonts/relative.woff") format("woff"),
-            url("fonts/relative.woff2") format("woff2");
+          src: url("/fonts/relative.woff") format("woff"),
+            url("/fonts/relative.woff2") format("woff2");
         }
 
         a {
