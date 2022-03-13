@@ -1,13 +1,13 @@
-import React from 'react'
-import Error from 'next/error'
+import React from "react";
+import Error from "next/error";
 
-import { getStaticPage, queries } from '../data'
+import { getStaticPage, queries } from "../data";
 
-import Layout from '../components/layout'
-import { Module } from '../components/modules'
+import Layout from "../components/layout";
+import { Module } from "../components/modules";
 
 const Home = ({ data }) => {
-  const { site, page } = data
+  const { site, page } = data;
 
   if (!page) {
     return (
@@ -15,7 +15,7 @@ const Home = ({ data }) => {
         title={`"Home Page" is not set in Sanity, or the page data is missing`}
         statusCode="Data Error"
       />
-    )
+    );
   }
 
   return (
@@ -24,8 +24,8 @@ const Home = ({ data }) => {
         <Module key={key} module={module} />
       ))}
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticProps({ preview, previewData }) {
   const pageData = await getStaticPage(
@@ -43,13 +43,13 @@ export async function getStaticProps({ preview, previewData }) {
       active: preview,
       token: previewData?.token,
     }
-  )
+  );
 
   return {
     props: {
       data: pageData,
     },
-  }
+  };
 }
 
-export default Home
+export default Home;

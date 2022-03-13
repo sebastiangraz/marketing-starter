@@ -8,8 +8,6 @@ import { motion } from "framer-motion";
 const Grid = ({ data = {} }) => {
   const { columns } = data;
 
-  // console.log(columns);
-
   const parentVariant = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,7 +34,6 @@ const Grid = ({ data = {} }) => {
   const gap = 56;
   const gapmath = (size) => -gap / (12 / size) + gap;
 
-  console.log(gapmath);
   return (
     <section className="section">
       <div sx={{ variant: "layout.row" }}>
@@ -54,7 +51,7 @@ const Grid = ({ data = {} }) => {
         >
           {columns.map((col, key) => {
             const { sizes, blocks } = col;
-            console.log(sizes);
+
             return (
               <motion.div
                 data-size={sizes}

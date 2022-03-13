@@ -134,6 +134,9 @@ const Header = ({ data = {} }) => {
               <Link href="/" scroll={false}>
                 Logo
               </Link>
+              <Link href="/products" scroll={false}>
+                Bloggu
+              </Link>
             </motion.span>
           </div>
 
