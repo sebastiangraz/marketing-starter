@@ -64,11 +64,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         />
       )}
       <BaseStyles>
-        <Header
-          data={site.header}
-          isTransparent={page.hasTransparentHeader}
-          onSetup={({ height }) => setHeaderHeight(height)}
-        />
+        <Header data={site.header} />
         <motion.div
           initial="initial"
           animate="enter"

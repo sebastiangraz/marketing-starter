@@ -40,7 +40,6 @@ export async function getPage(slug, preview) {
       "page": *[_type == "page" && slug.current in ${JSON.stringify(
         slugs
       )}] | order(_updatedAt desc)[0]{
-        hasTransparentHeader,
         modules[]{
           ${queries.modules}
         },

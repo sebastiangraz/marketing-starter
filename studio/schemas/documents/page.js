@@ -23,14 +23,6 @@ export default {
       }
     },
     {
-      title: 'Overlay header with transparency?',
-      name: 'hasTransparentHeader',
-      type: 'boolean',
-      description:
-        'When activated the header will overlay the first content module with a transparent background and white text until scrolling is engaged.',
-      initialValue: false
-    },
-    {
       title: 'Page Modules',
       name: 'modules',
       type: 'array',

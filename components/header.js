@@ -77,16 +77,10 @@ const style = {
 
 const Header = ({ data = {} }) => {
   // expand our header data
-  const { menuMobilePrimary, menuMobileSecondary } = data;
-
-  // setup states
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-  const router = useRouter();
+  const { menuMobilePrimary } = data;
 
   // setup menu toggle event
   const toggleMobileNav = (state) => {
-    setMobileNavOpen(state);
-
     if (isBrowser) {
       document.body.classList.toggle("overflow-hidden", state);
     }
@@ -117,13 +111,6 @@ const Header = ({ data = {} }) => {
             <Menu
               className="menu"
               items={menuMobilePrimary.items}
-              onClick={() => toggleMobileNav(false)}
-            />
-          )}
-          {menuMobilePrimary?.items && (
-            <Menu
-              className="submenu"
-              items={menuMobileSecondary.items}
               onClick={() => toggleMobileNav(false)}
             />
           )}

@@ -31,7 +31,6 @@ export async function getStaticProps({ preview, previewData }) {
   const pageData = await getStaticPage(
     `
     *[_type == "page" && _id == ${queries.homeID}] | order(_updatedAt desc)[0]{
-      hasTransparentHeader,
       modules[]{
         ${queries.modules}
       },
