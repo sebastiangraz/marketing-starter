@@ -15,18 +15,9 @@ const Parallax = ({ data = {} }) => {
   const ref = useRef();
   const [windowHeight, setWindowHeight] = useState(0);
   // const activeNavRect = useRect(ref, { observe: true });
-  // const childRect = useRect(childRef, { observe: true });
-  //   console.log(activeNavRect && -(activeNavRect.top - window.innerHeight));
+
   const { scrollY } = useViewportScroll();
-  const options = {
-    // ease: [[0.7, 0, 0.84, 0], [0.7, 0, 0.84, 0], [0.7, 0, 0.84, 0]]
-  };
-  //   const x = useTransform(
-  //     scrollY,
-  //     [activeNavRect && -(activeNavRect.top - window.innerHeight), 1000 * 3],
-  //     ["0px", `-${1000 * length}px`],
-  //     options
-  //   );
+
   const settings = {
     springOptions: {
       damping: 12,
@@ -42,11 +33,24 @@ const Parallax = ({ data = {} }) => {
     const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
     const elHeight = el.getBoundingClientRect().height - windowHeight;
     const elWidth = el.getBoundingClientRect().width;
+    const widthOfScrollbar = 6;
+
+    const totalChildWidth = [...el.children[0].children].reduce(
+      (acc, current) => {
+        current = current.scrollWidth;
+        return acc + current;
+      },
+      0
+    );
+    console.log(totalChildWidth);
+    const transformX =
+      -totalChildWidth + (window.innerWidth - widthOfScrollbar);
+
     function updateX(e) {
       const move = transform(
         e,
         [elDistanceToTop, elHeight + elDistanceToTop],
-        [0, -((length - 1) * (elWidth + 6))]
+        [0, transformX]
       );
       x.set(move);
     }
@@ -75,7 +79,7 @@ const Parallax = ({ data = {} }) => {
     },
     section: {
       borderRadius: "3rem",
-      width: "100vw",
+      width: "1000px",
       height: "100vh",
       background: "text",
     },
