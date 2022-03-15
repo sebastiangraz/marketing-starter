@@ -26,7 +26,12 @@ export default {
       title: 'Page Modules',
       name: 'modules',
       type: 'array',
-      of: [{ type: 'grid' }, { type: 'hero' }, { type: 'dividerPhoto' }]
+      of: [
+        { type: 'grid' },
+        { type: 'hero' },
+        { type: 'dividerPhoto' },
+        { type: 'parallax' }
+      ]
     },
     {
       title: 'SEO / Share Settings',

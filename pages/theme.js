@@ -23,7 +23,7 @@ const typescale = increment.slice(0, n).map((e, i) => {
 const bp = ["40em", "64em", "100em"];
 
 const scroll = {
-  overflow: "scroll",
+  overflowY: "scroll",
   "&::-webkit-scrollbar": {
     width: "6px",
     height: "6px",

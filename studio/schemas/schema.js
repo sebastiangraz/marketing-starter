@@ -18,6 +18,7 @@ import grid from './modules/grid'
 import hero from './modules/hero'
 import dividerPhoto from './modules/divider-photo'
 import newsletter from './modules/newsletter'
+import parallax from './modules/parallax'
 
 // Object types
 import gridColumn from './objects/grid-column'
@@ -68,6 +69,7 @@ export default createSchema({
     hero,
     dividerPhoto,
     newsletter,
+    parallax,
 
     /* ----------------------- */
     /* 3: Generic Object types */

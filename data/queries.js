@@ -93,7 +93,6 @@ export const modules = `
   _type == 'grid' => {
     _type,
     _key,
-    size,
     columns[]{
       sizes,
       blocks[]{
@@ -128,7 +127,16 @@ export const modules = `
     photo{
       ${imageMeta}
     }
-  }
+  },
+  _type == 'parallax' => {
+    _type,
+    _key,
+    parallaxContainer[]{
+      "id": _key,
+      sizes,
+      heading
+    }
+  },
 `;
 
 // Construct our "site" GROQ
