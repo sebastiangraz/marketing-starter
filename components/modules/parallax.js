@@ -15,18 +15,7 @@ const Parallax = ({ data = {} }) => {
     childRef = useRef();
   const [windowHeight, setWindowHeight] = useState(0);
   const activeNavRect = useRect(ref, { observe: true });
-  const childRect = useRect(childRef, { observe: true });
-  //   console.log(activeNavRect && -(activeNavRect.top - window.innerHeight));
   const { scrollY } = useViewportScroll();
-  const options = {
-    // ease: [[0.7, 0, 0.84, 0], [0.7, 0, 0.84, 0], [0.7, 0, 0.84, 0]]
-  };
-  //   const x = useTransform(
-  //     scrollY,
-  //     [activeNavRect && -(activeNavRect.top - window.innerHeight), 1000 * 3],
-  //     ["0px", `-${1000 * length}px`],
-  //     options
-  //   );
 
   React.useEffect(() => {
     setWindowHeight(window.innerHeight);
@@ -69,7 +58,7 @@ const Parallax = ({ data = {} }) => {
       borderRadius: "3rem",
       width: "100vw",
       height: "100vh",
-      background: "text",
+      background: "primary",
     },
     innerSection: {
       overflow: "hidden",
