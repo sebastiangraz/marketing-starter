@@ -40,13 +40,12 @@ const Parallax = ({ data = {} }) => {
   };
 
   const updatePos = (e) => {
-    return -Math.max(
+    let max = -(activeNavRect && activeNavRect.height);
+    let clamped = -Math.max(
       0,
-      Math.min(
-        -(activeNavRect && activeNavRect.top),
-        activeNavRect && activeNavRect.height - windowHeight
-      )
+      Math.min(-(activeNavRect && activeNavRect.top), -max - windowHeight)
     );
+    return -transform(clamped, [0, max], [0, length]);
   };
 
   const x = useSpring(
@@ -56,7 +55,6 @@ const Parallax = ({ data = {} }) => {
 
   const style = {
     container: {
-      background: "green",
       height: `calc(${length} * 100vh)`,
       contain: "paint",
     },
@@ -69,11 +67,9 @@ const Parallax = ({ data = {} }) => {
     },
     section: {
       borderRadius: "3rem",
-      border: "1px solid",
       width: "100vw",
-      boxShadow: "20px 20px 20px 20px #0005",
       height: "100vh",
-      background: "primary",
+      background: "text",
     },
     innerSection: {
       overflow: "hidden",
@@ -91,7 +87,7 @@ const Parallax = ({ data = {} }) => {
         <motion.div
           sx={style.innerContainer}
           style={{
-            x,
+            x: `${x.current * 100}vw`,
           }}
         >
           {parallaxContainer.map((e) => {
