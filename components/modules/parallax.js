@@ -19,7 +19,6 @@ const Parallax = ({ data = {} }) => {
   const { parallaxContainer } = data;
   const length = parallaxContainer.length;
   const ref = useRef();
-  const [windowHeight, setWindowHeight] = useState(0);
   const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
   const xSpring = useSpring(x, settings.springOptions);
@@ -33,6 +32,8 @@ const Parallax = ({ data = {} }) => {
       elHeight: 0,
     }
   );
+
+  const { windowHeight, elDistanceToTop, totalChildWidth, elHeight } = state;
 
   React.useEffect(() => {
     const el = ref && ref.current;
@@ -56,27 +57,28 @@ const Parallax = ({ data = {} }) => {
       });
     }, 300);
 
-    document.fonts.ready.then(function () {
-      onResize();
-    });
+    document.fonts.ready.then(() => onResize());
+
     window.addEventListener("resize", onResize, { passive: true });
     return () => {
       window.removeEventListener("resize", onResize);
     };
   }, []);
 
+  const handleClick = (e) => {
+    console.log(e);
+    return window.scrollTo({ top: windowHeight, behavior: "smooth" });
+  };
+
   React.useEffect(() => {
     const widthOfScrollbar = 6;
     const transformX =
-      -state.totalChildWidth + (window.innerWidth - widthOfScrollbar);
+      -totalChildWidth + (window.innerWidth - widthOfScrollbar);
 
     function updateX(e) {
       const move = transform(
         e,
-        [
-          state.elDistanceToTop,
-          state.elHeight - state.windowHeight + state.elDistanceToTop,
-        ],
+        [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
         [0, transformX]
       );
       x.set(move);
@@ -86,14 +88,7 @@ const Parallax = ({ data = {} }) => {
     return () => {
       unsubscribeX();
     };
-  }, [
-    scrollY,
-    state.elDistanceToTop,
-    state.elHeight,
-    state.totalChildWidth,
-    state.windowHeight,
-    x,
-  ]);
+  }, [elDistanceToTop, elHeight, scrollY, totalChildWidth, windowHeight, x]);
 
   const style = {
     container: {
@@ -109,7 +104,7 @@ const Parallax = ({ data = {} }) => {
     },
     section: {
       borderRadius: "3rem",
-      width: "100vw",
+      width: "80vw",
       height: "100vh",
       maxWidth: "1288px",
       background: "background",
@@ -143,7 +138,7 @@ const Parallax = ({ data = {} }) => {
         >
           {parallaxContainer.map((e) => {
             return (
-              <div key={e.id} sx={style.section}>
+              <div key={e.id} sx={style.section} onClick={handleClick}>
                 <div sx={style.innerSection}>
                   <h2>{e.heading}</h2>
                 </div>
