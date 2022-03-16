@@ -27,6 +27,7 @@ const Parallax = ({ data = {} }) => {
   const [state, setCalc] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
+      windowHeight: 0,
       elDistanceToTop: 0,
       totalChildWidth: 0,
       elHeight: 0,
@@ -38,7 +39,7 @@ const Parallax = ({ data = {} }) => {
 
     const onResize = debounce(() => {
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
-      const elHeight = el.getBoundingClientRect().height - windowHeight;
+      const elHeight = el.getBoundingClientRect().height;
       const totalChildWidth = [...el.children[0].children].reduce(
         (acc, current) => {
           current = current.scrollWidth;
@@ -48,6 +49,7 @@ const Parallax = ({ data = {} }) => {
       );
 
       setCalc({
+        windowHeight: window.innerHeight,
         elDistanceToTop: elDistanceToTop,
         totalChildWidth: totalChildWidth,
         elHeight: elHeight,
@@ -61,10 +63,6 @@ const Parallax = ({ data = {} }) => {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, [windowHeight]);
-
-  React.useEffect(() => {
-    setWindowHeight(window.innerHeight);
   }, []);
 
   React.useEffect(() => {
@@ -75,7 +73,10 @@ const Parallax = ({ data = {} }) => {
     function updateX(e) {
       const move = transform(
         e,
-        [state.elDistanceToTop, state.elHeight + state.elDistanceToTop],
+        [
+          state.elDistanceToTop,
+          state.elHeight - state.windowHeight + state.elDistanceToTop,
+        ],
         [0, transformX]
       );
       x.set(move);
@@ -90,6 +91,7 @@ const Parallax = ({ data = {} }) => {
     state.elDistanceToTop,
     state.elHeight,
     state.totalChildWidth,
+    state.windowHeight,
     x,
   ]);
 
