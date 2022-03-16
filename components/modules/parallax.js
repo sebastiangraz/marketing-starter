@@ -34,8 +34,9 @@ const Parallax = ({ data = {} }) => {
   );
 
   React.useEffect(() => {
+    const el = ref && ref.current;
+
     const onResize = debounce(() => {
-      const el = ref && ref.current;
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
       const elHeight = el.getBoundingClientRect().height - windowHeight;
       const totalChildWidth = [...el.children[0].children].reduce(
@@ -72,7 +73,7 @@ const Parallax = ({ data = {} }) => {
 
   React.useEffect(() => {
     setWindowHeight(window.innerHeight);
-  }, [windowHeight]);
+  }, []);
 
   React.useEffect(() => {
     const widthOfScrollbar = 6;
@@ -88,6 +89,10 @@ const Parallax = ({ data = {} }) => {
       x.set(move);
     }
     const unsubscribeX = scrollY.onChange((e) => updateX(e));
+
+    return () => {
+      unsubscribeX();
+    };
   }, [
     scrollY,
     state.elDistanceToTop,
