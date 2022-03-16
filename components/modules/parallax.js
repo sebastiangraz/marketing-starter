@@ -57,17 +57,9 @@ const Parallax = ({ data = {} }) => {
     document.fonts.ready.then(function () {
       onResize();
     });
-
-    window.addEventListener(
-      "resize",
-      debounce(() => {
-        onResize();
-      }, 300),
-      { passive: true }
-    );
-
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
-      window.removeEventListener("resize", onResize, { passive: true });
+      window.removeEventListener("resize", onResize);
     };
   }, [windowHeight]);
 
