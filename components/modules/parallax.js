@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import debounce from "lodash.debounce";
 import {
   motion,
   useViewportScroll,
@@ -8,13 +9,6 @@ import {
 } from "framer-motion";
 
 const Parallax = ({ data = {} }) => {
-  const { parallaxContainer } = data;
-  const length = parallaxContainer.length;
-  const ref = useRef();
-  const [windowHeight, setWindowHeight] = useState(0);
-  // const activeNavRect = useRect(ref, { observe: true });
-  const { scrollY } = useViewportScroll();
-
   const settings = {
     springOptions: {
       damping: 12,
@@ -22,43 +16,85 @@ const Parallax = ({ data = {} }) => {
     },
   };
 
+  const { parallaxContainer } = data;
+  const length = parallaxContainer.length;
+  const ref = useRef();
+  const [windowHeight, setWindowHeight] = useState(0);
+  const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
   const xSpring = useSpring(x, settings.springOptions);
 
-  React.useEffect(() => {
-    const el = ref && ref.current;
-    const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
-    const elHeight = el.getBoundingClientRect().height - windowHeight;
-    const elWidth = el.getBoundingClientRect().width;
-    const widthOfScrollbar = 6;
-
-    const totalChildWidth = [...el.children[0].children].reduce(
-      (acc, current) => {
-        current = current.scrollWidth;
-        return acc + current;
-      },
-      0
-    );
-    const transformX =
-      -totalChildWidth + (window.innerWidth - widthOfScrollbar);
-
-    function updateX(e) {
-      const move = transform(
-        e,
-        [elDistanceToTop, elHeight + elDistanceToTop],
-        [0, transformX]
-      );
-      x.set(move);
+  const [state, setCalc] = React.useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      elDistanceToTop: 0,
+      totalChildWidth: 0,
+      elHeight: 0,
     }
-    const unsubscribeX = scrollY.onChange((e) => updateX(e));
+  );
+
+  React.useEffect(() => {
+    const onResize = debounce(() => {
+      const el = ref && ref.current;
+      const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
+      const elHeight = el.getBoundingClientRect().height - windowHeight;
+      const totalChildWidth = [...el.children[0].children].reduce(
+        (acc, current) => {
+          current = current.scrollWidth;
+          return acc + current;
+        },
+        0
+      );
+
+      setCalc({
+        elDistanceToTop: elDistanceToTop,
+        totalChildWidth: totalChildWidth,
+        elHeight: elHeight,
+      });
+    }, 300);
+
+    document.fonts.ready.then(function () {
+      onResize();
+    });
+
+    window.addEventListener(
+      "resize",
+      debounce(() => {
+        onResize();
+      }, 300),
+      { passive: true }
+    );
+
     return () => {
-      unsubscribeX();
+      window.removeEventListener("resize", onResize, { passive: true });
     };
   }, [windowHeight]);
 
   React.useEffect(() => {
     setWindowHeight(window.innerHeight);
-  }, []);
+  }, [windowHeight]);
+
+  React.useEffect(() => {
+    const widthOfScrollbar = 6;
+    const transformX =
+      -state.totalChildWidth + (window.innerWidth - widthOfScrollbar);
+
+    function updateX(e) {
+      const move = transform(
+        e,
+        [state.elDistanceToTop, state.elHeight + state.elDistanceToTop],
+        [0, transformX]
+      );
+      x.set(move);
+    }
+    const unsubscribeX = scrollY.onChange((e) => updateX(e));
+  }, [
+    scrollY,
+    state.elDistanceToTop,
+    state.elHeight,
+    state.totalChildWidth,
+    x,
+  ]);
 
   const style = {
     container: {

@@ -4,7 +4,6 @@ import Head from "next/head";
 import { ThemeProvider } from "theme-ui";
 import theme from "./theme";
 import { Reset } from "../components/reset";
-import { uuid } from "@sanity/uuid";
 import { AnimatePresence } from "framer-motion";
 
 import { isBrowser, useScrollRestoration } from "../lib/helpers";
