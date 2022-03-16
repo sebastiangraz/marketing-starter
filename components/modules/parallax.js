@@ -2,12 +2,10 @@ import React, { useRef, useState } from "react";
 import {
   motion,
   useViewportScroll,
-  useTransform,
   transform,
   useSpring,
   useMotionValue,
 } from "framer-motion";
-import { useRect } from "@reach/rect";
 
 const Parallax = ({ data = {} }) => {
   const { parallaxContainer } = data;
@@ -15,7 +13,6 @@ const Parallax = ({ data = {} }) => {
   const ref = useRef();
   const [windowHeight, setWindowHeight] = useState(0);
   // const activeNavRect = useRect(ref, { observe: true });
-
   const { scrollY } = useViewportScroll();
 
   const settings = {
@@ -42,7 +39,6 @@ const Parallax = ({ data = {} }) => {
       },
       0
     );
-    console.log(totalChildWidth);
     const transformX =
       -totalChildWidth + (window.innerWidth - widthOfScrollbar);
 
@@ -68,7 +64,6 @@ const Parallax = ({ data = {} }) => {
     container: {
       height: `calc(${length} * 100vh)`,
       contain: "paint",
-      background: "#ff0",
     },
     innerContainer: {
       width: `calc(${length} * 100vw)`,
@@ -79,11 +74,17 @@ const Parallax = ({ data = {} }) => {
     },
     section: {
       borderRadius: "3rem",
-      width: "1000px",
+      width: "100vw",
       height: "100vh",
-      background: "text",
+      maxWidth: "1288px",
+      background: "background",
+      boxShadow: "0px 0px 0px 1px #000 inset",
+      "&:nth-child(2n)": {
+        width: "50vw",
+      },
     },
     innerSection: {
+      py: 5,
       overflow: "hidden",
       variant: "layout.row",
     },
@@ -108,7 +109,9 @@ const Parallax = ({ data = {} }) => {
           {parallaxContainer.map((e) => {
             return (
               <div key={e.id} sx={style.section}>
-                <div sx={style.innerSection}>{e.heading}</div>
+                <div sx={style.innerSection}>
+                  <h2>{e.heading}</h2>
+                </div>
               </div>
             );
           })}
