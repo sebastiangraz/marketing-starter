@@ -30,19 +30,29 @@ const Parallax = ({ data = {} }) => {
       elDistanceToTop: 0,
       totalChildWidth: 0,
       elHeight: 0,
+      childWidthArray: [],
     }
   );
 
-  const { windowHeight, elDistanceToTop, totalChildWidth, elHeight } = state;
+  const {
+    windowHeight,
+    elDistanceToTop,
+    totalChildWidth,
+    elHeight,
+    childWidthArray,
+  } = state;
 
   React.useEffect(() => {
     const el = ref && ref.current;
 
     const onResize = debounce(() => {
+      let arr = [];
+      const childWidthArray = arr;
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
       const elHeight = el.getBoundingClientRect().height;
       const totalChildWidth = [...el.children[0].children].reduce(
         (acc, current) => {
+          arr.push(acc);
           current = current.scrollWidth;
           return acc + current;
         },
@@ -54,6 +64,7 @@ const Parallax = ({ data = {} }) => {
         elDistanceToTop: elDistanceToTop,
         totalChildWidth: totalChildWidth,
         elHeight: elHeight,
+        childWidthArray: childWidthArray,
       });
     }, 300);
 
@@ -66,8 +77,13 @@ const Parallax = ({ data = {} }) => {
   }, []);
 
   const handleClick = (e) => {
-    console.log(e);
-    return window.scrollTo({ top: windowHeight, behavior: "smooth" });
+    const index = parseFloat(e.target.getAttribute("data-index"));
+    console.log(e.target);
+
+    return window.scrollTo({
+      top: elDistanceToTop + childWidthArray[index],
+      behavior: "smooth",
+    });
   };
 
   React.useEffect(() => {
@@ -117,6 +133,7 @@ const Parallax = ({ data = {} }) => {
       py: 5,
       overflow: "hidden",
       variant: "layout.row",
+      pointerEvents: "none",
     },
   };
 
@@ -136,9 +153,14 @@ const Parallax = ({ data = {} }) => {
             x: xSpring,
           }}
         >
-          {parallaxContainer.map((e) => {
+          {parallaxContainer.map((e, i) => {
             return (
-              <div key={e.id} sx={style.section} onClick={handleClick}>
+              <div
+                key={e.id}
+                data-index={i}
+                sx={style.section}
+                onClick={(e) => handleClick(e)}
+              >
                 <div sx={style.innerSection}>
                   <h2>{e.heading}</h2>
                 </div>
