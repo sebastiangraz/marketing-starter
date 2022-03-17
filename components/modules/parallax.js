@@ -26,45 +26,59 @@ const Parallax = ({ data = {} }) => {
   const [state, setCalc] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
+      totalChildHeight: 0,
       windowHeight: 0,
       elDistanceToTop: 0,
       totalChildWidth: 0,
-      elHeight: 0,
       childWidthArray: [],
+      childHeightArray: [],
     }
   );
 
   const {
+    totalChildHeight,
     windowHeight,
     elDistanceToTop,
     totalChildWidth,
-    elHeight,
     childWidthArray,
+    childHeightArray,
   } = state;
+
+  const widthOfScrollbar = 6;
 
   React.useEffect(() => {
     const el = ref && ref.current;
 
     const onResize = debounce(() => {
-      let arr = [];
-      const childWidthArray = arr;
+      let widtharr = [];
+      let heightarr = [];
+      const childWidthArray = widtharr;
+      const childHeightArray = heightarr;
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
-      const elHeight = el.getBoundingClientRect().height;
       const totalChildWidth = [...el.children[0].children].reduce(
         (acc, current) => {
-          arr.push(acc);
-          current = current.scrollWidth;
-          return acc + current;
+          widtharr.push(acc);
+          const { width } = current.getBoundingClientRect();
+          return acc + width;
+        },
+        0
+      );
+      const totalChildHeight = [...el.children[0].children].reduce(
+        (acc, current) => {
+          heightarr.push(acc);
+          const { height } = current.getBoundingClientRect();
+          return acc + height;
         },
         0
       );
 
       setCalc({
+        totalChildHeight: totalChildHeight,
         windowHeight: window.innerHeight,
         elDistanceToTop: elDistanceToTop,
         totalChildWidth: totalChildWidth,
-        elHeight: elHeight,
         childWidthArray: childWidthArray,
+        childHeightArray: childHeightArray,
       });
     }, 300);
 
@@ -76,39 +90,60 @@ const Parallax = ({ data = {} }) => {
     };
   }, []);
 
-  const handleClick = (e) => {
-    const index = parseFloat(e.target.getAttribute("data-index"));
-    console.log(e.target);
+  const ratio = childWidthArray.map((e, i) => {
+    let valueratio = (e / childHeightArray[i]) * window.innerWidth;
+    console.log(valueratio);
+    return {
+      value: isFinite(valueratio) ? valueratio : 0,
+    };
+  });
 
+  let stored = ratio.map(
+    ((acc) => (e) => {
+      return (acc += e.value);
+    })(0)
+  );
+
+  // console.log("stored", stored, "childHArr", childHeightArray);
+
+  const handleClick = (e) => {
+    const index = parseFloat(e.target.dataset.index);
     return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[index],
+      top: elDistanceToTop + childHeightArray[index],
       behavior: "smooth",
     });
   };
 
   React.useEffect(() => {
-    const widthOfScrollbar = 6;
     const transformX =
       -totalChildWidth + (window.innerWidth - widthOfScrollbar);
 
     function updateX(e) {
       const move = transform(
         e,
-        [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
+        [elDistanceToTop, totalChildHeight - windowHeight + elDistanceToTop],
         [0, transformX]
       );
       x.set(move);
     }
+
     const unsubscribeX = scrollY.onChange((e) => updateX(e));
 
     return () => {
       unsubscribeX();
     };
-  }, [elDistanceToTop, elHeight, scrollY, totalChildWidth, windowHeight, x]);
+  }, [
+    elDistanceToTop,
+    totalChildHeight,
+    scrollY,
+    totalChildWidth,
+    windowHeight,
+    x,
+  ]);
 
   const style = {
     container: {
-      height: `calc(${length} * 100vh)`,
+      height: `${totalChildHeight}px`,
       contain: "paint",
     },
     innerContainer: {
