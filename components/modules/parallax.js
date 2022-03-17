@@ -108,6 +108,13 @@ const Parallax = ({ data = {} }) => {
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
 
+    const test = childHeightArray.map((e, i) => {
+      // let value = (windowWidth * e) / (childWidthArray[i] + 6) / windowWidth; // sacred: works
+      let value = (windowWidth * e) / (childWidthArray[i] + 6) / windowWidth;
+
+      return { value: value };
+    });
+
     const ratioFormula =
       (windowWidth * (totalChildHeight - windowHeight)) /
       (totalChildWidth - windowWidth + 6) /
