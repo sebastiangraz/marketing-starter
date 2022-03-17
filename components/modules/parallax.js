@@ -158,11 +158,11 @@ const Parallax = ({ data = {} }) => {
       bottom: 0,
     },
     section: {
-      width: "200vw",
+      width: "80vw",
       height: "100vh",
-      maxWidth: "1288px",
-      "&:nth-child(odd)": {
-        width: "100vw",
+      // maxWidth: "1288px",
+      "&:nth-child(even)": {
+        width: "50vw",
       },
       "&:last-child > *": {
         mr: 5,
