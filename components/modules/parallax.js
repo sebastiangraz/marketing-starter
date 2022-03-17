@@ -105,64 +105,16 @@ const Parallax = ({ data = {} }) => {
     };
   }, [length, speedRegulator]);
 
-  const ratio = childWidthArray.map((e, i) => {
-    let valueratio = (e / childHeightArray[i]) * window.innerWidth;
-    return {
-      value: isFinite(valueratio) ? valueratio : 0,
-    };
-  });
-
-  let stored = ratio.map(
-    ((acc) => (e) => {
-      return (acc += e.value);
-    })(0)
-  );
-  const [currentScrollPosition, setCurrentScrollPosition] = React.useState(0);
-  React.useEffect(() => {
-    scrollY.onChange((e) => {
-      return setCurrentScrollPosition(e);
-    });
-  }, [scrollY]);
-
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
 
-    // elDistanceToTop + childWidthArray[index] * 0.712 // works
-
-    // console.log(scrollDistance - elDistanceToTop);
-
-    //console.log(childWidthArray[index] / scrollDistance);
-    // scrollY.onChange((e) =>
-    //   console.log((e - elDistanceToTop) / childWidthArray[index])
-    // );
-    // childWidthArray[index] / (elDistanceToTop + childHeightArray[index])
-
-    // console.log(
-    //   "elDistanceToTop-childHeightArray",
-    //   childHeightArray[index],
-    //   " childWidthArray",
-    //   childWidthArray[index],
-    //   " scrollDistanceFromTop",
-    //   scrollY.get() - elDistanceToTop,
-    //   " ratio",
-    //   (currentScrollPosition - elDistanceToTop) / childWidthArray[index]
-    // );
-    // console.log(childWidthArray[index]);
-    // console.log((elHeight - elDistanceToTop) / childHeightArray[index]);
-
-    const test = childHeightArray.map((e, i) => {
-      let value = (windowWidth * e) / (childWidthArray[i] + 6) / windowWidth;
-      // console.log((e * windowHeight) / childWidthArray[i]); //gives 214
-      return { value: value };
-    });
-
-    console.log();
-    let ratio = test[5].value; // 2.87]
-    console.log(ratio);
-    let top = childWidthArray[index] * ratio;
+    const ratioFormula =
+      (windowWidth * (totalChildHeight - windowHeight)) /
+      (totalChildWidth - windowWidth + 6) /
+      windowWidth;
 
     return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[index] * ratio,
+      top: elDistanceToTop + childWidthArray[index] * ratioFormula,
       behavior: "smooth",
     });
   };
