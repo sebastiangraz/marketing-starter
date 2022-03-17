@@ -105,28 +105,8 @@ const Parallax = ({ data = {} }) => {
     };
   }, [length, speedRegulator]);
 
-  const handleClick = (e) => {
-    const index = parseFloat(e.target.dataset.index);
-    const lastIndex = Math.max(length - 1, index);
-    const isLastIndex = lastIndex === index;
-    const lastItemTernary = isLastIndex
-      ? childWidthArray[lastIndex]
-      : totalChildWidth - windowWidth;
-
-    const ratioFormula =
-      (windowWidth * (totalChildHeight - windowHeight)) /
-      (lastItemTernary + widthOfScrollbar) /
-      windowWidth;
-
-    return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[index] * ratioFormula, //test[5].value,
-      behavior: "smooth",
-    });
-  };
-
   React.useEffect(() => {
-    const transformX =
-      -totalChildWidth + (window.innerWidth - widthOfScrollbar);
+    const transformX = -totalChildWidth + (elWidth - widthOfScrollbar);
 
     function updateX(e) {
       const move = transform(
@@ -144,10 +124,32 @@ const Parallax = ({ data = {} }) => {
     };
   }, [elDistanceToTop, elHeight, scrollY, totalChildWidth, windowHeight, x]);
 
+  const handleClick = (e) => {
+    const index = parseFloat(e.target.dataset.index);
+    const lastIndex = Math.max(length - 1, index);
+    const isLastIndex = lastIndex === index;
+    const lastItemTernary = isLastIndex
+      ? childWidthArray[lastIndex]
+      : totalChildWidth - elWidth;
+
+    const ratioFormula =
+      (elWidth * (totalChildHeight - windowHeight)) /
+      (lastItemTernary + widthOfScrollbar) /
+      elWidth;
+
+    return window.scrollTo({
+      top: elDistanceToTop + childWidthArray[index] * ratioFormula, //test[5].value,
+      behavior: "smooth",
+    });
+  };
+
   const style = {
     container: {
       height: `${totalChildHeight}px`,
-      contain: "paint",
+      // contain: "paint",
+      maxWidth: "1288px",
+      width: "100%",
+      margin: "0 auto",
     },
     innerContainer: {
       // width: `calc(${length} * 100vw)`,
@@ -160,7 +162,6 @@ const Parallax = ({ data = {} }) => {
     section: {
       width: "80vw",
       height: "100vh",
-      // maxWidth: "1288px",
       "&:nth-child(even)": {
         width: "50vw",
       },
@@ -185,6 +186,7 @@ const Parallax = ({ data = {} }) => {
     <section
       sx={{
         position: "relative",
+        contain: "paint",
         maxWidth: `calc(100vw - ${widthOfScrollbar}px)`,
       }}
     >

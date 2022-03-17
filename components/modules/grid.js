@@ -36,7 +36,7 @@ const Grid = ({ data = {} }) => {
 
   return (
     <section className="section">
-      <div sx={{ variant: "layout.row" }}>
+      <div sx={{ variant: "layout.row", background: "#eee" }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
