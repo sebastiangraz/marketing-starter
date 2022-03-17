@@ -107,14 +107,6 @@ const Parallax = ({ data = {} }) => {
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
-
-    const test = childHeightArray.map((e, i) => {
-      // let value = (windowWidth * e) / (childWidthArray[i] + 6) / windowWidth; // sacred: works
-      let value = (windowWidth * e) / (childWidthArray[i] + 6) / windowWidth;
-
-      return { value: value };
-    });
-
     const lastIndex = Math.max(length - 1, index);
     const isLastIndex = lastIndex === index;
     const lastItemTernary = isLastIndex
@@ -123,7 +115,7 @@ const Parallax = ({ data = {} }) => {
 
     const ratioFormula =
       (windowWidth * (totalChildHeight - windowHeight)) /
-      (lastItemTernary + 6) /
+      (lastItemTernary + widthOfScrollbar) /
       windowWidth;
 
     return window.scrollTo({
@@ -166,11 +158,14 @@ const Parallax = ({ data = {} }) => {
       bottom: 0,
     },
     section: {
-      width: "100vw",
+      width: "200vw",
       height: "100vh",
       maxWidth: "1288px",
       "&:nth-child(odd)": {
-        width: "50vw",
+        width: "100vw",
+      },
+      "&:last-child > *": {
+        mr: 5,
       },
     },
     innerSection: {
@@ -179,7 +174,6 @@ const Parallax = ({ data = {} }) => {
       p: 5,
       borderRadius: "3rem",
       height: (t) => `calc(100% - ${t.sizes[16]}px)`,
-      // width: "100%",
       background: "background",
       boxShadow: "0px 0px 0px 1px #000 inset",
       overflow: "hidden",
@@ -191,7 +185,7 @@ const Parallax = ({ data = {} }) => {
     <section
       sx={{
         position: "relative",
-        maxWidth: "calc(100vw - 6px)",
+        maxWidth: `calc(100vw - ${widthOfScrollbar}px)`,
       }}
     >
       <div sx={style.container} ref={ref}>
