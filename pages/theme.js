@@ -1,10 +1,10 @@
 import { transparentize } from "@theme-ui/color";
 
-const core = [...Array(14).keys()].map((i) => {
+const core = [...Array(17).keys()].map((i) => {
   return (i + 1) * 8;
 });
 
-const increment = [...Array(14).keys()].map((i) => {
+const increment = [...Array(17).keys()].map((i) => {
   return i;
 });
 
@@ -42,6 +42,7 @@ const scroll = {
   },
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   spacing: core,
   sizes: core,
