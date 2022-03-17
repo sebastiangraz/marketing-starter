@@ -61,7 +61,6 @@ const Parallax = ({ data = {} }) => {
 
       let widtharr = [];
       let heightarr = [];
-
       const childWidthArray = widtharr;
       const childHeightArray = heightarr;
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
@@ -118,13 +117,52 @@ const Parallax = ({ data = {} }) => {
       return (acc += e.value);
     })(0)
   );
-
-  scrollY.onChange((e) => console.log(elDistanceToTop - e));
+  const [currentScrollPosition, setCurrentScrollPosition] = React.useState(0);
+  React.useEffect(() => {
+    scrollY.onChange((e) => {
+      return setCurrentScrollPosition(e);
+    });
+  }, [scrollY]);
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
+
+    // elDistanceToTop + childWidthArray[index] * 0.712 // works
+
+    // console.log(scrollDistance - elDistanceToTop);
+
+    //console.log(childWidthArray[index] / scrollDistance);
+    // scrollY.onChange((e) =>
+    //   console.log((e - elDistanceToTop) / childWidthArray[index])
+    // );
+    // childWidthArray[index] / (elDistanceToTop + childHeightArray[index])
+
+    // console.log(
+    //   "elDistanceToTop-childHeightArray",
+    //   childHeightArray[index],
+    //   " childWidthArray",
+    //   childWidthArray[index],
+    //   " scrollDistanceFromTop",
+    //   scrollY.get() - elDistanceToTop,
+    //   " ratio",
+    //   (currentScrollPosition - elDistanceToTop) / childWidthArray[index]
+    // );
+    // console.log(childWidthArray[index]);
+    // console.log((elHeight - elDistanceToTop) / childHeightArray[index]);
+
+    const test = childHeightArray.map((e, i) => {
+      let value = (windowWidth * e) / (childWidthArray[i] + 6) / windowWidth;
+      // console.log((e * windowHeight) / childWidthArray[i]); //gives 214
+      return { value: value };
+    });
+
+    console.log();
+    let ratio = test[5].value; // 2.87]
+    console.log(ratio);
+    let top = childWidthArray[index] * ratio;
+
     return window.scrollTo({
-      top: elDistanceToTop + childHeightArray[index],
+      top: elDistanceToTop + childWidthArray[index] * ratio,
       behavior: "smooth",
     });
   };
@@ -168,7 +206,7 @@ const Parallax = ({ data = {} }) => {
       maxWidth: "1288px",
       background: "background",
       boxShadow: "0px 0px 0px 1px #000 inset",
-      "&:nth-child(2n)": {
+      "&:nth-child(odd)": {
         width: "50vw",
       },
     },
