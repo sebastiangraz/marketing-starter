@@ -115,13 +115,19 @@ const Parallax = ({ data = {} }) => {
       return { value: value };
     });
 
+    const lastIndex = Math.max(length - 1, index);
+    const isLastIndex = lastIndex === index;
+    const lastItemTernary = isLastIndex
+      ? childWidthArray[lastIndex]
+      : totalChildWidth - windowWidth;
+
     const ratioFormula =
       (windowWidth * (totalChildHeight - windowHeight)) /
-      (totalChildWidth - windowWidth + 6) /
+      (lastItemTernary + 6) /
       windowWidth;
 
     return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[index] * ratioFormula,
+      top: elDistanceToTop + childWidthArray[index] * ratioFormula, //test[5].value,
       behavior: "smooth",
     });
   };
