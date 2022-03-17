@@ -22,13 +22,16 @@ const Parallax = ({ data = {} }) => {
   const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
   const xSpring = useSpring(x, settings.springOptions);
-
   const [state, setCalc] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
+      speedRegulator: 0,
       totalChildHeight: 0,
       windowHeight: 0,
+      windowWidth: 0,
       elDistanceToTop: 0,
+      elHeight: 0,
+      elWidth: 0,
       totalChildWidth: 0,
       childWidthArray: [],
       childHeightArray: [],
@@ -36,9 +39,13 @@ const Parallax = ({ data = {} }) => {
   );
 
   const {
+    speedRegulator,
     totalChildHeight,
     windowHeight,
+    windowWidth,
     elDistanceToTop,
+    elHeight,
+    elWidth,
     totalChildWidth,
     childWidthArray,
     childHeightArray,
@@ -50,11 +57,16 @@ const Parallax = ({ data = {} }) => {
     const el = ref && ref.current;
 
     const onResize = debounce(() => {
+      const speedRegulator = window.innerWidth / window.innerHeight;
+
       let widtharr = [];
       let heightarr = [];
+
       const childWidthArray = widtharr;
       const childHeightArray = heightarr;
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
+      const elHeight = el.getBoundingClientRect().height;
+      const elWidth = el.getBoundingClientRect().width;
       const totalChildWidth = [...el.children[0].children].reduce(
         (acc, current) => {
           widtharr.push(acc);
@@ -73,9 +85,13 @@ const Parallax = ({ data = {} }) => {
       );
 
       setCalc({
+        speedRegulator: speedRegulator,
         totalChildHeight: totalChildHeight,
         windowHeight: window.innerHeight,
+        windowWidth: window.innerWidth,
         elDistanceToTop: elDistanceToTop,
+        elHeight: elHeight,
+        elWidth: elWidth,
         totalChildWidth: totalChildWidth,
         childWidthArray: childWidthArray,
         childHeightArray: childHeightArray,
@@ -88,11 +104,10 @@ const Parallax = ({ data = {} }) => {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [length, speedRegulator]);
 
   const ratio = childWidthArray.map((e, i) => {
     let valueratio = (e / childHeightArray[i]) * window.innerWidth;
-    console.log(valueratio);
     return {
       value: isFinite(valueratio) ? valueratio : 0,
     };
@@ -104,7 +119,7 @@ const Parallax = ({ data = {} }) => {
     })(0)
   );
 
-  // console.log("stored", stored, "childHArr", childHeightArray);
+  scrollY.onChange((e) => console.log(elDistanceToTop - e));
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
@@ -121,7 +136,7 @@ const Parallax = ({ data = {} }) => {
     function updateX(e) {
       const move = transform(
         e,
-        [elDistanceToTop, totalChildHeight - windowHeight + elDistanceToTop],
+        [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
         [0, transformX]
       );
       x.set(move);
@@ -132,14 +147,7 @@ const Parallax = ({ data = {} }) => {
     return () => {
       unsubscribeX();
     };
-  }, [
-    elDistanceToTop,
-    totalChildHeight,
-    scrollY,
-    totalChildWidth,
-    windowHeight,
-    x,
-  ]);
+  }, [elDistanceToTop, elHeight, scrollY, totalChildWidth, windowHeight, x]);
 
   const style = {
     container: {
@@ -155,7 +163,7 @@ const Parallax = ({ data = {} }) => {
     },
     section: {
       borderRadius: "3rem",
-      width: "80vw",
+      width: "100vw",
       height: "100vh",
       maxWidth: "1288px",
       background: "background",
@@ -171,8 +179,6 @@ const Parallax = ({ data = {} }) => {
       pointerEvents: "none",
     },
   };
-
-  console.log("render Parallax");
 
   return (
     <section
