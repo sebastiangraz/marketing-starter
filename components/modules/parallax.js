@@ -106,7 +106,7 @@ const Parallax = ({ data = {} }) => {
   }, [length, speedRegulator]);
 
   React.useEffect(() => {
-    const transformX = -totalChildWidth + (elWidth - widthOfScrollbar);
+    const transformX = -totalChildWidth + elWidth;
 
     function updateX(e) {
       const move = transform(
@@ -133,9 +133,7 @@ const Parallax = ({ data = {} }) => {
       : totalChildWidth - elWidth;
 
     const ratioFormula =
-      (elWidth * (totalChildHeight - windowHeight)) /
-      (lastItemTernary + widthOfScrollbar) /
-      elWidth;
+      (elWidth * (totalChildHeight - windowHeight)) / lastItemTernary / elWidth;
 
     return window.scrollTo({
       top: elDistanceToTop + childWidthArray[index] * ratioFormula, //test[5].value,
@@ -146,10 +144,7 @@ const Parallax = ({ data = {} }) => {
   const style = {
     container: {
       height: `${totalChildHeight}px`,
-      // contain: "paint",
-      maxWidth: "1288px",
-      width: "100%",
-      margin: "0 auto",
+      variant: "layout.row",
     },
     innerContainer: {
       // width: `calc(${length} * 100vw)`,
@@ -165,8 +160,10 @@ const Parallax = ({ data = {} }) => {
       "&:nth-child(even)": {
         width: "50vw",
       },
-      "&:last-child > *": {
-        mr: 5,
+      "&:first-child": {
+        "& > *": {
+          ml: 0,
+        },
       },
     },
     innerSection: {
