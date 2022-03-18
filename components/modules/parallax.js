@@ -179,10 +179,31 @@ const Parallax = ({ data = {} }) => {
         `calc(100% - ${t.sizes[3]}px)`,
         `calc(100% - ${t.sizes[15]}px)`,
       ],
-      background: "background",
+      background: "#F3B29C",
       boxShadow: "0px 0px 0px 1px #000 inset",
       overflow: "hidden",
       pointerEvents: "none",
+    },
+  };
+
+  const childVariant = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const childVariantInner = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1.2,
+        when: "beforeChildren",
+      },
     },
   };
 
@@ -203,16 +224,25 @@ const Parallax = ({ data = {} }) => {
         >
           {parallaxContainer.map((e, i) => {
             return (
-              <div
+              <motion.div
                 key={e.id}
                 data-index={i}
                 sx={style.section}
+                variants={childVariant}
+                initial="hidden"
+                whileInView="visible"
                 onClick={length === 1 ? null : handleClick}
               >
-                <div sx={style.innerSection}>
-                  <h2>{e.heading}</h2>
-                </div>
-              </div>
+                <motion.div sx={style.innerSection}>
+                  <motion.div
+                    variants={childVariantInner}
+                    whileInView="visible"
+                  >
+                    {" "}
+                    <h2>{e.heading}</h2>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             );
           })}
         </motion.div>

@@ -51,7 +51,7 @@ const Photo = ({
     },
     placeholder: {
       bottom: "0",
-      filter: "grayscale(1)",
+      // filter: "grayscale(1)",
       left: "0",
       position: "absolute",
       right: "0",
