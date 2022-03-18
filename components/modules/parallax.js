@@ -141,9 +141,11 @@ const Parallax = ({ data = {} }) => {
     });
   };
 
+  const containerHeight = Math.max(totalChildWidth, totalChildHeight);
+
   const style = {
     container: {
-      height: `${totalChildHeight}px`,
+      height: `${containerHeight}px`,
       variant: "layout.row",
     },
     innerContainer: {
@@ -156,22 +158,25 @@ const Parallax = ({ data = {} }) => {
     },
     section: {
       width: "80vw",
-      height: "100vh",
+      height: "80vh",
       "&:nth-child(even)": {
         width: "50vw",
       },
-      "&:first-child": {
+      "&:first-of-type": {
         "& > *": {
           ml: 0,
         },
       },
     },
     innerSection: {
-      mt: 5,
-      ml: 5,
-      p: 5,
+      mt: [3, 5],
+      ml: [3, 5],
+      p: [3, 5],
       borderRadius: "3rem",
-      height: (t) => `calc(100% - ${t.sizes[16]}px)`,
+      height: (t) => [
+        `calc(100% - ${t.sizes[3]}px)`,
+        `calc(100% - ${t.sizes[15]}px)`,
+      ],
       background: "background",
       boxShadow: "0px 0px 0px 1px #000 inset",
       overflow: "hidden",
@@ -184,7 +189,7 @@ const Parallax = ({ data = {} }) => {
       sx={{
         position: "relative",
         contain: "paint",
-        maxWidth: `calc(100vw - ${widthOfScrollbar}px)`,
+        maxWidth: `calc(100vw)`,
       }}
     >
       <div sx={style.container} ref={ref}>
