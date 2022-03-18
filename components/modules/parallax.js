@@ -241,7 +241,7 @@ const Parallax = ({ data = {} }) => {
                     ? "100%"
                     : `calc( 1288px * ${
                         e.sizes ? e.sizes : 12
-                      } / 12 - ${gapmath(6)}px )`,
+                      } / 12 - ${gapmath(e.sizes)}px )`,
                 }}
                 variants={childVariant}
                 initial="hidden"
