@@ -72,7 +72,23 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           variants={variants}
         >
           <CookieBar data={site.cookieConsent} />
-
+          <div
+            className="templateOverlay"
+            sx={{
+              gridTemplateColumns: "repeat(12, 1fr)",
+              display: "grid",
+              position: "fixed",
+              top: 0,
+              left: "50%",
+              transform: "translate(-50%)",
+              maxWidth: "1288px",
+              height: "100vh",
+              width: "100%",
+              background:
+                "repeating-linear-gradient(90deg, rgba(255,0,0,0.1), rgba(255,0,0,0.1) 2px, transparent 2px, transparent 56px)",
+              backgroundPosition: "-1px 0px",
+            }}
+          ></div>
           <main id="content">{children}</main>
           <Footer data={site.footer} />
         </motion.div>

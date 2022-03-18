@@ -156,6 +156,9 @@ const Parallax = ({ data = {} }) => {
       ...(columnCountEqualTo12 && {
         height: "100%",
       }),
+      ...(isSolo && {
+        height: "100%",
+      }),
       variant: "layout.row",
     },
     innerContainer: {
@@ -164,6 +167,7 @@ const Parallax = ({ data = {} }) => {
       top: "0px",
       bottom: "0px",
       columnGap: 6,
+      width: isSolo && "100%",
     },
     section: {
       maxWidth: "1288px",
@@ -233,9 +237,11 @@ const Parallax = ({ data = {} }) => {
                 data-index={i}
                 sx={{
                   ...style.section,
-                  width: `calc( 1288px * ${
-                    e.sizes ? e.sizes : 12
-                  } / 12 - ${gapmath(6)}px )`,
+                  width: isSolo
+                    ? "100%"
+                    : `calc( 1288px * ${
+                        e.sizes ? e.sizes : 12
+                      } / 12 - ${gapmath(6)}px )`,
                 }}
                 variants={childVariant}
                 initial="hidden"
