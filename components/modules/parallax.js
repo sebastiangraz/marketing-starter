@@ -141,7 +141,7 @@ const Parallax = ({ data = {} }) => {
     });
   };
 
-  const containerHeight = Math.max(totalChildWidth, totalChildHeight);
+  const containerHeight = Math.max(totalChildHeight);
 
   const style = {
     container: {
@@ -152,13 +152,15 @@ const Parallax = ({ data = {} }) => {
       // width: `calc(${length} * 100vw)`,
       display: "inline-grid",
       gridAutoFlow: "column",
-      position: "sticky",
+      position: length === 1 ? "relative" : "sticky",
       top: 0,
       bottom: 0,
+      width: "100%",
     },
     section: {
-      width: "80vw",
-      height: "80vh",
+      // width: "100%",
+      width: length === 1 ? "100%" : "80vw",
+      height: "100vh",
       "&:nth-child(even)": {
         width: "50vw",
       },
@@ -205,7 +207,7 @@ const Parallax = ({ data = {} }) => {
                 key={e.id}
                 data-index={i}
                 sx={style.section}
-                onClick={(e) => handleClick(e)}
+                onClick={length === 1 ? null : handleClick}
               >
                 <div sx={style.innerSection}>
                   <h2>{e.heading}</h2>
