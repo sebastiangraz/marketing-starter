@@ -44,7 +44,7 @@ const scroll = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  spacing: core,
+  space: core,
   sizes: core,
   fontSizes: typescale,
   breakpoints: bp,
@@ -80,7 +80,7 @@ export default {
   },
   radii: ["8px", "16px", "24px"],
   styles: {
-    "*": { m: 0, p: 0, boxSizing: "border-box" },
+    "*": { boxSizing: "border-box" },
     body: {
       lineHeight: 1,
     },

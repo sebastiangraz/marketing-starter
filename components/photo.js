@@ -24,10 +24,10 @@ const Photo = ({
       overflow: "hidden",
       position: "relative",
       "&.has-fill": {
-        bottom: 0,
-        left: 0,
-        right: 0,
-        top: 0,
+        bottom: "0px",
+        left: "0px",
+        right: "0px",
+        top: "0px",
         position: "absolute",
       },
     },
@@ -109,7 +109,7 @@ const Photo = ({
   }, [isLoaded]);
 
   return (
-    <figure className={className ? className : null}>
+    <figure sx={{ margin: "0px" }} className={className ? className : null}>
       <div
         className={cx("ar", {
           "has-fill": layout === "fill" || layout === "contain",

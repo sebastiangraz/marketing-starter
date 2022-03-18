@@ -32,7 +32,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
   };
 
   return (
-    <div sx={{ pr: 3 }}>
+    <div sx={{ pr: 0 }}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
@@ -42,7 +42,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
         <svg
           sx={{
             transition: "0.5s ease transform",
-            ml: 2,
+            ml: 0,
             width: "0.5em",
             top: "0.125em",
             height: "100%",
@@ -69,10 +69,10 @@ const Dropdown = ({ id, title, items, onClick }) => {
           initial="hidden"
           animate={isOpen ? "visible" : "hidden"}
           sx={{
-            pt: 2,
+            pt: 0,
             listStyle: "none",
             "> * + * ": {
-              pl: 3,
+              pl: 2,
             },
             display: "flex",
             position: "absolute",

@@ -16,12 +16,6 @@ const Parallax = ({ data = {} }) => {
     },
   };
 
-  const { parallaxContainer } = data;
-  const length = parallaxContainer.length;
-  const ref = useRef();
-  const { scrollY } = useViewportScroll();
-  const x = useMotionValue(0);
-  const xSpring = useSpring(x, settings.springOptions);
   const [state, setCalc] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
@@ -51,7 +45,22 @@ const Parallax = ({ data = {} }) => {
     childHeightArray,
   } = state;
 
+  const { parallaxContainer } = data;
+  const length = parallaxContainer.length;
+  const ref = useRef();
+  const { scrollY } = useViewportScroll();
+  const x = useMotionValue(0);
+  const xSpring = useSpring(x, settings.springOptions);
   const widthOfScrollbar = 6;
+  const gapCalc = (length - 1) * 56;
+  const calcColumnSum = parallaxContainer.reduce((curr, prev) => {
+    let total = curr + prev?.sizes;
+    return total;
+  }, 0);
+  const columnCountEqualTo12 = calcColumnSum === 12;
+
+  const gapmath = (e) => -56 / (12 / e) + 56;
+  const isSolo = length === 1;
 
   React.useEffect(() => {
     const el = ref && ref.current;
@@ -106,7 +115,7 @@ const Parallax = ({ data = {} }) => {
   }, [length, speedRegulator]);
 
   React.useEffect(() => {
-    const transformX = -totalChildWidth + elWidth;
+    const transformX = -totalChildWidth + (elWidth - gapCalc);
 
     function updateX(e) {
       const move = transform(
@@ -141,40 +150,34 @@ const Parallax = ({ data = {} }) => {
     });
   };
 
-  const containerHeight = Math.max(totalChildHeight);
-
   const style = {
     container: {
-      height: `${containerHeight}px`,
+      height: `${totalChildHeight}px`,
+      ...(columnCountEqualTo12 && {
+        height: "100%",
+      }),
       variant: "layout.row",
     },
     innerContainer: {
-      // width: `calc(${length} * 100vw)`,
-      display: "inline-grid",
-      gridAutoFlow: "column",
-      position: length === 1 ? "relative" : "sticky",
-      top: 0,
-      bottom: 0,
-      width: "100%",
+      display: "inline-flex",
+      position: isSolo || columnCountEqualTo12 ? "relative" : "sticky",
+      top: "0px",
+      bottom: "0px",
+      columnGap: 6,
     },
     section: {
-      // width: "100%",
-      width: length === 1 ? "100%" : "80vw",
+      maxWidth: "1288px",
       height: "100vh",
-      "&:nth-child(even)": {
-        width: "50vw",
-      },
       "&:first-of-type": {
         "& > *": {
-          ml: 0,
+          ml: "0px",
         },
       },
     },
     innerSection: {
-      mt: [3, 5],
-      ml: [3, 5],
-      p: [3, 5],
-      borderRadius: "3rem",
+      mt: [3, 6],
+      p: [3, 6],
+      gridColumn: "span 12",
       height: (t) => [
         `calc(100% - ${t.sizes[3]}px)`,
         `calc(100% - ${t.sizes[15]}px)`,
@@ -223,15 +226,21 @@ const Parallax = ({ data = {} }) => {
           }}
         >
           {parallaxContainer.map((e, i) => {
+            isSolo ? (e.sizes = 12) : e.sizes;
             return (
               <motion.div
                 key={e.id}
                 data-index={i}
-                sx={style.section}
+                sx={{
+                  ...style.section,
+                  width: `calc( 1288px * ${
+                    e.sizes ? e.sizes : 12
+                  } / 12 - ${gapmath(6)}px )`,
+                }}
                 variants={childVariant}
                 initial="hidden"
                 whileInView="visible"
-                onClick={length === 1 ? null : handleClick}
+                onClick={isSolo || columnCountEqualTo12 ? null : handleClick}
               >
                 <motion.div sx={style.innerSection}>
                   <motion.div

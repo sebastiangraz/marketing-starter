@@ -36,7 +36,7 @@ const Grid = ({ data = {} }) => {
 
   return (
     <section className="section">
-      <div sx={{ variant: "layout.row", background: "#eee" }}>
+      <div sx={{ variant: "layout.row" }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -59,6 +59,7 @@ const Grid = ({ data = {} }) => {
                 variants={childVariant}
                 sx={{
                   width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}px )`,
+                  background: "#eee",
                 }}
               >
                 {blocks.map((block, key) => (

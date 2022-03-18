@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const rotate = {
   show: {
-    origin: "center",
     rotate: 0,
     transition: {
       duration: 1,
@@ -16,7 +15,6 @@ const rotate = {
     },
   },
   hide: {
-    origin: "center",
     rotate: 360,
     transition: {
       // repeat: Infinity,
@@ -37,8 +35,7 @@ const style = {
     display: "grid",
     gridTemplateColumns: `1fr 1fr 1fr`,
     alignItems: "start",
-    py: 3,
-    height: 10,
+    height: 11,
     li: {
       "&.is-active": {
         color: "primary",
@@ -49,13 +46,16 @@ const style = {
     },
     ".logo": {
       gridArea: "1/1",
+      alignItems: "center",
     },
     ".menu": {
       justifySelf: "center",
+      alignItems: "center",
       gridArea: "1/2",
     },
     ".submenu": {
       justifySelf: "flex-end",
+      alignItems: "center",
       gridArea: "1/3",
     },
     "a, button": {
@@ -77,7 +77,7 @@ const style = {
 
 const Header = ({ data = {} }) => {
   // expand our header data
-  const { menuMobilePrimary } = data;
+  const { menuMobilePrimary, menuMobileSecondary } = data;
 
   // setup menu toggle event
   const toggleMobileNav = (state) => {
@@ -93,6 +93,7 @@ const Header = ({ data = {} }) => {
           <div className="logo">
             <motion.span
               sx={{
+                mt: 1,
                 display: "inline-block",
                 willChange: "transform",
               }}
@@ -111,6 +112,14 @@ const Header = ({ data = {} }) => {
             <Menu
               className="menu"
               items={menuMobilePrimary.items}
+              onClick={() => toggleMobileNav(false)}
+            />
+          )}
+
+          {menuMobileSecondary?.items && (
+            <Menu
+              className="submenu"
+              items={menuMobileSecondary.items}
               onClick={() => toggleMobileNav(false)}
             />
           )}

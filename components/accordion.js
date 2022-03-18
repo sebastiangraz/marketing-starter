@@ -26,7 +26,8 @@ const style = {
     display: "flex",
     borderBottom: "1px solid currentColor",
     justifyContent: "space-between",
-    py: 4,
+    py: 3,
+    px: "0px",
     fontSize: 2,
   },
   accordionContent: {
