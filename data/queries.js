@@ -106,6 +106,7 @@ export const modules = `
     content[]{
       ${ptContent}
     },
+    maxWidth,
     bgType,
     photos{
       ...,

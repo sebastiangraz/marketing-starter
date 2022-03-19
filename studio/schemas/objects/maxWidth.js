@@ -1,14 +1,10 @@
-import { Minus } from 'phosphor-react'
-
-import HR from '../../components/hr'
-
 export default {
-  title: 'Max width',
+  title: 'Text max width',
   name: 'maxWidth',
   type: 'object',
   fields: [
     {
-      title: 'Max Width',
+      title: 'Text max Width',
       name: 'value',
       type: 'number',
       description:

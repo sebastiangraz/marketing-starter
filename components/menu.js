@@ -18,6 +18,7 @@ const style = {
     },
   },
 };
+
 const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
   const router = useRouter();
 

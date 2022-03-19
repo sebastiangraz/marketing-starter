@@ -13,6 +13,7 @@ export default {
       name: 'content',
       type: 'complexPortableText'
     },
+    { title: 'Text max width', name: 'maxWidth', type: 'maxWidth' },
     {
       title: 'Background Type',
       name: 'bgType',

@@ -3,6 +3,7 @@ import React from "react";
 import BlockContent from "../../components/block-content";
 import VideoLoop from "../../components/vimeo-loop";
 import Photo from "../../components/photo";
+import { getMaxWidth } from "../../lib/helpers";
 
 const style = {
   hero: {
@@ -32,8 +33,8 @@ const style = {
 };
 
 const Hero = ({ data = {} }) => {
-  const { content, bgType, photos, video } = data;
-
+  const { content, bgType, photos, video, maxWidth } = data;
+  console.log(data);
   return (
     <section
       sx={{
@@ -57,7 +58,10 @@ const Hero = ({ data = {} }) => {
       {content && (
         <div sx={style.heroOverlay}>
           <div sx={style.heroContent}>
-            <BlockContent blocks={content} />
+            <BlockContent
+              sx={{ maxWidth: getMaxWidth(maxWidth?.value) }}
+              blocks={content}
+            />
           </div>
         </div>
       )}
