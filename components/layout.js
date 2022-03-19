@@ -79,6 +79,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
               display: "grid",
               position: "fixed",
               top: 0,
+              pointerEvents: "none",
               left: "50%",
               transform: "translate(-50%)",
               maxWidth: "1288px",

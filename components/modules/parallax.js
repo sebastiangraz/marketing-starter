@@ -19,13 +19,13 @@ const Parallax = ({ data = {} }) => {
   const [state, setCalc] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
-      speedRegulator: 0,
       totalChildHeight: 0,
       windowHeight: 0,
       windowWidth: 0,
       elDistanceToTop: 0,
       elHeight: 0,
       elWidth: 0,
+      elChildWidth: 0,
       totalChildWidth: 0,
       childWidthArray: [],
       childHeightArray: [],
@@ -33,13 +33,13 @@ const Parallax = ({ data = {} }) => {
   );
 
   const {
-    speedRegulator,
     totalChildHeight,
     windowHeight,
     windowWidth,
     elDistanceToTop,
     elHeight,
     elWidth,
+    elChildWidth,
     totalChildWidth,
     childWidthArray,
     childHeightArray,
@@ -52,22 +52,21 @@ const Parallax = ({ data = {} }) => {
   const x = useMotionValue(0);
   const xSpring = useSpring(x, settings.springOptions);
   const widthOfScrollbar = 6;
+  const gapSize = 56;
   const gapCalc = (length - 1) * 56;
   const calcColumnSum = parallaxContainer.reduce((curr, prev) => {
     let total = curr + prev?.sizes;
     return total;
   }, 0);
   const columnCountEqualTo12 = calcColumnSum === 12;
-
-  const gapmath = (e) => -56 / (12 / e) + 56;
+  const gapmath = (e) => -gapSize / (12 / e) + gapSize;
   const isSolo = length === 1;
 
   React.useEffect(() => {
     const el = ref && ref.current;
+    const elChild = el.children[0];
 
     const onResize = debounce(() => {
-      const speedRegulator = window.innerWidth / window.innerHeight;
-
       let widtharr = [];
       let heightarr = [];
       const childWidthArray = widtharr;
@@ -75,14 +74,17 @@ const Parallax = ({ data = {} }) => {
       const elDistanceToTop = window.scrollY + el.getBoundingClientRect().top;
       const elHeight = el.getBoundingClientRect().height;
       const elWidth = el.getBoundingClientRect().width;
+      const elChildWidth = elChild.getBoundingClientRect().width;
+
       const totalChildWidth = [...el.children[0].children].reduce(
         (acc, current) => {
           widtharr.push(acc);
           const { width } = current.getBoundingClientRect();
-          return acc + width;
+          return acc + width + gapSize;
         },
         0
       );
+
       const totalChildHeight = [...el.children[0].children].reduce(
         (acc, current) => {
           heightarr.push(acc);
@@ -93,13 +95,13 @@ const Parallax = ({ data = {} }) => {
       );
 
       setCalc({
-        speedRegulator: speedRegulator,
         totalChildHeight: totalChildHeight,
         windowHeight: window.innerHeight,
         windowWidth: window.innerWidth,
         elDistanceToTop: elDistanceToTop,
         elHeight: elHeight,
         elWidth: elWidth,
+        elChildWidth: elChildWidth,
         totalChildWidth: totalChildWidth,
         childWidthArray: childWidthArray,
         childHeightArray: childHeightArray,
@@ -112,11 +114,10 @@ const Parallax = ({ data = {} }) => {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, [length, speedRegulator]);
+  }, [length, windowHeight]);
 
   React.useEffect(() => {
-    const transformX = -totalChildWidth + (elWidth - gapCalc);
-
+    const transformX = -(totalChildWidth - gapSize) + elWidth;
     function updateX(e) {
       const move = transform(
         e,
@@ -125,9 +126,7 @@ const Parallax = ({ data = {} }) => {
       );
       x.set(move);
     }
-
     const unsubscribeX = scrollY.onChange((e) => updateX(e));
-
     return () => {
       unsubscribeX();
     };
@@ -135,14 +134,16 @@ const Parallax = ({ data = {} }) => {
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
-    const lastIndex = Math.max(length - 1, index);
-    const isLastIndex = lastIndex === index;
-    const lastItemTernary = isLastIndex
-      ? childWidthArray[lastIndex]
-      : totalChildWidth - elWidth;
+    // const lastIndex = Math.max(length - 1, index);
+    // const isLastIndex = lastIndex === index;
+    // const lastItemTernary = isLastIndex
+    //   ? totalChildWidth - elWidth
+    //   : totalChildWidth - elWidth;
 
     const ratioFormula =
-      (elWidth * (totalChildHeight - windowHeight)) / lastItemTernary / elWidth;
+      (windowWidth * (totalChildHeight - windowHeight)) /
+      (totalChildWidth - gapSize - elWidth) /
+      windowWidth;
 
     return window.scrollTo({
       top: elDistanceToTop + childWidthArray[index] * ratioFormula, //test[5].value,
@@ -237,6 +238,7 @@ const Parallax = ({ data = {} }) => {
                 data-index={i}
                 sx={{
                   ...style.section,
+                  // width: "720px",
                   width: isSolo
                     ? "100%"
                     : `calc( 1288px * ${
