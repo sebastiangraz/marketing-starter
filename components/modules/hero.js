@@ -35,7 +35,25 @@ const Hero = ({ data = {} }) => {
   const { content, bgType, photos, video } = data;
 
   return (
-    <section sx={style.hero}>
+    <section
+      sx={{
+        ...style.hero,
+        ...(content && {
+          color: "#fff",
+          "&:before": {
+            position: "absolute",
+            left: "0px",
+            top: "0px",
+            width: "100%",
+            height: "100%",
+            zIndex: 2,
+            content: `""`,
+            background: "#000",
+            opacity: 0.4,
+          },
+        }),
+      }}
+    >
       {content && (
         <div sx={style.heroOverlay}>
           <div sx={style.heroContent}>

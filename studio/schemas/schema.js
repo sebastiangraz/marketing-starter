@@ -31,6 +31,7 @@ import navPosts from './objects/nav-posts'
 import navLink from './objects/nav-link'
 import socialLink from './objects/social-link'
 import horizontalRule from './objects/horizontal-rule'
+import maxWidth from './objects/maxWidth'
 
 import simplePortableText from './objects/portable-simple'
 import complexPortableText from './objects/portable-complex'
@@ -83,6 +84,7 @@ export default createSchema({
     navLink,
     socialLink,
     horizontalRule,
+    maxWidth,
 
     simplePortableText,
     complexPortableText,

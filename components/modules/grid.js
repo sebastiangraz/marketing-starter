@@ -59,7 +59,6 @@ const Grid = ({ data = {} }) => {
                 variants={childVariant}
                 sx={{
                   width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}px )`,
-                  background: "#eee",
                 }}
               >
                 {blocks.map((block, key) => (

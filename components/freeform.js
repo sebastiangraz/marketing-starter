@@ -4,9 +4,8 @@ import BlockContent from "../components/block-content";
 
 const Freeform = ({ data }) => {
   const { content, maxWidth, textAlign } = data;
-
   let result;
-  switch (maxWidth) {
+  switch (maxWidth?.value) {
     case 0:
       result = "100%";
       break;

@@ -9,6 +9,7 @@ import CustomLink from "../components/link";
 
 const style = {
   ul: {
+    padding: "0px",
     position: "relative",
     display: "inline-flex",
     listStyle: "none",
