@@ -45,7 +45,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
             top: "-0.025em",
             display: "inline-block",
             svg: {
-              transition: "0.5s ease transform",
+              transition: ".3s cubic-bezier(.22,1,.36,1)",
               ml: 0,
               width: "0.5em",
               height: "100%",

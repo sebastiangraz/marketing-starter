@@ -57,7 +57,21 @@ const Accordion = ({
           className={cx("accordion--toggle", { "is-open": isOpen })}
         >
           {title}
-          <div className="accordion--icon">
+          <div
+            sx={{
+              marginLeft: "0.75rem",
+              position: "relative",
+              svg: {
+                transition: ".3s cubic-bezier(.22,1,.36,1)",
+                width: "0.75rem",
+                height: "1rem",
+                transform: "rotate(180deg)",
+                ...(isOpen && {
+                  transform: "rotate(0deg)",
+                }),
+              },
+            }}
+          >
             <Icon name="Chevron Down" />
           </div>
         </button>
