@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-
+import Icon from "../components/icon";
 import { getStaticRoute, getActive } from "../lib/routes";
 
 import CustomLink from "../components/link";
@@ -39,28 +39,25 @@ const Dropdown = ({ id, title, items, onClick }) => {
         aria-controls={`dropdown-${id}`}
       >
         {title}
-        <svg
+        <div
           sx={{
-            transition: "0.5s ease transform",
-            ml: 0,
-            width: "0.5em",
-            top: "0.125em",
-            height: "100%",
-            display: "inline-block",
-            transform: "rotate(180deg)",
             position: "absolute",
-            ...(isOpen && {
-              transform: "rotate(0deg)",
-            }),
+            top: "-0.025em",
+            display: "inline-block",
+            svg: {
+              transition: "0.5s ease transform",
+              ml: 0,
+              width: "0.5em",
+              height: "100%",
+              transform: "rotate(180deg)",
+              ...(isOpen && {
+                transform: "rotate(0deg)",
+              }),
+            },
           }}
-          width="8"
-          height="8"
-          viewBox="0 0 8 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M1 2L4 5L7 2" stroke="currentColor" strokeWidth="1.25" />
-        </svg>
+          <Icon name="Chevron Down"></Icon>
+        </div>
       </button>
 
       <div id={`dropdown-${id}`} sx={{ width: "0px" }}>

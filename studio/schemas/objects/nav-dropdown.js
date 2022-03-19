@@ -17,16 +17,6 @@ export default {
       name: 'dropdownItems',
       type: 'array',
       of: [{ type: 'navPage' }, { type: 'navLink' }]
-    },
-    {
-      name: 'featuredNote',
-      type: 'note',
-      options: {
-        icon: WarningCircle,
-        headline: 'Gotcha',
-        message: `Featured products are only for menus that appear in desktop "mega-navs".`,
-        tone: 'caution'
-      }
     }
   ]
 }
