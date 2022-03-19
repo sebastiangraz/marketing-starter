@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useReducer, useEffect } from "react";
 import debounce from "lodash.debounce";
 import {
   motion,
@@ -16,7 +16,7 @@ const Parallax = ({ data = {} }) => {
     },
   };
 
-  const [state, setCalc] = React.useReducer(
+  const [state, setCalc] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
       totalChildHeight: 0,
@@ -25,10 +25,8 @@ const Parallax = ({ data = {} }) => {
       elDistanceToTop: 0,
       elHeight: 0,
       elWidth: 0,
-      elChildWidth: 0,
       totalChildWidth: 0,
       childWidthArray: [],
-      childHeightArray: [],
     }
   );
 
@@ -39,10 +37,8 @@ const Parallax = ({ data = {} }) => {
     elDistanceToTop,
     elHeight,
     elWidth,
-    elChildWidth,
     totalChildWidth,
     childWidthArray,
-    childHeightArray,
   } = state;
 
   const { parallaxContainer } = data;
@@ -51,9 +47,7 @@ const Parallax = ({ data = {} }) => {
   const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
   const xSpring = useSpring(x, settings.springOptions);
-  const widthOfScrollbar = 6;
   const gapSize = 56;
-  const gapCalc = (length - 1) * 56;
   const calcColumnSum = parallaxContainer.reduce((curr, prev) => {
     let total = curr + prev?.sizes;
     return total;
@@ -62,7 +56,7 @@ const Parallax = ({ data = {} }) => {
   const gapmath = (e) => -gapSize / (12 / e) + gapSize;
   const isSolo = length === 1;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const el = ref && ref.current;
     const elChild = el.children[0];
 
@@ -116,7 +110,7 @@ const Parallax = ({ data = {} }) => {
     };
   }, [length, windowHeight]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const transformX = -(totalChildWidth - gapSize) + elWidth;
     function updateX(e) {
       const move = transform(
@@ -134,12 +128,6 @@ const Parallax = ({ data = {} }) => {
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
-    // const lastIndex = Math.max(length - 1, index);
-    // const isLastIndex = lastIndex === index;
-    // const lastItemTernary = isLastIndex
-    //   ? totalChildWidth - elWidth
-    //   : totalChildWidth - elWidth;
-
     const ratioFormula =
       (windowWidth * (totalChildHeight - windowHeight)) /
       (totalChildWidth - gapSize - elWidth) /
