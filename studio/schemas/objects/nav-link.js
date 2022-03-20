@@ -16,7 +16,8 @@ export default {
       title: 'URL',
       name: 'url',
       type: 'url',
-      description: 'enter an external URL'
+      description: 'enter an external URL',
+      validation: Rule => Rule.required()
     }
   ],
   preview: {

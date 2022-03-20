@@ -15,12 +15,11 @@ const Dropdown = ({ id, title, items, onClick }) => {
       opacity: 1,
       display: "flex",
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.05,
       },
     },
     hidden: {
       opacity: 0,
-
       transition: {
         staggerDirection: -1,
       },
@@ -31,8 +30,14 @@ const Dropdown = ({ id, title, items, onClick }) => {
   };
 
   const listItem = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      y: -4,
+      transition: {
+        duration: 0.4,
+      },
+    },
+    hidden: { opacity: 0, y: 0 },
   };
 
   return (
@@ -72,14 +77,15 @@ const Dropdown = ({ id, title, items, onClick }) => {
           sx={{
             p: "0px",
             pt: 0,
+            left: "0px",
             listStyle: "none",
             "> * + * ": {
               pl: 2,
             },
             display: "flex",
             position: "absolute",
-            left: "50%",
-            transform: "translate(-50%, 0px)",
+            width: "100%",
+            justifyContent: "center",
           }}
         >
           {items.map((item, key) => {
