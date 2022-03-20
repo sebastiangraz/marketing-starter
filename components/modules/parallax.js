@@ -110,10 +110,6 @@ const Parallax = ({ data = {} }) => {
     };
   }, [length, windowHeight]);
 
-  // useEffect(() => {
-  //   scrollY.onChange((e) => console.log(e));
-  // }, [scrollY]);
-
   useEffect(() => {
     const transformX = -(totalChildWidth - gapSize) + elWidth;
     function updateX(e) {

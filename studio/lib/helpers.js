@@ -8,6 +8,8 @@ export const getTypeTitles = types => {
         return 'Freeform'
       case 'accordions':
         return 'Accordions'
+      case 'imageFeature':
+        return 'Feature'
       default:
         return null
     }

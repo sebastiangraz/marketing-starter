@@ -1,12 +1,10 @@
-import { Question } from 'phosphor-react'
-
-import { getTypeTitles } from '../../lib/helpers'
+import { ArchiveBox, Cards } from 'phosphor-react'
 
 export default {
   title: 'Parallax',
   name: 'parallax',
   type: 'object',
-  icon: Question,
+  icon: Cards,
   fields: [
     {
       title: 'Parallax Container',
@@ -17,6 +15,7 @@ export default {
           title: 'Section',
           name: 'parallaxSection',
           type: 'object',
+          icon: ArchiveBox,
           fields: [
             {
               title: 'Heading',
@@ -51,19 +50,19 @@ export default {
   ],
   preview: {
     select: {
-      columns: 'columns'
+      parallaxContainer: 'parallaxContainer'
     },
-    prepare({ columns }) {
-      const name = getTypeTitles(columns.map(col => col.blocks[0]._type))
-
-      const image = (columns[0].blocks[0].content || []).find(
-        block => block._type === 'photo'
-      )
-
+    prepare({ parallaxContainer }) {
+      const heading = parallaxContainer.map(e => e.heading)
+      const subtitle = heading
+        .toString()
+        .split(',')
+        .join(' + ')
       return {
-        title: `${columns.length} Column${columns.length > 1 ? 's' : ''}`,
-        subtitle: name,
-        media: image
+        title: `${parallaxContainer.length} Parallax Card${
+          parallaxContainer.length > 1 ? 's' : ''
+        }`,
+        subtitle: subtitle
       }
     }
   }
