@@ -110,6 +110,10 @@ const Parallax = ({ data = {} }) => {
     };
   }, [length, windowHeight]);
 
+  // useEffect(() => {
+  //   scrollY.onChange((e) => console.log(e));
+  // }, [scrollY]);
+
   useEffect(() => {
     const transformX = -(totalChildWidth - gapSize) + elWidth;
     function updateX(e) {
@@ -128,13 +132,16 @@ const Parallax = ({ data = {} }) => {
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
-    const ratioFormula =
-      (windowWidth * (totalChildHeight - windowHeight)) /
-      (totalChildWidth - gapSize - elWidth) /
-      windowWidth;
 
+    const lastIndex = Math.max(length - 1, index);
+    const isLastIndex = lastIndex === index;
+    const lastItemTernary = isLastIndex
+      ? childWidthArray[lastIndex]
+      : totalChildWidth - gapSize - elWidth;
+
+    const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
     return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[index] * ratioFormula, //test[5].value,
+      top: elDistanceToTop + childWidthArray[index] * ratioFormula,
       behavior: "smooth",
     });
   };
