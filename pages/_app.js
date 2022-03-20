@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import Router from "next/router";
 import Head from "next/head";
 import { ThemeProvider } from "theme-ui";
-import theme from "./theme";
+import theme from "../public/theme";
 import { Reset } from "../components/reset";
 import { AnimatePresence } from "framer-motion";
 
@@ -48,7 +48,7 @@ const Site = ({ Component, pageProps, router }) => {
     Router.events.on("routeChangeError", () => {
       togglePageTransition(false);
     });
-  }, []);
+  }, [togglePageTransition]);
 
   // intelligently add focus states if keyboard is used
   const handleFirstTab = (event) => {
@@ -65,7 +65,7 @@ const Site = ({ Component, pageProps, router }) => {
     return () => {
       window.removeEventListener("keydown", handleFirstTab);
     };
-  }, []);
+  });
 
   return (
     <>

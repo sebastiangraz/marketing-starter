@@ -124,7 +124,15 @@ const Parallax = ({ data = {} }) => {
     return () => {
       unsubscribeX();
     };
-  }, [elDistanceToTop, elHeight, scrollY, totalChildWidth, windowHeight, x]);
+  }, [
+    elDistanceToTop,
+    elHeight,
+    elWidth,
+    scrollY,
+    totalChildWidth,
+    windowHeight,
+    x,
+  ]);
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);

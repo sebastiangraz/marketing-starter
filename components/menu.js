@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 import { getStaticRoute, getActive } from "../lib/routes";
 
-import { MegaDropdownButton } from "../components/menu-mega-nav";
 import Dropdown from "../components/menu-dropdown";
 import CustomLink from "../components/link";
 
@@ -19,7 +18,7 @@ const style = {
   },
 };
 
-const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
+const Menu = ({ items, hasFocus = true, onClick, ...rest }) => {
   const router = useRouter();
 
   if (!items) return null;
@@ -43,16 +42,12 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
 
           return (
             <li key={key} className={activeDropdown ? "is-active" : null}>
-              {useMegaNav ? (
-                <MegaDropdownButton title={item.title} id={item._key} />
-              ) : (
-                <Dropdown
-                  title={item.title}
-                  id={item._key}
-                  items={item.dropdownItems}
-                  onMouseEnter={onClick}
-                />
-              )}
+              <Dropdown
+                title={item.title}
+                id={item._key}
+                items={item.dropdownItems}
+                onMouseEnter={onClick}
+              />
             </li>
           );
 

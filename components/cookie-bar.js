@@ -24,13 +24,13 @@ const barAnim = {
   },
 };
 
-const CookieBar = React.memo(({ data = {} }) => {
+const CookieBar = ({ data = {} }) => {
   const { enabled, message, link } = data;
-
-  if (!enabled) return null;
 
   const hasMounted = useHasMounted();
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
+
+  if (!enabled) return null;
 
   if (!hasMounted || !message) return null;
 
@@ -82,7 +82,7 @@ const CookieBar = React.memo(({ data = {} }) => {
       )}
     </AnimatePresence>
   );
-});
+};
 
 function useAcceptCookies(cookieName = "accept_cookies") {
   const [acceptedCookies, setAcceptedCookies] = useState(true);
@@ -91,7 +91,7 @@ function useAcceptCookies(cookieName = "accept_cookies") {
     if (!Cookies.get(cookieName)) {
       setAcceptedCookies(false);
     }
-  }, []);
+  }, [cookieName]);
 
   const acceptCookies = () => {
     setAcceptedCookies(true);
@@ -104,4 +104,4 @@ function useAcceptCookies(cookieName = "accept_cookies") {
   };
 }
 
-export default CookieBar;
+export default React.memo(CookieBar);

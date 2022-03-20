@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useRef } from "react";
 import { useIntersection } from "use-intersection";
 import cx from "classnames";
@@ -17,8 +18,6 @@ const Photo = ({
   onLoad,
   className,
 }) => {
-  if (!photo?.asset) return null;
-
   const style = {
     ar: {
       overflow: "hidden",
@@ -106,7 +105,9 @@ const Photo = ({
   // trigger any onLoad callbacks
   useEffect(() => {
     if (isLoaded && onLoad) onLoad();
-  }, [isLoaded]);
+  }, [isLoaded, onLoad]);
+
+  if (!photo?.asset) return null;
 
   return (
     <figure sx={{ margin: "0px" }} className={className ? className : null}>

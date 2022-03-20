@@ -1,7 +1,6 @@
 import React from "react";
 
 import BlockContent from "../../components/block-content";
-import VideoLoop from "../../components/vimeo-loop";
 import Photo from "../../components/photo";
 import { getMaxWidth } from "../../lib/helpers";
 
@@ -33,7 +32,7 @@ const style = {
 };
 
 const Hero = ({ data = {} }) => {
-  const { content, bgType, photos, video, maxWidth } = data;
+  const { content, bgType, photos, maxWidth } = data;
   console.log(data);
   return (
     <section
@@ -64,17 +63,6 @@ const Hero = ({ data = {} }) => {
             />
           </div>
         </div>
-      )}
-
-      {bgType === "video" && (
-        <>
-          <div sx={style.heroBg} className=" is-desktop">
-            <VideoLoop title={video.title} id={video.id} />
-          </div>
-          <div sx={style.heroBg} className=" is-mobile">
-            <VideoLoop title={video.title} id={video.id} />
-          </div>
-        </>
       )}
 
       {bgType === "photo" && (
