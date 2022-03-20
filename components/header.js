@@ -109,19 +109,11 @@ const Header = ({ data = {} }) => {
           </div>
 
           {menuMobilePrimary?.items && (
-            <Menu
-              className="menu"
-              items={menuMobilePrimary.items}
-              onClick={() => toggleMobileNav(false)}
-            />
+            <Menu className="menu" items={menuMobilePrimary.items} />
           )}
 
           {menuMobileSecondary?.items && (
-            <Menu
-              className="submenu"
-              items={menuMobileSecondary.items}
-              onClick={() => toggleMobileNav(false)}
-            />
+            <Menu className="submenu" items={menuMobileSecondary.items} />
           )}
         </div>
       </header>

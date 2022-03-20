@@ -50,7 +50,7 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
                   title={item.title}
                   id={item._key}
                   items={item.dropdownItems}
-                  onClick={onClick}
+                  onMouseEnter={onClick}
                 />
               )}
             </li>

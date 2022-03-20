@@ -13,6 +13,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
   const list = {
     visible: {
       opacity: 1,
+      display: "flex",
       transition: {
         staggerChildren: 0.2,
       },
@@ -23,6 +24,9 @@ const Dropdown = ({ id, title, items, onClick }) => {
       transition: {
         staggerDirection: -1,
       },
+      transitionEnd: {
+        display: "none",
+      },
     },
   };
 
@@ -32,12 +36,12 @@ const Dropdown = ({ id, title, items, onClick }) => {
   };
 
   return (
-    <div sx={{ pr: 0 }}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-        aria-controls={`dropdown-${id}`}
-      >
+    <div
+      sx={{ pr: 0 }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button aria-expanded={isOpen} aria-controls={`dropdown-${id}`}>
         {title}
         <div
           sx={{
@@ -56,7 +60,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
             },
           }}
         >
-          <Icon name="Chevron Down"></Icon>
+          <Icon color="currentColor" name="Chevron Down"></Icon>
         </div>
       </button>
 
@@ -66,6 +70,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
           initial="hidden"
           animate={isOpen ? "visible" : "hidden"}
           sx={{
+            p: "0px",
             pt: 0,
             listStyle: "none",
             "> * + * ": {
