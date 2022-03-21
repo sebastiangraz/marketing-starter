@@ -45,6 +45,8 @@ const Site = ({ Component, pageProps, router }) => {
     Router.events.on("routeChangeError", () => {
       togglePageTransition(false);
     });
+    // dont fix exhaustive-deps for memo leak lol
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
