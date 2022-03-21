@@ -18,9 +18,6 @@ import {
 const Site = ({ Component, pageProps, router }) => {
   const togglePageTransition = useTogglePageTransition();
   const { isPageTransition } = useSiteContext();
-
-  const { data } = pageProps;
-
   // Handle scroll position on history change
   useScrollRestoration(router, pageTransitionSpeed);
 
@@ -48,24 +45,7 @@ const Site = ({ Component, pageProps, router }) => {
     Router.events.on("routeChangeError", () => {
       togglePageTransition(false);
     });
-  }, [togglePageTransition]);
-
-  // intelligently add focus states if keyboard is used
-  const handleFirstTab = (event) => {
-    if (event.keyCode === 9) {
-      if (isBrowser) {
-        document.body.classList.add("is-tabbing");
-        window.removeEventListener("keydown", handleFirstTab);
-      }
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleFirstTab);
-    return () => {
-      window.removeEventListener("keydown", handleFirstTab);
-    };
-  });
+  }, []);
 
   return (
     <>
