@@ -57,7 +57,7 @@ const Parallax = memo(({ data = {} }) => {
   }, 0);
   const columnCountEqualTo12 = calcColumnSum === 12;
   const isSolo = length === 1;
-  const [active, setActive] = useState([]);
+  const [index, setIndex] = useState([]);
 
   const [title, setTitle] = useState([]);
 
@@ -163,18 +163,16 @@ const Parallax = memo(({ data = {} }) => {
   useEffect(() => {
     motionActive.onChange((value) => {
       parallaxContainer.map((e, i) => {
-        if (value[i]) {
-          setActive(i);
-        }
+        value[i] && setIndex(i);
       });
     });
   }, [parallaxContainer, motionActive]);
 
   useEffect(() => {
-    setTitle(parallaxContainer[active]?.heading);
-  }, [parallaxContainer, active]);
+    setTitle(parallaxContainer[index]?.heading);
+  }, [parallaxContainer, index]);
 
-  useEffect(() => setActive(0), []);
+  useEffect(() => setIndex(0), []);
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
@@ -241,7 +239,7 @@ const Parallax = memo(({ data = {} }) => {
                 gapWidth={56}
                 data={e}
                 key={e.id}
-                active={active}
+                active={index}
                 index={i}
                 isSolo={isSolo}
                 columnCountEqualTo12={columnCountEqualTo12}
