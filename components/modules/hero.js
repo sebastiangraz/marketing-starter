@@ -33,7 +33,7 @@ const style = {
 
 const Hero = ({ data = {} }) => {
   const { content, bgType, photos, maxWidth } = data;
-  console.log(data);
+
   return (
     <section
       sx={{

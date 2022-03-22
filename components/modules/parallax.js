@@ -48,6 +48,7 @@ const Parallax = memo(({ data = {} }) => {
   const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
   const activeLine = useMotionValue(0);
+  const motionActive = useMotionValue(false);
   const xSpring = useSpring(x, settings.springOptions);
   const gapSize = 56;
   const calcColumnSum = parallaxContainer.reduce((curr, prev) => {
@@ -56,8 +57,9 @@ const Parallax = memo(({ data = {} }) => {
   }, 0);
   const columnCountEqualTo12 = calcColumnSum === 12;
   const isSolo = length === 1;
-  const [isActive, setIsActive] = useState([]);
+  const [isActive, setIsActive] = useState([true]);
   const [title, setTitle] = useState("");
+
   useEffect(() => {
     const el = ref && ref.current;
     const elChild = el.querySelector(".inner-container");
@@ -134,7 +136,8 @@ const Parallax = memo(({ data = {} }) => {
         return getIndex;
       });
 
-      setIsActive(val); // perf issues
+      motionActive.set(val);
+      // setIsActive(val); // perf issues
       activeLine.set(progress * elWidth);
     }
 
@@ -150,18 +153,33 @@ const Parallax = memo(({ data = {} }) => {
     elDistanceToTop,
     elHeight,
     elWidth,
+    motionActive,
     scrollY,
     totalChildWidth,
     windowHeight,
     x,
   ]);
 
+  // const debouncedSave = useRef(
+  //   debounce((nextValue) => setTitle(nextValue), 100)
+  // ).current;
+
+  // useEffect(() => {
+  //   scrollY.onChange((e) => {
+  //     parallaxContainer.map((e, i) => {
+  //       const val = e.heading;
+  //       motionActive.get()[i] && debouncedSave(val);
+  //     });
+  //   });
+  // }, [debouncedSave, motionActive, parallaxContainer, scrollY]);
+
   useEffect(() => {
-    parallaxContainer.map((e, i) => {
-      console.log(isActive[i] && e.heading);
-      isActive[i] && setTitle(e.heading);
+    motionActive.onChange((value) => {
+      parallaxContainer.map((e, i) => {
+        value[i] && setTitle(e.heading);
+      });
     });
-  }, [isActive, parallaxContainer]);
+  }, [parallaxContainer, motionActive]);
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
@@ -170,7 +188,6 @@ const Parallax = memo(({ data = {} }) => {
     const lastItemTernary = isLastIndex
       ? childWidthArray[lastIndex]
       : totalChildWidth - gapSize - elWidth;
-
     const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
     return window.scrollTo({
       top: elDistanceToTop + childWidthArray[index] * ratioFormula,
@@ -208,11 +225,11 @@ const Parallax = memo(({ data = {} }) => {
         maxWidth: `calc(100vw)`,
       }}
     >
-      {/* {console.log("parallax.js rendered")} */}
+      {console.log("[[parallax.js rendered]]")}
 
       <div sx={style.container} ref={ref}>
         <h2 sx={{ position: "sticky", top: "10vh", pb: "10vh" }}>
-          · {title} · love us for{" "}
+          {title} · love us for{" "}
         </h2>
         <motion.div
           className="inner-container"

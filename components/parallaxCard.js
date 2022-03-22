@@ -24,9 +24,6 @@ const style = {
         ml: "0px",
       },
     },
-    "&.active > *": {
-      background: "#aaa",
-    },
   },
 };
 
@@ -80,6 +77,7 @@ export const ParallaxCard = memo(
         whileInView="visible"
         onClick={isSolo || columnCountEqualTo12 ? null : onClick}
       >
+        {console.log("render from para card")}
         <motion.div sx={style.innerSection}>
           <motion.div variants={childVariantInner} whileInView="visible">
             {" "}
