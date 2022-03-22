@@ -122,26 +122,15 @@ const Parallax = ({ data = {} }) => {
         [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
         [0, 1]
       );
+
       const val = childWidthArray.map((e, i) => {
         let getIndex = false;
-        let pastIndex = true;
-
         if (-e + progress * elWidth >= x.get()) {
           getIndex = true;
         }
-
         if (-childWidthArray[i + 1] + progress * elWidth >= x.get()) {
-          pastIndex = false;
+          getIndex = false;
         }
-
-        console.log(
-          i.toString(),
-          e - 56,
-          (-e + progress * elWidth).toFixed(),
-          x.get().toFixed(),
-          [getIndex],
-          [pastIndex]
-        );
         return getIndex;
       });
 
