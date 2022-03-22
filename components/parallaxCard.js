@@ -11,13 +11,16 @@ const style = {
       `calc(100% - ${t.sizes[3]}px)`,
       `calc(80% - ${t.sizes[15]}px)`,
     ],
-    background: "#eee",
+
     borderRadius: "3rem",
     overflow: "hidden",
     pointerEvents: "none",
-    transition: "background 1s ease",
+    transition: "background 1s ease, box-shadow 1s ease",
+    boxShadow: "0 0 0 1px currentColor inset",
+    background: "#fff",
     "&.active ": {
-      background: "#aaa",
+      boxShadow: "0 0 0 1px transparent inset",
+      background: "#F3EFED",
     },
   },
   section: {

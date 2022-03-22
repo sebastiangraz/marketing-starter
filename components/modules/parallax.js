@@ -182,6 +182,7 @@ const Parallax = memo(({ data = {} }) => {
       ? childWidthArray[lastIndex]
       : totalChildWidth - gapSize - elWidth;
     const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
+
     return window.scrollTo({
       top: elDistanceToTop + childWidthArray[clickIndex] * ratioFormula,
       behavior: "smooth",
@@ -221,7 +222,14 @@ const Parallax = memo(({ data = {} }) => {
       {console.log("[[parallax.js rendered]]")}
 
       <div sx={style.container} ref={ref}>
-        <h2 sx={{ position: "sticky", top: "10vh", pb: "10vh" }}>
+        <h2
+          sx={{
+            position: "sticky",
+            top: "10vh",
+            pb: "10vh",
+            maxWidth: "32rem",
+          }}
+        >
           {title} · love us for{" "}
         </h2>
         <motion.div
