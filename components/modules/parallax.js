@@ -46,6 +46,7 @@ const Parallax = ({ data = {} }) => {
   const ref = useRef();
   const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
+  const activeLine = useMotionValue(0);
   const xSpring = useSpring(x, settings.springOptions);
   const gapSize = 56;
   const calcColumnSum = parallaxContainer.reduce((curr, prev) => {
@@ -115,11 +116,37 @@ const Parallax = ({ data = {} }) => {
       x.set(move);
     }
 
-    function getIndex(e) {
-      const val = childWidthArray.map((e) => {
-        return -e + 200 > x.get();
+    function getIndex(scrollDistance) {
+      const progress = transform(
+        scrollDistance,
+        [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
+        [0, 1]
+      );
+      const val = childWidthArray.map((e, i) => {
+        let getIndex = false;
+        let pastIndex = true;
+
+        if (-e + progress * elWidth >= x.get()) {
+          getIndex = true;
+        }
+
+        if (-childWidthArray[i + 1] + progress * elWidth >= x.get()) {
+          pastIndex = false;
+        }
+
+        console.log(
+          i.toString(),
+          e - 56,
+          (-e + progress * elWidth).toFixed(),
+          x.get().toFixed(),
+          [getIndex],
+          [pastIndex]
+        );
+        return getIndex;
       });
+
       setIsActive(val);
+      activeLine.set(progress * elWidth);
     }
 
     const unSubGetIndexFromScroll = scrollY.onChange((e) => getIndex(e));
@@ -129,6 +156,7 @@ const Parallax = ({ data = {} }) => {
       unsubscribeX();
     };
   }, [
+    activeLine,
     childWidthArray,
     elDistanceToTop,
     elHeight,
@@ -163,6 +191,7 @@ const Parallax = ({ data = {} }) => {
       ...(isSolo && {
         height: "100%",
       }),
+      position: "relative",
       variant: "layout.row",
     },
     innerContainer: {
@@ -180,6 +209,9 @@ const Parallax = ({ data = {} }) => {
         "& > *": {
           ml: "0px",
         },
+      },
+      "&.active > *": {
+        background: "#aaa",
       },
     },
     innerSection: {
@@ -238,7 +270,7 @@ const Parallax = ({ data = {} }) => {
             return (
               <motion.div
                 key={e.id}
-                className={isActive[i] && "active"}
+                className={isActive[i] ? "active" : ""}
                 data-index={i}
                 sx={{
                   ...style.section,
@@ -267,6 +299,20 @@ const Parallax = ({ data = {} }) => {
             );
           })}
         </motion.div>
+        <motion.span
+          style={{
+            x: activeLine,
+          }}
+          sx={{
+            zIndex: 10,
+            position: "absolute",
+            width: "1px",
+            height: "100%",
+            bg: "text",
+            left: "0px",
+            top: "0px",
+          }}
+        />
       </div>
     </section>
   );
