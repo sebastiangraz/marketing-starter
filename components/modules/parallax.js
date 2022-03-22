@@ -125,20 +125,21 @@ const Parallax = memo(({ data = {} }) => {
         [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
         [0, 1]
       );
+      const threshold = progress * elWidth;
 
       const val = childWidthArray.map((e, i) => {
         let getIndex = false;
-        if (-e + progress * elWidth >= x.get()) {
+        if (-e + threshold >= x.get()) {
           getIndex = true;
         }
-        if (-childWidthArray[i + 1] + progress * elWidth >= x.get()) {
+        if (-childWidthArray[i + 1] + threshold >= x.get()) {
           getIndex = false;
         }
         return getIndex;
       });
 
       motionActive.set(val);
-      activeLine.set(progress * elWidth);
+      activeLine.set(threshold);
     }
 
     const unSubGetIndexFromScroll = scrollY.onChange((e) => getIndex(e));
