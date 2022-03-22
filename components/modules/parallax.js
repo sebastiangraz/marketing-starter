@@ -1,4 +1,4 @@
-import React, { useRef, useReducer, useEffect } from "react";
+import React, { useRef, useReducer, useEffect, useState } from "react";
 import debounce from "lodash.debounce";
 import {
   motion,
@@ -55,7 +55,7 @@ const Parallax = ({ data = {} }) => {
   const columnCountEqualTo12 = calcColumnSum === 12;
   const gapmath = (e) => -gapSize / (12 / e) + gapSize;
   const isSolo = length === 1;
-
+  const [isActive, setIsActive] = useState([]);
   useEffect(() => {
     const el = ref && ref.current;
     const elChild = el.children[0];
@@ -70,23 +70,17 @@ const Parallax = ({ data = {} }) => {
       const elWidth = el.getBoundingClientRect().width;
       const elChildWidth = elChild.getBoundingClientRect().width;
 
-      const totalChildWidth = [...el.children[0].children].reduce(
-        (acc, current) => {
-          widtharr.push(acc);
-          const { width } = current.getBoundingClientRect();
-          return acc + width + gapSize;
-        },
-        0
-      );
+      const totalChildWidth = [...elChild.children].reduce((acc, current) => {
+        widtharr.push(acc);
+        const { width } = current.getBoundingClientRect();
+        return acc + width + gapSize;
+      }, 0);
 
-      const totalChildHeight = [...el.children[0].children].reduce(
-        (acc, current) => {
-          heightarr.push(acc);
-          const { height } = current.getBoundingClientRect();
-          return acc + height;
-        },
-        0
-      );
+      const totalChildHeight = [...elChild.children].reduce((acc, current) => {
+        heightarr.push(acc);
+        const { height } = current.getBoundingClientRect();
+        return acc + height;
+      }, 0);
 
       setCalc({
         totalChildHeight: totalChildHeight,
@@ -120,11 +114,22 @@ const Parallax = ({ data = {} }) => {
       );
       x.set(move);
     }
+
+    function getIndex(e) {
+      const val = childWidthArray.map((e) => {
+        return -e + 200 > x.get();
+      });
+      setIsActive(val);
+    }
+
+    const unSubGetIndexFromScroll = scrollY.onChange((e) => getIndex(e));
     const unsubscribeX = scrollY.onChange((e) => updateX(e));
     return () => {
+      unSubGetIndexFromScroll();
       unsubscribeX();
     };
   }, [
+    childWidthArray,
     elDistanceToTop,
     elHeight,
     elWidth,
@@ -136,7 +141,6 @@ const Parallax = ({ data = {} }) => {
 
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
-
     const lastIndex = Math.max(length - 1, index);
     const isLastIndex = lastIndex === index;
     const lastItemTernary = isLastIndex
@@ -234,6 +238,7 @@ const Parallax = ({ data = {} }) => {
             return (
               <motion.div
                 key={e.id}
+                className={isActive[i] && "active"}
                 data-index={i}
                 sx={{
                   ...style.section,

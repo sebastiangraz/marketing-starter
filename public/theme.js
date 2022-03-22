@@ -59,7 +59,7 @@ export default {
     monospace: "Menlo, monospace",
   },
   colors: {
-    text: "#080505",
+    text: "#0C002B",
     background: "F8F8F7",
     primary: "#DF3B24",
   },
@@ -87,6 +87,7 @@ export default {
     root: {
       ...scroll,
       fontSize: `clamp(12px, 1vw + 8px, 18px)`,
+      color: "text",
       bg: "background",
       letterSpacing: "body",
       WebkitFontSmoothing: "antialiased",
