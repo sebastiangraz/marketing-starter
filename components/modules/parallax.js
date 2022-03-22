@@ -211,7 +211,7 @@ const Parallax = memo(({ data = {} }) => {
       {/* {console.log("parallax.js rendered")} */}
 
       <div sx={style.container} ref={ref}>
-        <h2 sx={{ position: "sticky", top: "10vh" }}>
+        <h2 sx={{ position: "sticky", top: "10vh", pb: "10vh" }}>
           · {title} · love us for{" "}
         </h2>
         <motion.div
