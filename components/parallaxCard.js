@@ -64,6 +64,7 @@ export const ParallaxCard = memo(
     onClick,
   }) => {
     const gapmath = (e) => -gapWidth / (12 / e) + gapWidth;
+
     return (
       <motion.div
         data-index={index}
@@ -83,7 +84,7 @@ export const ParallaxCard = memo(
       >
         <motion.div
           sx={style.innerSection}
-          className={active[index] ? "active" : ""}
+          className={active === index ? "active" : ""}
         >
           <motion.div variants={childVariantInner} whileInView="visible">
             {" "}

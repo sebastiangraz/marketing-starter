@@ -59,7 +59,7 @@ const Parallax = memo(({ data = {} }) => {
   const isSolo = length === 1;
   const [active, setActive] = useState([]);
 
-  const [title, setTitle] = useState(parallaxContainer[0].heading);
+  const [title, setTitle] = useState([]);
 
   useEffect(() => {
     const el = ref && ref.current;
@@ -164,14 +164,18 @@ const Parallax = memo(({ data = {} }) => {
     motionActive.onChange((value) => {
       parallaxContainer.map((e, i) => {
         if (value[i]) {
-          setTitle(e.heading);
+          setActive(i);
         }
       });
     });
-    setActive(motionActive.get());
-  }, [parallaxContainer, title, motionActive]);
+  }, [parallaxContainer, motionActive]);
 
-  useEffect(() => setActive([true]), []);
+  useEffect(() => {
+    setTitle(parallaxContainer[active]?.heading);
+  }, [parallaxContainer, active]);
+
+  useEffect(() => setActive(0), []);
+
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
     const lastIndex = Math.max(length - 1, index);
