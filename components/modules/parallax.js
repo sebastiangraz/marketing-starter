@@ -175,15 +175,15 @@ const Parallax = memo(({ data = {} }) => {
   useEffect(() => setIndex(0), []);
 
   const handleClick = (e) => {
-    const index = parseFloat(e.target.dataset.index);
-    const lastIndex = Math.max(length - 1, index);
-    const isLastIndex = lastIndex === index;
+    const clickIndex = parseFloat(e.target.dataset.index);
+    const lastIndex = Math.max(length - 1, clickIndex);
+    const isLastIndex = lastIndex === clickIndex;
     const lastItemTernary = isLastIndex
       ? childWidthArray[lastIndex]
       : totalChildWidth - gapSize - elWidth;
     const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
     return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[index] * ratioFormula,
+      top: elDistanceToTop + childWidthArray[clickIndex] * ratioFormula,
       behavior: "smooth",
     });
   };
