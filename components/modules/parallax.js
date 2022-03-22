@@ -1,4 +1,4 @@
-import React, { useRef, useReducer, useEffect, useState } from "react";
+import React, { useRef, useReducer, useEffect, useState, memo } from "react";
 import debounce from "lodash.debounce";
 import {
   motion,
@@ -7,8 +7,9 @@ import {
   useSpring,
   useMotionValue,
 } from "framer-motion";
+import { ParallaxCard } from "../parallaxCard";
 
-const Parallax = ({ data = {} }) => {
+const Parallax = memo(({ data = {} }) => {
   const settings = {
     springOptions: {
       damping: 12,
@@ -54,7 +55,6 @@ const Parallax = ({ data = {} }) => {
     return total;
   }, 0);
   const columnCountEqualTo12 = calcColumnSum === 12;
-  const gapmath = (e) => -gapSize / (12 / e) + gapSize;
   const isSolo = length === 1;
   const [isActive, setIsActive] = useState([]);
   useEffect(() => {
@@ -98,7 +98,6 @@ const Parallax = ({ data = {} }) => {
     }, 300);
 
     document.fonts.ready.then(() => onResize());
-
     window.addEventListener("resize", onResize, { passive: true });
     return () => {
       window.removeEventListener("resize", onResize);
@@ -191,52 +190,6 @@ const Parallax = ({ data = {} }) => {
       columnGap: 6,
       width: isSolo && "100%",
     },
-    section: {
-      maxWidth: "1288px",
-      height: "100vh",
-      "&:first-of-type": {
-        "& > *": {
-          ml: "0px",
-        },
-      },
-      "&.active > *": {
-        background: "#aaa",
-      },
-    },
-    innerSection: {
-      mt: [3, 6],
-      p: [3, 6],
-      gridColumn: "span 12",
-      height: (t) => [
-        `calc(100% - ${t.sizes[3]}px)`,
-        `calc(100% - ${t.sizes[15]}px)`,
-      ],
-      background: "#eee",
-      borderRadius: "3rem",
-      overflow: "hidden",
-      pointerEvents: "none",
-    },
-  };
-
-  const childVariant = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
-  const childVariantInner = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1.2,
-        when: "beforeChildren",
-      },
-    },
   };
 
   return (
@@ -247,6 +200,7 @@ const Parallax = ({ data = {} }) => {
         maxWidth: `calc(100vw)`,
       }}
     >
+      {console.log("parallax.js rendered")}
       <div sx={style.container} ref={ref}>
         <motion.div
           sx={style.innerContainer}
@@ -256,35 +210,18 @@ const Parallax = ({ data = {} }) => {
         >
           {parallaxContainer.map((e, i) => {
             isSolo ? (e.sizes = 12) : e.sizes;
+
             return (
-              <motion.div
+              <ParallaxCard
+                onClick={handleClick}
+                gapWidth={56}
+                data={e}
                 key={e.id}
-                className={isActive[i] ? "active" : ""}
-                data-index={i}
-                sx={{
-                  ...style.section,
-                  // width: "720px",
-                  width: isSolo
-                    ? "100%"
-                    : `calc( 1288px * ${
-                        e.sizes ? e.sizes : 12
-                      } / 12 - ${gapmath(e.sizes)}px )`,
-                }}
-                variants={childVariant}
-                initial="hidden"
-                whileInView="visible"
-                onClick={isSolo || columnCountEqualTo12 ? null : handleClick}
-              >
-                <motion.div sx={style.innerSection}>
-                  <motion.div
-                    variants={childVariantInner}
-                    whileInView="visible"
-                  >
-                    {" "}
-                    <h2>{e.heading}</h2>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+                active={isActive}
+                index={i}
+                isSolo={isSolo}
+                columnCountEqualTo12={columnCountEqualTo12}
+              />
             );
           })}
         </motion.div>
@@ -305,6 +242,8 @@ const Parallax = ({ data = {} }) => {
       </div>
     </section>
   );
-};
+});
+
+Parallax.displayName = "Parallax";
 
 export default Parallax;
