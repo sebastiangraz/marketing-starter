@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 
 const style = {
   innerSection: {
-    mt: [3, 6],
+    mt: [3, "25vh"],
     p: [3, 6],
     gridColumn: "span 12",
     height: (t) => [
       `calc(100% - ${t.sizes[3]}px)`,
-      `calc(100% - ${t.sizes[15]}px)`,
+      `calc(80% - ${t.sizes[15]}px)`,
     ],
     background: "#eee",
     borderRadius: "3rem",
