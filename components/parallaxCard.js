@@ -15,10 +15,15 @@ const style = {
     borderRadius: "3rem",
     overflow: "hidden",
     pointerEvents: "none",
+    transition: "background 1s ease",
+    "&.active ": {
+      background: "#aaa",
+    },
   },
   section: {
     maxWidth: "1288px",
     height: "100vh",
+
     "&:first-of-type": {
       "& > *": {
         ml: "0px",
@@ -61,7 +66,6 @@ export const ParallaxCard = memo(
     const gapmath = (e) => -gapWidth / (12 / e) + gapWidth;
     return (
       <motion.div
-        className={active[index] ? "active" : ""}
         data-index={index}
         sx={{
           ...style.section,
@@ -77,8 +81,10 @@ export const ParallaxCard = memo(
         whileInView="visible"
         onClick={isSolo || columnCountEqualTo12 ? null : onClick}
       >
-        {console.log("render from para card")}
-        <motion.div sx={style.innerSection}>
+        <motion.div
+          sx={style.innerSection}
+          className={active[index] ? "active" : ""}
+        >
           <motion.div variants={childVariantInner} whileInView="visible">
             {" "}
             <h2>{data.heading}</h2>

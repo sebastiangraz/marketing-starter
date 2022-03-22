@@ -57,8 +57,9 @@ const Parallax = memo(({ data = {} }) => {
   }, 0);
   const columnCountEqualTo12 = calcColumnSum === 12;
   const isSolo = length === 1;
-  const [isActive, setIsActive] = useState([true]);
-  const [title, setTitle] = useState("");
+  const [active, setActive] = useState([]);
+
+  const [title, setTitle] = useState(parallaxContainer[0].heading);
 
   useEffect(() => {
     const el = ref && ref.current;
@@ -137,7 +138,6 @@ const Parallax = memo(({ data = {} }) => {
       });
 
       motionActive.set(val);
-      // setIsActive(val); // perf issues
       activeLine.set(progress * elWidth);
     }
 
@@ -160,27 +160,18 @@ const Parallax = memo(({ data = {} }) => {
     x,
   ]);
 
-  // const debouncedSave = useRef(
-  //   debounce((nextValue) => setTitle(nextValue), 100)
-  // ).current;
-
-  // useEffect(() => {
-  //   scrollY.onChange((e) => {
-  //     parallaxContainer.map((e, i) => {
-  //       const val = e.heading;
-  //       motionActive.get()[i] && debouncedSave(val);
-  //     });
-  //   });
-  // }, [debouncedSave, motionActive, parallaxContainer, scrollY]);
-
   useEffect(() => {
     motionActive.onChange((value) => {
       parallaxContainer.map((e, i) => {
-        value[i] && setTitle(e.heading);
+        if (value[i]) {
+          setTitle(e.heading);
+        }
       });
     });
-  }, [parallaxContainer, motionActive]);
+    setActive(motionActive.get());
+  }, [parallaxContainer, title, motionActive]);
 
+  useEffect(() => setActive([true]), []);
   const handleClick = (e) => {
     const index = parseFloat(e.target.dataset.index);
     const lastIndex = Math.max(length - 1, index);
@@ -246,7 +237,7 @@ const Parallax = memo(({ data = {} }) => {
                 gapWidth={56}
                 data={e}
                 key={e.id}
-                active={isActive}
+                active={active}
                 index={i}
                 isSolo={isSolo}
                 columnCountEqualTo12={columnCountEqualTo12}
