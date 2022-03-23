@@ -75,8 +75,6 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           <div
             className="templateOverlay"
             sx={{
-              gridTemplateColumns: "repeat(12, 1fr)",
-              display: "grid",
               position: "fixed",
               top: 0,
               pointerEvents: "none",
@@ -84,9 +82,9 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
               transform: "translate(-50%)",
               maxWidth: "1288px",
               height: "100vh",
-              width: "100%",
+              width: "88%",
               background:
-                "repeating-linear-gradient(90deg, rgba(255,0,0,0.1), rgba(255,0,0,0.1) 2px, transparent 2px, transparent 56px)",
+                "repeating-linear-gradient(90deg, rgba(255,0,0,0.1), rgba(255,0,0,0.1) 2px, transparent 2px, transparent calc(100 / (1288 / 56) * 1%) )",
               backgroundPosition: "-1px 0px",
             }}
           ></div>

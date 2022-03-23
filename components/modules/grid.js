@@ -31,7 +31,7 @@ const Grid = ({ data = {} }) => {
     },
   };
 
-  const gap = 56;
+  const gap = 100 / (1288 / 56);
   const gapmath = (size) => -gap / (12 / size) + gap;
 
   return (
@@ -45,8 +45,8 @@ const Grid = ({ data = {} }) => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
-            rowGap: `${gap}px`,
-            columnGap: `${gap}px`,
+            rowGap: `${gap}%`,
+            columnGap: `${gap}%`,
           }}
         >
           {columns.map((col, key) => {
@@ -58,7 +58,8 @@ const Grid = ({ data = {} }) => {
                 key={key}
                 variants={childVariant}
                 sx={{
-                  width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}px )`,
+                  bg: "#eee",
+                  width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}% )`,
                 }}
               >
                 {blocks.map((block, key) => (
