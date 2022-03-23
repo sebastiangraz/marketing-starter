@@ -73,12 +73,12 @@ export const ParallaxCard = memo(
         data-index={index}
         sx={{
           ...style.section,
-          width: "720px",
-          width: isSolo
-            ? "100%"
-            : `calc( 1288px * ${data.sizes ? data.sizes : 12} / 12 - ${gapmath(
-                data.sizes
-              )}px )`,
+          // width: "720px",
+          // width: isSolo
+          //   ? "100%"
+          //   : `calc( 1288px * ${data.sizes ? data.sizes : 12} / 12 - ${gapmath(
+          //       data.sizes
+          //     )}px )`,
         }}
         variants={childVariant}
         initial="hidden"

@@ -50,7 +50,12 @@ const Parallax = memo(({ data = {} }) => {
   const activeLine = useMotionValue(0);
   const motionActive = useMotionValue(false);
   const xSpring = useSpring(x, settings.springOptions);
+
   const gapSize = 56;
+  const gap = 100 / (1288 / gapSize);
+  const gapmath = (size) => -gap / (12 / size) + gap;
+  const gapPercentageAsPixels = (gap * elWidth) / 100;
+
   const calcColumnSum = parallaxContainer.reduce((curr, prev) => {
     let total = curr + prev?.sizes;
     return total;
@@ -78,7 +83,7 @@ const Parallax = memo(({ data = {} }) => {
       const totalChildWidth = [...elChild.children].reduce((acc, current) => {
         widtharr.push(acc);
         const { width } = current.getBoundingClientRect();
-        return acc + width + gapSize;
+        return acc + width + gapPercentageAsPixels;
       }, 0);
 
       const totalChildHeight = [...elChild.children].reduce((acc, current) => {
@@ -106,10 +111,10 @@ const Parallax = memo(({ data = {} }) => {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, [length, windowHeight]);
+  }, [gapPercentageAsPixels, length, windowHeight]);
 
   useEffect(() => {
-    const transformX = -(totalChildWidth - gapSize) + elWidth;
+    const transformX = -(totalChildWidth - gapPercentageAsPixels) + elWidth;
     function updateX(e) {
       const move = transform(
         e,
@@ -154,6 +159,7 @@ const Parallax = memo(({ data = {} }) => {
     elDistanceToTop,
     elHeight,
     elWidth,
+    gapPercentageAsPixels,
     motionActive,
     scrollY,
     totalChildWidth,
@@ -181,7 +187,7 @@ const Parallax = memo(({ data = {} }) => {
     const isLastIndex = lastIndex === clickIndex;
     const lastItemTernary = isLastIndex
       ? childWidthArray[lastIndex]
-      : totalChildWidth - gapSize - elWidth;
+      : totalChildWidth - gapPercentageAsPixels - elWidth;
     const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
 
     return window.scrollTo({
@@ -189,6 +195,10 @@ const Parallax = memo(({ data = {} }) => {
       behavior: "smooth",
     });
   };
+  const explicitWidths = parallaxContainer.map((e) => {
+    const val = (100 * e.sizes) / 12 - gapmath(e.sizes);
+    return `${val}%`;
+  });
 
   const style = {
     container: {
@@ -203,11 +213,13 @@ const Parallax = memo(({ data = {} }) => {
       variant: "layout.row",
     },
     innerContainer: {
-      display: "inline-flex",
+      display: "grid",
+      gridAutoFlow: "column",
+      gridAutoColumns: explicitWidths.join(" "),
       position: isSolo || columnCountEqualTo12 ? "relative" : "sticky",
       top: "0px",
       bottom: "0px",
-      columnGap: 6,
+      columnGap: `${gap}%`,
       width: isSolo && "100%",
     },
   };
