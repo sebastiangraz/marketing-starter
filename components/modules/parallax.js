@@ -123,7 +123,7 @@ const Parallax = memo(({ data = {} }) => {
       const progress = transform(
         scrollDistance,
         [elDistanceToTop, elHeight - windowHeight + elDistanceToTop],
-        [0, 1]
+        [0.25, 0.75]
       );
       const threshold = progress * elWidth;
 
