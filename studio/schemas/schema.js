@@ -4,6 +4,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import page from './documents/page'
 import article from './documents/article'
+import articles from './documents/articles'
 
 import generalSettings from './documents/settings-general'
 import cookieSettings from './documents/settings-cookie'
@@ -17,6 +18,7 @@ import redirect from './documents/redirect'
 import grid from './modules/grid'
 import media from './modules/media'
 import dividerPhoto from './modules/divider-photo'
+import hero from './modules/hero'
 import newsletter from './modules/newsletter'
 import parallax from './modules/parallax'
 
@@ -55,6 +57,7 @@ export default createSchema({
     /* 1: Document types */
     page,
     article,
+    articles,
 
     generalSettings,
     cookieSettings,
@@ -69,6 +72,7 @@ export default createSchema({
     grid,
     media,
     dividerPhoto,
+    hero,
     newsletter,
     parallax,
 

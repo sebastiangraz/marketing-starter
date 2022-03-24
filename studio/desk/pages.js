@@ -64,19 +64,45 @@ const currentHomePage = S.listItem()
       .views(standardViews)
   })
 
-const articlesMenu = S.listItem()
-  .title('Articles')
+const currentPostsPage = S.listItem()
+  .title('Posts index')
   .icon(Notebook)
-  .child(
-    S.documentTypeList('article')
-      .title('Articles')
-      .child(documentId =>
-        S.document()
-          .documentId(documentId)
-          .schemaType('article')
-          .views(standardViews)
-      )
-  )
+  .child(async () => {
+    const data = await sanityClient.fetch(`
+    *[_type == "generalSettings"][0]{
+      posts->{_id}
+    }
+  `)
+
+    if (!data?.posts)
+      return S.component(() => (
+        <EmptyNotice
+          title="Posts Page"
+          type="posts"
+          link="settings;general"
+          linkTitle="General Settings"
+        />
+      )).title('Posts index')
+
+    return S.document()
+      .id(data.posts._id)
+      .schemaType('articles')
+      .views(standardViews)
+  })
+
+// const articlesMenu = S.listItem()
+//   .title('Articles')
+//   .icon(Notebook)
+//   .child(
+//     S.documentTypeList('articles')
+//       .title('Articles')
+//       .child(documentId =>
+//         S.document()
+//           .documentId(documentId)
+//           .schemaType('articles')
+//           .views(standardViews)
+//       )
+//   )
 
 // Extract our error page
 const currentErrorPage = S.listItem()
@@ -132,7 +158,7 @@ export const pagesMenu = S.listItem()
                   .views(standardViews)
               )
           ),
-        articlesMenu,
+        currentPostsPage,
         currentErrorPage
       ])
   )

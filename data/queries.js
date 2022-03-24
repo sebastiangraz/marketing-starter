@@ -122,6 +122,14 @@ export const modules = `
       title
     }
   },
+  _type == 'hero' => {
+    _type,
+    _key,
+    header,
+    lead,
+    primaryCTA,
+    secondaryCTA
+  },
   _type == 'dividerPhoto' => {
     _type,
     _key,

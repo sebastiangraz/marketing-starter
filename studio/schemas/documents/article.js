@@ -4,7 +4,7 @@ import { Gift, CloudArrowDown, ArrowsClockwise } from 'phosphor-react'
 export default {
   name: 'article',
   title: 'Article',
-  type: 'document',
+  type: 'object',
   // __experimental_actions: ['update', 'publish', 'delete'],
   fields: [
     {

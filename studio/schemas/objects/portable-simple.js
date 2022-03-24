@@ -42,8 +42,8 @@ export default {
               {
                 title: 'Internal Page',
                 name: 'page',
-                type: 'reference',
-                to: [{ type: 'page' }],
+                type: 'array',
+                of: [{ type: 'page' }, { type: 'navPosts' }],
                 hidden: ({ parent }) => parent.linkType !== 'internal'
               },
               {

@@ -29,8 +29,8 @@ export default {
       of: [
         { type: 'navPage' },
         { type: 'navLink' },
-        { type: 'navDropdown' },
-        { type: 'navPosts' }
+        { type: 'navDropdown' }
+        // { type: 'navPosts' }
       ]
     }
   ],

@@ -14,19 +14,19 @@ export default {
       description: 'This page will show at the root of your domain'
     },
     {
+      title: 'Posts Index',
+      name: 'posts',
+      type: 'reference',
+      weak: true,
+      to: [{ type: 'articles' }]
+    },
+    {
       title: 'Error Page (404)',
       name: 'error',
       type: 'reference',
       to: [{ type: 'page' }],
       description:
         'This page will show for any URL at your domain that does not exist yet'
-    },
-    {
-      title: 'Article path name',
-      name: 'articlePath',
-      type: 'string',
-      description:
-        'For instance /blog or /articles. Exclude the forward slash (/)'
     },
     {
       title: 'Site Title',

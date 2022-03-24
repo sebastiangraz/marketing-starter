@@ -79,7 +79,7 @@ export default {
                 title: 'Internal Page',
                 name: 'page',
                 type: 'reference',
-                to: [{ type: 'page' }],
+                to: [{ type: 'page' }, { type: 'articles' }],
                 hidden: ({ parent }) => parent.linkType !== 'internal'
               },
               {

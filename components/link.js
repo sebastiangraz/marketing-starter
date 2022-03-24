@@ -5,6 +5,7 @@ import cx from "classnames";
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, children, ...rest }) => {
+  console.log(link);
   const isLink = link?._type === "navLink";
   const isPosts = link?._type === "navPosts";
   const isStatic = getStaticRoute(link.page?.type);
@@ -16,6 +17,12 @@ const Link = ({ link, children, ...rest }) => {
         href={link.url}
         target={!link.url.match("^mailto:") ? "_blank" : null}
         rel="noopener noreferrer"
+        sx={{
+          ...(link.isButton && {
+            background: "currentColor",
+            color: "#fff",
+          }),
+        }}
         className={
           link.isButton
             ? cx("btn", link.styles?.style, {
@@ -47,6 +54,15 @@ const Link = ({ link, children, ...rest }) => {
         scroll={false}
       >
         <a
+          sx={{
+            ...(link.isButton && {
+              padding: 3,
+              borderRadius: "default",
+              background: "text",
+              color: "#fff",
+              TextDecoration: "none !important",
+            }),
+          }}
           className={
             link.isButton
               ? cx("btn", link.styles?.style, {

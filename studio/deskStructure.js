@@ -3,11 +3,12 @@ import S from '@sanity/desk-tool/structure-builder'
 import { settingsMenu } from './desk/settings'
 import { pagesMenu } from './desk/pages'
 import { menusMenu } from './desk/menus'
+import { articleMenu } from './desk/articles'
 
 const hiddenDocTypes = listItem =>
   ![
     'page',
-    'article',
+    'articles',
     'productVariant',
     'generalSettings',
     'cookieSettings',
@@ -24,6 +25,8 @@ export default () =>
     .title('Website')
     .items([
       pagesMenu,
+      S.divider(),
+      articleMenu,
       S.divider(),
       menusMenu,
       S.divider(),

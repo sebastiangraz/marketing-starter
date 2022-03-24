@@ -29,6 +29,7 @@ export default {
       of: [
         { type: 'grid' },
         { type: 'media' },
+        { type: 'hero' },
         { type: 'dividerPhoto' },
         { type: 'parallax' }
       ]

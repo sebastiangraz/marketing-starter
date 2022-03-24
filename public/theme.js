@@ -78,7 +78,7 @@ export default {
       p: { mb: 3 },
     },
   },
-  radii: ["8px", "16px", "24px"],
+  radii: { default: "28px", small: "16px", large: "48px" },
   styles: {
     "*": { boxSizing: "border-box" },
     body: {
@@ -94,7 +94,7 @@ export default {
       MozOsxFontSmoothing: "grayscale",
     },
     link: {
-      color: "inherit",
+      // color: "inherit",
       textDecoration: "underline",
       "&:hover": { textDecoration: "none" },
     },
