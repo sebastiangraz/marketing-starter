@@ -15,7 +15,7 @@ import redirect from './documents/redirect'
 
 // Module types
 import grid from './modules/grid'
-import hero from './modules/hero'
+import media from './modules/media'
 import dividerPhoto from './modules/divider-photo'
 import newsletter from './modules/newsletter'
 import parallax from './modules/parallax'
@@ -67,7 +67,7 @@ export default createSchema({
     /* --------------- */
     /* 2: Module types */
     grid,
-    hero,
+    media,
     dividerPhoto,
     newsletter,
     parallax,

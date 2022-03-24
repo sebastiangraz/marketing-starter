@@ -3,8 +3,8 @@ import { Star } from 'phosphor-react'
 import customImage from '../../lib/custom-image'
 
 export default {
-  title: 'Hero',
-  name: 'hero',
+  title: 'Media',
+  name: 'media',
   type: 'object',
   icon: Star,
   fields: [
@@ -75,7 +75,7 @@ export default {
     },
     prepare({ photo, content }) {
       return {
-        title: 'Hero',
+        title: 'Media',
         subtitle: content && content[0]?.text,
         media: photo
       }

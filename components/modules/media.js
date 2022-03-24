@@ -1,17 +1,17 @@
 import React from "react";
 
-import BlockContent from "../../components/block-content";
-import Photo from "../../components/photo";
+import BlockContent from "../block-content";
+import Photo from "../photo";
 import { getMaxWidth } from "../../lib/helpers";
 
 const style = {
-  hero: {
+  media: {
     display: "grid",
     overflow: "hidden",
     position: "relative",
     minHeight: "50vh",
   },
-  heroOverlay: {
+  mediaOverlay: {
     variant: "layout.row",
     position: "relative",
     zIndex: 2,
@@ -20,10 +20,10 @@ const style = {
     flexDirection: "column",
     gridArea: " 1/-1",
   },
-  heroContent: {
+  mediaContent: {
     alignContent: "center",
   },
-  heroBg: {
+  mediaBg: {
     gridArea: " 1/-1",
     "&.is-mobile": {
       display: ["block", "none"],
@@ -31,13 +31,13 @@ const style = {
   },
 };
 
-const Hero = ({ data = {} }) => {
+const Media = ({ data = {} }) => {
   const { content, bgType, photos, maxWidth } = data;
 
   return (
     <section
       sx={{
-        ...style.hero,
+        ...style.media,
         ...(content && {
           color: "#fff",
           "&:before": {
@@ -55,8 +55,8 @@ const Hero = ({ data = {} }) => {
       }}
     >
       {content && (
-        <div sx={style.heroOverlay}>
-          <div sx={style.heroContent}>
+        <div sx={style.mediaOverlay}>
+          <div sx={style.mediaContent}>
             <BlockContent
               sx={{ maxWidth: getMaxWidth(maxWidth?.value) }}
               blocks={content}
@@ -74,7 +74,7 @@ const Hero = ({ data = {} }) => {
               srcSizes={[800, 1000, 1200, 1600]}
               sizes="100vw"
               layout="fill"
-              sx={style.heroBg}
+              sx={style.mediaBg}
               className=" is-desktop"
             />
           )}
@@ -84,7 +84,7 @@ const Hero = ({ data = {} }) => {
               width={800}
               sizes="100vw"
               layout="fill"
-              sx={style.heroBg}
+              sx={style.mediaBg}
               className=" is-mobile"
             />
           )}
@@ -94,4 +94,4 @@ const Hero = ({ data = {} }) => {
   );
 };
 
-export default Hero;
+export default Media;

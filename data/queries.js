@@ -100,7 +100,7 @@ export const modules = `
       }
     }
   },
-  _type == 'hero' => {
+  _type == 'media' => {
     _type,
     _key,
     content[]{
