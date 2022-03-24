@@ -4,14 +4,11 @@ import { motion } from "framer-motion";
 
 const style = {
   innerSection: {
-    mt: [3, "25vh"],
+    mt: "25vh",
     p: [3, 6],
     gridColumn: "span 12",
-    height: (t) => [
-      `calc(100% - ${t.sizes[3]}px)`,
-      `calc(80% - ${t.sizes[15]}px)`,
-    ],
-
+    height: (t) => `calc(80% - ${t.sizes[15]}px)`,
+    // maxHeight: "100vmin",
     borderRadius: "3rem",
     overflow: "hidden",
     pointerEvents: "none",
@@ -26,7 +23,6 @@ const style = {
   section: {
     maxWidth: "1288px",
     height: "100vh",
-
     "&:first-of-type": {
       "& > *": {
         ml: "0px",
@@ -66,19 +62,11 @@ export const ParallaxCard = memo(
     columnCountEqualTo12,
     onClick,
   }) => {
-    const gapmath = (e) => -gapWidth / (12 / e) + gapWidth;
-
     return (
       <motion.div
         data-index={index}
         sx={{
           ...style.section,
-          // width: "720px",
-          // width: isSolo
-          //   ? "100%"
-          //   : `calc( 1288px * ${data.sizes ? data.sizes : 12} / 12 - ${gapmath(
-          //       data.sizes
-          //     )}px )`,
         }}
         variants={childVariant}
         initial="hidden"

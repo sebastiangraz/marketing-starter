@@ -71,7 +71,7 @@ export default {
     },
     grid: {
       display: "grid",
-      gridTemplateColumns: `repeat(12, 1fr)`,
+      gridTemplateColumns: [`repeat(6, 1fr)`, `repeat(12, 1fr)`],
     },
     post: {
       maxWidth: "65ch",
@@ -139,6 +139,7 @@ export default {
     buttonReset: {
       appearance: "none",
       letterSpacing: "inherit",
+      textAlign: "left",
       border: 0,
       fontFamily: "inherit",
       background: "none",

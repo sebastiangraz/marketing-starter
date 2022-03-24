@@ -16,8 +16,13 @@ const style = {
     variant: `${"layout.grid"}`,
   },
   footerItem: {
-    py: 4,
+    py: [1, 4],
     gridColumn: `span 3`,
+  },
+  ul: {
+    p: "0px",
+    flexDirection: "column",
+    li: { p: "0px" },
   },
 };
 const Footer = ({ data = {} }) => {
@@ -33,7 +38,7 @@ const Footer = ({ data = {} }) => {
                 {block.title && <p className="is-h3">{block.title}</p>}
 
                 {block.menu?.items && (
-                  <Menu items={block.menu.items} className="menu-footer" />
+                  <Menu items={block.menu.items} sx={style.ul} />
                 )}
 
                 {block.newsletter && <Newsletter data={block.newsletter} />}

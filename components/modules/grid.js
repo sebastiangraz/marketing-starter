@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React from "react";
 import Freeform from "../../components/freeform";
 import AccordionList from "../../components/accordion-list";
 import ImageFeature from "../../components/image-feature";
@@ -58,7 +58,6 @@ const Grid = ({ data = {} }) => {
                 key={key}
                 variants={childVariant}
                 sx={{
-                  bg: "#eee",
                   width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}% )`,
                 }}
               >
