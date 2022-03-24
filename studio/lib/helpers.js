@@ -38,22 +38,6 @@ export const getPtPreview = content => {
   }
 }
 
-export const getStaticRoute = name => {
-  switch (name) {
-    default:
-      return false
-  }
-}
-
-export const getDynamicRoute = name => {
-  switch (name) {
-    case 'product':
-      return 'products'
-    default:
-      return false
-  }
-}
-
 export const getSwatch = color => {
   return (
     <Circle

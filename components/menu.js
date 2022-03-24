@@ -29,7 +29,7 @@ const Menu = ({ items, hasFocus = true, onClick, ...rest }) => {
         const isDropdown = !!item.dropdownItems;
         const isStatic = getStaticRoute(item.page?.type);
         const isActive = getActive(isStatic, item?.page?.slug, router);
-        const isPostsActive = router.asPath.includes(item?.url?.current);
+        const isPostsActive = router.asPath.includes(item?.page?.slug);
 
         // Dropdown List
         if (isDropdown) {
@@ -56,7 +56,7 @@ const Menu = ({ items, hasFocus = true, onClick, ...rest }) => {
           return (
             <li
               key={key}
-              className={isPostsActive | isActive ? "is-active" : null}
+              className={isPostsActive || isActive ? "is-active" : null}
             >
               <CustomLink
                 tabIndex={!hasFocus ? -1 : null}

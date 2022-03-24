@@ -1,5 +1,6 @@
 // Construct our "home" and "error" page GROQ
 export const homeID = `*[_type=="generalSettings"][0].home->_id`;
+export const articlesID = `*[_type=="generalSettings"][0].posts->_id`;
 export const errorID = `*[_type=="generalSettings"][0].error->_id`;
 
 // Construct our "page" GROQ
@@ -7,6 +8,7 @@ const page = `
   "type": _type,
   "slug": slug.current,
   "isHome": _id == ${homeID},
+  "isArticles": _id == ${articlesID},
 `;
 
 // Construct our "link" GROQ

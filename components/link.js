@@ -5,9 +5,7 @@ import cx from "classnames";
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, children, ...rest }) => {
-  console.log(link);
   const isLink = link?._type === "navLink";
-  const isPosts = link?._type === "navPosts";
   const isStatic = getStaticRoute(link.page?.type);
 
   // External Link
@@ -40,6 +38,7 @@ const Link = ({ link, children, ...rest }) => {
   } else {
     const isDynamic = getDynamicRoute(link.page?.type);
     const isHome = link.page?.isHome;
+    const isArticles = link.page?.isArticles;
     return (
       <NextLink
         href={
@@ -47,9 +46,7 @@ const Link = ({ link, children, ...rest }) => {
             ? "/"
             : isStatic !== false
             ? `/${isStatic}`
-            : `/${isDynamic ? `${isDynamic}/` : ""}${
-                isPosts ? link.url?.current : link.page?.slug
-              }`
+            : `/${isDynamic ? `${isDynamic}/` : ""}${link.page?.slug}`
         }
         scroll={false}
       >
@@ -60,7 +57,7 @@ const Link = ({ link, children, ...rest }) => {
               borderRadius: "default",
               background: "text",
               color: "#fff",
-              TextDecoration: "none !important",
+              textDecoration: "none",
             }),
           }}
           className={
