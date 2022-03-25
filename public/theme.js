@@ -77,6 +77,13 @@ export default {
     },
   },
   radii: { default: "28px", small: "16px", large: "48px" },
+  text: {
+    default: {
+      lineHeight: 1.4,
+      letterSpacing: "body",
+      fontSize: [2, 2, 2],
+    },
+  },
   styles: {
     "*": { boxSizing: "border-box" },
     body: {
@@ -87,19 +94,16 @@ export default {
       fontSize: `clamp(12px, 1vw + 8px, 18px)`,
       color: "text",
       bg: "background",
+      fontWeight: "normal",
+      fontFamily: "body",
       letterSpacing: "body",
       WebkitFontSmoothing: "antialiased",
       MozOsxFontSmoothing: "grayscale",
     },
     link: {
-      // color: "inherit",
+      color: "inherit",
       textDecoration: "underline",
       "&:hover": { textDecoration: "none" },
-    },
-    "h2,h3,h4": {
-      fontFamily: ["body", "heading"],
-      fontWeight: "normal",
-      mb: "0.75em",
     },
     h1: {
       fontFamily: "heading",
@@ -109,14 +113,21 @@ export default {
       letterSpacing: "heading",
       fontSize: [5, 5, 6],
     },
-    h2: { lineHeight: 1.2, letterSpacing: "heading", fontSize: [3, 4, 5] },
+    h2: {
+      lineHeight: 1.2,
+      fontWeight: "normal",
+      letterSpacing: "heading",
+      fontSize: [3, 4, 5],
+    },
     h3: {
       lineHeight: 1.3,
+      fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 3, 4],
     },
     h4: {
       lineHeight: 1.36,
+      fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [2, 2, 3],
     },

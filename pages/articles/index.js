@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Themed } from "theme-ui";
 import Layout from "../../components/layout";
 import { getStaticPage } from "../../data";
 
@@ -8,7 +9,7 @@ const Blog = ({ data }) => {
   return (
     <Layout site={site} page={page}>
       <div sx={{ variant: "layout.row", my: 6 }}>
-        <h1>Articles</h1>
+        <Themed.h1>Articles</Themed.h1>
 
         {page.map(({ id, title = "", slug = "", publishedAt = "" }) => {
           return (
@@ -32,7 +33,7 @@ const Blog = ({ data }) => {
 };
 
 export async function getStaticProps({ preview, previewData }) {
-  const shopData = await getStaticPage(
+  const articleData = await getStaticPage(
     `
       *[_type == "article"] {
         "id": _id,
@@ -49,7 +50,7 @@ export async function getStaticProps({ preview, previewData }) {
 
   return {
     props: {
-      data: shopData,
+      data: articleData,
     },
   };
 }

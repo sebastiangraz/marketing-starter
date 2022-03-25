@@ -2,6 +2,7 @@ import { getAllDocSlugs, getArticle } from "../../data";
 import BlockContent from "../../components/block-content";
 import Layout from "../../components/layout";
 import Reveal from "../../components/reveal";
+import { Themed } from "theme-ui";
 
 //https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
 // do this
@@ -19,7 +20,7 @@ const Article = ({ data }) => {
           ]}
           childDelay={0.2}
         >
-          <h1>{page?.title}</h1>
+          <Themed.h1>{page?.title}</Themed.h1>
           <section sx={{ variant: "layout.post" }}>
             <BlockContent blocks={page?.content} />
           </section>

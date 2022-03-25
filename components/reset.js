@@ -10,9 +10,6 @@ export function Reset(props) {
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
         }
 
         @font-face {
@@ -31,6 +28,15 @@ export function Reset(props) {
           font-display: swap;
           src: url("/fonts/relative.woff") format("woff"),
             url("/fonts/relative.woff2") format("woff2");
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-weight: normal;
         }
 
         a {

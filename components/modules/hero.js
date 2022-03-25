@@ -1,4 +1,5 @@
 import React from "react";
+import { Themed } from "theme-ui";
 import { Width } from "../width";
 const style = {
   hero: {
@@ -20,14 +21,13 @@ const Hero = ({ data }) => {
         ...style.hero,
       }}
     >
-      {" "}
       <div sx={style.heroInner}>
         <Width sx={{ p: 9 }} value={[8, 5]}>
-          <h1 sx={{ m: 0, p: 0 }}>{header}</h1>
-          <h1 sx={{ m: 0, p: 0 }}>
+          <Themed.h1>{header}</Themed.h1>
+          <Themed.h1>
             <span>Compliance</span>
-          </h1>
-          <p>{lead}</p>
+          </Themed.h1>
+          <Themed.p sx={{ m: 0 }}>{lead}</Themed.p>
         </Width>
       </div>
     </section>

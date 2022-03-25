@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import cx from "classnames";
-
 import Icon from "../components/icon";
+import { Themed } from "theme-ui";
 
 const accordionAnim = {
   open: {
@@ -86,9 +86,7 @@ const Accordion = ({
         transition={{ duration: 0.5, ease: [0.19, 1.0, 0.22, 1.0] }}
         onAnimationComplete={(v) => setHasFocus(v === "open")}
       >
-        <div className="accordion--inner" hidden={!isOpen && !hasFocus}>
-          {children}
-        </div>
+        <Themed.p hidden={!isOpen && !hasFocus}>{children}</Themed.p>
       </motion.div>
     </div>
   );
