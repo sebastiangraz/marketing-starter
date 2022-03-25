@@ -1,4 +1,4 @@
-import { Star } from 'phosphor-react'
+import { Image } from 'phosphor-react'
 
 import customImage from '../../lib/custom-image'
 
@@ -6,7 +6,7 @@ export default {
   title: 'Media',
   name: 'media',
   type: 'object',
-  icon: Star,
+  icon: Image,
   fields: [
     {
       title: 'Overlay Content',

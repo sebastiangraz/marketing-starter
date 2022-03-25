@@ -16,7 +16,7 @@ const ImageFeature = ({ data }) => {
     image: {
       width: "100%",
       maxWidth: "10rem",
-      mb: 3,
+      mb: 0,
     },
     block: {
       height: "100%",

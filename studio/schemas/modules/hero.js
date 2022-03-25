@@ -1,4 +1,4 @@
-import { Image } from 'phosphor-react'
+import { Star } from 'phosphor-react'
 
 import customImage from '../../lib/custom-image'
 
@@ -6,7 +6,7 @@ export default {
   title: 'Hero',
   name: 'hero',
   type: 'object',
-  icon: Image,
+  icon: Star,
   fields: [
     {
       title: 'Header',
@@ -29,5 +29,15 @@ export default {
       type: 'string'
     }
   ],
-  preview: {}
+  preview: {
+    select: {
+      title: 'header'
+    },
+    prepare({ title, lead }) {
+      return {
+        title: `Hero`,
+        subtitle: `${title}`
+      }
+    }
+  }
 }

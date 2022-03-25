@@ -13,7 +13,7 @@ const style = {
     display: "inline-flex",
     listStyle: "none",
     "> * + * ": {
-      pl: 2,
+      pl: 5,
     },
   },
 };

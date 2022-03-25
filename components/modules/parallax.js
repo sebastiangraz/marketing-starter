@@ -63,7 +63,6 @@ const Parallax = memo(({ data = {} }) => {
   const columnCountEqualTo12 = calcColumnSum === 12;
   const isSolo = length === 1;
   const [index, setIndex] = useState([]);
-
   const [title, setTitle] = useState([]);
 
   useEffect(() => {

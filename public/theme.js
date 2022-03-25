@@ -1,9 +1,5 @@
 import { transparentize } from "@theme-ui/color";
 
-const core = [...Array(17).keys()].map((i) => {
-  return (i + 1) * 8;
-});
-
 const increment = [...Array(17).keys()].map((i) => {
   return i;
 });
@@ -44,8 +40,9 @@ const scroll = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  space: core,
-  sizes: core,
+  space: [0, 8, 14, 20, 28, 40, 56, 84, 96, 112, 132, 168, 200, 256],
+  sizes: [0, 8, 14, 20, 28, 40, 56, 84, 96, 112, 132, 168, 200, 256],
+
   fontSizes: typescale,
   breakpoints: bp,
   letterSpacings: {
@@ -53,6 +50,7 @@ export default {
     heading: "-0.05em",
     caps: "0.002em",
   },
+
   fonts: {
     body: "Relative, system-ui, sans-serif",
     heading: "RelativeFaux, sans-serif",
@@ -61,7 +59,7 @@ export default {
   colors: {
     text: "#0C002B",
     background: "F8F8F7",
-    primary: "#DF3B24",
+    primary: "#F3B29C",
   },
   layout: {
     row: {

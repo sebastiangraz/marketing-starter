@@ -35,7 +35,7 @@ const style = {
     display: "grid",
     gridTemplateColumns: `1fr 1fr 1fr`,
     alignItems: "start",
-    height: 11,
+    height: 8,
     li: {
       "&.is-active": {
         color: "primary",

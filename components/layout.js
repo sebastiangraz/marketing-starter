@@ -83,6 +83,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
               maxWidth: "1288px",
               height: "100vh",
               width: "88%",
+              zIndex: 1000,
               background:
                 "repeating-linear-gradient(90deg, rgba(255,0,0,0.1), rgba(255,0,0,0.1) 2px, transparent 2px, transparent calc(100 / (1288 / 56) * 1%) )",
               backgroundPosition: "-1px 0px",
