@@ -53,9 +53,10 @@ const Dropdown = ({ id, title, items, onClick }) => {
             position: "absolute",
             top: "-0.025em",
             display: "inline-block",
+            ml: "4px",
             svg: {
               transition: ".3s cubic-bezier(.22,1,.36,1)",
-              ml: 1,
+
               width: "0.5em",
               height: "100%",
               transform: "rotate(180deg)",
@@ -76,7 +77,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
           animate={isOpen ? "visible" : "hidden"}
           sx={{
             p: "0px",
-            pt: 1,
+            pt: 2,
             left: "0px",
             listStyle: "none",
             "> * + * ": {

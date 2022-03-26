@@ -26,7 +26,7 @@ const style = {
     display: "flex",
     borderBottom: "1px solid currentColor",
     justifyContent: "space-between",
-    py: 3,
+    py: 2,
     px: "0px",
     fontSize: 2,
   },

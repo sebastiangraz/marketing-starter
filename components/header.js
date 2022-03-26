@@ -37,6 +37,7 @@ const style = {
     alignItems: "start",
     height: 8,
     li: {
+      whiteSpace: "pre",
       "&.is-active": {
         color: "primary",
       },
@@ -49,11 +50,15 @@ const style = {
       alignItems: "center",
     },
     ".menu": {
+      width: "100%",
+      justifyContent: "center",
       justifySelf: "center",
       alignItems: "center",
       gridArea: "1/2",
     },
     ".submenu": {
+      width: "100%",
+      justifyContent: "flex-end",
       justifySelf: "flex-end",
       alignItems: "center",
       gridArea: "1/3",
@@ -64,13 +69,7 @@ const style = {
       "&:hover": { opacity: 0.6 },
     },
     button: {
-      appearance: "none",
-      letterSpacing: "inherit",
-      border: 0,
-      fontFamily: "inherit",
-      background: "none",
-      color: "inherit",
-      fontSize: "inherit",
+      variant: "styles.buttonReset",
     },
   },
 };

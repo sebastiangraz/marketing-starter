@@ -1,13 +1,20 @@
 import React from "react";
-import { Themed } from "theme-ui";
+import { Themed, Flex } from "theme-ui";
 import { Width } from "../width";
+import Icon from "../icon";
+import NextLink from "next/link";
+
 const style = {
   hero: {
-    mt: 7,
+    mt: 2,
     position: "relative",
   },
   heroInner: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
     borderRadius: "large",
+    justifyContent: "space-between",
     background: "primary",
     variant: "layout.row",
   },
@@ -22,12 +29,35 @@ const Hero = ({ data }) => {
       }}
     >
       <div sx={style.heroInner}>
-        <Width sx={{ p: 9 }} value={[8, 5]}>
-          <Themed.h1>{header}</Themed.h1>
-          <Themed.h1>
-            <span>Compliance</span>
+        <Width sx={{ pl: 4, py: 4, pr: 2, flexShrink: 0 }} value={[5]}>
+          <Themed.h1 sx={{ mt: 0, mb: "5rem" }}>
+            {header}
+            <span> compliance</span>
           </Themed.h1>
-          <Themed.p sx={{ m: 0 }}>{lead}</Themed.p>
+          <Themed.p sx={{ m: 0, mb: "4rem" }}>{lead}</Themed.p>
+          <Flex sx={{ gap: 3, zIndex: 1, position: "relative" }}>
+            <NextLink href="">
+              <a
+                sx={{
+                  variant: "buttons.primary",
+                }}
+              >
+                Book a Demo
+              </a>
+            </NextLink>
+            <NextLink href="">
+              <a
+                sx={{
+                  variant: "buttons.secondary",
+                }}
+              >
+                Watch a video
+              </a>
+            </NextLink>
+          </Flex>
+        </Width>
+        <Width sx={{ position: "absolute", right: -6 }} value={[8]}>
+          <Icon name="Hero" viewBox="0 0 897.5 618" />
         </Width>
       </div>
     </section>

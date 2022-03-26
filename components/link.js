@@ -53,11 +53,7 @@ const Link = ({ link, children, ...rest }) => {
         <a
           sx={{
             ...(link.isButton && {
-              padding: 3,
-              borderRadius: "default",
-              background: "text",
-              color: "#fff",
-              textDecoration: "none",
+              variant: "buttons.primary",
             }),
           }}
           className={

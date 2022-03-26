@@ -16,6 +16,12 @@ const typescale = increment.slice(0, n).map((e, i) => {
   return `${rem}rem`;
 });
 
+const gapSize = 56;
+const gap = 100 / (1288 / gapSize);
+const space = [...Array(17).keys()].map((e, i) => {
+  return `${(gap * i) / 2}%`;
+});
+
 const bp = ["40em", "64em", "100em"];
 
 const scroll = {
@@ -40,7 +46,7 @@ const scroll = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  space: [0, 8, 14, 20, 28, 40, 56, 84, 96, 112, 132, 168, 200, 256],
+  space: space,
   sizes: [0, 8, 14, 20, 28, 40, 56, 84, 96, 112, 132, 168, 200, 256],
 
   fontSizes: typescale,
@@ -84,6 +90,28 @@ export default {
       fontSize: [2, 2, 2],
     },
   },
+  buttons: {
+    primary: {
+      whiteSpace: "pre",
+      fontSize: 3,
+      px: "3rem",
+      py: "2rem",
+      borderRadius: "default",
+      background: "text",
+      color: "#fff",
+      textDecoration: "none",
+    },
+    secondary: {
+      whiteSpace: "pre",
+      fontSize: 3,
+      px: "3rem",
+      py: "2rem",
+      borderRadius: "default",
+      color: "text",
+      background: "#fff",
+      textDecoration: "none",
+    },
+  },
   styles: {
     "*": { boxSizing: "border-box" },
     body: {
@@ -105,6 +133,7 @@ export default {
       textDecoration: "underline",
       "&:hover": { textDecoration: "none" },
     },
+
     h1: {
       fontFamily: "heading",
       fontWeight: "normal",
@@ -150,6 +179,7 @@ export default {
       letterSpacing: "inherit",
       textAlign: "left",
       border: 0,
+      padding: 0,
       fontFamily: "inherit",
       background: "none",
       color: "inherit",

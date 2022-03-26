@@ -12,7 +12,7 @@ const style = {
     variant: `${"layout.row"}`,
   },
   footerGrid: {
-    columnGap: 6,
+    columnGap: 2,
     variant: `${"layout.grid"}`,
   },
   footerItem: {

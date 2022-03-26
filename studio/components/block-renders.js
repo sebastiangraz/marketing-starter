@@ -55,13 +55,15 @@ export const Header4 = props => (
 
 export const Button = ({ isButton, styles, children }) => {
   if (!isButton) return children
-
+  console.log(isButton, children)
   return (
     <span
-      className={cx('btn', styles?.style, {
-        'is-large': styles?.isLarge,
-        'is-block': styles?.isBlock
-      })}
+      style={{
+        background: '#000',
+        padding: '1rem',
+        color: '#fff',
+        borderRadius: '8px'
+      }}
     >
       {children}
     </span>
