@@ -1,10 +1,11 @@
 import React from "react";
 import { Themed, Flex } from "theme-ui";
 import { Width } from "../width";
-import { hero } from "../icon";
+import { heroPath } from "../hero/heroPaths";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
-import { HeroAnimation } from "../heroAnimation";
+import { HeroAnimation } from "../hero/heroAnimation";
+
 const style = {
   hero: {
     mt: 2,
@@ -46,10 +47,6 @@ const intersectionVariant = {
   hidden: {
     WebkitMaskImage:
       "linear-gradient(-60deg, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 1) 100%)",
-
-    transition: {
-      // when: "beforeChildren",
-    },
   },
   visible: {
     WebkitMaskImage:
@@ -57,7 +54,7 @@ const intersectionVariant = {
     transition: {
       opacity: { duration: 4 },
       ease: [0.1, 0.11, 0.37, 0.84],
-      duration: 3,
+      duration: 3.5,
     },
   },
 };
@@ -214,6 +211,14 @@ const Hero = ({ data }) => {
               vectorEffect="non-scaling-stroke"
               d="M449.004 0V168H505H561V224H505V280H561H617V336V448"
             />
+
+            <motion.path
+              variants={childVariant}
+              stroke="currentColor"
+              fill="transparent"
+              vectorEffect="non-scaling-stroke"
+              d="M449.004 0V168H505V336H561V392H589V392C589 376.536 601.536 364 617 364H673C688.464 364 701 376.536 701 392V392C701 407.464 688.464 420 673 420H616.5C601.312 420 589 407.688 589 392.5V392.5"
+            />
             <foreignObject width="100%" height="100%">
               <motion.div variants={intersectionVariant}>
                 <motion.svg
@@ -228,20 +233,12 @@ const Hero = ({ data }) => {
                   <motion.path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
-                    d={hero.intersections}
+                    d={heroPath.intersections}
                     fill="currentColor"
                   />
                 </motion.svg>
               </motion.div>
             </foreignObject>
-            <motion.path
-              variants={childVariant}
-              stroke="currentColor"
-              fill="transparent"
-              vectorEffect="non-scaling-stroke"
-              d="M449.004 0V168H505V336H561V392H589V392C589 376.536 601.536 364 617 364H673C688.464 364 701 376.536 701 392V392C701 407.464 688.464 420 673 420H616.5C601.312 420 589 407.688 589 392.5V392.5"
-            />
-
             <motion.path
               variants={childVariant}
               stroke="currentColor"
@@ -274,14 +271,14 @@ const Hero = ({ data }) => {
               variants={cardVariant}
               fillRule="evenodd"
               clipRule="evenodd"
-              d={hero.canadaCard}
+              d={heroPath.canadaCard}
               fill="currentColor"
             />
             <motion.path
               variants={cardVariant}
               fillRule="evenodd"
               clipRule="evenodd"
-              d={hero.amsterdamCard}
+              d={heroPath.amsterdamCard}
               fill="currentColor"
             />
 
