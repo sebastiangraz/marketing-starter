@@ -10,6 +10,7 @@ const style = {
   hero: {
     mt: 2,
     position: "relative",
+    contain: "paint",
   },
   heroInner: {
     position: "relative",
@@ -39,6 +40,19 @@ const childVariant = {
     transition: {
       pathLength: { type: "spring", duration: 2, bounce: 0 },
       duration: 2,
+    },
+  },
+};
+
+const offsiteVariant = {
+  hidden: { pathLength: 0, opacity: 0.5 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      when: "afterChildren",
+      delay: 3.5,
+      pathLength: { type: "spring", duration: 5, bounce: 0 },
     },
   },
 };
@@ -119,22 +133,13 @@ const Hero = ({ data }) => {
         </Width>
         <Width
           sx={{
-            // "&:before": {
-            //   content: `""`,
-            //   position: "absolute",
-            //   left: 0,
-            //   top: "100%",
-            //   width: "1px",
-            //   height: "80px",
-            //   bg: "currentColor",
-            //   willChange: "transform",
-            // },
             position: "absolute",
             right: -6,
           }}
           value={[8]}
         >
           <motion.svg
+            sx={{ overflow: "visible" }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 897.5 1041.5"
             aria-labelledby="hero-"
@@ -298,6 +303,23 @@ const Hero = ({ data }) => {
               d={heroPath.amsterdamCard}
               fill="currentColor"
             />
+            <svg
+              y={"calc(50% - 17.25px)"}
+              x={"calc(100% - 1px)"}
+              width="3000"
+              height="2"
+              viewBox="0 0 3000 1"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                variants={offsiteVariant}
+                vectorEffect="non-scaling-stroke"
+                shapeRendering="geometricPrecision"
+                d="M0 0H3000"
+                stroke="black"
+              />
+            </svg>
 
             <HeroAnimation loop="checkReview" />
             <HeroAnimation loop="checkReview2" />
