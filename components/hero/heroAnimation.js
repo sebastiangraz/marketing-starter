@@ -10,6 +10,13 @@ const checkReviewTransition = {
   delay: 4,
 };
 
+const flowTransition = {
+  ease: "linear",
+  repeat: Infinity,
+  repeatType: "loop",
+  duration: 28,
+};
+
 const cursorCheckReviewVariant = {
   hidden: {
     y: 0,
@@ -42,7 +49,7 @@ const cursorLiquidateVariant = {
   visible: {
     y: [170, 100, 170, 170, 170, 170],
     x: [0, -100, -100, -100, 0, 0],
-    transition: { ...checkReviewTransition, delay: 8 },
+    transition: { ...checkReviewTransition, delay: 7 },
   },
 };
 
@@ -56,13 +63,138 @@ const liquidateVariant = {
     opacity: [0, 0, 1, 1, 0, 0],
     transition: {
       ...checkReviewTransition,
-      delay: 8,
+      delay: 7,
     },
+  },
+};
+
+const flowVariant = {
+  hidden: {
+    offsetDistance: "0%",
+    // opacity: 0,
+    scale: 0.1,
+  },
+  visible: {
+    offsetDistance: "100%",
+    // opacity: [0, 1, 1, 1, 1, 0],
+    scale: [0.1, 1, 1, 1, 1, 0.1],
   },
 };
 
 export const HeroAnimation = ({ loop }) => {
   switch (loop) {
+    case "flow-4":
+      return (
+        <foreignObject width="100%" height="100%">
+          <motion.div
+            variants={flowVariant}
+            transition={{ ...flowTransition }}
+            sx={{
+              display: "flex",
+              width: "12px",
+              height: "12px",
+              offsetPath: `path(
+          "M449.004 0V224H393V336H281V392V448H337H393V504H449V448H505V504H561V448H617V504H673V448H729V392H785V392C799.912 392 812 404.088 812 419V448"
+          )`,
+            }}
+          >
+            <svg
+              shapeRendering="optimizeSpeed"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
+            </svg>
+          </motion.div>
+        </foreignObject>
+      );
+    case "flow-3":
+      return (
+        <foreignObject width="100%" height="100%">
+          <motion.div
+            variants={flowVariant}
+            transition={{ ...flowTransition, delay: 3 }}
+            sx={{
+              display: "flex",
+              width: "12px",
+              height: "12px",
+              offsetPath: `path(
+          "M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281H225V280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
+          )`,
+            }}
+          >
+            <svg
+              shapeRendering="optimizeSpeed"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
+            </svg>
+          </motion.div>
+        </foreignObject>
+      );
+    case "flow-2":
+      return (
+        <foreignObject width="100%" height="100%">
+          <motion.div
+            variants={flowVariant}
+            transition={{ ...flowTransition, delay: 6 }}
+            sx={{
+              display: "flex",
+              width: "12px",
+              height: "12px",
+              offsetPath: `path(
+          "M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447"
+          )`,
+            }}
+          >
+            <svg
+              shapeRendering="optimizeSpeed"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
+            </svg>
+          </motion.div>
+        </foreignObject>
+      );
+    case "flow-1":
+      return (
+        <foreignObject width="100%" height="100%">
+          <motion.div
+            variants={flowVariant}
+            transition={{ ...flowTransition, delay: 9 }}
+            sx={{
+              display: "flex",
+              width: "12px",
+              height: "12px",
+              offsetPath: `path(
+          "M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
+          )`,
+            }}
+          >
+            <svg
+              shapeRendering="optimizeSpeed"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
+            </svg>
+          </motion.div>
+        </foreignObject>
+      );
     case "checkReview":
       return (
         <foreignObject width="100%" height="100%">
@@ -279,13 +411,13 @@ export const HeroAnimation = ({ loop }) => {
                 <path
                   d="M4.00959 4.70781L29.9157 13.9043C31.7321 14.5491 31.675 17.1374 29.8319 17.7015L22.4768 19.9526C21.9239 20.1218 21.4713 20.5221 21.2357 21.0502L15.1492 34.6922C14.4173 36.3327 12.0617 36.2515 11.4445 34.5645L1.46227 7.27974C0.880596 5.68984 2.41417 4.14145 4.00959 4.70781Z"
                   fill="#F6E9D9"
-                  stroke="#3C1F04"
+                  stroke="currentColor"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M5.40536 1.77049L29.201 11.7141C30.9444 12.4426 30.7985 14.9595 28.9825 15.4816L20.8264 17.8264C20.2475 17.9928 19.7744 18.4114 19.5386 18.9657L14.4345 30.9659C14.0801 31.799 12.8894 31.77 12.5761 30.9207L2.75785 4.30811C2.15311 2.66894 3.79328 1.09685 5.40536 1.77049Z"
                   fill="white"
-                  stroke="#3C1F04"
+                  stroke="currentColor"
                   strokeLinejoin="round"
                 />
               </motion.svg>

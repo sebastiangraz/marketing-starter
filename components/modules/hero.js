@@ -145,6 +145,7 @@ const Hero = ({ data }) => {
           >
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -152,6 +153,7 @@ const Hero = ({ data }) => {
             />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -159,6 +161,7 @@ const Hero = ({ data }) => {
             />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -166,14 +169,19 @@ const Hero = ({ data }) => {
             />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
               d="M449.004 0V224H337V336H225V392H281V448V476C281 491.464 293.536 504 309 504H337"
             />
-
+            <HeroAnimation loop="flow-1" />
+            <HeroAnimation loop="flow-2" />
+            <HeroAnimation loop="flow-3" />
+            <HeroAnimation loop="flow-4" />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -182,6 +190,7 @@ const Hero = ({ data }) => {
 
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -190,6 +199,7 @@ const Hero = ({ data }) => {
 
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -198,6 +208,7 @@ const Hero = ({ data }) => {
 
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -206,6 +217,7 @@ const Hero = ({ data }) => {
 
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -214,6 +226,7 @@ const Hero = ({ data }) => {
 
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -241,6 +254,7 @@ const Hero = ({ data }) => {
             </foreignObject>
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -248,6 +262,7 @@ const Hero = ({ data }) => {
             />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -255,6 +270,7 @@ const Hero = ({ data }) => {
             />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
@@ -262,6 +278,7 @@ const Hero = ({ data }) => {
             />
             <motion.path
               variants={childVariant}
+              shapeRendering="geometricPrecision"
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
