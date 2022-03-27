@@ -55,7 +55,6 @@ export const Header4 = props => (
 
 export const Button = ({ isButton, styles, children }) => {
   if (!isButton) return children
-  console.log(isButton, children)
   return (
     <span
       style={{

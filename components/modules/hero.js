@@ -96,6 +96,8 @@ const cardVariant = {
 
 const Hero = ({ data }) => {
   const { header, lead } = data;
+  const words = ["compliance", "audits", "management", "compliance"];
+  const getPercentage = words.map((e, i) => `-${i * (100 / words.length)}%`);
 
   return (
     <section
@@ -107,7 +109,39 @@ const Hero = ({ data }) => {
         <Width sx={{ pl: 4, py: 4, pr: 2, flexShrink: 0 }} value={[5]}>
           <Themed.h1 sx={{ mt: 0, mb: "5rem" }}>
             {header}
-            <span> compliance</span>
+            <div
+              sx={{
+                height: "3rem",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <motion.div
+                animate={{
+                  y: getPercentage,
+                }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  transform: "translateY(0%)",
+                }}
+              >
+                {words.map((e, i) => {
+                  return (
+                    <div sx={{ width: "100%", height: "100%" }} key={e + i}>
+                      {e}
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </div>
           </Themed.h1>
           <Themed.p sx={{ m: 0, mb: "4rem" }}>{lead}</Themed.p>
           <Flex sx={{ gap: 3, zIndex: 1, position: "relative" }}>
@@ -249,8 +283,8 @@ const Hero = ({ data }) => {
                   variants={parentVariant}
                 >
                   <motion.path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d={heroPath.intersections}
                     fill="currentColor"
                   />

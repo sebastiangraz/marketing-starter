@@ -6,7 +6,6 @@ export const Width = ({ value = [], outerPadding, children, ...rest }) => {
     const gapmath = (size) => -gap / (12 / size);
     return `${e !== 12 ? (100 * e) / 12 - gapmath(e) : "100"}%`;
   });
-  console.log(width);
   return (
     <div {...rest} sx={{ width: width }}>
       {children}
