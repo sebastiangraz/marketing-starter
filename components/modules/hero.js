@@ -44,14 +44,21 @@ const childVariant = {
 
 const intersectionVariant = {
   hidden: {
-    clipPath: "circle(0% at 5% 40%)",
+    WebkitMaskImage:
+      "linear-gradient(-60deg, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 1) 100%)",
+
     transition: {
       // when: "beforeChildren",
     },
   },
   visible: {
-    clipPath: "circle(85% at 5% 40%)",
-    transition: { ease: [0.1, 0.11, 0.37, 0.84], duration: 3 },
+    WebkitMaskImage:
+      "linear-gradient(-60deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 10%)",
+    transition: {
+      opacity: { duration: 4 },
+      ease: [0.1, 0.11, 0.37, 0.84],
+      duration: 3,
+    },
   },
 };
 
@@ -207,13 +214,26 @@ const Hero = ({ data }) => {
               vectorEffect="non-scaling-stroke"
               d="M449.004 0V168H505H561V224H505V280H561H617V336V448"
             />
-            <motion.path
-              variants={intersectionVariant}
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d={hero.intersections}
-              fill="currentColor"
-            />
+            <foreignObject width="100%" height="100%">
+              <motion.div variants={intersectionVariant}>
+                <motion.svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 897.5 1041.5"
+                  aria-labelledby="hero-"
+                  className="css-mbumtg-Hero"
+                  initial="hidden"
+                  animate="visible"
+                  variants={parentVariant}
+                >
+                  <motion.path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d={hero.intersections}
+                    fill="currentColor"
+                  />
+                </motion.svg>
+              </motion.div>
+            </foreignObject>
             <motion.path
               variants={childVariant}
               stroke="currentColor"

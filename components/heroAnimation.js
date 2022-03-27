@@ -211,10 +211,23 @@ export const HeroAnimation = ({ loop }) => {
                 x="1"
                 y="1"
                 width="82"
-                height="72"
-                rx="18.5"
+                height="70"
+                rx="16"
                 fill="white"
                 stroke="currentColor"
+              />
+              <motion.rect
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: [0.1, 0.1, 0.1, 0.36, 0, 0.1],
+                }}
+                transition={{ ...checkReviewTransition, delay: 8 }}
+                x="8"
+                y="44"
+                width="68"
+                height="20"
+                rx="8"
+                fill="currentColor"
               />
               <path
                 d="M15 23L17 25L21 21"
