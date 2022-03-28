@@ -98,7 +98,7 @@ const cardVariant = {
 const Hero = ({ data }) => {
   const { header, lead } = data;
   const words = ["compliance", "audits", "management"];
-  const getPercentage = [...words, words.at(0)].map((e, i) => {
+  const getPercentage = [...words, words[0]].map((e, i) => {
     return `-${i * 100}%`;
   });
 
