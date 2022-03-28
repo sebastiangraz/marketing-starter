@@ -25,7 +25,6 @@ const space = [...Array(17).keys()].map((e, i) => {
 const bp = ["40em", "64em", "100em"];
 
 const buttonHover = {
-  position: "relative",
   "&:after": {
     pointerEvents: "none",
     content: `""`,
@@ -38,13 +37,25 @@ const buttonHover = {
     zIndex: 1,
     position: "absolute",
     opacity: 0,
-    transition: "ease 1s opacity",
+    transition: "ease 0.3s opacity",
   },
   "&:hover": {
     "&:after": {
       opacity: 1,
     },
   },
+};
+
+const buttonBase = {
+  position: "relative",
+  whiteSpace: "pre",
+  fontSize: 2,
+  px: "3rem",
+  py: "1.5rem",
+  borderRadius: "default",
+  textDecoration: "none",
+  cursor: "pointer",
+  placeSelf: "flex-start",
 };
 
 const scroll = {
@@ -105,7 +116,7 @@ export default {
       p: { mb: 3 },
     },
   },
-  radii: { default: "28px", small: "16px", large: "48px" },
+  radii: { default: "1.5rem", small: "1rem", large: "2rem" },
   text: {
     default: {
       lineHeight: 1.4,
@@ -115,27 +126,15 @@ export default {
   },
   buttons: {
     primary: {
-      whiteSpace: "pre",
-      fontSize: 2,
-      px: "3rem",
-      py: "1.5rem",
-      borderRadius: "default",
+      ...buttonBase,
       background: "text",
       color: "#fff",
-      textDecoration: "none",
-      cursor: "pointer",
       ...buttonHover,
     },
     secondary: {
-      whiteSpace: "pre",
-      fontSize: 2,
-      px: "3rem",
-      py: "1.5rem",
-      borderRadius: "default",
-      color: "text",
+      ...buttonBase,
       background: "#fff",
-      textDecoration: "none",
-      cursor: "pointer",
+      color: "text",
       ...buttonHover,
     },
   },

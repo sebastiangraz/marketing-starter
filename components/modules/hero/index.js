@@ -5,12 +5,13 @@ import { heroPath } from "./heroPaths";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { HeroAnimation } from "./heroAnimation";
+import Carousel from "../../carousel";
 
 const style = {
   hero: {
     mt: 2,
     position: "relative",
-    contain: "paint",
+    overflow: "hidden",
     color: "var(--heroColor)",
   },
   heroInner: {
@@ -99,7 +100,7 @@ const Hero = ({ data }) => {
   const { header, lead } = data;
   const words = ["compliance", "audits", "management"];
   const getPercentage = [...words, words.at(0)].map((e, i) => {
-    return `-${i * (100 / (words.length + 1))}%`;
+    return `-${i * 100}%`;
   });
 
   return (
@@ -110,14 +111,18 @@ const Hero = ({ data }) => {
       }}
     >
       <div sx={style.heroInner}>
-        <Width sx={{ pl: 4, py: 4, pr: 2, flexShrink: 0 }} value={[5]}>
-          <Themed.h1 sx={{ mt: 0, mb: "5rem" }}>
-            {header}
-            <div
+        <Width sx={{ pl: 4, py: 4, pr: 2, flexShrink: 0 }} value={[12]}>
+          <Themed.h1
+            sx={{ mt: 0, mb: "5rem", maxWidth: "22ch", width: "100%" }}
+          >
+            <span>{header} </span>
+
+            <motion.div
               sx={{
-                height: "3.25rem",
+                display: "inline-grid",
                 overflow: "hidden",
                 position: "relative",
+                pr: "1ch",
               }}
             >
               <motion.div
@@ -132,17 +137,21 @@ const Hero = ({ data }) => {
                   repeatType: "loop",
                 }}
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "absolute",
-                  top: 0,
-                  transform: "translateY(0%)",
+                  display: "inline-grid",
+                  position: "relative",
                 }}
               >
                 {[...words, words.at(0)].map((e, i) => {
                   return (
                     <div
-                      sx={{ width: "100%", height: "100%", py: 1 }}
+                      sx={{
+                        position: "relative",
+                        gridArea: "-1/1",
+                        minWidth: "100%",
+                        top: `${100 * i}%`,
+                        height: "100%",
+                        pb: "0.5rem",
+                      }}
                       key={e + i}
                     >
                       {e}
@@ -150,7 +159,7 @@ const Hero = ({ data }) => {
                   );
                 })}
               </motion.div>
-            </div>
+            </motion.div>
           </Themed.h1>
 
           <Themed.h4 sx={{ m: 0, mb: "3rem", width: "19ch" }}>{lead}</Themed.h4>
@@ -179,10 +188,10 @@ const Hero = ({ data }) => {
         </Width>
         <Width
           sx={{
-            position: "absolute",
-            right: -6,
+            position: ["relative", null, "absolute"],
+            right: [0, null, -6],
           }}
-          value={[8]}
+          value={[12, 12, 8]}
         >
           <motion.svg
             sx={{ overflow: "visible" }}
