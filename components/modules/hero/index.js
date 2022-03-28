@@ -1,10 +1,10 @@
 import React from "react";
 import { Themed, Flex } from "theme-ui";
-import { Width } from "../width";
-import { heroPath } from "../hero/heroPaths";
+import { Width } from "../../width";
+import { heroPath } from "./heroPaths";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
-import { HeroAnimation } from "../hero/heroAnimation";
+import { HeroAnimation } from "./heroAnimation";
 
 const style = {
   hero: {
@@ -85,7 +85,7 @@ const cardVariant = {
     scale: 1,
     opacity: 1,
     transition: {
-      type: "spring",
+      ease: [0.1, 0.11, 0.37, 0.84],
       duration: 2,
       bounce: 0,
       delay: 2,
@@ -96,8 +96,10 @@ const cardVariant = {
 
 const Hero = ({ data }) => {
   const { header, lead } = data;
-  const words = ["compliance", "audits", "management", "compliance"];
-  const getPercentage = words.map((e, i) => `-${i * (100 / words.length)}%`);
+  const words = ["compliance", "audits", "management"];
+  const getPercentage = [...words, words.at(0)].map((e, i) => {
+    return `-${i * (100 / (words.length + 1))}%`;
+  });
 
   return (
     <section
@@ -111,9 +113,7 @@ const Hero = ({ data }) => {
             {header}
             <div
               sx={{
-                height: "3rem",
-                display: "flex",
-                flexDirection: "column",
+                height: "3.25rem",
                 overflow: "hidden",
                 position: "relative",
               }}
@@ -128,14 +128,19 @@ const Hero = ({ data }) => {
                   repeatType: "loop",
                 }}
                 sx={{
+                  display: "flex",
+                  flexDirection: "column",
                   position: "absolute",
                   top: 0,
                   transform: "translateY(0%)",
                 }}
               >
-                {words.map((e, i) => {
+                {[...words, words.at(0)].map((e, i) => {
                   return (
-                    <div sx={{ width: "100%", height: "100%" }} key={e + i}>
+                    <div
+                      sx={{ width: "100%", height: "100%", py: 1 }}
+                      key={e + i}
+                    >
                       {e}
                     </div>
                   );

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { heroPath } from "../hero/heroPaths";
+import { heroPath } from "./heroPaths";
 
 const checkReviewTransition = {
   repeat: Infinity,
@@ -294,7 +294,7 @@ export const HeroAnimation = ({ loop }) => {
               animate={{ offsetDistance: "100%", scale: 1 }}
               transition={{
                 duration: 4,
-                yoyo: Infinity,
+                repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
@@ -397,7 +397,7 @@ export const HeroAnimation = ({ loop }) => {
               animate={{ offsetDistance: "100%", scale: 1 }}
               transition={{
                 duration: 4,
-                yoyo: Infinity,
+                repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
