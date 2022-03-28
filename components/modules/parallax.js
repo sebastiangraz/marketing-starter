@@ -8,6 +8,7 @@ import {
   useMotionValue,
 } from "framer-motion";
 import { ParallaxCard } from "../parallaxCard";
+import { Themed } from "theme-ui";
 
 const Parallax = memo(({ data = {} }) => {
   const settings = {
@@ -234,7 +235,7 @@ const Parallax = memo(({ data = {} }) => {
       {console.log("[[parallax.js rendered]]")}
 
       <div sx={style.container} ref={ref}>
-        <h2
+        <Themed.h1
           sx={{
             position: "sticky",
             top: "10vh",
@@ -243,7 +244,7 @@ const Parallax = memo(({ data = {} }) => {
           }}
         >
           {title} · love us for{" "}
-        </h2>
+        </Themed.h1>
         <motion.div
           className="inner-container"
           sx={style.innerContainer}

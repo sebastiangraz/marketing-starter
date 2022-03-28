@@ -28,14 +28,14 @@ const rotate = {
 const style = {
   navStyle: {
     fontSize: 2,
-    borderBottom: "1px solid",
   },
   navWrapper: {
     variant: "layout.row",
     display: "grid",
     gridTemplateColumns: `1fr 1fr 1fr`,
     alignItems: "start",
-    height: 8,
+    height: "5rem",
+    mt: "2rem",
     li: {
       whiteSpace: "pre",
       "&.is-active": {
@@ -92,7 +92,6 @@ const Header = ({ data = {} }) => {
           <div className="logo">
             <motion.span
               sx={{
-                mt: 1,
                 display: "inline-block",
                 willChange: "transform",
               }}

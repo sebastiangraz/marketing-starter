@@ -7,7 +7,7 @@ const style = {
     mt: "25vh",
     p: [3, 6],
     gridColumn: "span 12",
-    height: (t) => `calc(65%)`,
+    height: `calc(65%)`,
     maxHeight: "100vmin",
     borderRadius: "3rem",
     overflow: "hidden",

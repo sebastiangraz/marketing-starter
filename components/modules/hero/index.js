@@ -8,7 +8,6 @@ import { HeroAnimation } from "./heroAnimation";
 
 const style = {
   hero: {
-    mt: 2,
     position: "relative",
     overflow: "hidden",
     color: "var(--heroColor)",

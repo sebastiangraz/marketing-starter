@@ -8,7 +8,7 @@ const Blog = ({ data }) => {
 
   return (
     <Layout site={site} page={page}>
-      <div sx={{ variant: "layout.row", my: 6 }}>
+      <div sx={{ variant: "layout.row", my: 3 }}>
         <Themed.h1>Articles</Themed.h1>
 
         {page.map(({ id, title = "", slug = "", publishedAt = "" }) => {

@@ -18,6 +18,7 @@ const typescale = increment.slice(0, n).map((e, i) => {
 
 const gapSize = 56;
 const gap = 100 / (1288 / gapSize);
+
 const space = [...Array(17).keys()].map((e, i) => {
   return `${(gap * i) / 2}%`;
 });

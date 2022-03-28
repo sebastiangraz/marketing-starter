@@ -63,7 +63,6 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           }}
         />
       )}
-      {/* <BaseStyles> */}
       <Header data={site.header} />
       <motion.div
         initial="initial"
@@ -89,10 +88,16 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
             backgroundPosition: "-1px 0px",
           }}
         ></div>
-        <main id="content">{children}</main>
+        <main
+          id="content"
+          sx={{
+            "& > * + *": { mt: (theme) => `min(${theme.space[3]}, 168px)` },
+          }}
+        >
+          {children}
+        </main>
         <Footer data={site.footer} />
       </motion.div>
-      {/* </BaseStyles> */}
     </>
   );
 };

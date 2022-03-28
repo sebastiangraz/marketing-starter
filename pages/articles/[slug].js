@@ -12,7 +12,7 @@ const Article = ({ data }) => {
 
   return (
     <Layout site={site} page={page}>
-      <article sx={{ variant: "layout.row", my: 6 }}>
+      <article sx={{ variant: "layout.row", my: 3 }}>
         <Reveal
           effect={[
             { opacity: 0, y: -10 },
