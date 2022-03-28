@@ -33,13 +33,13 @@ const Photo = ({
     img: {
       position: "absolute",
       display: "block",
-      height: "calc(100% + 1px)",
+      height: "calc(100%)",
       left: "50%",
       opacity: "0",
       top: "50%",
       transform: "translate3d(-50%,-50%,0)",
       transition: "opacity .4s linear",
-      width: "calc(100% + 1px)",
+      width: "calc(100%)",
       zIndex: "1",
       "&.is-loaded": {
         opacity: 1,

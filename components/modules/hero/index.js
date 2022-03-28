@@ -5,7 +5,6 @@ import { heroPath } from "./heroPaths";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { HeroAnimation } from "./heroAnimation";
-import Carousel from "../../carousel";
 
 const style = {
   hero: {
@@ -28,7 +27,8 @@ const style = {
 const parentVariant = {
   visible: {
     transition: {
-      duration: 2,
+      type: "spring",
+      duration: 1,
       staggerChildren: 0.1,
     },
   },
@@ -113,7 +113,7 @@ const Hero = ({ data }) => {
       <div sx={style.heroInner}>
         <Width sx={{ pl: 4, py: 4, pr: 2, flexShrink: 0 }} value={[12]}>
           <Themed.h1
-            sx={{ mt: 0, mb: "5rem", maxWidth: "22ch", width: "100%" }}
+            sx={{ mt: 0, mb: "5rem", maxWidth: "16ch", width: "100%" }}
           >
             <span>{header} </span>
 
@@ -164,7 +164,7 @@ const Hero = ({ data }) => {
 
           <Themed.h4 sx={{ m: 0, mb: "3rem", width: "19ch" }}>{lead}</Themed.h4>
 
-          <Flex sx={{ gap: 3, zIndex: 1, position: "relative" }}>
+          <Flex sx={{ gap: "1rem", zIndex: 1, position: "relative" }}>
             <NextLink href="">
               <a
                 sx={{
