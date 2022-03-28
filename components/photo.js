@@ -110,14 +110,8 @@ const Photo = ({
   if (!photo?.asset) return null;
 
   return (
-    <figure sx={{ margin: "0px" }} className={className ? className : null}>
-      <div
-        className={cx("ar", {
-          "has-fill": layout === "fill" || layout === "contain",
-        })}
-        sx={style.ar}
-        style={aspectCustom}
-      >
+    <figure sx={{ margin: "0px" }}>
+      <div sx={style.ar} style={aspectCustom}>
         <picture>
           <img
             sx={style.img}
@@ -135,7 +129,7 @@ const Photo = ({
         </picture>
 
         {hasPlaceholder && (
-          <div sx={style.placeholder} className={isLoaded && "is-loaded"}>
+          <div sx={style.placeholder} className={isLoaded ? "is-loaded" : ""}>
             <img sx={style.img} src={photo.lqip} alt="" role="presentation" />
           </div>
         )}

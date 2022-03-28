@@ -80,13 +80,13 @@ const Dropdown = ({ id, title, items, onClick }) => {
             pt: 2,
             left: "0px",
             listStyle: "none",
-            "> * + * ": {
-              pl: 3,
-            },
             display: "flex",
             position: "absolute",
             width: "100%",
             justifyContent: "center",
+            "> * + * ": {
+              pl: 3,
+            },
           }}
         >
           {items.map((item, key) => {

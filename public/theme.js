@@ -79,8 +79,7 @@ const scroll = {
   },
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const theme = {
   space: space,
   sizes: [0, 8, 14, 20, 28, 40, 56, 84, 96, 112, 132, 168, 200, 256],
 
@@ -215,3 +214,4 @@ export default {
     },
   },
 };
+export default theme;

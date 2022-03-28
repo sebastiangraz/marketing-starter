@@ -1,4 +1,3 @@
-import React from "react";
 import { Themed, Flex } from "theme-ui";
 import { Width } from "../../width";
 import { heroPath } from "./heroPaths";
@@ -164,7 +163,7 @@ const Hero = ({ data }) => {
           <Themed.h4 sx={{ m: 0, mb: "3rem", width: "19ch" }}>{lead}</Themed.h4>
 
           <Flex sx={{ gap: "1rem", zIndex: 1, position: "relative" }}>
-            <NextLink href="">
+            <NextLink href="/">
               <a
                 sx={{
                   variant: "buttons.primary",
@@ -174,7 +173,7 @@ const Hero = ({ data }) => {
                 Book a Demo
               </a>
             </NextLink>
-            <NextLink href="">
+            <NextLink href="/">
               <a
                 sx={{
                   variant: "buttons.secondary",
