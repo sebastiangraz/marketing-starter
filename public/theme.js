@@ -1,4 +1,4 @@
-import { transparentize } from "@theme-ui/color";
+import { transparentize, tint } from "@theme-ui/color";
 
 const increment = [...Array(17).keys()].map((i) => {
   return i;
@@ -23,6 +23,29 @@ const space = [...Array(17).keys()].map((e, i) => {
 });
 
 const bp = ["40em", "64em", "100em"];
+
+const buttonHover = {
+  position: "relative",
+  "&:after": {
+    pointerEvents: "none",
+    content: `""`,
+    borderRadius: "default",
+    background: "rgba(0,0,0,0.12)",
+    left: "1px",
+    top: "1px",
+    height: "calc(100% - 2px)",
+    width: "calc(100% - 2px)",
+    zIndex: 1,
+    position: "absolute",
+    opacity: 0,
+    transition: "ease 1s opacity",
+  },
+  "&:hover": {
+    "&:after": {
+      opacity: 1,
+    },
+  },
+};
 
 const scroll = {
   overflowY: "scroll",
@@ -93,23 +116,27 @@ export default {
   buttons: {
     primary: {
       whiteSpace: "pre",
-      fontSize: 3,
+      fontSize: 2,
       px: "3rem",
       py: "1.5rem",
       borderRadius: "default",
       background: "text",
       color: "#fff",
       textDecoration: "none",
+      cursor: "pointer",
+      ...buttonHover,
     },
     secondary: {
       whiteSpace: "pre",
-      fontSize: 3,
+      fontSize: 2,
       px: "3rem",
       py: "1.5rem",
       borderRadius: "default",
       color: "text",
       background: "#fff",
       textDecoration: "none",
+      cursor: "pointer",
+      ...buttonHover,
     },
   },
   styles: {
@@ -131,6 +158,7 @@ export default {
     link: {
       color: "inherit",
       textDecoration: "underline",
+      cursor: "pointer",
       "&:hover": { textDecoration: "none" },
     },
 

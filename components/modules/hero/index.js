@@ -11,6 +11,7 @@ const style = {
     mt: 2,
     position: "relative",
     contain: "paint",
+    color: "var(--heroColor)",
   },
   heroInner: {
     position: "relative",
@@ -18,7 +19,7 @@ const style = {
     flexDirection: "column",
     borderRadius: "large",
     justifyContent: "space-between",
-    background: "primary",
+    background: "#F6E9D9",
     variant: "layout.row",
   },
 };
@@ -104,6 +105,7 @@ const Hero = ({ data }) => {
   return (
     <section
       sx={{
+        "--heroColor": "#3C1F04",
         ...style.hero,
       }}
     >
@@ -123,6 +125,8 @@ const Hero = ({ data }) => {
                   y: getPercentage,
                 }}
                 transition={{
+                  type: "spring",
+                  bounce: 0.1,
                   duration: 7,
                   repeat: Infinity,
                   repeatType: "loop",
@@ -148,12 +152,15 @@ const Hero = ({ data }) => {
               </motion.div>
             </div>
           </Themed.h1>
-          <Themed.p sx={{ m: 0, mb: "4rem" }}>{lead}</Themed.p>
+
+          <Themed.h4 sx={{ m: 0, mb: "3rem", width: "19ch" }}>{lead}</Themed.h4>
+
           <Flex sx={{ gap: 3, zIndex: 1, position: "relative" }}>
             <NextLink href="">
               <a
                 sx={{
                   variant: "buttons.primary",
+                  background: "var(--heroColor)",
                 }}
               >
                 Book a Demo

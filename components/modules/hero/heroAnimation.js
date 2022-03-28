@@ -295,6 +295,7 @@ export const HeroAnimation = ({ loop }) => {
               transition={{
                 duration: 4,
                 repeat: Infinity,
+                repeatType: "mirror",
                 ease: "easeInOut",
               }}
             >
@@ -398,6 +399,7 @@ export const HeroAnimation = ({ loop }) => {
               transition={{
                 duration: 4,
                 repeat: Infinity,
+                repeatType: "mirror",
                 ease: "easeInOut",
               }}
             >
