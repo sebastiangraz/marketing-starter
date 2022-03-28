@@ -140,7 +140,7 @@ const Hero = ({ data }) => {
                   position: "relative",
                 }}
               >
-                {[...words, words.at(0)].map((e, i) => {
+                {[...words, words[0]].map((e, i) => {
                   return (
                     <div
                       sx={{
