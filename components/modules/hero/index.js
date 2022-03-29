@@ -36,8 +36,9 @@ const childVariant = {
   hidden: { pathLength: 0, opacity: 0.5 },
   visible: {
     pathLength: 1,
-    opacity: 1,
+    opacity: [1, 0],
     transition: {
+      opacity: { delay: 3 },
       pathLength: { type: "spring", duration: 2, bounce: 0 },
       duration: 2,
     },
@@ -199,6 +200,10 @@ const Hero = ({ data }) => {
             animate="visible"
             variants={parentVariant}
           >
+            <HeroAnimation loop="flow-1" />
+            <HeroAnimation loop="flow-2" />
+            <HeroAnimation loop="flow-3" />
+            <HeroAnimation loop="flow-4" />
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 897.5 1041.5"
@@ -239,7 +244,7 @@ const Hero = ({ data }) => {
               stroke="currentColor"
               fill="transparent"
               vectorEffect="non-scaling-stroke"
-              d="M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281H225V280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
+              d="M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281V252C281 267.464 268.464 280 253 280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
             />
             <motion.path
               variants={childVariant}
@@ -345,20 +350,30 @@ const Hero = ({ data }) => {
               d="M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
             />
 
-            <motion.path
-              variants={cardVariant}
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d={heroPath.canadaCard}
-              fill="currentColor"
-            />
-            <motion.path
-              variants={cardVariant}
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d={heroPath.amsterdamCard}
-              fill="currentColor"
-            />
+            <motion.g variants={cardVariant}>
+              <g transform="translate(190,243)">
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M12 0C5.37258 0 0 5.37258 0 12V70C0 73.3137 2.68629 76 6 76H119C122.314 76 125 73.3137 125 70V6C125 2.68629 122.314 0 119 0H12ZM13 16C13 14.3431 14.3431 13 16 13H33C34.6569 13 36 14.3431 36 16V24C36 25.6569 34.6569 27 33 27H16C14.3431 27 13 25.6569 13 24V16ZM21.34 24.1C22.93 24.1 24 23.06 24 21.3V17.1C24 17.03 23.97 17 23.9 17H22.84C22.77 17 22.74 17.03 22.74 17.1V21.29C22.74 22.44 22.18 22.94 21.34 22.94C20.5 22.94 19.94 22.44 19.94 21.29V17.1C19.94 17.03 19.91 17 19.84 17H18.78C18.71 17 18.68 17.03 18.68 17.1V21.3C18.68 23.06 19.75 24.1 21.34 24.1ZM27.7097 24.1C29.3397 24.1 30.4097 23.3 30.4097 21.88C30.4097 20.77 29.2797 20.27 28.0897 19.94C27.1997 19.69 26.4297 19.42 26.4297 18.83C26.4297 18.31 26.9497 18.06 27.5997 18.06C28.2997 18.06 28.8397 18.37 28.9397 18.99C28.9497 19.06 28.9697 19.09 29.0397 19.09H30.0997C30.1697 19.09 30.1997 19.06 30.1997 18.99C30.1697 17.9 29.1697 16.9 27.6197 16.9C26.3497 16.9 25.1697 17.61 25.1697 18.89C25.1697 20.04 26.0597 20.57 27.5597 20.95C28.5197 21.19 29.1497 21.51 29.1497 22.01C29.1497 22.56 28.6197 22.94 27.7697 22.94C26.9097 22.94 26.3197 22.55 26.2497 21.74C26.2397 21.67 26.2197 21.64 26.1497 21.64H25.0997C25.0297 21.64 24.9997 21.67 24.9997 21.74C25.0097 23.04 26.1497 24.1 27.7097 24.1Z"
+                  fill="currentColor"
+                />
+                <path d={heroPath.cardText1} fill="white" />
+              </g>
+            </motion.g>
+
+            <motion.g variants={cardVariant}>
+              <g transform="translate(414,355)">
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M6 0C2.68629 0 0 2.68629 0 6V70C0 73.3137 2.68629 76 6 76H119C122.314 76 125 73.3137 125 70V6C125 2.68629 122.314 0 119 0H6ZM13 16C13 14.3433 14.3438 13 16 13H33C33.8164 13 34.5586 13.3271 35.1016 13.8579C35.6562 14.4023 36 15.1611 36 16V24C36 25.6567 34.6562 27 33 27H16C14.3438 27 13 25.6567 13 24V16ZM18.8203 24H19.8789C19.9492 24 19.9805 23.9702 19.9805 23.8999V19.1299L23.0312 23.9199C23.0703 23.98 23.1211 24 23.1914 24H24.2188C24.2891 24 24.3203 23.9702 24.3203 23.8999V17.1001C24.3203 17.0298 24.2891 17 24.2188 17H23.1602C23.0898 17 23.0586 17.0298 23.0586 17.1001V21.8701L20.0117 17.0801C19.9688 17.02 19.9219 17 19.8516 17H18.8203C18.75 17 18.7188 17.0298 18.7188 17.1001V23.8999C18.7188 23.9702 18.75 24 18.8203 24ZM25.8594 24H30.4297C30.5 24 30.5312 23.9702 30.5312 23.8999V22.9399C30.5312 22.897 30.5195 22.8687 30.4922 22.8535C30.4766 22.8442 30.457 22.8398 30.4297 22.8398H27.0195V17.1001C27.0195 17.0298 26.9922 17 26.9219 17H25.8594C25.793 17 25.7617 17.0298 25.7617 17.1001V23.8999C25.7617 23.9702 25.793 24 25.8594 24Z"
+                  fill="currentColor"
+                />
+                <path d={heroPath.cardText2} fill="white" />
+              </g>
+            </motion.g>
+
             <svg
               y={"calc(50% - 17.25px)"}
               x={"calc(100% - 1px)"}
@@ -378,11 +393,8 @@ const Hero = ({ data }) => {
             </svg>
 
             <HeroAnimation loop="checkReview" />
-            <HeroAnimation loop="checkReview2" />
-            <HeroAnimation loop="flow-1" />
-            <HeroAnimation loop="flow-2" />
-            <HeroAnimation loop="flow-3" />
-            <HeroAnimation loop="flow-4" />
+            <HeroAnimation loop="liquidate" />
+            <HeroAnimation loop="taxManager" />
           </motion.svg>
         </Width>
       </div>
