@@ -58,17 +58,15 @@ const offsiteVariant = {
 };
 
 const intersectionVariant = {
-  hidden: {
-    WebkitMaskImage:
-      "linear-gradient(-60deg, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 1) 100%)",
-  },
+  hidden: { x1: -1, x2: -2, y1: -1, y2: -2 },
   visible: {
-    WebkitMaskImage:
-      "linear-gradient(-60deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 10%)",
+    x1: 2,
+    x2: 1,
+    y1: 2,
+    y2: 1,
     transition: {
-      opacity: { duration: 4 },
-      ease: [0.1, 0.11, 0.37, 0.84],
-      duration: 3.5,
+      when: "beforeChildren",
+      duration: 5,
     },
   },
 };
@@ -201,6 +199,31 @@ const Hero = ({ data }) => {
             animate="visible"
             variants={parentVariant}
           >
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 897.5 1041.5"
+              aria-labelledby="hero-"
+              className="css-mbumtg-Hero"
+            >
+              <defs>
+                <motion.linearGradient id="grad" variants={intersectionVariant}>
+                  <stop offset="0%" stopColor="black" />
+                  <stop offset="100%" stopColor="white" />
+                </motion.linearGradient>
+                <mask id="mask">
+                  <rect width="100%" height="100%" fill="url(#grad)" />
+                </mask>
+              </defs>
+
+              <motion.path
+                sx={{ width: "100%", height: "100%" }}
+                mask="url(#mask)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d={heroPath.intersections}
+                fill="currentColor"
+              />
+            </motion.svg>
             <motion.path
               variants={childVariant}
               shapeRendering="geometricPrecision"
@@ -209,6 +232,7 @@ const Hero = ({ data }) => {
               vectorEffect="non-scaling-stroke"
               d="M449.003 0V112H421.003C405.539 112 393.003 124.536 393.003 140V168H337.003H309C293.536 168 281 180.536 281 196V224L197 224C181.536 224 169 236.536 169 252V280L141 280C125.536 280 113 292.536 113 308V336L84.9998 336C69.536 336 57 348.536 57 364V364C57 379.464 69.5361 392 85 392L113 392H169V448H113V531.999C113 547.463 100.464 559.999 85 559.999H29.0002C13.5361 559.999 1.00008 572.536 1.00017 588L1.00295 1040.5"
             />
+
             <motion.path
               variants={childVariant}
               shapeRendering="geometricPrecision"
@@ -233,10 +257,7 @@ const Hero = ({ data }) => {
               vectorEffect="non-scaling-stroke"
               d="M449.004 0V224H337V336H225V392H281V448V476C281 491.464 293.536 504 309 504H337"
             />
-            <HeroAnimation loop="flow-1" />
-            <HeroAnimation loop="flow-2" />
-            <HeroAnimation loop="flow-3" />
-            <HeroAnimation loop="flow-4" />
+
             <motion.path
               variants={childVariant}
               shapeRendering="geometricPrecision"
@@ -290,26 +311,7 @@ const Hero = ({ data }) => {
               vectorEffect="non-scaling-stroke"
               d="M449.004 0V168H505V336H561V392H589V392C589 376.536 601.536 364 617 364H673C688.464 364 701 376.536 701 392V392C701 407.464 688.464 420 673 420H616.5C601.312 420 589 407.688 589 392.5V392.5"
             />
-            <foreignObject width="100%" height="100%">
-              <motion.div variants={intersectionVariant}>
-                <motion.svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 897.5 1041.5"
-                  aria-labelledby="hero-"
-                  className="css-mbumtg-Hero"
-                  initial="hidden"
-                  animate="visible"
-                  variants={parentVariant}
-                >
-                  <motion.path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d={heroPath.intersections}
-                    fill="currentColor"
-                  />
-                </motion.svg>
-              </motion.div>
-            </foreignObject>
+
             <motion.path
               variants={childVariant}
               shapeRendering="geometricPrecision"
@@ -342,6 +344,7 @@ const Hero = ({ data }) => {
               vectorEffect="non-scaling-stroke"
               d="M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
             />
+
             <motion.path
               variants={cardVariant}
               fillRule="evenodd"
@@ -376,6 +379,10 @@ const Hero = ({ data }) => {
 
             <HeroAnimation loop="checkReview" />
             <HeroAnimation loop="checkReview2" />
+            <HeroAnimation loop="flow-1" />
+            <HeroAnimation loop="flow-2" />
+            <HeroAnimation loop="flow-3" />
+            <HeroAnimation loop="flow-4" />
           </motion.svg>
         </Width>
       </div>

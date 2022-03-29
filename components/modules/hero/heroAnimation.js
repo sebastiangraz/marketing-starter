@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
 import { heroPath } from "./heroPaths";
+import { keyframes } from "@emotion/react";
+
+const offsetDistanceKeys = keyframes`
+    0%   { offset-distance: 0%; transform: scale(0.1) }
+    20% { offset-distance: 20%; transform: scale(1) }
+    80% { offset-distance: 80%; transform: scale(1) }
+    100%   { offset-distance: 100%; transform: scale(0.1)  }
+    `;
 
 const checkReviewTransition = {
   repeat: Infinity,
@@ -10,11 +18,12 @@ const checkReviewTransition = {
   delay: 4,
 };
 
-const flowTransition = {
-  ease: "linear",
-  repeat: Infinity,
-  repeatType: "loop",
-  duration: 28,
+const flowAnimation = {
+  transform: "scale(0.1)",
+  animationName: `${offsetDistanceKeys}`,
+  animationDuration: "20s",
+  animationTimingFunction: "linear",
+  animationIterationCount: "infinite",
 };
 
 const cursorCheckReviewVariant = {
@@ -76,7 +85,6 @@ const flowVariant = {
   },
   visible: {
     offsetDistance: "100%",
-    // opacity: [0, 1, 1, 1, 1, 0],
     scale: [0.1, 1, 1, 1, 1, 0.1],
   },
 };
@@ -85,116 +93,81 @@ export const HeroAnimation = ({ loop }) => {
   switch (loop) {
     case "flow-4":
       return (
-        <foreignObject width="100%" height="100%">
-          <motion.div
-            variants={flowVariant}
-            transition={{ ...flowTransition }}
-            sx={{
-              display: "flex",
-              width: "12px",
-              height: "12px",
-              offsetPath: `path(
-          "M449.004 0V224H393V336H281V392V448H337H393V504H449V448H505V504H561V448H617V504H673V448H729V392H785V392C799.912 392 812 404.088 812 419V448"
-          )`,
-            }}
-          >
-            <svg
-              shapeRendering="optimizeSpeed"
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
-            </svg>
-          </motion.div>
-        </foreignObject>
+        <motion.circle
+          r="5"
+          x="3"
+          y="3"
+          fill="currentColor"
+          sx={{
+            ...flowAnimation,
+            animationDelay: "2s",
+          }}
+          style={{
+            width: "12px",
+            height: "12px",
+            display: "flex",
+            offsetPath: `path("M449.004 0V224H393V336H281V392V448H337H393V504H449V448H505V504H561V448H617V504H673V448H729V392H785V392C799.912 392 812 404.088 812 419V448`,
+          }}
+        />
       );
     case "flow-3":
       return (
-        <foreignObject width="100%" height="100%">
-          <motion.div
-            variants={flowVariant}
-            transition={{ ...flowTransition, delay: 3 }}
-            sx={{
-              display: "flex",
-              width: "12px",
-              height: "12px",
-              offsetPath: `path(
-          "M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281H225V280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
-          )`,
-            }}
-          >
-            <svg
-              shapeRendering="optimizeSpeed"
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
-            </svg>
-          </motion.div>
-        </foreignObject>
+        <motion.circle
+          r="5"
+          x="3"
+          y="3"
+          fill="currentColor"
+          sx={{
+            ...flowAnimation,
+            animationDelay: "4s",
+          }}
+          style={{
+            width: "12px",
+            height: "12px",
+            display: "flex",
+            offsetPath: `path("M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281H225V280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560")`,
+          }}
+        />
       );
     case "flow-2":
       return (
-        <foreignObject width="100%" height="100%">
-          <motion.div
-            variants={flowVariant}
-            transition={{ ...flowTransition, delay: 6 }}
-            sx={{
-              display: "flex",
-              width: "12px",
-              height: "12px",
-              offsetPath: `path(
-          "M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447"
-          )`,
-            }}
-          >
-            <svg
-              shapeRendering="optimizeSpeed"
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
-            </svg>
-          </motion.div>
-        </foreignObject>
+        <motion.circle
+          r="5"
+          x="3"
+          y="3"
+          fill="currentColor"
+          sx={{
+            ...flowAnimation,
+            animationDelay: "6s",
+          }}
+          style={{
+            width: "12px",
+            height: "12px",
+            display: "flex",
+            offsetPath: `path("M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447")`,
+          }}
+        />
       );
     case "flow-1":
       return (
-        <foreignObject width="100%" height="100%">
-          <motion.div
-            variants={flowVariant}
-            transition={{ ...flowTransition, delay: 9 }}
-            sx={{
-              display: "flex",
-              width: "12px",
-              height: "12px",
-              offsetPath: `path(
-          "M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
-          )`,
-            }}
-          >
-            <svg
-              shapeRendering="optimizeSpeed"
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 6L6 0L12 6L6 12L0 6Z" fill="currentColor" />
-            </svg>
-          </motion.div>
-        </foreignObject>
+        <motion.circle
+          r="5"
+          x="3"
+          y="3"
+          fill="currentColor"
+          sx={{
+            ...flowAnimation,
+            animationDelay: "8s",
+          }}
+          style={{
+            width: "12px",
+            height: "12px",
+            display: "flex",
+            offsetPath: `path("M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897")`,
+          }}
+        />
       );
+
     case "checkReview":
       return (
         <foreignObject width="100%" height="100%">
