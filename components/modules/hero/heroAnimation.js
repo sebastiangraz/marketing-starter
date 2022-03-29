@@ -238,35 +238,27 @@ export const HeroAnimation = ({ loop }) => {
               fill="#F6E9D9"
             />
           </motion.svg>
-          <motion.div
-            variants={cursorCheckReviewVariant}
-            xmlns="http://www.w3.org/1999/xhtml"
-            sx={{
-              position: "absolute",
-              top: "30%",
-              left: "30%",
-              width: "40px",
-              height: "50px",
-            }}
-          >
-            <motion.div
-              sx={{
-                offsetRotate: "0deg",
-                offsetPath: `path(
-                "M12.68 9.85c.56-2.5.72-7.27-2.81-8.31C5.04.1-.94 1.44 1.61 6.72c2.55 5.27 7.2 6.35 12.39-.63"
-                )`,
-              }}
-              initial={{ offsetDistance: "0%", scale: 1 }}
-              animate={{ offsetDistance: "100%", scale: 1 }}
+          <g transform="translate(247, 239)">
+            );
+            <motion.g
+              initial={{ "--offset": "0%" }}
+              animate={{ "--offset": "100%" }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
                 repeatType: "mirror",
                 ease: "easeInOut",
               }}
+              sx={{
+                offsetDistance: "var(--offset)",
+                offsetRotate: "0deg",
+                offsetPath: `path(
+                "M12.68 9.85c.56-2.5.72-7.27-2.81-8.31C5.04.1-.94 1.44 1.61 6.72c2.55 5.27 7.2 6.35 12.39-.63"
+                )`,
+              }}
             >
-              <motion.svg sx={{ width: "100%", height: "100%" }}>
-                <path
+              <motion.g variants={cursorCheckReviewVariant}>
+                <motion.path
                   vectorEffect="non-scaling-stroke"
                   d="M31.6115 4.70781L5.70539 13.9043C3.88897 14.5491 3.94607 17.1374 5.78916 17.7015L13.1443 19.9526C13.6972 20.1218 14.1498 20.5221 14.3854 21.0502L20.4719 34.6922C21.2038 36.3327 23.5594 36.2515 24.1766 34.5645L34.1588 7.27974C34.7405 5.68984 33.2069 4.14145 31.6115 4.70781Z"
                   fill="#F6E9D9"
@@ -280,9 +272,12 @@ export const HeroAnimation = ({ loop }) => {
                   stroke="currentColor"
                   strokeLinejoin="round"
                 />
-              </motion.svg>
-            </motion.div>
-          </motion.div>
+              </motion.g>
+            </motion.g>
+          </g>
+
+          {/* </motion.div>
+          </motion.div> */}
         </>
       );
 

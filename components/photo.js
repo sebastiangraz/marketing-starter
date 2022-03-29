@@ -110,7 +110,7 @@ const Photo = ({
   if (!photo?.asset) return null;
 
   return (
-    <figure sx={{ margin: "0px" }}>
+    <figure sx={{ margin: "0px" }} className={className ? className : null}>
       <div sx={style.ar} style={aspectCustom}>
         <picture>
           <img
