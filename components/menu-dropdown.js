@@ -21,7 +21,8 @@ const Dropdown = ({ id, title, items, onClick }) => {
     hidden: {
       opacity: 0,
       transition: {
-        staggerDirection: -1,
+        staggerChildren: 0.1,
+        staggerDirection: 1,
       },
       transitionEnd: {
         display: "none",
@@ -37,7 +38,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
         duration: 0.4,
       },
     },
-    hidden: { opacity: 0, y: 0 },
+    hidden: { opacity: 0, y: -2 },
   };
 
   return (

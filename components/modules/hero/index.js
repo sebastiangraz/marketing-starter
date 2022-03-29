@@ -426,10 +426,9 @@ const Hero = ({ data }) => {
                 </g>
               </g>
             </motion.g>
-
             <svg
-              y={"calc(50% - 17.25px)"}
-              x={"calc(100% - 1px)"}
+              y="503.5"
+              x="896px"
               width="3000"
               height="2"
               viewBox="0 0 3000 1"
