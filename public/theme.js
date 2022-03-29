@@ -24,25 +24,30 @@ const space = [...Array(17).keys()].map((e, i) => {
 });
 
 const bp = ["40em", "64em", "100em"];
-
+const buttonpadding = 4;
 const buttonHover = {
   "&:after": {
     pointerEvents: "none",
     content: `""`,
-    borderRadius: "default",
-    background: "rgba(0,0,0,0.12)",
-    left: "1px",
-    top: "1px",
-    height: "calc(100% - 2px)",
-    width: "calc(100% - 2px)",
+    boxShadow: "0 0 0 1px currentColor inset",
+    maskSize: "1px 400%",
+    maskImage: "linear-gradient(to bottom, #000 50%, transparent 90%)",
+    borderRadius: `calc(1rem - ${buttonpadding}px)`,
+    left: `${buttonpadding}px`,
+    top: `${buttonpadding}px`,
+    height: `calc(100% - ${buttonpadding * 2}px)`,
+    width: `calc(100% - ${buttonpadding * 2}px)`,
     zIndex: 1,
     position: "absolute",
     opacity: 0,
-    transition: "ease 0.3s opacity",
+    willChange: "transform",
+    maskPosition: "1px 100%",
+    transition: "ease 0.8s all",
   },
   "&:hover": {
     "&:after": {
       opacity: 1,
+      maskPosition: "1px 0%",
     },
   },
 };
@@ -53,7 +58,7 @@ const buttonBase = {
   fontSize: 2,
   px: "3rem",
   py: "1.5rem",
-  borderRadius: "default",
+  borderRadius: "1rem",
   textDecoration: "none",
   cursor: "pointer",
   placeSelf: "flex-start",
