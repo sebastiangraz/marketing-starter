@@ -170,81 +170,74 @@ export const HeroAnimation = ({ loop }) => {
 
     case "checkReview":
       return (
-        <foreignObject width="100%" height="100%">
-          <motion.div
+        <>
+          <motion.svg
+            y="310"
+            x="160"
             variants={notificationVariant}
-            sx={{
-              width: "210px",
-              top: "309px",
-              position: "relative",
-              left: "160px",
-            }}
+            width="189"
+            height="42"
+            viewBox="0 0 189 42"
+            fill="none"
+            overflow="auto"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="189"
-              height="42"
-              viewBox="0 0 189 42"
-              fill="none"
-              overflow="auto"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="0.5"
-                y="4.5"
-                width="183"
-                height="37"
-                rx="18.5"
-                fill="white"
-                stroke="currentColor"
-              />
-              <motion.rect
-                initial={{ opacity: 0, scale: 1 }}
-                animate={{
-                  opacity: [0.2, 0.2, 0.2, 0.2, 0.1],
-                  scale: [1, 1, 1, 1.2, 1.8],
-                }}
-                transition={checkReviewTransition}
-                x="9"
-                y="14"
-                width="18"
-                height="18"
-                rx="9"
-                fill="currentColor"
-              />
-              <motion.rect
-                initial={{ opacity: 0, scale: 1 }}
-                animate={{
-                  opacity: [0.5, 0.5, 0.5, 1, 0],
-                  scale: [1, 1, 1, 1.2, 0],
-                }}
-                transition={checkReviewTransition}
-                x="9"
-                y="14"
-                width="18"
-                height="18"
-                rx="9"
-                fill="currentColor"
-              />
-              <path
-                d="M15 23L17 25L21 21"
-                stroke="#F6E9D9"
-                strokeLinecap="round"
-              />
-              <path d={heroPath.notificationText1} fill="currentColor" />
-              <rect
-                x="173"
-                y="2"
-                width="14"
-                height="14"
-                rx="7"
-                fill="currentColor"
-              />
-              <path
-                d="M179.918 13H180.938C181.008 13 181.038 12.97 181.038 12.9V6.1C181.038 6.03 181.008 6 180.938 6H180.378C180.318 6 180.268 6.02 180.218 6.05L178.568 6.94C178.508 6.97 178.458 7.02 178.458 7.09V8.16C178.458 8.23 178.488 8.25 178.538 8.25C178.568 8.25 178.598 8.24 178.638 8.22L179.818 7.56V12.9C179.818 12.97 179.848 13 179.918 13Z"
-                fill="#F6E9D9"
-              />
-            </svg>
-          </motion.div>
+            <rect
+              x="0.5"
+              y="4.5"
+              width="183"
+              height="37"
+              rx="18.5"
+              fill="white"
+              stroke="currentColor"
+            />
+            <motion.rect
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{
+                opacity: [0.2, 0.2, 0.2, 0.2, 0.1],
+                scale: [1, 1, 1, 1.2, 1.8],
+              }}
+              transition={checkReviewTransition}
+              x="9"
+              y="14"
+              width="18"
+              height="18"
+              rx="9"
+              fill="currentColor"
+            />
+            <motion.rect
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{
+                opacity: [0.5, 0.5, 0.5, 1, 0],
+                scale: [1, 1, 1, 1.2, 0],
+              }}
+              transition={checkReviewTransition}
+              x="9"
+              y="14"
+              width="18"
+              height="18"
+              rx="9"
+              fill="currentColor"
+            />
+            <path
+              d="M15 23L17 25L21 21"
+              stroke="#F6E9D9"
+              strokeLinecap="round"
+            />
+            <path d={heroPath.notificationText1} fill="currentColor" />
+            <rect
+              x="173"
+              y="2"
+              width="14"
+              height="14"
+              rx="7"
+              fill="currentColor"
+            />
+            <path
+              d="M179.918 13H180.938C181.008 13 181.038 12.97 181.038 12.9V6.1C181.038 6.03 181.008 6 180.938 6H180.378C180.318 6 180.268 6.02 180.218 6.05L178.568 6.94C178.508 6.97 178.458 7.02 178.458 7.09V8.16C178.458 8.23 178.488 8.25 178.538 8.25C178.568 8.25 178.598 8.24 178.638 8.22L179.818 7.56V12.9C179.818 12.97 179.848 13 179.918 13Z"
+              fill="#F6E9D9"
+            />
+          </motion.svg>
           <motion.div
             variants={cursorCheckReviewVariant}
             xmlns="http://www.w3.org/1999/xhtml"
@@ -290,7 +283,7 @@ export const HeroAnimation = ({ loop }) => {
               </motion.svg>
             </motion.div>
           </motion.div>
-        </foreignObject>
+        </>
       );
 
     case "checkReview2":
