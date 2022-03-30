@@ -4,7 +4,7 @@ import { heroPath } from "./heroPaths";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { HeroAnimation } from "./heroAnimation";
-
+import cursor from "../../../public/youcursor.png";
 const style = {
   hero: {
     position: "relative",
@@ -19,6 +19,9 @@ const style = {
     justifyContent: "space-between",
     background: "#F6E9D9",
     variant: "layout.row",
+    "&:hover, &:hover a": {
+      cursor: `url("${cursor.src}"), auto`,
+    },
   },
 };
 
@@ -440,7 +443,7 @@ const Hero = ({ data }) => {
                 vectorEffect="non-scaling-stroke"
                 shapeRendering="geometricPrecision"
                 d="M0 0H3000"
-                stroke="black"
+                stroke="currentColor"
               />
             </svg>
 
