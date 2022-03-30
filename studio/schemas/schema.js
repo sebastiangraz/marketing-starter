@@ -18,6 +18,7 @@ import redirect from './documents/redirect'
 import grid from './modules/grid'
 import media from './modules/media'
 import dividerPhoto from './modules/divider-photo'
+import articleList from './modules/articleList'
 import hero from './modules/hero'
 import newsletter from './modules/newsletter'
 import parallax from './modules/parallax'
@@ -75,6 +76,7 @@ export default createSchema({
     hero,
     newsletter,
     parallax,
+    articleList,
 
     /* ----------------------- */
     /* 3: Generic Object types */

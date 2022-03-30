@@ -31,6 +31,7 @@ export default {
         { type: 'media' },
         { type: 'hero' },
         { type: 'dividerPhoto' },
+        { type: 'articleList' },
         { type: 'parallax' }
       ]
     },

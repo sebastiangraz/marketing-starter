@@ -11,6 +11,16 @@ const page = `
   "isArticles": _id == ${articlesID},
 `;
 
+export const article = `
+  {
+    title,
+    slug,
+    description,
+  }
+`;
+
+export const allArticles = `*[_type == "article"][0...5]`;
+
 // Construct our "link" GROQ
 const link = `
   _key,
@@ -147,6 +157,11 @@ export const modules = `
       sizes,
       heading
     }
+  },
+  _type == 'articleList' => {
+    _type,
+    _key,
+    header,
   },
 `;
 

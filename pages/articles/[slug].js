@@ -31,24 +31,24 @@ const Article = ({ data }) => {
 };
 
 export async function getStaticProps({ params, preview, previewData }) {
-  const productData = await getArticle(params.slug, {
+  const articleData = await getArticle(params.slug, {
     active: preview,
     token: previewData?.token,
   });
 
   return {
     props: {
-      data: productData,
+      data: articleData,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const allProducts = await getAllDocSlugs("article");
+  const allArticles = await getAllDocSlugs("article");
 
   return {
     paths:
-      allProducts?.map((page) => {
+      allArticles?.map((page) => {
         return {
           params: {
             slug: page.slug,
@@ -58,32 +58,5 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
-// export async function getStaticPaths() {
-//   const paths = await sanityClient.fetch(
-//     `*[_type == "article" && defined(slug.current)][].slug.current`
-//   );
-
-//   return {
-//     paths: paths.map((slug) => ({ params: { slug } })),
-//     fallback: true,
-//   };
-// }
-
-// export async function getStaticProps(context) {
-//   // It's important to default the slug so that it doesn't return "undefined"
-//   const { slug = "" } = context.params;
-//   const article = await sanityClient.fetch(
-//     `
-//     *[_type == "article" && slug.current == $slug][0]
-//   `,
-//     { slug }
-//   );
-//   return {
-//     props: {
-//       article,
-//     },
-//   };
-// }
 
 export default Article;

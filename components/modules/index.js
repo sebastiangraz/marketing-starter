@@ -6,6 +6,7 @@ const Media = dynamic(() => import("./media"));
 const DividerPhoto = dynamic(() => import("./divider-photo"));
 const Hero = dynamic(() => import("./hero"));
 const Parallax = dynamic(() => import("./parallax"));
+const ArticleList = dynamic(() => import("./articleList"));
 
 export const Module = ({ module }) => {
   const type = module._type;
@@ -21,6 +22,8 @@ export const Module = ({ module }) => {
       return <Hero data={module} />;
     case "parallax":
       return <Parallax data={module} />;
+    case "articleList":
+      return <ArticleList data={module} />;
     default:
       return null;
   }
