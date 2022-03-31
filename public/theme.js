@@ -1,4 +1,4 @@
-import { transparentize, tint } from "@theme-ui/color";
+import { transparentize } from "@theme-ui/color";
 
 const increment = [...Array(17).keys()].map((i) => {
   return i;
@@ -121,12 +121,23 @@ const theme = {
       p: { mb: 3 },
     },
   },
-  radii: { default: "1.5rem", small: "1rem", large: "2rem" },
+  radii: { default: "1.5rem", small: "1rem", large: "2rem", pill: "99rem" },
   text: {
     default: {
       lineHeight: 1.4,
       letterSpacing: "body",
       fontSize: [2, 2, 2],
+    },
+    label: {
+      lineHeight: 1.3,
+      letterSpacing: "body",
+      fontSize: [0, 0, 1],
+    },
+    link: {
+      color: "inherit",
+      textDecoration: "underline",
+      cursor: "pointer",
+      "&:hover": { textDecoration: "none" },
     },
   },
   buttons: {
@@ -160,10 +171,7 @@ const theme = {
       MozOsxFontSmoothing: "grayscale",
     },
     link: {
-      color: "inherit",
-      textDecoration: "underline",
-      cursor: "pointer",
-      "&:hover": { textDecoration: "none" },
+      variant: "text.link",
     },
 
     h1: {
@@ -197,8 +205,9 @@ const theme = {
       letterSpacing: "body",
       fontSize: [2, 2, 2],
     },
+
     a: {
-      variant: "styles.link",
+      variant: "text.link",
     },
     img: {
       maxWidth: "100%",

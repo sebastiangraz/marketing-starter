@@ -48,7 +48,6 @@ const Parallax = memo(({ data = {} }) => {
   const ref = useRef();
   const { scrollY } = useViewportScroll();
   const x = useMotionValue(0);
-  const activeLine = useMotionValue(0);
   const motionActive = useMotionValue(false);
   const xSpring = useSpring(x, settings.springOptions);
 
@@ -144,7 +143,6 @@ const Parallax = memo(({ data = {} }) => {
       });
 
       motionActive.set(val);
-      activeLine.set(threshold);
     }
 
     const unSubGetIndexFromScroll = scrollY.onChange((e) => getIndex(e));
@@ -154,7 +152,6 @@ const Parallax = memo(({ data = {} }) => {
       unsubscribeX();
     };
   }, [
-    activeLine,
     childWidthArray,
     elDistanceToTop,
     elHeight,
@@ -268,20 +265,6 @@ const Parallax = memo(({ data = {} }) => {
             );
           })}
         </motion.div>
-        <motion.span
-          style={{
-            x: activeLine,
-          }}
-          sx={{
-            zIndex: 10,
-            position: "absolute",
-            width: "1px",
-            height: "100%",
-            bg: "text",
-            left: "0px",
-            top: "0px",
-          }}
-        />
       </div>
     </section>
   );

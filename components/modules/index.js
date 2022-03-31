@@ -8,7 +8,7 @@ const Hero = dynamic(() => import("./hero"));
 const Parallax = dynamic(() => import("./parallax"));
 const ArticleList = dynamic(() => import("./articleList"));
 
-export const Module = ({ module }) => {
+export const Module = ({ module, articleList }) => {
   const type = module._type;
 
   switch (type) {
@@ -23,7 +23,7 @@ export const Module = ({ module }) => {
     case "parallax":
       return <Parallax data={module} />;
     case "articleList":
-      return <ArticleList data={module} />;
+      return <ArticleList data={module} articleList={articleList} />;
     default:
       return null;
   }

@@ -39,9 +39,9 @@ export const blockSerializers = {
 
       if (style === "h4") {
         return (
-          <p className={cx("is-h4", { "has-btn": hasButton })}>
+          <Themed.h4 className={cx("is-h4", { "has-btn": hasButton })}>
             {props.children}
-          </p>
+          </Themed.h4>
         );
       }
 

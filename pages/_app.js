@@ -71,7 +71,6 @@ const Site = ({ Component, pageProps, router }) => {
 // Site wrapped with Context Providers
 const MyApp = ({ Component, pageProps, router }) => {
   const { data } = pageProps;
-
   return (
     <ThemeProvider theme={theme}>
       <Reset />

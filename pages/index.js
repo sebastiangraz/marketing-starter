@@ -20,9 +20,11 @@ const Home = ({ data }) => {
 
   return (
     <Layout site={site} page={page}>
-      {page.modules?.map((module, key) => (
-        <Module key={key} module={module} />
-      ))}
+      {page.modules?.map((module, key) => {
+        return (
+          <Module key={key} module={module} articleList={site.articleList} />
+        );
+      })}
     </Layout>
   );
 };

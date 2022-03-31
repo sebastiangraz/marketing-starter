@@ -11,16 +11,6 @@ const page = `
   "isArticles": _id == ${articlesID},
 `;
 
-export const article = `
-  {
-    title,
-    slug,
-    description,
-  }
-`;
-
-export const allArticles = `*[_type == "article"][0...5]`;
-
 // Construct our "link" GROQ
 const link = `
   _key,
@@ -165,6 +155,16 @@ export const modules = `
   },
 `;
 
+const articleList = `
+"_id": _id, 
+"slug": slug.current,
+"title": title,
+"author": author, 
+"name": author->name,
+"authorImage": author->picture,
+"date": publishedAt
+`;
+
 // Construct our "site" GROQ
 export const site = `
   "site": {
@@ -175,6 +175,7 @@ export const site = `
       message,
       "link": link->{"type": _type, "slug": slug.current}
     },
+    "articleList": *[_type == "article"]{${articleList}},
     "header": *[_type == "headerSettings"][0]{
       menuDesktopLeft->{
         items[]{

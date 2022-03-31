@@ -43,8 +43,8 @@ import freeform from './objects/freeform'
 import accordions from './objects/accordions'
 import accordion from './objects/accordion'
 
-import participant from './objects/participant'
 import imageFeature from './objects/image-feature'
+import author from './objects/author'
 
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
@@ -59,6 +59,7 @@ export default createSchema({
     page,
     article,
     articles,
+    author,
 
     generalSettings,
     cookieSettings,
@@ -98,8 +99,6 @@ export default createSchema({
     freeform,
     accordions,
     accordion,
-    imageFeature,
-
-    participant
+    imageFeature
   ])
 })

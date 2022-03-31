@@ -22,6 +22,17 @@ export default {
       }
     },
     {
+      title: 'Published At',
+      name: 'publishedAt',
+      type: 'datetime'
+    },
+    {
+      title: 'Author',
+      name: 'author',
+      type: 'reference',
+      to: [{ type: 'author' }]
+    },
+    {
       title: 'Description',
       name: 'description',
       type: 'simplePortableText'

@@ -1,5 +1,3 @@
-import React from "react";
-
 import Newsletter from "../components/newsletter";
 import Menu from "../components/menu";
 import Icon from "../components/icon";
