@@ -97,7 +97,7 @@ export const HeroAnimation = ({ loop }) => {
     case "flow-4":
       return (
         <motion.circle
-          r="5"
+          r="3"
           x="3"
           y="3"
           fill="currentColor"
@@ -115,7 +115,7 @@ export const HeroAnimation = ({ loop }) => {
     case "flow-3":
       return (
         <motion.circle
-          r="5"
+          r="3"
           x="3"
           y="3"
           fill="currentColor"
@@ -131,7 +131,7 @@ export const HeroAnimation = ({ loop }) => {
     case "flow-2":
       return (
         <motion.circle
-          r="5"
+          r="3"
           x="3"
           y="3"
           fill="currentColor"
@@ -147,7 +147,7 @@ export const HeroAnimation = ({ loop }) => {
     case "flow-1":
       return (
         <motion.circle
-          r="5"
+          r="3"
           x="3"
           y="3"
           fill="currentColor"
