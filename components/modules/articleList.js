@@ -149,7 +149,7 @@ const ArticleList = ({ data, articleList }) => {
                         fontFeatureSettings: `"calt" on`,
                       }}
                     >
-                      Read ->
+                      {"Read ->"}
                     </Themed.a>
                   </Flex>
                 </Grid>
