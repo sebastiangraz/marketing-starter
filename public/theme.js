@@ -1,4 +1,5 @@
 import { transparentize } from "@theme-ui/color";
+import { brandColors } from "./globalColors";
 
 const increment = [...Array(17).keys()].map((i) => {
   return i;
@@ -92,19 +93,20 @@ const theme = {
   breakpoints: bp,
   letterSpacings: {
     body: "-0.02em",
-    heading: "-0.05em",
+    heading: "-0.04em",
     caps: "0.002em",
   },
 
   fonts: {
-    body: "Relative, system-ui, sans-serif",
-    heading: "RelativeFaux, sans-serif",
+    body: "Walsheim, system-ui, sans-serif",
+    heading: "Walsheim, system-ui, sans-serif",
     monospace: "Menlo, monospace",
   },
+
   colors: {
     text: "#0C002B",
     background: "F8F8F7",
-    primary: "#F3B29C",
+    primary: brandColors.salmon,
   },
   layout: {
     row: {

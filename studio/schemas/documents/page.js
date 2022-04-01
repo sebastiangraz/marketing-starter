@@ -5,7 +5,7 @@ export default {
   title: 'Page',
   name: 'page',
   type: 'document',
-  icon: () => <Browser />,
+  icon: Browser,
   fields: [
     {
       name: 'title',

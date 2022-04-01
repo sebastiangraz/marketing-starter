@@ -23,6 +23,11 @@ export default {
               type: 'string'
             },
             {
+              title: 'Color',
+              name: 'color',
+              type: 'colorSetting'
+            },
+            {
               title: 'Column Sizes',
               name: 'sizes',
               type: 'number',

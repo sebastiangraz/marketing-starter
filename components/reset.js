@@ -13,21 +13,27 @@ export function Reset(props) {
         }
 
         @font-face {
-          font-family: "RelativeFaux";
-          font-weight: normal;
+          font-family: "Walsheim";
+          font-weight: 300;
           font-style: normal;
           font-display: swap;
-          src: url("/fonts/relativefaux.woff") format("woff"),
-            url("/fonts/relativefaux.woff2") format("woff2");
+          src: url("/fonts/walsheim-regular.woff2") format("woff2");
         }
 
         @font-face {
-          font-family: "Relative";
+          font-family: "Walsheim";
           font-weight: normal;
           font-style: normal;
           font-display: swap;
-          src: url("/fonts/relative.woff") format("woff"),
-            url("/fonts/relative.woff2") format("woff2");
+          src: url("/fonts/walsheim-medium.woff2") format("woff2");
+        }
+
+        @font-face {
+          font-family: "Walsheim";
+          font-weight: 600;
+          font-style: normal;
+          font-display: swap;
+          src: url("/fonts/walsheim-bold.woff2") format("woff2");
         }
 
         h1,

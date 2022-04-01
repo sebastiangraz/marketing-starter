@@ -5,7 +5,7 @@ export default {
   title: 'Redirect',
   name: 'redirect',
   type: 'document',
-  icon: () => <Shuffle />,
+  icon: Shuffle,
   fields: [
     {
       title: 'From (slug)',

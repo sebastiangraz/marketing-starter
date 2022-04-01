@@ -5,7 +5,7 @@ export default {
   title: 'Menu',
   name: 'menu',
   type: 'document',
-  icon: () => <List />,
+  icon: List,
   fields: [
     {
       title: 'Title',

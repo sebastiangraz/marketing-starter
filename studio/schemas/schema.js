@@ -5,6 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import page from './documents/page'
 import article from './documents/article'
 import articles from './documents/articles'
+import colorSetting from './objects/colorSetting'
 
 import generalSettings from './documents/settings-general'
 import cookieSettings from './documents/settings-cookie'
@@ -60,6 +61,7 @@ export default createSchema({
     article,
     articles,
     author,
+    colorSetting,
 
     generalSettings,
     cookieSettings,

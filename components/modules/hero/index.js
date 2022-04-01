@@ -162,7 +162,7 @@ const Hero = ({ data }) => {
             </motion.div>
           </Themed.h1>
 
-          <Themed.h4 sx={{ m: 0, mb: "3rem", width: "19ch" }}>{lead}</Themed.h4>
+          <Themed.h4 sx={{ m: 0, mb: "3rem", width: "20ch" }}>{lead}</Themed.h4>
 
           <Flex sx={{ gap: "1rem", zIndex: 1, position: "relative" }}>
             <NextLink href="/">
