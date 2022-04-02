@@ -2,10 +2,10 @@ import React from "react";
 
 import BlockContent from "./block-content";
 import Photo from "../components/photo";
-import { Flex } from "theme-ui";
+import { Flex, Themed } from "theme-ui";
 
-const ImageFeature = ({ data }) => {
-  const { title, content, image, align } = data;
+const ImageFeature = ({ data = {} }) => {
+  const { title, content, photo, align } = data;
 
   const style = {
     component: {
@@ -14,9 +14,10 @@ const ImageFeature = ({ data }) => {
       textAlign: align,
     },
     image: {
+      display: "block",
       width: "100%",
       maxWidth: "10rem",
-      mb: 0,
+      mb: "2rem",
     },
     block: {
       height: "100%",
@@ -26,17 +27,19 @@ const ImageFeature = ({ data }) => {
   };
 
   return (
-    <Flex sx={style.component}>
+    <>
+      <Themed.h4 sx={{ mt: 0 }}>{title}</Themed.h4>
       <Photo
         sx={style.image}
-        photo={image}
+        photo={photo.photo}
         width={1600}
+        layout="contain"
         srcSizes={[800, 1000, 1200, 1600]}
         sizes="100vw"
       />
-      <h3>{title}</h3>
+
       <BlockContent sx={style.block} blocks={content} />
-    </Flex>
+    </>
   );
 };
 

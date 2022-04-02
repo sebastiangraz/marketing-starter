@@ -2,7 +2,7 @@ import React from "react";
 import Freeform from "../../components/freeform";
 import AccordionList from "../../components/accordion-list";
 import ImageFeature from "../../components/image-feature";
-
+import { Width } from "../../components/width";
 import { motion } from "framer-motion";
 
 const Grid = ({ data = {} }) => {
@@ -36,38 +36,51 @@ const Grid = ({ data = {} }) => {
 
   return (
     <section className="section">
-      <div sx={{ variant: "layout.row" }}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={parentVariant}
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            rowGap: `${gap}%`,
-            columnGap: `${gap}%`,
-          }}
-        >
-          {columns.map((col, key) => {
-            const { sizes, blocks } = col;
+      <div
+        sx={{
+          variant: "layout.row",
+          background: "ui",
+          py: 3,
+          borderRadius: "large",
+        }}
+      >
+        <div sx={{ mx: 4 }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={parentVariant}
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+              columnGap: `${gap}%`,
+              rowGap: "4rem",
+            }}
+          >
+            {columns.map((col, key) => {
+              const { sizes, blocks } = col;
 
-            return (
-              <motion.div
-                data-size={sizes}
-                key={key}
-                variants={childVariant}
-                sx={{
-                  width: `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}% )`,
-                }}
-              >
-                {blocks.map((block, key) => (
-                  <GridBlock key={key} block={block} />
-                ))}
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              return (
+                <motion.div
+                  data-size={sizes}
+                  key={key}
+                  variants={childVariant}
+                  sx={{
+                    width: [
+                      `calc( 100% * ${12} / 12 - ${gapmath(12)}% )`,
+                      `calc( 100% * ${6} / 12 - ${gapmath(6)}% )`,
+                      `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}% )`,
+                    ],
+                  }}
+                >
+                  {blocks.map((block, key) => (
+                    <GridBlock key={key} block={block} />
+                  ))}
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

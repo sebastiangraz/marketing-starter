@@ -1,5 +1,5 @@
 import { TextAlignLeft } from 'phosphor-react'
-
+import customImage from '../../lib/custom-image'
 import { getPtPreview } from '../../lib/helpers'
 
 export default {
@@ -9,6 +9,13 @@ export default {
   icon: TextAlignLeft,
 
   fields: [
+    {
+      title: 'Image',
+      name: 'image',
+      type: 'object',
+      icon: Image,
+      fields: [customImage()]
+    },
     { title: 'Title', name: 'title', type: 'string' },
     {
       title: ' ',
@@ -28,8 +35,7 @@ export default {
         layout: 'radio'
       },
       initialValue: 'center'
-    },
-    { title: 'Image', name: 'image', type: 'image' }
+    }
   ],
 
   preview: {

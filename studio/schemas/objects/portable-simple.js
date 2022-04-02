@@ -1,4 +1,4 @@
-import { Button } from '../../components/block-renders'
+import { Button, label } from '../../components/block-renders'
 
 export default {
   title: 'Portable Text',
@@ -8,7 +8,16 @@ export default {
     {
       title: 'Block',
       type: 'block',
-      styles: [{ title: 'Paragraph', value: 'normal' }],
+      styles: [
+        { title: 'Paragraph', value: 'normal' },
+        {
+          title: 'Label',
+          value: 'label',
+          blockEditor: {
+            render: label
+          }
+        }
+      ],
       lists: [],
       marks: {
         decorators: [

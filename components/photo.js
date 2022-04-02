@@ -78,9 +78,10 @@ const Photo = ({
     typeof width === "number" && typeof height === "number"
       ? (height / width) * 100
       : 100 / (photo.customRatio || photo.aspectRatio);
-
   const aspectCustom =
-    layout === "intrinsic" ? { paddingTop: `${aspect}%` } : null;
+    layout === "intrinsic"
+      ? { paddingTop: `${aspect}%` }
+      : { paddingTop: "50%" };
 
   // define our src and srcset
   const src = buildSrc(photo, {
@@ -112,7 +113,7 @@ const Photo = ({
   return (
     <figure sx={{ margin: "0px" }} className={className ? className : null}>
       <div sx={style.ar} style={aspectCustom}>
-        <picture>
+        <picture sx={{ display: "block", maxWidth: "100%" }}>
           <img
             sx={style.img}
             ref={imageRef}

@@ -83,8 +83,12 @@ export const blocks = `
     title,
     content,
     align,
-    image{
-      ${imageMeta}
+    "photo": image{
+      ...,
+      photo{
+        ...,
+        ${ptContent}
+      }
     }
   }
 

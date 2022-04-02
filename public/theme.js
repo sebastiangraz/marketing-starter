@@ -105,7 +105,8 @@ const theme = {
 
   colors: {
     text: "#0C002B",
-    background: "F8F8F7",
+    background: "FFFDF9",
+    ui: "#F3EFED",
     primary: brandColors.salmon,
     ...brandColors,
   },
@@ -132,9 +133,9 @@ const theme = {
       fontSize: [2, 2, 2],
     },
     label: {
-      lineHeight: 1.3,
+      lineHeight: 1.4,
       letterSpacing: "body",
-      fontSize: ["12px", "14px", 1],
+      fontSize: ["14px", "16px", "18px"],
     },
     link: {
       color: "inherit",
@@ -164,9 +165,7 @@ const theme = {
     },
     root: {
       ...scroll,
-      "-webkit-overflow-scrolling": "touch",
-      touchAction: "none",
-      fontSize: `clamp(12px, 1vw + 8px, 18px)`,
+      fontSize: `clamp(15px, 1vw + 8px, 18px)`,
       color: "text",
       bg: "background",
       fontWeight: "normal",
@@ -178,8 +177,8 @@ const theme = {
     link: {
       variant: "text.link",
     },
-
     h1: {
+      marginTop: 0,
       fontFamily: "heading",
       fontWeight: "normal",
       mb: "0.75em",
@@ -188,29 +187,31 @@ const theme = {
       fontSize: [5, 5, 6],
     },
     h2: {
+      marginTop: 0,
       lineHeight: 1.2,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 4, 5],
     },
     h3: {
+      marginTop: 0,
       lineHeight: 1.3,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 3, 4],
     },
     h4: {
+      marginTop: 0,
       lineHeight: 1.36,
       fontWeight: "normal",
       letterSpacing: "heading",
-      fontSize: [2, 2, 3],
+      fontSize: 3,
     },
     p: {
       lineHeight: 1.4,
       letterSpacing: "body",
-      fontSize: [2, 2, 2],
+      fontSize: 2,
     },
-
     a: {
       variant: "text.link",
     },

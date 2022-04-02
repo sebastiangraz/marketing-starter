@@ -1,7 +1,5 @@
 import { Star } from 'phosphor-react'
 
-import customImage from '../../lib/custom-image'
-
 export default {
   title: 'Hero',
   name: 'hero',

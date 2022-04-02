@@ -52,22 +52,22 @@ const Dropdown = ({ id, title, items, onClick }) => {
         <div
           sx={{
             position: "absolute",
-            top: "-0.025em",
             display: "inline-block",
             ml: "4px",
             svg: {
               transition: ".3s cubic-bezier(.22,1,.36,1)",
-
-              width: "0.5em",
+              top: "0.1rem",
+              position: "relative",
+              width: ".75rem",
               height: "100%",
-              transform: "rotate(180deg)",
+              transform: "rotate(0deg)",
               ...(isOpen && {
-                transform: "rotate(0deg)",
+                transform: "rotate(45deg)",
               }),
             },
           }}
         >
-          <Icon color="currentColor" name="Chevron Down"></Icon>
+          <Icon color="currentColor" name="Plus"></Icon>
         </div>
       </button>
 

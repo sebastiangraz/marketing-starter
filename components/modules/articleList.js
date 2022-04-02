@@ -3,8 +3,10 @@ import { Themed, Flex, Text, Avatar, Box, Grid } from "theme-ui";
 import Link from "next/link";
 import { Width } from "../width";
 import imageUrlBuilder from "@sanity/image-url";
-import { sanityClient } from "../../lib/sanity";
 import TimeAgo from "react-timeago";
+
+import { sanityClient } from "../../lib/sanity";
+
 const builder = imageUrlBuilder(sanityClient);
 
 const urlFor = (source) => {

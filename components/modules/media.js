@@ -9,7 +9,6 @@ const style = {
     display: "grid",
     overflow: "hidden",
     position: "relative",
-    minHeight: "50vh",
   },
   mediaOverlay: {
     variant: "layout.row",

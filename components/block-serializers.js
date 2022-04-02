@@ -45,6 +45,17 @@ export const blockSerializers = {
         );
       }
 
+      if (style === "label") {
+        return (
+          <Text
+            variant="label"
+            className={cx("is-h4", { "has-btn": hasButton })}
+          >
+            {props.children}
+          </Text>
+        );
+      }
+
       if (style === "normal") {
         return (
           <Text className={cx("is-h4", { "has-btn": hasButton })}>
