@@ -23,13 +23,13 @@ const getInitials = (name) =>
     .toUpperCase();
 
 const ArticleList = ({ data, articleList }) => {
+  const { header, limit } = data;
   return (
     <section className="section" sx={{ position: "relative" }}>
       <div sx={{ variant: "layout.row" }}>
-        <Themed.h1>{data.header}</Themed.h1>
+        <Themed.h1>{header}</Themed.h1>
         <Flex sx={{ flexDirection: "column" }}>
-          {articleList.map((article) => {
-            console.log(article);
+          {articleList.slice(0, limit ? limit : 5).map((article) => {
             const { _id, slug, title, author, name, authorImage, date } =
               article;
             return (

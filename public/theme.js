@@ -107,6 +107,7 @@ const theme = {
     text: "#0C002B",
     background: "F8F8F7",
     primary: brandColors.salmon,
+    ...brandColors,
   },
   layout: {
     row: {

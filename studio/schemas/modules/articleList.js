@@ -10,6 +10,12 @@ export default {
       title: 'Header',
       name: 'header',
       type: 'string'
+    },
+    {
+      title: 'Limit posts',
+      name: 'limit',
+      type: 'number',
+      description: 'Default is 5'
     }
   ],
   preview: {

@@ -145,13 +145,15 @@ export const modules = `
     parallaxContainer[]{
       "id": _key,
       sizes,
-      heading
+      heading,
+      "color" : color.colorValue.value
     }
   },
   _type == 'articleList' => {
     _type,
     _key,
     header,
+    limit
   },
 `;
 

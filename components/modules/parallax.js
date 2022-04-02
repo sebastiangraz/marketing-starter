@@ -44,6 +44,7 @@ const Parallax = memo(({ data = {} }) => {
   } = state;
 
   const { parallaxContainer } = data;
+
   const length = parallaxContainer.length;
   const ref = useRef();
   const { scrollY } = useViewportScroll();

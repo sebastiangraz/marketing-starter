@@ -3,9 +3,18 @@ import React, { memo } from "react";
 import { motion } from "framer-motion";
 
 const style = {
+  section: {
+    maxWidth: "1288px",
+    height: "100vh",
+    "&:first-of-type": {
+      "& > *": {
+        ml: "0px",
+      },
+    },
+  },
   innerSection: {
     mt: "25vh",
-    p: [3, 6],
+    p: [3, 4],
     gridColumn: "span 12",
     height: `calc(65%)`,
     maxHeight: "100vmin",
@@ -17,16 +26,6 @@ const style = {
     background: "#fff",
     "&.active ": {
       boxShadow: "0 0 0 1px transparent inset",
-      background: "#F3EFED",
-    },
-  },
-  section: {
-    maxWidth: "1288px",
-    height: "100vh",
-    "&:first-of-type": {
-      "& > *": {
-        ml: "0px",
-      },
     },
   },
 };
@@ -53,15 +52,8 @@ const childVariantInner = {
 };
 
 export const ParallaxCard = memo(
-  ({
-    data,
-    gapWidth,
-    active,
-    index,
-    isSolo,
-    columnCountEqualTo12,
-    onClick,
-  }) => {
+  ({ data, active, index, isSolo, columnCountEqualTo12, onClick }) => {
+    console.log(data);
     return (
       <motion.div
         data-index={index}
@@ -74,11 +66,17 @@ export const ParallaxCard = memo(
         onClick={isSolo || columnCountEqualTo12 ? null : onClick}
       >
         <motion.div
-          sx={style.innerSection}
+          sx={{
+            ...style.innerSection,
+            background: data.color ? data.color : "beige",
+          }}
           className={active === index ? "active" : ""}
         >
-          <motion.div variants={childVariantInner} whileInView="visible">
-            {" "}
+          <motion.div
+            variants={childVariantInner}
+            whileInView="visible"
+            viewport={{ amount: 0.3 }}
+          >
             <h2>{data.heading}</h2>
           </motion.div>
         </motion.div>
