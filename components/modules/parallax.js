@@ -273,7 +273,7 @@ const Parallax = memo(({ data = {} }) => {
     <section
       sx={{
         position: "relative",
-        contain: "paint",
+        contain: "layout",
         maxWidth: `calc(100vw)`,
       }}
     >
