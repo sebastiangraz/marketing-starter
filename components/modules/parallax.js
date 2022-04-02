@@ -13,6 +13,7 @@ import {
   transform,
   useSpring,
   useMotionValue,
+  LayoutGroup,
 } from "framer-motion";
 import { ParallaxCard } from "../parallaxCard";
 import { Text, Themed } from "theme-ui";
@@ -186,6 +187,8 @@ const Parallax = memo(({ data = {} }) => {
 
   useEffect(() => setIndex(0), []);
 
+  const [selected, setSelected] = useState(0);
+
   const handleClick = useCallback(
     (i) => () => {
       const clickIndex = i;
@@ -242,6 +245,29 @@ const Parallax = memo(({ data = {} }) => {
     },
   };
 
+  function Item({ isSelected, onClick }) {
+    return (
+      isSelected && (
+        <motion.div
+          onClick={onClick}
+          style={{
+            borderRadius: "20px",
+            willChange: "transform",
+            boxShadow: "0 0 0 1px rgba(0,0,0,1)",
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "28px",
+            zIndex: -1,
+          }}
+          layoutId="outline"
+          transition={{ type: "spring", bounce: 0.12 }}
+        />
+      )
+    );
+  }
+
   return (
     <section
       sx={{
@@ -263,37 +289,53 @@ const Parallax = memo(({ data = {} }) => {
           <Themed.h1
             sx={{
               mb: "1rem",
-              // pb: "1rem",
               maxWidth: "32rem",
             }}
           >
             {title} · love us for{" "}
           </Themed.h1>
+          <div sx={{ display: "flex" }}>
+            {parallaxContainer.map((e, i) => {
+              return (
+                <div
+                  key={e + i}
+                  sx={{
+                    mr: "0.5rem",
+                    display: "grid",
+                    position: "relative",
+                  }}
+                >
+                  <LayoutGroup id={parallaxContainer[0].heading}>
+                    <Item
+                      isSelected={i === index}
+                      onClick={() => setSelected}
+                    />
+                  </LayoutGroup>
 
-          {parallaxContainer.map((e, i) => {
-            return (
-              <Text
-                variant="label"
-                sx={{
-                  py: "0.25rem",
-                  px: ".75rem",
-                  borderRadius: "pill",
-                  cursor: "pointer",
-                  transition: ".4s ease box-shadow",
-                  boxShadow: "0 0 0 1px transparent",
-                  mr: "0.5rem",
-                  "&:hover": {
-                    boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
-                  },
-                  ...(i === index && { boxShadow: "0 0 0 1px currentColor" }),
-                }}
-                key={e + i}
-                onClick={handleClick(i)}
-              >
-                {e.heading}
-              </Text>
-            );
-          })}
+                  <Text
+                    variant="label"
+                    style={{
+                      cursor: "pointer",
+                      height: "28px",
+                      display: "inline-flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "0 0.5rem",
+                    }}
+                    sx={{
+                      "&:hover": {
+                        borderRadius: "small",
+                        boxShadow: "0 0 0 1px rgba(0,0,0,0.1)",
+                      },
+                    }}
+                    onClick={handleClick(i)}
+                  >
+                    {e.heading}
+                  </Text>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <motion.div
