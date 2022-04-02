@@ -202,7 +202,7 @@ const Parallax = memo(({ data = {} }) => {
 
       return window.scrollTo({
         top: elDistanceToTop + childWidthArray[clickIndex] * ratioFormula,
-        behavior: "auto",
+        behavior: "smooth",
       });
     },
     [
