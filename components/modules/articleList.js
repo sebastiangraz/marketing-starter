@@ -111,14 +111,7 @@ const ArticleList = ({ data, articleList }) => {
                                   src={urlFor(authorImage.asset).width(100)}
                                 />
                               ) : (
-                                <Text
-                                  sx={{
-                                    bottom: "1px",
-                                    position: "relative",
-                                  }}
-                                >
-                                  {name && getInitials(name)}
-                                </Text>
+                                <Text>{name && getInitials(name)}</Text>
                               )}
                             </Flex>
                           </Box>

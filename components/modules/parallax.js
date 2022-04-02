@@ -282,17 +282,23 @@ const Parallax = memo(({ data = {} }) => {
         <div
           sx={{
             position: "sticky",
-            top: "10vh",
+            top: "6vh",
             zIndex: 10,
+            justifyContent: "space-between",
+            alignItems: "center",
+            display: "flex",
+            flexWrap: "wrap",
           }}
         >
           <Themed.h1
             sx={{
-              mb: "1rem",
+              mt: 0,
+              pr: 3,
+              my: "1rem",
               maxWidth: "32rem",
             }}
           >
-            {title} · love us for{" "}
+            Loctax features for
           </Themed.h1>
           <div sx={{ display: "flex" }}>
             {parallaxContainer.map((e, i) => {
