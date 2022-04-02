@@ -1,4 +1,11 @@
-import React, { useRef, useReducer, useEffect, useState, memo } from "react";
+import React, {
+  useRef,
+  useReducer,
+  useEffect,
+  useState,
+  memo,
+  useCallback,
+} from "react";
 import debounce from "lodash.debounce";
 import {
   motion,
@@ -8,7 +15,7 @@ import {
   useMotionValue,
 } from "framer-motion";
 import { ParallaxCard } from "../parallaxCard";
-import { Themed } from "theme-ui";
+import { Text, Themed } from "theme-ui";
 
 const Parallax = memo(({ data = {} }) => {
   const settings = {
@@ -179,20 +186,33 @@ const Parallax = memo(({ data = {} }) => {
 
   useEffect(() => setIndex(0), []);
 
-  const handleClick = (e) => {
-    const clickIndex = parseFloat(e.target.dataset.index);
-    const lastIndex = Math.max(length - 1, clickIndex);
-    const isLastIndex = lastIndex === clickIndex;
-    const lastItemTernary = isLastIndex
-      ? childWidthArray[lastIndex]
-      : totalChildWidth - gapPercentageAsPixels - elWidth;
-    const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
+  const handleClick = useCallback(
+    (i) => () => {
+      const clickIndex = i;
+      const lastIndex = Math.max(length - 1, clickIndex);
+      const isLastIndex = lastIndex === clickIndex;
+      const lastItemTernary = isLastIndex
+        ? childWidthArray[lastIndex]
+        : totalChildWidth - gapPercentageAsPixels - elWidth;
+      const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
 
-    return window.scrollTo({
-      top: elDistanceToTop + childWidthArray[clickIndex] * ratioFormula,
-      behavior: "smooth",
-    });
-  };
+      return window.scrollTo({
+        top: elDistanceToTop + childWidthArray[clickIndex] * ratioFormula,
+        behavior: "smooth",
+      });
+    },
+    [
+      childWidthArray,
+      elDistanceToTop,
+      elHeight,
+      elWidth,
+      gapPercentageAsPixels,
+      length,
+      totalChildWidth,
+      windowHeight,
+    ]
+  );
+
   const explicitWidths = parallaxContainer.map((e) => {
     const val = (100 * e.sizes) / 12 - gapmath(e.sizes);
     return `${val}%`;
@@ -233,16 +253,49 @@ const Parallax = memo(({ data = {} }) => {
       {console.log("[[parallax.js rendered]]")}
 
       <div sx={style.container} ref={ref}>
-        <Themed.h1
+        <div
           sx={{
             position: "sticky",
             top: "10vh",
-            pb: "10vh",
-            maxWidth: "32rem",
+            zIndex: 10,
           }}
         >
-          {title} · love us for{" "}
-        </Themed.h1>
+          <Themed.h1
+            sx={{
+              mb: "1rem",
+              // pb: "1rem",
+              maxWidth: "32rem",
+            }}
+          >
+            {title} · love us for{" "}
+          </Themed.h1>
+
+          {parallaxContainer.map((e, i) => {
+            return (
+              <Text
+                variant="label"
+                sx={{
+                  py: "0.25rem",
+                  px: ".75rem",
+                  borderRadius: "pill",
+                  cursor: "pointer",
+                  transition: ".4s ease box-shadow",
+                  boxShadow: "0 0 0 1px transparent",
+                  mr: "0.5rem",
+                  "&:hover": {
+                    boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
+                  },
+                  ...(i === index && { boxShadow: "0 0 0 1px currentColor" }),
+                }}
+                key={e + i}
+                onClick={handleClick(i)}
+              >
+                {e.heading}
+              </Text>
+            );
+          })}
+        </div>
+
         <motion.div
           className="inner-container"
           sx={style.innerContainer}
@@ -254,7 +307,7 @@ const Parallax = memo(({ data = {} }) => {
             isSolo ? (e.sizes = 12) : e.sizes;
             return (
               <ParallaxCard
-                onClick={handleClick}
+                onClick={handleClick(i)}
                 gapWidth={56}
                 data={e}
                 key={e.id}

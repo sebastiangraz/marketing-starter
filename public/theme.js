@@ -134,7 +134,7 @@ const theme = {
     label: {
       lineHeight: 1.3,
       letterSpacing: "body",
-      fontSize: [0, 0, 1],
+      fontSize: ["12px", "14px", 1],
     },
     link: {
       color: "inherit",

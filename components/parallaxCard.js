@@ -53,7 +53,6 @@ const childVariantInner = {
 
 export const ParallaxCard = memo(
   ({ data, active, index, isSolo, columnCountEqualTo12, onClick }) => {
-    console.log(data);
     return (
       <motion.div
         data-index={index}
