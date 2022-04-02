@@ -164,6 +164,8 @@ const theme = {
     },
     root: {
       ...scroll,
+      "-webkit-overflow-scrolling": "touch",
+      touchAction: "none",
       fontSize: `clamp(12px, 1vw + 8px, 18px)`,
       color: "text",
       bg: "background",

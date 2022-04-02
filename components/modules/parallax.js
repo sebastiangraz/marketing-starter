@@ -2,6 +2,7 @@ import React, {
   useRef,
   useReducer,
   useEffect,
+  useLayoutEffect,
   useState,
   memo,
   useCallback,
@@ -74,7 +75,7 @@ const Parallax = memo(({ data = {} }) => {
   const [index, setIndex] = useState([]);
   const [title, setTitle] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref && ref.current;
     const elChild = el.querySelector(".inner-container");
 
@@ -181,11 +182,11 @@ const Parallax = memo(({ data = {} }) => {
     });
   }, [parallaxContainer, motionActive]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTitle(parallaxContainer[index]?.heading);
   }, [parallaxContainer, index]);
 
-  useEffect(() => setIndex(0), []);
+  useLayoutEffect(() => setIndex(0), []);
 
   const [selected, setSelected] = useState(0);
 
@@ -201,7 +202,7 @@ const Parallax = memo(({ data = {} }) => {
 
       return window.scrollTo({
         top: elDistanceToTop + childWidthArray[clickIndex] * ratioFormula,
-        behavior: "smooth",
+        behavior: "auto",
       });
     },
     [
@@ -252,7 +253,7 @@ const Parallax = memo(({ data = {} }) => {
           onClick={onClick}
           style={{
             borderRadius: "20px",
-            willChange: "transform",
+            // willChange: "transform",
             boxShadow: "0 0 0 1px rgba(0,0,0,1)",
             position: "absolute",
             left: 0,
@@ -272,7 +273,7 @@ const Parallax = memo(({ data = {} }) => {
     <section
       sx={{
         position: "relative",
-        contain: "paint",
+        // contain: "paint",
         maxWidth: `calc(100vw)`,
       }}
     >
