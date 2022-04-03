@@ -101,7 +101,33 @@ const fadeInVariant = {
     scale: 1,
     opacity: 1,
     transition: {
+      delay: 3.5,
       duration: 4,
+      bounce: 0.3,
+      type: "spring",
+    },
+  },
+};
+
+const notificationStackParentVariant = {
+  visible: {
+    transition: {
+      type: "spring",
+      duration: 1,
+      staggerChildren: 3,
+    },
+  },
+};
+
+const notificationStackVariant = {
+  visible: {
+    y: [0, -10, -10, -10, -10, 0],
+    opacity: [0, 1, 1, 1, 1, 0],
+    transition: {
+      repeat: Infinity,
+      repeatType: "loop",
+      repeatDelay: 4,
+      duration: 6,
       bounce: 0.3,
       type: "spring",
     },
@@ -498,6 +524,42 @@ const Hero = ({ data }) => {
                   </g>
                 </g>
               </g>
+            </motion.g>
+            <motion.g
+              initial="hidden"
+              animate="visible"
+              variants={notificationStackParentVariant}
+            >
+              <motion.rect
+                variants={notificationStackVariant}
+                x="512"
+                y="232"
+                width="209"
+                height="40"
+                fill="#fff"
+                stroke="currentColor"
+                rx="20"
+              />
+              <motion.rect
+                variants={notificationStackVariant}
+                x="512"
+                y="226"
+                width="209"
+                height="40"
+                fill="#eee"
+                stroke="currentColor"
+                rx="20"
+              />
+              <motion.rect
+                variants={notificationStackVariant}
+                x="512"
+                y="220"
+                width="209"
+                height="40"
+                fill="#aaa"
+                stroke="currentColor"
+                rx="20"
+              />
             </motion.g>
             <svg
               y="503.5"
