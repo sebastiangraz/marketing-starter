@@ -79,9 +79,6 @@ const cardVariant = {
   hidden: {
     scale: 0.9,
     opacity: 0,
-    transition: {
-      when: "beforeChildren",
-    },
   },
   visible: {
     scale: 1,
@@ -91,7 +88,22 @@ const cardVariant = {
       duration: 2,
       bounce: 0,
       delay: 2,
-      when: "beforeChildren",
+    },
+  },
+};
+
+const fadeInVariant = {
+  hidden: {
+    scale: 0.9,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 4,
+      bounce: 0.3,
+      type: "spring",
     },
   },
 };
@@ -207,6 +219,63 @@ const Hero = ({ data }) => {
             <HeroAnimation loop="flow-2" />
             <HeroAnimation loop="flow-3" />
             <HeroAnimation loop="flow-4" />
+            <motion.g variants={fadeInVariant}>
+              <rect
+                x="409"
+                y="128"
+                width="80"
+                height="80"
+                fill="#BEDBE0"
+                rx="12"
+              />
+            </motion.g>
+
+            <motion.g variants={fadeInVariant}>
+              <rect
+                x="358"
+                y="242"
+                width="125"
+                height="76"
+                fill="#BEDBE0"
+                rx="38"
+              />
+            </motion.g>
+
+            <motion.g variants={fadeInVariant}>
+              <rect
+                x="527"
+                y="242"
+                width="125"
+                height="76"
+                fill="#BEDBE0"
+                rx="12"
+              />
+            </motion.g>
+            <motion.g variants={fadeInVariant}>
+              <rect
+                x="576"
+                y="353"
+                width="138"
+                height="78"
+                fill="#BEDBE0"
+                rx="42"
+              />
+            </motion.g>
+            <motion.g variants={fadeInVariant}>
+              <clipPath id="clipCard">
+                <rect x="281" y="447" width="280" height="58"></rect>
+              </clipPath>
+              <rect
+                clipPath="url(#clipCard)"
+                x="357"
+                y="467"
+                width="125"
+                height="80"
+                fill="#BEDBE0"
+                rx="12"
+              />
+            </motion.g>
+
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 897.5 1041.5"
@@ -232,6 +301,7 @@ const Hero = ({ data }) => {
                 fill="currentColor"
               />
             </motion.svg>
+
             <motion.path
               variants={childVariant}
               shapeRendering="geometricPrecision"
@@ -353,7 +423,7 @@ const Hero = ({ data }) => {
               d="M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
             />
 
-            <motion.g variants={cardVariant}>
+            <motion.g variants={fadeInVariant}>
               <g transform="translate(190,243)">
                 <path
                   fillRule="evenodd"
@@ -365,7 +435,7 @@ const Hero = ({ data }) => {
               </g>
             </motion.g>
 
-            <motion.g variants={cardVariant}>
+            <motion.g variants={fadeInVariant}>
               <g transform="translate(414,355)">
                 <path
                   fillRule="evenodd"

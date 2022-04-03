@@ -6,6 +6,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import TimeAgo from "react-timeago";
 
 import { sanityClient } from "../../lib/sanity";
+import Icon from "../icon";
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -130,22 +131,14 @@ const ArticleList = ({ data, articleList }) => {
                     <Text
                       variant="label"
                       sx={{
-                        color: tint("text", 0.4),
                         lineHeight: "1.1",
                         whiteSpace: "pre",
                       }}
                     >
                       {date && <TimeAgo date={new Date(date).toDateString()} />}
                     </Text>
-                    <Themed.a
-                      variant="link"
-                      sx={{
-                        whiteSpace: "pre",
-                        fontFeatureSettings: `"calt" on`,
-                      }}
-                    >
-                      {"Read ->"}
-                    </Themed.a>
+
+                    <Icon sx={{ width: "1rem" }} name="Arrow" />
                   </Flex>
                 </Grid>
               </Link>
