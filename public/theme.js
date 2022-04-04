@@ -59,6 +59,7 @@ const buttonBase = {
   fontSize: 2,
   px: "3rem",
   py: "1.5rem",
+  fontFamily: "inherit",
   borderRadius: "1rem",
   textDecoration: "none",
   cursor: "pointer",
