@@ -1,4 +1,4 @@
-import { Themed, Flex, Button } from "theme-ui";
+import { Themed, Flex, Button, useThemeUI } from "theme-ui";
 import { Width } from "../../width";
 import { heroPath } from "./heroPaths";
 import NextLink from "next/link";
@@ -7,6 +7,7 @@ import Reveal from "../../../components/reveal";
 import { HeroAnimation } from "./heroAnimation";
 import cursor from "../../../public/youcursor.png";
 import cursor2x from "../../../public/youcursor@2x.png";
+
 const style = {
   hero: {
     position: "relative",
@@ -120,6 +121,8 @@ const notificationStackVariant = {
 };
 
 const Hero = ({ data }) => {
+  const context = useThemeUI();
+
   const { header, lead } = data;
   const words = ["compliance", "audits", "management"];
   const getPercentage = [...words, words[0]].map((e, i) => {
@@ -231,7 +234,7 @@ const Hero = ({ data }) => {
                   y="128"
                   width="80"
                   height="80"
-                  fill="#BEDBE0"
+                  fill={context.theme.colors.cyan}
                   rx="12"
                 />
               </motion.g>
@@ -242,7 +245,7 @@ const Hero = ({ data }) => {
                   y="242"
                   width="125"
                   height="76"
-                  fill="#BEDBE0"
+                  fill={context.theme.colors.cyan}
                   rx="38"
                 />
               </motion.g>
@@ -253,7 +256,7 @@ const Hero = ({ data }) => {
                   y="242"
                   width="125"
                   height="76"
-                  fill="#BEDBE0"
+                  fill={context.theme.colors.cyan}
                   rx="12"
                 />
               </motion.g>
@@ -263,7 +266,7 @@ const Hero = ({ data }) => {
                   y="353"
                   width="138"
                   height="78"
-                  fill="#BEDBE0"
+                  fill={context.theme.colors.cyan}
                   rx="42"
                 />
               </motion.g>
@@ -277,7 +280,7 @@ const Hero = ({ data }) => {
                   y="467"
                   width="125"
                   height="80"
-                  fill="#BEDBE0"
+                  fill={context.theme.colors.cyan}
                   rx="12"
                 />
               </motion.g>
@@ -546,10 +549,10 @@ const Hero = ({ data }) => {
                       height="37"
                       rx="18.5"
                       fill="white"
-                      stroke="#0C002B"
+                      stroke="currentColor"
                     />
                     <g transform="translate(12,14)">
-                      <rect width="18" height="18" rx="9" fill="#0C002B" />
+                      <rect width="18" height="18" rx="9" fill="currentColor" />
                       <path
                         d="M10 5.92285H7C5.89543 5.92285 5 6.81828 5 7.92285V8.99977M10 5.92285L8.92299 4.8457M10 5.92285L8.92299 6.99986"
                         stroke="white"
@@ -567,7 +570,7 @@ const Hero = ({ data }) => {
                     <path
                       transform="translate(38,13)"
                       d={heroPath.notificationText3}
-                      fill="#0C002B"
+                      fill="currentColor"
                     />
                     <rect
                       x="181"
@@ -575,7 +578,7 @@ const Hero = ({ data }) => {
                       width="14"
                       height="14"
                       rx="7"
-                      fill="#0C002B"
+                      fill="currentColor"
                     />
                     <path
                       d="M188.844 12V5.88H187.908C187.908 6.636 187.665 6.924 186.522 6.924V7.788H187.818V12H188.844Z"
@@ -601,10 +604,10 @@ const Hero = ({ data }) => {
                       height="37"
                       rx="18.5"
                       fill="white"
-                      stroke="#0C002B"
+                      stroke="currentColor"
                     />
                     <g transform="translate(12,14)">
-                      <rect width="18" height="18" rx="9" fill="#0C002B" />
+                      <rect width="18" height="18" rx="9" fill="currentColor" />
                       <path
                         d="M6 9L8 11L12 7"
                         stroke="white"
@@ -616,7 +619,7 @@ const Hero = ({ data }) => {
                     <path
                       transform="translate(38,13)"
                       d={heroPath.notificationText4}
-                      fill="#0C002B"
+                      fill="currentColor"
                     />
                     <rect
                       x="181"
@@ -624,7 +627,7 @@ const Hero = ({ data }) => {
                       width="14"
                       height="14"
                       rx="7"
-                      fill="#0C002B"
+                      fill="currentColor"
                     />
                     <path
                       d="M188.844 12V5.88H187.908C187.908 6.636 187.665 6.924 186.522 6.924V7.788H187.818V12H188.844Z"
@@ -650,10 +653,10 @@ const Hero = ({ data }) => {
                       height="37"
                       rx="18.5"
                       fill="white"
-                      stroke="#0C002B"
+                      stroke="currentColor"
                     />
                     <g transform="translate(12,14)">
-                      <rect width="18" height="18" rx="9" fill="#0C002B" />
+                      <rect width="18" height="18" rx="9" fill="currentColor" />
                       <path
                         d="M9.06418 4.48425L5.37552 8.58276C5.23072 8.74364 5.3449 9 5.56134 9H7.5C8.05228 9 8.5 9.44772 8.5 10V13.3485C8.5 13.5776 8.78255 13.6861 8.93582 13.5158L12.6245 9.41724C12.7693 9.25636 12.6551 9 12.4387 9H10.5C9.94772 9 9.5 8.55228 9.5 8V4.65149C9.5 4.42237 9.21745 4.31394 9.06418 4.48425Z"
                         fill="white"
@@ -663,7 +666,7 @@ const Hero = ({ data }) => {
                     <path
                       transform="translate(38,13)"
                       d={heroPath.notificationText5}
-                      fill="#0C002B"
+                      fill="currentColor"
                     />
                     <rect
                       x="181"
@@ -671,7 +674,7 @@ const Hero = ({ data }) => {
                       width="14"
                       height="14"
                       rx="7"
-                      fill="#0C002B"
+                      fill="currentColor"
                     />
                     <path
                       d="M188.844 12V5.88H187.908C187.908 6.636 187.665 6.924 186.522 6.924V7.788H187.818V12H188.844Z"

@@ -260,7 +260,7 @@ export const HeroAnimation = ({ loop }) => {
                   <path
                     d="M54.5 0.5H16C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5H39C47.5604 31.5 54.5 24.5604 54.5 16V0.5Z"
                     fill="white"
-                    stroke="#0C002B"
+                    stroke="currentColor"
                     strokeLinejoin="round"
                   />
                   <rect
@@ -360,7 +360,7 @@ export const HeroAnimation = ({ loop }) => {
                   <path
                     d="M0.5 0.5H77C85.5604 0.5 92.5 7.43959 92.5 16C92.5 24.5604 85.5604 31.5 77 31.5H16C7.43959 31.5 0.5 24.5604 0.5 16V0.5Z"
                     fill="white"
-                    stroke="#0C002B"
+                    stroke="currentColor"
                     strokeLinejoin="round"
                   />
                   <rect
@@ -408,7 +408,7 @@ export const HeroAnimation = ({ loop }) => {
                 <path
                   d="M96.5 0.5H16C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43958 31.5 16 31.5H81C89.5604 31.5 96.5 24.5604 96.5 16V0.5Z"
                   fill="#fff"
-                  stroke="#0C002B"
+                  stroke="currentColor"
                   strokeLinejoin="round"
                 />
                 <rect
