@@ -218,7 +218,11 @@ export const HeroAnimation = ({ loop }) => {
               stroke="#ffffff"
               strokeLinecap="round"
             />
-            <path d={heroPath.notificationText1} fill="currentColor" />
+            <path
+              transform="translate(38,13)"
+              d={heroPath.notificationText1}
+              fill="currentColor"
+            />
             <rect
               x="173"
               y="2"
@@ -323,7 +327,7 @@ export const HeroAnimation = ({ loop }) => {
                 strokeLinecap="round"
                 vectorEffect="non-scaling-stroke"
               />
-              <g transform="translate(15, 15)">
+              <g transform="translate(15, 16)">
                 <path d={heroPath.notificationText2} fill="currentColor" />
               </g>
               <path
