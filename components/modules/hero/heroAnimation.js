@@ -389,7 +389,7 @@ export const HeroAnimation = ({ loop }) => {
             <rect
               x="0.5"
               y="4.5"
-              width="183"
+              width="200"
               height="37"
               rx="18.5"
               fill="white"
@@ -435,6 +435,7 @@ export const HeroAnimation = ({ loop }) => {
               fill="currentColor"
             />
             <rect
+              transform="translate(16,1)"
               x="173"
               y="2"
               width="14"
@@ -443,6 +444,7 @@ export const HeroAnimation = ({ loop }) => {
               fill="currentColor"
             />
             <path
+              transform="translate(16,1)"
               d="M179.918 13H180.938C181.008 13 181.038 12.97 181.038 12.9V6.1C181.038 6.03 181.008 6 180.938 6H180.378C180.318 6 180.268 6.02 180.218 6.05L178.568 6.94C178.508 6.97 178.458 7.02 178.458 7.09V8.16C178.458 8.23 178.488 8.25 178.538 8.25C178.568 8.25 178.598 8.24 178.638 8.22L179.818 7.56V12.9C179.818 12.97 179.848 13 179.918 13Z"
               fill="#ffffff"
             />
