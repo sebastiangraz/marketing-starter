@@ -9,7 +9,7 @@ const childVariant = {
     pathLength: 1,
     opacity: [1, 0],
     transition: {
-      opacity: { delay: 5 },
+      opacity: { delay: 3 },
       pathLength: { type: "spring", duration: 3, bounce: 0, delay: 0.5 },
       duration: 3,
     },

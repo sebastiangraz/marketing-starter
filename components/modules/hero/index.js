@@ -41,9 +41,28 @@ const parentVariant = {
 const Hero = ({ data }) => {
   const { header, lead } = data;
   const words = ["compliance", "audits", "management"];
-  const getPercentage = [...words, words[0]].map((e, i) => {
-    return `-${i * 100}%`;
-  });
+
+  const notificationStackParentVariant = {
+    visible: {
+      transition: {
+        staggerChildren: 3,
+      },
+    },
+  };
+
+  const notificationStackVariant = {
+    visible: {
+      y: [10, 0, 0, 0, 0, -5],
+      opacity: [0, 1, 1, 1, 1, 0],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 3 * (words.length - 1),
+        duration: 3,
+        type: "spring",
+      },
+    },
+  };
 
   return (
     <section
@@ -68,42 +87,32 @@ const Hero = ({ data }) => {
               <motion.div
                 sx={{
                   display: "inline-grid",
-                  overflow: "hidden",
                   position: "relative",
                   pr: "1ch",
                 }}
               >
                 <motion.div
-                  animate={{
-                    y: getPercentage,
-                  }}
-                  transition={{
-                    type: "spring",
-                    bounce: 0.1,
-                    duration: 7,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                  }}
+                  variants={notificationStackParentVariant}
                   sx={{
                     display: "inline-grid",
                     position: "relative",
                   }}
                 >
-                  {[...words, words[0]].map((e, i) => {
+                  {[...words].map((e, i) => {
                     return (
-                      <div
+                      <motion.div
+                        variants={notificationStackVariant}
                         sx={{
                           position: "relative",
                           gridArea: "-1/1",
                           minWidth: "100%",
-                          top: `${100 * i}%`,
                           height: "100%",
                           pb: "0.5rem",
                         }}
                         key={e + i}
                       >
                         {e}
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </motion.div>

@@ -94,7 +94,7 @@ const theme = {
   breakpoints: bp,
   letterSpacings: {
     body: "-0.02em",
-    heading: "-0.04em",
+    heading: "-0.036em",
     caps: "0.002em",
   },
 
