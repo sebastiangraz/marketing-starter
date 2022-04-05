@@ -46,12 +46,12 @@ const CookieBar = ({ data = {} }) => {
             sx={{
               background: "text",
               position: "fixed",
-              width: ["calc(100% - 2rem)", "auto"],
+              width: ["calc(100% - 2rem)", null, "auto"],
               maxWidth: "960px",
               color: "#fff",
-              bottom: ["1rem", "2rem"],
+              bottom: ["1rem", null, "2rem"],
               borderRadius: "default",
-              left: ["1rem", "2rem"],
+              left: ["1rem", null, "2rem"],
               zIndex: 100,
               p: ".5rem .5rem .5rem 2rem",
             }}
