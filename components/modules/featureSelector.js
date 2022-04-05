@@ -33,7 +33,7 @@ const FeatureSelector = ({ data }) => {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ type: "spring", duration: 0.25 }}
                   >
-                    <Themed.h2>
+                    <Themed.h2 sx={{ mt: 0 }}>
                       {selectedTab ? selectedTab.featureTitle : "Empty"}
                     </Themed.h2>
                     <Text>
@@ -77,7 +77,7 @@ const FeatureSelector = ({ data }) => {
                         onClick={() => setSelectedTab(item)}
                       >
                         <Text
-                          sx={{ display: "inline-flex" }}
+                          sx={{ display: "inline-flex", m: 0 }}
                         >{`${item.featureTitle}`}</Text>
 
                         {item === selectedTab ? (

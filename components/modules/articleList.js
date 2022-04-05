@@ -120,7 +120,9 @@ const ArticleList = ({ data, articleList }) => {
                                     src={urlFor(authorImage.asset).width(100)}
                                   />
                                 ) : (
-                                  <Text>{name && getInitials(name)}</Text>
+                                  <Text sx={{ m: 0 }}>
+                                    {name && getInitials(name)}
+                                  </Text>
                                 )}
                               </Flex>
                             </Box>

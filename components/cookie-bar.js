@@ -68,7 +68,7 @@ const CookieBar = ({ data = {} }) => {
               }}
             >
               <Flex sx={{ alignItems: "center", gap: "1rem" }}>
-                <Text>
+                <Text sx={{ m: 0 }}>
                   {message.split("\n").map((text, i) => {
                     // using React.fragment to parse line breaks
                     return (

@@ -129,6 +129,7 @@ const theme = {
   radii: { default: "1.5rem", small: "1rem", large: "2rem", pill: "99rem" },
   text: {
     default: {
+      marginBottom: "1rem",
       lineHeight: 1.4,
       letterSpacing: "body",
       fontSize: [2, 2, 2],
@@ -179,7 +180,6 @@ const theme = {
       variant: "text.link",
     },
     h1: {
-      marginTop: 0,
       fontFamily: "heading",
       fontWeight: "normal",
       mb: "0.75em",
@@ -188,21 +188,18 @@ const theme = {
       fontSize: [5, 5, 6],
     },
     h2: {
-      marginTop: 0,
       lineHeight: 1.2,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 4, 5],
     },
     h3: {
-      marginTop: 0,
       lineHeight: 1.3,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 3, 4],
     },
     h4: {
-      marginTop: 0,
       lineHeight: 1.36,
       fontWeight: "normal",
       letterSpacing: "heading",
