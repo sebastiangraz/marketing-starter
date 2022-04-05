@@ -48,10 +48,10 @@ const CookieBar = ({ data = {} }) => {
               width: ["calc(100% - 2rem)", "auto"],
               color: "#fff",
               bottom: ["1rem", "2rem"],
-              borderRadius: "large",
+              borderRadius: "default",
               left: ["1rem", "2rem"],
               zIndex: 100,
-              p: "1rem 1rem 1rem 2rem",
+              p: ".5rem .5rem .5rem 2rem",
             }}
             initial="hide"
             animate="show"
@@ -67,7 +67,13 @@ const CookieBar = ({ data = {} }) => {
                 gap: "2rem",
               }}
             >
-              <Flex sx={{ alignItems: "center", gap: "1rem" }}>
+              <Flex
+                sx={{
+                  alignItems: "center",
+                  gap: ["0.25rem", "1rem"],
+                  flexWrap: "wrap",
+                }}
+              >
                 <Text sx={{ m: 0 }}>
                   {message.split("\n").map((text, i) => {
                     // using React.fragment to parse line breaks
