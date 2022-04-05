@@ -159,6 +159,15 @@ export const modules = `
     header,
     limit
   },
+  _type == 'featureSelector' => {
+    _type,
+    _key,
+    header,
+    features[]{
+      featureTitle,
+      featureDescription
+    }
+  },
 `;
 
 const articleList = `

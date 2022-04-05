@@ -32,6 +32,7 @@ export default {
         { type: 'hero' },
         { type: 'dividerPhoto' },
         { type: 'articleList' },
+        { type: 'featureSelector' },
         { type: 'parallax' }
       ]
     },

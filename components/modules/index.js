@@ -7,6 +7,7 @@ const DividerPhoto = dynamic(() => import("./divider-photo"));
 const Hero = dynamic(() => import("./hero"));
 const Parallax = dynamic(() => import("./parallax"));
 const ArticleList = dynamic(() => import("./articleList"));
+const FeatureSelector = dynamic(() => import("./featureSelector"));
 
 export const Module = ({ module, articleList }) => {
   const type = module._type;
@@ -24,6 +25,8 @@ export const Module = ({ module, articleList }) => {
       return <Parallax data={module} />;
     case "articleList":
       return <ArticleList data={module} articleList={articleList} />;
+    case "featureSelector":
+      return <FeatureSelector data={module} />;
     default:
       return null;
   }
