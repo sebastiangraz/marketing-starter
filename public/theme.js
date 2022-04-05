@@ -123,7 +123,7 @@ const theme = {
     },
     post: {
       maxWidth: "65ch",
-      p: { mb: 3 },
+      p: { mb: "1.5rem" },
     },
   },
   radii: { default: "1.5rem", small: "1rem", large: "2rem", pill: "99rem" },

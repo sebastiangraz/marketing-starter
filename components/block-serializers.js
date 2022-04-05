@@ -49,7 +49,7 @@ export const blockSerializers = {
         return (
           <Text
             variant="label"
-            className={cx("is-h4", { "has-btn": hasButton })}
+            className={cx("label", { "has-btn": hasButton })}
           >
             {props.children}
           </Text>
@@ -58,7 +58,7 @@ export const blockSerializers = {
 
       if (style === "normal") {
         return (
-          <Text className={cx("is-h4", { "has-btn": hasButton })}>
+          <Text as="p" className={cx("paragraph", { "has-btn": hasButton })}>
             {props.children}
           </Text>
         );

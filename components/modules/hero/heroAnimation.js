@@ -157,7 +157,7 @@ const offsiteVariant = {
     transition: {
       when: "afterChildren",
       delay: 3.5,
-      pathLength: { type: "spring", duration: 5, bounce: 0 },
+      pathLength: { type: "spring", duration: 7, bounce: 0 },
     },
   },
 };
@@ -1021,7 +1021,7 @@ export const HeroAnimation = ({ loop }) => {
       return (
         <svg
           y="503.5"
-          x="896px"
+          x="895.75"
           width="3000"
           height="2"
           viewBox="0 0 3000 1"
@@ -1032,7 +1032,7 @@ export const HeroAnimation = ({ loop }) => {
             variants={offsiteVariant}
             vectorEffect="non-scaling-stroke"
             shapeRendering="geometricPrecision"
-            d="M0 0H3000"
+            d="M1 0H3000"
             stroke="currentColor"
           />
         </svg>
