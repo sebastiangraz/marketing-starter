@@ -13,6 +13,7 @@ const barAnim = {
     opacity: 1,
     y: "0%",
     transition: {
+      delay: 3,
       duration: 0.6,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -46,6 +47,7 @@ const CookieBar = ({ data = {} }) => {
               background: "text",
               position: "fixed",
               width: ["calc(100% - 2rem)", "auto"],
+              maxWidth: "960px",
               color: "#fff",
               bottom: ["1rem", "2rem"],
               borderRadius: "default",
@@ -74,7 +76,7 @@ const CookieBar = ({ data = {} }) => {
                   flexWrap: "wrap",
                 }}
               >
-                <Text sx={{ m: 0 }}>
+                <Text sx={{ m: 0, mt: "1rem", mb: "1rem" }}>
                   {message.split("\n").map((text, i) => {
                     // using React.fragment to parse line breaks
                     return (
@@ -85,7 +87,7 @@ const CookieBar = ({ data = {} }) => {
                   })}
                 </Text>
                 {link && (
-                  <Link sx={{ color: "ui" }}>
+                  <Link sx={{ color: "ui", m: 0, mt: "1rem", mb: "1rem" }}>
                     <CustomLink
                       link={{ ...{ page: link }, ...{ title: "Learn More" } }}
                     />
@@ -93,8 +95,12 @@ const CookieBar = ({ data = {} }) => {
                 )}
               </Flex>
 
-              <Button variant="secondary" onClick={() => onAcceptCookies()}>
-                Accept Cookies
+              <Button
+                sx={{ placeSelf: "flex-end" }}
+                variant="secondary"
+                onClick={() => onAcceptCookies()}
+              >
+                Accept
               </Button>
             </Flex>
           </motion.div>

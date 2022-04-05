@@ -54,6 +54,7 @@ const buttonHover = {
 };
 
 const buttonBase = {
+  flexShrink: "0",
   position: "relative",
   whiteSpace: "pre",
   fontSize: 2,
