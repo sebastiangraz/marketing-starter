@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { heroPath } from "./heroPaths";
 import { useThemeUI } from "theme-ui";
+import theme from "../../../public/theme";
 
 const childVariant = {
   hidden: { pathLength: 0, opacity: 0.5 },
@@ -608,38 +609,36 @@ export const HeroAnimation = ({ loop }) => {
               fill="white"
             />
             <g>
-              <defs>
-                <filter id="blurLiquidate" x="0" y="0">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
-                </filter>
-              </defs>
-              <clipPath id="clipLiquidate">
-                <motion.rect
+              <motion.g
+                initial={{ opacity: 0, y: 4 }}
+                animate={{
+                  y: [4, 4, 0, 0, 0, 0],
+                  opacity: [0, 0, 1, 1, 1, 1, 0],
+                }}
+                transition={{
+                  type: "spring",
+                  times: [0.14, 0.22, 0.32, 0.56, 0.7, 0.84, 1],
+                  duration: 10,
+                  repeat: Infinity,
+                  delay: 7,
+                  repeatDelay: 7,
+                  repeatType: "loop",
+                }}
+              >
+                <rect
+                  transform="translate(-0.5,-0.5)"
                   ry="6"
-                  width="125"
-                  height="76"
-                  initial={{ width: 125 }}
-                  animate={{ width: [0, 0, 125, 125, 125, 125, 0] }}
-                  transition={{
-                    type: "spring",
-                    times: [0.14, 0.22, 0.32, 0.56, 0.7, 0.84, 1],
-                    duration: 10,
-                    repeat: Infinity,
-                    delay: 7,
-                    repeatDelay: 7,
-                    repeatType: "loop",
-                  }}
-                ></motion.rect>
-              </clipPath>
-              <g clipPath="url(#clipLiquidate)">
-                <rect ry="6" width="125" height="76" fill="currentColor"></rect>
+                  width="126"
+                  height="77"
+                  fill={theme.colors.salmon}
+                ></rect>
                 <g transform="translate(13,13)">
                   <g transform="translate(0,32)">
                     <path
                       fillRule="evenodd"
                       clipRule="evenodd"
                       d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18ZM6.70711 12.7071L9 10.4142L11.2929 12.7071L12.7071 11.2929L10.4142 9L12.7071 6.70711L11.2929 5.29289L9 7.58579L6.70711 5.29289L5.29289 6.70711L7.58579 9L5.29289 11.2929L6.70711 12.7071Z"
-                      fill="#ffffff"
+                      fill={theme.colors.text}
                     />
                   </g>
 
@@ -656,10 +655,10 @@ export const HeroAnimation = ({ loop }) => {
                       repeatType: "loop",
                     }}
                     d={heroPath.cardText3}
-                    fill="#ffffff"
+                    fill={theme.colors.text}
                   />
                 </g>
-              </g>
+              </motion.g>
             </g>
           </g>
         </motion.g>
