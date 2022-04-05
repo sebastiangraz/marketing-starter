@@ -155,6 +155,7 @@ const Hero = ({ data }) => {
               <HeroAnimation loop="globalNotifications" />
               <HeroAnimation loop="liquidate" />
               <HeroAnimation loop="taxManager" />
+              <HeroAnimation loop="taxAdvisor" />
               <HeroAnimation loop="offSite" />
             </motion.svg>
           </Width>
