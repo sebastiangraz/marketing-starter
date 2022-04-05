@@ -140,16 +140,19 @@ const Hero = ({ data }) => {
               animate="visible"
               variants={parentVariant}
             >
+              <HeroAnimation loop="intersectingLines" />
+              <HeroAnimation loop="introPaths" />
+
               <HeroAnimation loop="flow-1" />
               <HeroAnimation loop="flow-2" />
               <HeroAnimation loop="flow-3" />
               <HeroAnimation loop="flow-4" />
+
               <HeroAnimation loop="secondaryCards" />
-              <HeroAnimation loop="intersectingLines" />
-              <HeroAnimation loop="introPaths" />
               <HeroAnimation loop="liquidateCard" />
-              <HeroAnimation loop="globalNotifications" />
               <HeroAnimation loop="checkReview" />
+
+              <HeroAnimation loop="globalNotifications" />
               <HeroAnimation loop="liquidate" />
               <HeroAnimation loop="taxManager" />
               <HeroAnimation loop="offSite" />

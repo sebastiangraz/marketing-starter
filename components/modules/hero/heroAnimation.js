@@ -8,9 +8,9 @@ const childVariant = {
     pathLength: 1,
     opacity: [1, 0],
     transition: {
-      opacity: { delay: 3 },
-      pathLength: { type: "spring", duration: 2, bounce: 0 },
-      duration: 2,
+      opacity: { delay: 5 },
+      pathLength: { type: "spring", duration: 4, bounce: 0 },
+      duration: 3,
     },
   },
 };
@@ -24,6 +24,7 @@ const intersectionVariant = {
     y2: 1,
     transition: {
       when: "beforeChildren",
+      delay: 0.5,
       duration: 5,
     },
   },
@@ -124,8 +125,9 @@ const liquidateVariant = {
 const notificationStackParentVariant = {
   visible: {
     transition: {
-      type: "spring",
-      duration: 1,
+      // type: "spring",
+      // duration: 3,
+      delayChildren: 2,
       staggerChildren: 3,
     },
   },
@@ -133,14 +135,14 @@ const notificationStackParentVariant = {
 
 const notificationStackVariant = {
   visible: {
-    y: [0, 0, -10, -10, -10, 0],
+    y: [0, 0, -10, -10, -10, -10],
     opacity: [0, 0, 1, 1, 1, 0],
     transition: {
+      when: "afterChildren",
       repeat: Infinity,
       repeatType: "loop",
       repeatDelay: 4,
-      duration: 6,
-      bounce: 0.3,
+      duration: 8,
       type: "spring",
     },
   },
@@ -162,6 +164,131 @@ const offsiteVariant = {
 export const HeroAnimation = ({ loop }) => {
   const context = useThemeUI();
   switch (loop) {
+    case "introPaths":
+      return (
+        <>
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.003 0V112H421.003C405.539 112 393.003 124.536 393.003 140V168H337.003H309C293.536 168 281 180.536 281 196V224L197 224C181.536 224 169 236.536 169 252V280L141 280C125.536 280 113 292.536 113 308V336L84.9998 336C69.536 336 57 348.536 57 364V364C57 379.464 69.5361 392 85 392L113 392H169V448H113V531.999C113 547.463 100.464 559.999 85 559.999H29.0002C13.5361 559.999 1.00008 572.536 1.00017 588L1.00295 1040.5"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281V252C281 267.464 268.464 280 253 280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
+          />
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447"
+          />
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V224H337V336H225V392H281V448V476C281 491.464 293.536 504 309 504H337"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V224V280H337V336H281V392H309C324.464 392 337 404.536 337 420V448V504H393V448H449V504H505V448H561V504H617V448H673V504H701C716.464 504 729 491.464 729 476V448H841"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V168H505V280H449.004V336H393V504"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V168V336H365.5V364C365.5 379.464 378.036 392 393.5 392H449.004V448"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V224H393V336H281V392V448H337H393V504H449V448H505V504H561V448H617V504H673V448H729V392H785V392C799.912 392 812 404.088 812 419V448"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V168H505H561V224H505V280H561H617V336V448"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V168H505V336H561V392H589V392C589 376.536 601.536 364 617 364H673C688.464 364 701 376.536 701 392V392C701 407.464 688.464 420 673 420H616.5C601.312 420 589 407.688 589 392.5V392.5"
+          />
+
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V224H561V336H617H673V392H617"
+          />
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V224H617V280H673V336H729V392H673V448"
+          />
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V224H617H673V280H729V336H785V392"
+          />
+          <motion.path
+            variants={childVariant}
+            shapeRendering="geometricPrecision"
+            stroke="currentColor"
+            fill="transparent"
+            vectorEffect="non-scaling-stroke"
+            d="M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
+          />
+        </>
+      );
     case "flow-4":
       return (
         <motion.circle
@@ -539,14 +666,15 @@ export const HeroAnimation = ({ loop }) => {
       );
     case "taxManager":
       return (
-        <g transform="translate(340,210)">
+        <g transform="translate(200,210)">
           );
           <motion.g variants={fadeInVariant}>
             <motion.g
               initial={{ "--offset": "0%" }}
               animate={{ "--offset": "100%" }}
               transition={{
-                duration: 28,
+                delay: 2,
+                duration: 40,
                 repeat: Infinity,
                 repeatDelay: 2,
                 repeatType: "mirror",
@@ -556,7 +684,7 @@ export const HeroAnimation = ({ loop }) => {
                 offsetDistance: "var(--offset)",
                 offsetRotate: "0deg",
                 offsetPath: `path(
-                "M66 76.0017C112.5 61.8351 181.001 117.602 157.001 62.0022C127.001 -7.49777 35.0007 55.5022 8.50068 43.5022C-17.9993 31.5022 31.5007 14.002 39.5007 21.502C47.5007 29.002 64.4993 19 52.5 19C40.5007 19 44.0014 21.502 47.5007 21.502C51 21.502 41.0002 20.9999 45 20C49 19 53.1738 20.5 49 20.5C37.9998 20.5 50 -0.500068 162 10.5C274 21.5001 66 -8.9983 66 5.00168C66 19.0017 -4.49932 108.74 66 76.0017Z"
+                "M225.5 43C235.667 40.1667 251.8 33 235 27C214 19.5 190 -2.50001 175 1.99999C160 6.49999 100.5 56.5 59.0002 47C17.5002 37.5 -13.4998 42 8.50017 52C30.5002 62 89.5 57.5 83.5 82C77.5 106.5 78 103.5 109 100.5C140 97.5 140 107 147.5 111C155 115 179 98.5 198.5 103.5C218 108.5 223.5 135 251.5 134.5C279.5 134 310 109 297 103.5C284 98 252.5 66.5 284 67.5C315.5 68.5 328.5 120 280 115.5C231.5 111 182.5 94 183 76C183.5 58 117 38 112 47C107 56 92.5 89 193 62C206 58.5075 198.5 47 225.5 43Z"
                 )`,
               }}
             >
@@ -811,131 +939,7 @@ export const HeroAnimation = ({ loop }) => {
           </motion.g>
         </>
       );
-    case "introPaths":
-      return (
-        <>
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.003 0V112H421.003C405.539 112 393.003 124.536 393.003 140V168H337.003H309C293.536 168 281 180.536 281 196V224L197 224C181.536 224 169 236.536 169 252V280L141 280C125.536 280 113 292.536 113 308V336L84.9998 336C69.536 336 57 348.536 57 364V364C57 379.464 69.5361 392 85 392L113 392H169V448H113V531.999C113 547.463 100.464 559.999 85 559.999H29.0002C13.5361 559.999 1.00008 572.536 1.00017 588L1.00295 1040.5"
-          />
 
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281V252C281 267.464 268.464 280 253 280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
-          />
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447"
-          />
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V224H337V336H225V392H281V448V476C281 491.464 293.536 504 309 504H337"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V224V280H337V336H281V392H309C324.464 392 337 404.536 337 420V448V504H393V448H449V504H505V448H561V504H617V448H673V504H701C716.464 504 729 491.464 729 476V448H841"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V168H505V280H449.004V336H393V504"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V168V336H365.5V364C365.5 379.464 378.036 392 393.5 392H449.004V448"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V224H393V336H281V392V448H337H393V504H449V448H505V504H561V448H617V504H673V448H729V392H785V392C799.912 392 812 404.088 812 419V448"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V168H505H561V224H505V280H561H617V336V448"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V168H505V336H561V392H589V392C589 376.536 601.536 364 617 364H673C688.464 364 701 376.536 701 392V392C701 407.464 688.464 420 673 420H616.5C601.312 420 589 407.688 589 392.5V392.5"
-          />
-
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V224H561V336H617H673V392H617"
-          />
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V224H617V280H673V336H729V392H673V448"
-          />
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V224H617H673V280H729V336H785V392"
-          />
-          <motion.path
-            variants={childVariant}
-            shapeRendering="geometricPrecision"
-            stroke="currentColor"
-            fill="transparent"
-            vectorEffect="non-scaling-stroke"
-            d="M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897"
-          />
-        </>
-      );
     case "intersectingLines":
       return (
         <motion.svg
