@@ -6,9 +6,11 @@ import Cookies from "js-cookie";
 import { useHasMounted } from "../lib/helpers";
 
 import CustomLink from "../components/link";
+import { Button, Flex, Link, Text } from "theme-ui";
 
 const barAnim = {
   show: {
+    opacity: 1,
     y: "0%",
     transition: {
       duration: 0.6,
@@ -16,6 +18,7 @@ const barAnim = {
     },
   },
   hide: {
+    opacity: 0,
     y: "100%",
     transition: {
       duration: 0.6,
@@ -39,44 +42,55 @@ const CookieBar = ({ data = {} }) => {
       {!acceptedCookies && (
         <FocusTrap focusTrapOptions={{ allowOutsideClick: true }}>
           <motion.div
+            sx={{
+              background: "text",
+              position: "fixed",
+              width: ["calc(100% - 2rem)", "auto"],
+              color: "#fff",
+              bottom: ["1rem", "2rem"],
+              borderRadius: "large",
+              left: ["1rem", "2rem"],
+              zIndex: 100,
+              p: "1rem 1rem 1rem 2rem",
+            }}
             initial="hide"
             animate="show"
             exit="hide"
             variants={barAnim}
             role="dialog"
             aria-live="polite"
-            className="cookie-bar"
           >
-            <div className="cookie-bar--content is-inverted">
-              <div className="cookie-bar--message">
-                <p>
+            <Flex
+              sx={{
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "2rem",
+              }}
+            >
+              <Flex sx={{ alignItems: "center", gap: "1rem" }}>
+                <Text>
                   {message.split("\n").map((text, i) => {
                     // using React.fragment to parse line breaks
                     return (
                       <React.Fragment key={i}>
-                        {text}
-                        {message.split("\n")[i + 1] && <br />}
+                        {text} {message.split("\n")[i + 1] && <br />}
                       </React.Fragment>
                     );
                   })}
-                </p>
-              </div>
-
-              <div className="cookie-bar--actions">
+                </Text>
                 {link && (
-                  <CustomLink
-                    className="btn is-text"
-                    link={{ ...{ page: link }, ...{ title: "Learn More" } }}
-                  />
+                  <Link sx={{ color: "ui" }}>
+                    <CustomLink
+                      link={{ ...{ page: link }, ...{ title: "Learn More" } }}
+                    />
+                  </Link>
                 )}
-                <button
-                  onClick={() => onAcceptCookies()}
-                  className="btn is-primary"
-                >
-                  Accept
-                </button>
-              </div>
-            </div>
+              </Flex>
+
+              <Button variant="secondary" onClick={() => onAcceptCookies()}>
+                Accept Cookies
+              </Button>
+            </Flex>
           </motion.div>
         </FocusTrap>
       )}
