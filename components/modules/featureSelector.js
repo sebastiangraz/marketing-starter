@@ -14,10 +14,17 @@ const FeatureSelector = ({ data }) => {
           <Reveal>
             <Themed.h1>{data.header}</Themed.h1>
           </Reveal>
-          <Flex sx={{ justifyContent: "space-between", width: "100%" }}>
+          <Flex
+            sx={{
+              justifyContent: "space-between",
+              width: "100%",
+              flexDirection: ["column", null, "row"],
+            }}
+          >
             <Width
-              value={[8]}
+              value={[12, 12, 8]}
               sx={{
+                order: [1, null, 0],
                 borderRadius: "default",
                 p: 4,
                 background: "beige",
@@ -44,18 +51,25 @@ const FeatureSelector = ({ data }) => {
               </Reveal>
             </Width>
 
-            <Width value={[3]}>
+            <Width value={[12, 12, 3]} sx={{ order: [0, null, 1] }}>
               <nav>
                 <ul
                   sx={{
                     m: 0,
+                    mb: 2,
                     p: 0,
                     display: "inline-grid",
-                    flexDirection: "column",
                     gap: "0.25rem",
                   }}
                 >
                   <Reveal
+                    sx={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                    }}
+                    childStyle={{
+                      width: ["100%", "auto", "100%"],
+                    }}
                     effect={[
                       { opacity: 0, y: -10 },
                       { opacity: 1, y: 0 },
@@ -66,7 +80,7 @@ const FeatureSelector = ({ data }) => {
                     {data?.features.map((item) => (
                       <li
                         sx={{
-                          display: "inline-block",
+                          display: ["inline-block"],
                           position: "relative",
                           cursor: "pointer",
                           listStyle: "none",

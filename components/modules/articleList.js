@@ -67,16 +67,16 @@ const ArticleList = ({ data, articleList }) => {
                       },
                     }}
                   >
-                    <Themed.h4
+                    <Themed.p
                       sx={{
-                        whiteSpace: "nowrap",
+                        whiteSpace: ["normal", null, "nowrap"],
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         m: 0,
                       }}
                     >
                       {title}
-                    </Themed.h4>
+                    </Themed.p>
 
                     <Flex
                       sx={{
@@ -139,6 +139,7 @@ const ArticleList = ({ data, articleList }) => {
                       <Text
                         variant="label"
                         sx={{
+                          display: ["none", null, "block"],
                           lineHeight: "1.1",
                           whiteSpace: "pre",
                         }}

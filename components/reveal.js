@@ -103,8 +103,8 @@ export const Reveal = ({
               willChange: "transform",
               originX: 0.5,
               originY: 0.5,
-              ...childStyle,
             }}
+            sx={{ ...childStyle }}
             viewport={{ once: true }}
             key={i}
             custom={i}

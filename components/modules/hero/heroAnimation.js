@@ -10,7 +10,7 @@ const childVariant = {
     opacity: [1, 0],
     transition: {
       opacity: { delay: 3, duration: 3 },
-      pathLength: { ease: [0.16, 1, 0.3, 1], duration: 3, delay: 0.75 },
+      pathLength: { ease: [0.16, 1, 0.3, 1], duration: 2, delay: 0.5 },
     },
   },
 };
@@ -24,7 +24,6 @@ const intersectionVariant = {
     y2: 1,
     transition: {
       when: "beforeChildren",
-      delay: 0.5,
       duration: 5,
     },
   },
