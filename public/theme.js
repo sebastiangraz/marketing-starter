@@ -222,15 +222,7 @@ const theme = {
     //globals
 
     buttonReset: {
-      appearance: "none",
-      letterSpacing: "inherit",
-      textAlign: "left",
-      border: 0,
-      padding: 0,
-      fontFamily: "inherit",
-      background: "none",
-      color: "inherit",
-      fontSize: "inherit",
+      all: "unset",
     },
   },
 };

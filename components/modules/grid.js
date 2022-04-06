@@ -40,7 +40,7 @@ const Grid = ({ data = {} }) => {
         sx={{
           variant: "layout.row",
           background: "ui",
-          py: 3,
+          py: "5rem",
           borderRadius: "large",
         }}
       >

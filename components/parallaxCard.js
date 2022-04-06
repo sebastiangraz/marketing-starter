@@ -47,26 +47,31 @@ const childVariantInner = {
   },
 };
 
+function getTextColorFromBg(data, context) {
+  let textColor = null;
+  switch (data) {
+    case context.theme.rawColors.green:
+      textColor = context.theme.rawColors.cyan;
+      break;
+    case context.theme.rawColors.salmon:
+      textColor = context.theme.rawColors.maroon;
+      break;
+    case context.theme.rawColors.maroon:
+      textColor = context.theme.rawColors.salmon;
+      break;
+    case context.theme.rawColors.cyan:
+      textColor = context.theme.rawColors.green;
+      break;
+    default:
+      break;
+  }
+  return textColor;
+}
+
 export const ParallaxCard = memo(
   ({ data, index, isSolo, columnCountEqualTo12, onClick }) => {
-    let textColor = null;
     const context = useThemeUI();
-
-    console.log(Object.values(context.theme.rawColors));
-
-    switch (data.color) {
-      case context.theme.rawColors.green:
-        textColor = context.theme.rawColors.cyan;
-        break;
-      case context.theme.rawColors.salmon:
-        textColor = context.theme.rawColors.maroon;
-        break;
-      case context.theme.rawColors.maroon:
-        textColor = context.theme.rawColors.salmon;
-        break;
-      default:
-        break;
-    }
+    const textColor = getTextColorFromBg(data.color, context);
 
     return (
       <motion.div
