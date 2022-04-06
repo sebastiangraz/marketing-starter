@@ -51,7 +51,7 @@ const Parallax = memo(({ data = {} }) => {
     childWidthArray,
   } = state;
 
-  const { parallaxContainer } = data;
+  const { parallaxContainer, header } = data;
 
   const length = parallaxContainer.length;
   const ref = useRef();
@@ -292,9 +292,9 @@ const Parallax = memo(({ data = {} }) => {
               maxWidth: "32rem",
             }}
           >
-            Loctax features for
+            {header ? header : "Features"}
           </Themed.h1>
-          <div sx={{ display: "flex" }}>
+          <div sx={{ display: "flex", flexWrap: "wrap" }}>
             {parallaxContainer.map((e, i) => {
               return (
                 <div
@@ -321,6 +321,7 @@ const Parallax = memo(({ data = {} }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       padding: "0 0.5rem",
+                      whiteSpace: "pre",
                     }}
                     sx={{
                       "&:hover": {

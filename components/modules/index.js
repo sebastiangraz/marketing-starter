@@ -8,6 +8,7 @@ const Hero = dynamic(() => import("./hero"));
 const Parallax = dynamic(() => import("./parallax"));
 const ArticleList = dynamic(() => import("./articleList"));
 const FeatureSelector = dynamic(() => import("./featureSelector"));
+const Logotypes = dynamic(() => import("./logotypes"));
 
 export const Module = ({ module, articleList }) => {
   const type = module._type;
@@ -27,6 +28,8 @@ export const Module = ({ module, articleList }) => {
       return <ArticleList data={module} articleList={articleList} />;
     case "featureSelector":
       return <FeatureSelector data={module} />;
+    case "logotypes":
+      return <Logotypes data={module} />;
     default:
       return null;
   }

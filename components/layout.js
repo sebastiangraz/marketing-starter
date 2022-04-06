@@ -91,7 +91,9 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         <main
           id="content"
           sx={{
-            "& > * + *": { mt: (theme) => `min(${theme.space[4]}, 224px)` },
+            "& > * + *": {
+              mt: (theme) => `clamp(112px, ${theme.space[4]}, 224px)`,
+            },
           }}
         >
           {children}

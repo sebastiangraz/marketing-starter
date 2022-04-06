@@ -33,7 +33,8 @@ export default {
         { type: 'dividerPhoto' },
         { type: 'articleList' },
         { type: 'featureSelector' },
-        { type: 'parallax' }
+        { type: 'parallax' },
+        { type: 'logotypes' }
       ]
     },
     {

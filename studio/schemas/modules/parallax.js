@@ -6,6 +6,7 @@ export default {
   type: 'object',
   icon: Cards,
   fields: [
+    { title: 'Header', name: 'header', type: 'string', required: true },
     {
       title: 'Parallax Container',
       name: 'parallaxContainer',
@@ -55,18 +56,19 @@ export default {
   ],
   preview: {
     select: {
+      header: 'header',
       parallaxContainer: 'parallaxContainer'
     },
-    prepare({ parallaxContainer }) {
+    prepare({ parallaxContainer, header }) {
       const heading = parallaxContainer.map(e => e.heading)
       const subtitle = heading
         .toString()
         .split(',')
         .join(' + ')
       return {
-        title: `${parallaxContainer.length} Parallax Card${
-          parallaxContainer.length > 1 ? 's' : ''
-        }`,
+        title: `${header ? header : 'Parallax'}: ${
+          parallaxContainer.length
+        } Card${parallaxContainer.length > 1 ? 's' : ''}`,
         subtitle: subtitle
       }
     }

@@ -1,5 +1,5 @@
 {
-  "name": "hull",
+  "name": "marketing-starter",
   "version": "2.5.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development next dev",

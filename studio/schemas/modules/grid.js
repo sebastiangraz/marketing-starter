@@ -1,4 +1,4 @@
-import { TextAlignLeft, Question } from 'phosphor-react'
+import { GridFour } from 'phosphor-react'
 
 import { getTypeTitles } from '../../lib/helpers'
 
@@ -6,7 +6,7 @@ export default {
   title: 'Content Grid',
   name: 'grid',
   type: 'object',
-  icon: TextAlignLeft,
+  icon: GridFour,
   fields: [
     {
       title: 'Columns',
@@ -28,7 +28,7 @@ export default {
       )
 
       return {
-        title: `${columns.length} Column${columns.length > 1 ? 's' : ''}`,
+        title: `Grid: ${columns.length} Column${columns.length > 1 ? 's' : ''}`,
         subtitle: name,
         media: image
       }

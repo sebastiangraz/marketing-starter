@@ -8,14 +8,14 @@ const DividerPhoto = ({ data = {} }) => {
   if (!photo) return null;
 
   return (
-    <div sx={{ position: "relative" }}>
+    <section sx={{ position: "relative" }}>
       <Photo
         photo={photo}
         width={1600}
         srcSizes={[800, 1000, 1200, 1600]}
         sizes="100vw"
       />
-    </div>
+    </section>
   );
 };
 

@@ -31,6 +31,7 @@ const style = {
   },
   navWrapper: {
     variant: "layout.row",
+    px: "0.5rem",
     display: "grid",
     gridTemplateColumns: `1fr 1fr 1fr`,
     alignItems: "start",

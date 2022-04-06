@@ -24,6 +24,7 @@ import hero from './modules/hero'
 import newsletter from './modules/newsletter'
 import parallax from './modules/parallax'
 import featureSelector from './modules/featureSelector'
+import logotypes from './modules/logotypes'
 
 // Object types
 import gridColumn from './objects/grid-column'
@@ -82,6 +83,7 @@ export default createSchema({
     parallax,
     articleList,
     featureSelector,
+    logotypes,
 
     /* ----------------------- */
     /* 3: Generic Object types */

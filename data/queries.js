@@ -146,6 +146,7 @@ export const modules = `
   _type == 'parallax' => {
     _type,
     _key,
+    header,
     parallaxContainer[]{
       "id": _key,
       sizes,
@@ -166,6 +167,14 @@ export const modules = `
     features[]{
       featureTitle,
       featureDescription
+    }
+  },
+  _type == 'logotypes' => {
+    _type,
+    _key,
+    header,
+    logos[]{
+      logoImage
     }
   },
 `;
