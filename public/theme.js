@@ -108,7 +108,7 @@ const theme = {
   colors: {
     text: "#0C002B",
     background: "FFFDF9",
-    ui: brandColors.beige,
+    ui: "#F3EFED",
     primary: brandColors.salmon,
     ...brandColors,
   },
@@ -176,6 +176,7 @@ const theme = {
       letterSpacing: "body",
       WebkitFontSmoothing: "antialiased",
       MozOsxFontSmoothing: "grayscale",
+      scrollSnapType: "y proximity",
     },
     link: {
       variant: "text.link",

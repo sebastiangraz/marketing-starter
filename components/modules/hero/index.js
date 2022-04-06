@@ -20,7 +20,7 @@ const style = {
     flexDirection: "column",
     borderRadius: "large",
     justifyContent: "space-between",
-    background: "#F6E9D9",
+    background: "beige",
     variant: "layout.row",
     "&:hover, &:hover button": {
       cursor: `-webkit-image-set( url(${cursor.src}) 1x, url(${cursor2x.src}) 2x), auto`,

@@ -44,7 +44,6 @@ const Parallax = memo(({ data = {} }) => {
   const {
     totalChildHeight,
     windowHeight,
-    windowWidth,
     elDistanceToTop,
     elHeight,
     elWidth,
@@ -73,7 +72,6 @@ const Parallax = memo(({ data = {} }) => {
   const columnCountEqualTo12 = calcColumnSum === 12;
   const isSolo = length === 1;
   const [index, setIndex] = useState([]);
-  const [title, setTitle] = useState([]);
 
   useLayoutEffect(() => {
     const el = ref && ref.current;
@@ -182,10 +180,6 @@ const Parallax = memo(({ data = {} }) => {
     });
   }, [parallaxContainer, motionActive]);
 
-  useLayoutEffect(() => {
-    setTitle(parallaxContainer[index]?.heading);
-  }, [parallaxContainer, index]);
-
   useLayoutEffect(() => setIndex(0), []);
 
   const [selected, setSelected] = useState(0);
@@ -253,7 +247,6 @@ const Parallax = memo(({ data = {} }) => {
           onClick={onClick}
           style={{
             borderRadius: "20px",
-            // willChange: "transform",
             boxShadow: "0 0 0 1px rgba(0,0,0,1)",
             position: "absolute",
             left: 0,
@@ -283,7 +276,8 @@ const Parallax = memo(({ data = {} }) => {
         <div
           sx={{
             position: "sticky",
-            top: "6vh",
+            top: "0px",
+            pt: 3,
             zIndex: 10,
             justifyContent: "space-between",
             alignItems: "center",
@@ -293,7 +287,6 @@ const Parallax = memo(({ data = {} }) => {
         >
           <Themed.h1
             sx={{
-              mt: 0,
               pr: 3,
               my: "1rem",
               maxWidth: "32rem",
@@ -360,7 +353,6 @@ const Parallax = memo(({ data = {} }) => {
                 gapWidth={56}
                 data={e}
                 key={e.id}
-                active={index}
                 index={i}
                 isSolo={isSolo}
                 columnCountEqualTo12={columnCountEqualTo12}
@@ -368,6 +360,45 @@ const Parallax = memo(({ data = {} }) => {
             );
           })}
         </motion.div>
+        <div
+          className="g-g-g-g-ghost-container"
+          sx={{
+            userSelect: "none",
+            pointerEvents: "none",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {parallaxContainer.map((e, i) => {
+            const clickIndex = i;
+            const lastIndex = Math.max(length - 1, clickIndex);
+            const isLastIndex = lastIndex === clickIndex;
+            const lastItemTernary = isLastIndex
+              ? childWidthArray[lastIndex]
+              : totalChildWidth - gapPercentageAsPixels - elWidth;
+            const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
+
+            return (
+              <div
+                className="g-g-g-g-ghost-div"
+                sx={{
+                  top: childWidthArray[i] * ratioFormula,
+                  width: "100%",
+                  position: "relative",
+                  height: "0",
+                  scrollSnapAlign: "start",
+                  boxShadow: "0 0 0 10px currentColor inset",
+                }}
+                key={e.id}
+              />
+            );
+          })}
+        </div>
       </div>
     </section>
   );

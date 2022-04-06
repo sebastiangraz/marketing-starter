@@ -1,6 +1,6 @@
 import React, { memo } from "react";
-
 import { motion } from "framer-motion";
+import { useThemeUI } from "theme-ui";
 
 const style = {
   section: {
@@ -22,11 +22,7 @@ const style = {
     overflow: "hidden",
     pointerEvents: "none",
     transition: "background 1s ease, box-shadow 1s ease",
-    boxShadow: "0 0 0 1px currentColor inset",
     background: "#fff",
-    "&.active ": {
-      boxShadow: "0 0 0 1px transparent inset",
-    },
   },
 };
 
@@ -52,7 +48,26 @@ const childVariantInner = {
 };
 
 export const ParallaxCard = memo(
-  ({ data, active, index, isSolo, columnCountEqualTo12, onClick }) => {
+  ({ data, index, isSolo, columnCountEqualTo12, onClick }) => {
+    let textColor = null;
+    const context = useThemeUI();
+
+    console.log(Object.values(context.theme.rawColors));
+
+    switch (data.color) {
+      case context.theme.rawColors.green:
+        textColor = context.theme.rawColors.cyan;
+        break;
+      case context.theme.rawColors.salmon:
+        textColor = context.theme.rawColors.maroon;
+        break;
+      case context.theme.rawColors.maroon:
+        textColor = context.theme.rawColors.salmon;
+        break;
+      default:
+        break;
+    }
+
     return (
       <motion.div
         data-index={index}
@@ -67,9 +82,9 @@ export const ParallaxCard = memo(
         <motion.div
           sx={{
             ...style.innerSection,
-            background: data.color ? data.color : "beige",
+            color: textColor,
+            background: data.color ? data.color : "ui",
           }}
-          className={active === index ? "active" : ""}
         >
           <motion.div
             variants={childVariantInner}
