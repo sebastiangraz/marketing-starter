@@ -1,5 +1,5 @@
-import { tint } from "@theme-ui/color";
-import { Themed, Flex, Text, Avatar, Box, Grid } from "theme-ui";
+import { tint, darken } from "@theme-ui/color";
+import { Themed, Flex, Text, Avatar, Box, Grid, Paragraph } from "theme-ui";
 import Link from "next/link";
 import { Reveal } from "../../components/reveal";
 import imageUrlBuilder from "@sanity/image-url";
@@ -55,19 +55,18 @@ const ArticleList = ({ data, articleList }) => {
                       py: "1rem",
                       px: "1.5rem",
                       boxShadow: (t) =>
-                        `0 -1px 0 0 ${tint("text", 0.9)(t)} inset, 
-                      0 -1px 0 0 ${tint("text", 0.9)(t)}`,
+                        `0 1px 0 0 ${tint("text", 0.1)(t)} inset`,
                       alignItems: "center",
                       justifyContent: "space-between",
-                      transition: ".8s cubic-bezier(.22,1,.36,1) background",
-                      "&:hover, &:hover a": {
-                        background: (t) => `${tint("text", 0.98)(t)}`,
+                      transition:
+                        ".8s cubic-bezier(.22,1,.36,1) background, .8s cubic-bezier(.22,1,.36,1) box-shadow",
+                      "&:hover": {
+                        background: (t) => `${tint("text", 0.91)(t)}`,
                         cursor: "pointer",
-                        textDecoration: "none",
                       },
                     }}
                   >
-                    <Themed.p
+                    <Paragraph
                       sx={{
                         whiteSpace: ["normal", null, "nowrap"],
                         overflow: "hidden",
@@ -76,7 +75,7 @@ const ArticleList = ({ data, articleList }) => {
                       }}
                     >
                       {title}
-                    </Themed.p>
+                    </Paragraph>
 
                     <Flex
                       sx={{
@@ -92,19 +91,22 @@ const ArticleList = ({ data, articleList }) => {
                           display: "flex",
                           alignItems: "center",
                           gap: "1rem",
+                          height: "100%",
+                          alignItems: "center",
                         }}
                       >
                         {author && (
                           <>
                             <Box
                               sx={{
+                                overflow: "hidden",
                                 flexShrink: 0,
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
                                 boxShadow: "0 0 0 1px currentColor",
-                                width: "2.5rem",
-                                height: "2.5rem",
+                                width: "2rem",
+                                height: "2rem",
                                 padding: "3px",
                                 borderRadius: "pill",
                               }}

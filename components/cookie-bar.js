@@ -51,7 +51,7 @@ const CookieBar = ({ data = {} }) => {
               color: "#fff",
               bottom: ["1rem", null, "2rem"],
               borderRadius: "default",
-              left: ["1rem", null, "2rem"],
+              right: ["1rem", null, "2rem"],
               zIndex: 100,
               p: ".5rem .5rem .5rem 2rem",
             }}
@@ -87,11 +87,9 @@ const CookieBar = ({ data = {} }) => {
                   })}
                 </Text>
                 {link && (
-                  <Link sx={{ color: "ui", m: 0, mt: "1rem", mb: "1rem" }}>
-                    <CustomLink
-                      link={{ ...{ page: link }, ...{ title: "Learn More" } }}
-                    />
-                  </Link>
+                  <CustomLink
+                    link={{ ...{ page: link }, ...{ title: "Learn More" } }}
+                  />
                 )}
               </Flex>
 

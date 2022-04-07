@@ -1,8 +1,8 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import cx from "classnames";
-import { Themed, Text } from "theme-ui";
-
+import { Themed, Text, Paragraph, Heading } from "theme-ui";
+import { List } from "../components/block-components/list";
 import Photo from "../components/photo";
 import CustomLink from "../components/link";
 
@@ -58,9 +58,12 @@ export const blockSerializers = {
 
       if (style === "normal") {
         return (
-          <Text as="p" className={cx("paragraph", { "has-btn": hasButton })}>
+          <Paragraph
+            variant="block"
+            className={cx("paragraph", { "has-btn": hasButton })}
+          >
             {props.children}
-          </Text>
+          </Paragraph>
         );
       }
 
@@ -82,8 +85,15 @@ export const blockSerializers = {
     horizontalRule: () => <hr />,
   },
   marks: {
+    internalLink: ({ mark, children }) => {
+      const { slug = {} } = mark;
+      const href = `/${slug.current}`;
+      return <a href={href}>{children}</a>;
+    },
     link: ({ mark, children }) => {
+      console.log(mark, children);
       return <CustomLink link={{ ...mark, ...{ title: children[0] } }} />;
     },
   },
+  list: (props) => <Text>{<List props={props} />}</Text>,
 };

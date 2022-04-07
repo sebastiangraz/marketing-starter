@@ -39,12 +39,9 @@ const Grid = ({ data = {} }) => {
       <div
         sx={{
           variant: "layout.row",
-          background: "ui",
-          py: "5rem",
-          borderRadius: "large",
         }}
       >
-        <div sx={{ mx: 4 }}>
+        <div>
           <motion.div
             initial="hidden"
             whileInView="visible"

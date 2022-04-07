@@ -21,7 +21,7 @@ const Article = ({ data }) => {
           childDelay={0.2}
         >
           <Themed.h1>{page?.title}</Themed.h1>
-          <section sx={{ variant: "layout.post" }}>
+          <section sx={{ maxWidth: "65ch" }}>
             <BlockContent blocks={page?.content} />
           </section>
         </Reveal>

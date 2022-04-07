@@ -6,6 +6,10 @@ export function Reset(props) {
     <Global
       {...props}
       styles={css`
+        * {
+          box-sizing: border-box;
+        }
+
         html,
         body {
           padding: 0;
@@ -14,7 +18,7 @@ export function Reset(props) {
 
         @font-face {
           font-family: "Walsheim";
-          font-weight: 300;
+          font-weight: 400;
           font-style: normal;
           font-display: swap;
           src: url("/fonts/walsheim-regular.woff2") format("woff2");
@@ -22,7 +26,7 @@ export function Reset(props) {
 
         @font-face {
           font-family: "Walsheim";
-          font-weight: normal;
+          font-weight: 500;
           font-style: normal;
           font-display: swap;
           src: url("/fonts/walsheim-medium.woff2") format("woff2");
@@ -30,28 +34,10 @@ export function Reset(props) {
 
         @font-face {
           font-family: "Walsheim";
-          font-weight: 600;
+          font-weight: 700;
           font-style: normal;
           font-display: swap;
           src: url("/fonts/walsheim-bold.woff2") format("woff2");
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          font-weight: normal;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        * {
-          box-sizing: border-box;
         }
       `}
     />

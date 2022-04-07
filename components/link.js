@@ -5,6 +5,7 @@ import cx from "classnames";
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, children, ...rest }) => {
+  console.log(link, "from link.js");
   const isLink = link?._type === "navLink";
   const isStatic = getStaticRoute(link.page?.type);
 
@@ -16,6 +17,7 @@ const Link = ({ link, children, ...rest }) => {
         target={!link.url.match("^mailto:") ? "_blank" : null}
         rel="noopener noreferrer"
         sx={{
+          variant: "text.link",
           ...(link.isButton && {
             background: "currentColor",
             color: "#fff",
@@ -52,6 +54,7 @@ const Link = ({ link, children, ...rest }) => {
       >
         <a
           sx={{
+            variant: "text.link",
             ...(link.isButton && {
               variant: "buttons.primary",
             }),

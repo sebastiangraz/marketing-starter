@@ -20,7 +20,7 @@ const Blog = ({ data }) => {
                   href="/articles/[slug]"
                   as={`/articles/${slug.current}`}
                 >
-                  {title}
+                  <a sx={{ variant: "text.link" }}>{title}</a>
                 </Link>{" "}
                 {/* ({new Date(publishedAt).toDateString()}) */}
               </li>

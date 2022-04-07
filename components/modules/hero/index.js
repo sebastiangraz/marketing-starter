@@ -1,6 +1,5 @@
-import { Themed, Flex, Button } from "theme-ui";
+import { Themed, Flex, Button, Text, Heading, Paragraph } from "theme-ui";
 import { Width } from "../../width";
-import { heroPath } from "./heroPaths";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import Reveal from "../../../components/reveal";
@@ -118,10 +117,7 @@ const Hero = ({ data }) => {
                 </motion.div>
               </motion.div>
             </Themed.h1>
-
-            <Themed.h4 sx={{ m: 0, mb: "3rem", width: "20ch" }}>
-              {lead}
-            </Themed.h4>
+            <Paragraph sx={{ mb: "3rem", width: "20ch" }}>{lead}</Paragraph>
 
             <Flex sx={{ gap: "1rem", zIndex: 1, position: "relative" }}>
               <NextLink href="/" passHref>

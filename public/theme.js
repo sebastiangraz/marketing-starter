@@ -54,6 +54,7 @@ const buttonHover = {
 };
 
 const buttonBase = {
+  fontWeight: 500,
   flexShrink: "0",
   position: "relative",
   whiteSpace: "pre",
@@ -107,8 +108,8 @@ const theme = {
 
   colors: {
     text: "#0C002B",
-    background: "FFFDF9",
-    ui: "#F3EFED",
+    background: "#F9F7FD",
+    ui: "#fff",
     primary: brandColors.salmon,
     ...brandColors,
   },
@@ -122,18 +123,20 @@ const theme = {
       display: "grid",
       gridTemplateColumns: [`repeat(6, 1fr)`, `repeat(12, 1fr)`],
     },
-    post: {
-      maxWidth: "65ch",
-      p: { mb: "1.5rem" },
-    },
   },
   radii: { default: "1.5rem", small: "1rem", large: "2rem", pill: "99rem" },
   text: {
     default: {
-      marginBottom: "1rem",
       lineHeight: 1.4,
       letterSpacing: "body",
       fontSize: [2, 2, 2],
+    },
+    paragraph: {
+      variant: "text.default",
+    },
+    block: {
+      variant: "text.paragraph",
+      my: "1rem",
     },
     label: {
       lineHeight: 1.4,
@@ -162,10 +165,6 @@ const theme = {
     },
   },
   styles: {
-    "*": { boxSizing: "border-box" },
-    body: {
-      lineHeight: 1,
-    },
     root: {
       ...scroll,
       fontSize: `clamp(15px, 1vw + 8px, 18px)`,
@@ -178,13 +177,9 @@ const theme = {
       MozOsxFontSmoothing: "grayscale",
       scrollSnapType: "y proximity",
     },
-    link: {
-      variant: "text.link",
-    },
     h1: {
       fontFamily: "heading",
-      fontWeight: "normal",
-      mb: "0.75em",
+      fontWeight: "500",
       lineHeight: 1,
       letterSpacing: "heading",
       fontSize: [5, 5, 6],
@@ -206,11 +201,6 @@ const theme = {
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: 3,
-    },
-    p: {
-      lineHeight: 1.4,
-      letterSpacing: "body",
-      fontSize: 2,
     },
     a: {
       variant: "text.link",

@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { motion } from "framer-motion";
-import { useThemeUI } from "theme-ui";
+import { Themed, useThemeUI } from "theme-ui";
 
 const style = {
   section: {
@@ -96,7 +96,7 @@ export const ParallaxCard = memo(
             whileInView="visible"
             viewport={{ amount: 0.3 }}
           >
-            <h2>{data.heading}</h2>
+            <Themed.h3>{data.heading}</Themed.h3>
           </motion.div>
         </motion.div>
       </motion.div>

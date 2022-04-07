@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
 import { isBrowser } from "../lib/helpers";
 import { motion } from "framer-motion";
 import Menu from "../components/menu";
@@ -64,11 +62,11 @@ const style = {
       alignItems: "center",
       gridArea: "1/3",
     },
-    "a, button": {
-      cursor: "pointer",
-      textDecoration: "none",
-      "&:hover": { opacity: 0.6 },
-    },
+    // "a, button": {
+    //   cursor: "pointer",
+    //   textDecoration: "none",
+    //   "&:hover": { opacity: 0.6 },
+    // },
     button: {
       variant: "styles.buttonReset",
     },

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 import { BaseStyles } from "theme-ui";
 
-import { isBrowser, useWindowSize } from "../lib/helpers";
 import { pageTransitionSpeed } from "../lib/animate";
 
 import HeadSEO from "../components/head-seo";
@@ -36,17 +35,6 @@ const variants = {
 };
 
 const Layout = ({ site = {}, page = {}, schema, children }) => {
-  // set window height var
-  const { height: windowHeight } = useWindowSize();
-
-  // set header height
-
-  useEffect(() => {
-    if (isBrowser) {
-      document.body.style.setProperty("--vh", `${windowHeight * 0.01}px`);
-    }
-  }, [windowHeight]);
-
   return (
     <>
       <HeadSEO site={site} page={page} schema={schema} />
@@ -71,7 +59,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         variants={variants}
       >
         <CookieBar data={site.cookieConsent} />
-        {/* <div
+        <div
           className="templateOverlay"
           sx={{
             position: "fixed",
@@ -87,12 +75,12 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
               "repeating-linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03) 2px, transparent 2px, transparent calc(100 / (1288 / 56) * 1%) )",
             backgroundPosition: "-1px 0px",
           }}
-        /> */}
+        />
         <main
           id="content"
           sx={{
-            "& > * + *": {
-              mt: (theme) => `clamp(112px, ${theme.space[4]}, 224px)`,
+            "& > * ": {
+              mb: (theme) => `clamp(112px, ${theme.space[4]}, 224px)`,
             },
           }}
         >

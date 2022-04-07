@@ -8,9 +8,6 @@ const Freeform = ({ data }) => {
     <BlockContent
       sx={{
         maxWidth: getMaxWidth(maxWidth?.value),
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
         justifyContent: textAlign ? "center" : "flex-start",
       }}
       blocks={content}
