@@ -14,13 +14,18 @@ const style = {
     variant: `${"layout.grid"}`,
   },
   footerItem: {
-    py: [1, 4],
+    py: ["1rem", "2rem"],
     gridColumn: `span 3`,
   },
   ul: {
     p: "0px",
     flexDirection: "column",
-    li: { p: "0px" },
+    li: {
+      p: "0px",
+      mt: "1rem",
+      a: { textDecoration: "none" },
+      "&:hover": { opacity: 0.6 },
+    },
   },
 };
 const Footer = ({ data = {} }) => {

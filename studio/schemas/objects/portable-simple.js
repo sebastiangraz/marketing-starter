@@ -46,13 +46,16 @@ export default {
                   direction: 'horizontal'
                 },
                 initialValue: 'internal',
-                validation: Rule => Rule.required()
+                validation: Rule =>
+                  Rule.required().error(
+                    'Need to choose internal or external link type'
+                  )
               },
               {
                 title: 'Internal Page',
                 name: 'page',
-                type: 'array',
-                of: [{ type: 'page' }, { type: 'navPosts' }],
+                type: 'reference',
+                to: [{ type: 'page' }, { type: 'articles' }],
                 hidden: ({ parent }) => parent.linkType !== 'internal'
               },
               {

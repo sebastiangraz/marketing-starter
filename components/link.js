@@ -1,12 +1,11 @@
 import React from "react";
 import NextLink from "next/link";
 import cx from "classnames";
-
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, children, ...rest }) => {
-  console.log(link, "from link.js");
-  const isLink = link?._type === "navLink";
+  const isLink = !!link.url;
+  // const isLink = link?._type === "navLink";
   const isStatic = getStaticRoute(link.page?.type);
 
   // External Link
@@ -40,7 +39,7 @@ const Link = ({ link, children, ...rest }) => {
   } else {
     const isDynamic = getDynamicRoute(link.page?.type);
     const isHome = link.page?.isHome;
-    const isArticles = link.page?.isArticles;
+
     return (
       <NextLink
         href={

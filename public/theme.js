@@ -56,6 +56,7 @@ const buttonHover = {
 const buttonBase = {
   fontWeight: 500,
   flexShrink: "0",
+  display: "inline-flex",
   position: "relative",
   whiteSpace: "pre",
   fontSize: 2,
@@ -125,6 +126,11 @@ const theme = {
     },
   },
   radii: { default: "1.5rem", small: "1rem", large: "2rem", pill: "99rem" },
+  // links: {
+  //   nav: {
+  //     color: "red",
+  //   },
+  // },
   text: {
     default: {
       lineHeight: 1.4,
@@ -213,6 +219,7 @@ const theme = {
 
     buttonReset: {
       all: "unset",
+      variant: "text.link",
     },
   },
 };

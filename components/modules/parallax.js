@@ -30,7 +30,7 @@ const Parallax = memo(({ data = {} }) => {
   const [state, setCalc] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
-      totalChildHeight: 0,
+      totalChildHeight: 1000 * data.parallaxContainer.length,
       windowHeight: 0,
       windowWidth: 0,
       elDistanceToTop: 0,
@@ -182,8 +182,6 @@ const Parallax = memo(({ data = {} }) => {
 
   useLayoutEffect(() => setIndex(0), []);
 
-  const [selected, setSelected] = useState(0);
-
   const handleClick = useCallback(
     (i) => () => {
       const clickIndex = i;
@@ -262,6 +260,13 @@ const Parallax = memo(({ data = {} }) => {
     );
   }
 
+  function sanitise(x) {
+    if (isNaN(x)) {
+      return 0;
+    }
+    return x;
+  }
+
   return (
     <section
       sx={{
@@ -308,7 +313,7 @@ const Parallax = memo(({ data = {} }) => {
                   <LayoutGroup id={parallaxContainer[0].heading}>
                     <Item
                       isSelected={i === index}
-                      onClick={() => setSelected}
+                      // onClick={() => setSelected}
                     />
                   </LayoutGroup>
 
@@ -361,39 +366,50 @@ const Parallax = memo(({ data = {} }) => {
             );
           })}
         </motion.div>
+
         <div
           className="g-g-g-g-ghost-container"
           sx={{
             userSelect: "none",
             pointerEvents: "none",
-            position: "absolute",
+            position: "relative",
+            display: "contents",
             top: 0,
             left: 0,
             height: "100%",
             width: "100%",
-            display: "flex",
             flexDirection: "column",
           }}
         >
           {parallaxContainer.map((e, i) => {
-            const clickIndex = i;
-            const lastIndex = Math.max(length - 1, clickIndex);
-            const isLastIndex = lastIndex === clickIndex;
+            const index = i;
+            const lastIndex = Math.max(length - 1, index);
+            const isLastIndex = lastIndex === index;
             const lastItemTernary = isLastIndex
               ? childWidthArray[lastIndex]
               : totalChildWidth - gapPercentageAsPixels - elWidth;
             const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
-
+            console.log(totalChildHeight);
             return (
               <div
                 className="g-g-g-g-ghost-div"
+                style={{
+                  top: sanitise(childWidthArray[i]) * sanitise(ratioFormula),
+                }}
                 sx={{
-                  top: childWidthArray[i] * ratioFormula,
                   width: "100%",
-                  position: "relative",
-                  height: "0",
-                  scrollSnapAlign: "start",
-                  boxShadow: "0 0 0 10px currentColor inset",
+                  position: "absolute",
+                  height: "0px",
+                  // bg: "red",
+                  // This is to prevent first and last card from
+                  // snapping immediately when positioned at the top or bottom
+                  ...(totalChildWidth && {
+                    scrollSnapAlign: isLastIndex
+                      ? "unset"
+                      : "start" && i === 0
+                      ? "unset"
+                      : "start",
+                  }),
                 }}
                 key={e.id}
               />

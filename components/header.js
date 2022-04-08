@@ -62,13 +62,13 @@ const style = {
       alignItems: "center",
       gridArea: "1/3",
     },
-    // "a, button": {
-    //   cursor: "pointer",
-    //   textDecoration: "none",
-    //   "&:hover": { opacity: 0.6 },
-    // },
     button: {
       variant: "styles.buttonReset",
+    },
+    "a, button": {
+      cursor: "pointer",
+      textDecoration: "none",
+      "&:hover": { opacity: 0.6 },
     },
   },
 };
@@ -100,7 +100,7 @@ const Header = ({ data = {} }) => {
               variants={rotate}
             >
               <Link href="/" scroll={false}>
-                Logo
+                <a sx={{ variant: "link" }}>Logo</a>
               </Link>
             </motion.span>
           </div>

@@ -85,13 +85,7 @@ export const blockSerializers = {
     horizontalRule: () => <hr />,
   },
   marks: {
-    internalLink: ({ mark, children }) => {
-      const { slug = {} } = mark;
-      const href = `/${slug.current}`;
-      return <a href={href}>{children}</a>;
-    },
     link: ({ mark, children }) => {
-      console.log(mark, children);
       return <CustomLink link={{ ...mark, ...{ title: children[0] } }} />;
     },
   },

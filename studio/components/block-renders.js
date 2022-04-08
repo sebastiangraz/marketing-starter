@@ -71,6 +71,8 @@ export const Button = ({ isButton, styles, children }) => {
   return (
     <span
       style={{
+        display: 'inline-block',
+        lineHeight: '1.5',
         background: '#000',
         padding: '1rem',
         color: '#fff',
