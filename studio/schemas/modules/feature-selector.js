@@ -1,7 +1,7 @@
 import { Pill } from 'phosphor-react'
 
 export default {
-  title: 'Feature Selctor',
+  title: 'Feature Selector',
   name: 'featureSelector',
   type: 'object',
   icon: Pill,

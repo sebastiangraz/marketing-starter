@@ -336,7 +336,15 @@ const Parallax = memo(({ data = {} }) => {
                     }}
                     onClick={handleClick(i)}
                   >
-                    {e.heading}
+                    <span
+                      sx={{
+                        maxWidth: "80vw",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {e.heading}
+                    </span>
                   </Text>
                 </div>
               );
@@ -389,7 +397,7 @@ const Parallax = memo(({ data = {} }) => {
               ? childWidthArray[lastIndex]
               : totalChildWidth - gapPercentageAsPixels - elWidth;
             const ratioFormula = (elHeight - windowHeight) / lastItemTernary;
-            console.log(totalChildHeight);
+
             return (
               <div
                 className="g-g-g-g-ghost-div"

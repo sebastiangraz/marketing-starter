@@ -169,6 +169,24 @@ export const modules = `
       featureDescription
     }
   },
+  _type == 'featureHero' => {
+    _type,
+    _key,
+    header,
+    lead,
+    featureHeader,
+    features[]{
+      featureTitle,
+      featureDescription,
+      listItems{
+        size,
+        featureList[]{
+          string,
+          soon
+        }
+      }
+    }
+  },
   _type == 'logotypes' => {
     _type,
     _key,

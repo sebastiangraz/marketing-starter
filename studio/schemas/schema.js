@@ -23,7 +23,8 @@ import articleList from './modules/articleList'
 import hero from './modules/hero'
 import newsletter from './modules/newsletter'
 import parallax from './modules/parallax'
-import featureSelector from './modules/featureSelector'
+import featureSelector from './modules/feature-selector'
+import featureHero from './modules/feature-hero'
 import logotypes from './modules/logotypes'
 
 // Object types
@@ -83,6 +84,7 @@ export default createSchema({
     parallax,
     articleList,
     featureSelector,
+    featureHero,
     logotypes,
 
     /* ----------------------- */

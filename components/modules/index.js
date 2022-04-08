@@ -7,7 +7,8 @@ const DividerPhoto = dynamic(() => import("./divider-photo"));
 const Hero = dynamic(() => import("./hero"));
 const Parallax = dynamic(() => import("./parallax"));
 const ArticleList = dynamic(() => import("./articleList"));
-const FeatureSelector = dynamic(() => import("./featureSelector"));
+const FeatureSelector = dynamic(() => import("./feature-selector"));
+const FeatureHero = dynamic(() => import("./feature-hero"));
 const Logotypes = dynamic(() => import("./logotypes"));
 
 export const Module = ({ module, articleList }) => {
@@ -28,6 +29,8 @@ export const Module = ({ module, articleList }) => {
       return <ArticleList data={module} articleList={articleList} />;
     case "featureSelector":
       return <FeatureSelector data={module} />;
+    case "featureHero":
+      return <FeatureHero data={module} />;
     case "logotypes":
       return <Logotypes data={module} />;
     default:
