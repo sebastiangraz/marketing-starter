@@ -115,7 +115,7 @@ const Hero = ({ data }) => {
 
           <Flex sx={{ gap: "1rem", zIndex: 1, position: "relative" }}>
             <NextLink href="/" passHref>
-              <Button variant="primary">Book a Demo</Button>
+              <Button variant="primary">Book a demo</Button>
             </NextLink>
             <NextLink href="/" passHref>
               <Button variant="secondary">Watch the video</Button>

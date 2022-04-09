@@ -162,7 +162,7 @@ const offsiteVariant = {
     opacity: 1,
     transition: {
       when: "afterChildren",
-      delay: 3.5,
+      delay: 2,
       pathLength: { type: "spring", duration: 7, bounce: 0 },
     },
   },
