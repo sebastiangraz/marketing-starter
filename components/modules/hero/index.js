@@ -138,7 +138,7 @@ const Hero = ({ data }) => {
               className="css-mbumtg-Hero"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
               variants={parentVariant}
             >
               <HeroAnimation id={data._key} loop="intersectingLines" />

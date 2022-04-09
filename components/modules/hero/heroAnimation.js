@@ -38,18 +38,24 @@ const checkReviewTransition = {
   delay: 4,
 };
 
-const flowTransition = {
-  repeat: Infinity,
-  repeatType: "loop",
-  repeatDelay: 1,
-  ease: "linear",
-  duration: 30,
-  when: "afterChildren",
-};
-
 const flowVariant = {
   hidden: { "--offset": "10%", scale: 0 },
-  visible: { "--offset": ["10%", "100%"], scale: [0, 1, 1, 1, 1, 0.1] },
+  visible: (i) => {
+    let index = i ? i : 1;
+    let delay = 1 + index * 1;
+    return {
+      "--offset": ["10%", "100%"],
+      scale: [0, 1, 1, 1, 1, 0.1],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: delay,
+        ease: "linear",
+        duration: 30,
+        when: "afterChildren",
+      },
+    };
+  },
 };
 
 const cursorCheckReviewVariant = {
@@ -65,19 +71,20 @@ const cursorCheckReviewVariant = {
 };
 
 const fadeInVariant = {
-  hidden: {
-    scale: 0.9,
-    opacity: 0,
-  },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      delay: 3.5,
-      duration: 4,
-      bounce: 0.3,
-      type: "spring",
-    },
+  hidden: { scale: 0.9, opacity: 0 },
+  visible: (i) => {
+    let index = i ? i : 1;
+    let delay = 1 + index * 0.2;
+    return {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        delay,
+        duration: 4,
+        bounce: 0.3,
+        type: "spring",
+      },
+    };
   },
 };
 
@@ -283,7 +290,7 @@ export const HeroAnimation = ({ loop, id }) => {
           y="3"
           fill="currentColor"
           variants={flowVariant}
-          transition={{ ...flowTransition, delay: 1 }}
+          custom={2}
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
@@ -301,7 +308,7 @@ export const HeroAnimation = ({ loop, id }) => {
           y="3"
           fill="currentColor"
           variants={flowVariant}
-          transition={{ ...flowTransition, delay: 3 }}
+          custom={4}
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
@@ -317,7 +324,7 @@ export const HeroAnimation = ({ loop, id }) => {
           y="3"
           fill="currentColor"
           variants={flowVariant}
-          transition={{ ...flowTransition, delay: 6 }}
+          custom={6}
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
@@ -333,7 +340,7 @@ export const HeroAnimation = ({ loop, id }) => {
           y="3"
           fill="currentColor"
           variants={flowVariant}
-          transition={{ ...flowTransition, delay: 9 }}
+          custom={8}
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
@@ -438,8 +445,7 @@ export const HeroAnimation = ({ loop, id }) => {
             />
           </motion.svg>
           <g transform="translate(225, 234)">
-            );
-            <motion.g variants={fadeInVariant}>
+            <motion.g variants={fadeInVariant} custom={1}>
               <motion.g
                 variants={{
                   hidden: { "--offset": "0%" },
@@ -542,8 +548,7 @@ export const HeroAnimation = ({ loop, id }) => {
             </svg>
           </motion.svg>
           <g transform="translate(620, 301)">
-            );
-            <motion.g variants={fadeInVariant}>
+            <motion.g variants={fadeInVariant} custom={3}>
               <motion.g
                 variants={{
                   hidden: { "--offset": "0%" },
@@ -668,8 +673,7 @@ export const HeroAnimation = ({ loop, id }) => {
     case "taxAdvisor":
       return (
         <g transform="translate(200,400)">
-          );
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={4}>
             <motion.g
               variants={{
                 hidden: { "--offset": "0%" },
@@ -720,8 +724,7 @@ export const HeroAnimation = ({ loop, id }) => {
     case "taxManager":
       return (
         <g transform="translate(200,210)">
-          );
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={2}>
             <motion.g
               variants={{
                 hidden: { "--offset": "0%" },
@@ -929,7 +932,7 @@ export const HeroAnimation = ({ loop, id }) => {
     case "secondaryCards":
       return (
         <>
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={1}>
             <rect
               x="409"
               y="128"
@@ -941,7 +944,7 @@ export const HeroAnimation = ({ loop, id }) => {
             />
           </motion.g>
 
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={2}>
             <rect
               x="358"
               y="242"
@@ -953,7 +956,7 @@ export const HeroAnimation = ({ loop, id }) => {
             />
           </motion.g>
 
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={3}>
             <rect
               x="527"
               y="242"
@@ -964,7 +967,7 @@ export const HeroAnimation = ({ loop, id }) => {
               rx="12"
             />
           </motion.g>
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={4}>
             <rect
               x="576"
               y="353"
@@ -975,7 +978,7 @@ export const HeroAnimation = ({ loop, id }) => {
               rx="42"
             />
           </motion.g>
-          <motion.g variants={fadeInVariant}>
+          <motion.g variants={fadeInVariant} custom={5}>
             <clipPath id="clipCard">
               <rect x="281" y="447" width="280" height="58"></rect>
             </clipPath>
