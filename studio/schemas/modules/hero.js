@@ -25,6 +25,12 @@ export default {
       title: 'Secondary CTA',
       name: 'secondaryCTA',
       type: 'string'
+    },
+    {
+      title: 'Word ticker',
+      name: 'ticker',
+      type: 'array',
+      of: [{ type: 'string' }]
     }
   ],
   preview: {

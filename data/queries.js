@@ -133,6 +133,7 @@ export const modules = `
     _key,
     header,
     lead,
+    ticker,
     primaryCTA,
     secondaryCTA
   },
@@ -176,11 +177,14 @@ export const modules = `
     lead,
     featureHeader,
     features[]{
+      "id": _key,
       featureTitle,
       featureDescription,
       listItems{
+        "id": _key,
         size,
         featureList[]{
+          "id": _key,
           string,
           soon
         }

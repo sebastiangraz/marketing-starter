@@ -37,26 +37,25 @@ const parentVariant = {
 };
 
 const Hero = ({ data }) => {
-  const { header, lead } = data;
-  const words = ["compliance", "audits", "management"];
+  const { header, lead, ticker } = data;
 
   const notificationStackParentVariant = {
     visible: {
       transition: {
-        staggerChildren: 3,
+        staggerChildren: 2,
       },
     },
   };
 
   const notificationStackVariant = {
     visible: {
-      y: [20, 0, 0, 0, 0, -20],
+      y: [-10, 0, 0, 0, 0, 10],
       opacity: [0, 1, 1, 1, 1, 0],
       transition: {
         repeat: Infinity,
         repeatType: "loop",
-        repeatDelay: 3 * (words.length - 1),
-        duration: 3,
+        repeatDelay: 2 * (ticker.length - 1),
+        duration: 2,
         type: "spring",
       },
     },
@@ -91,20 +90,32 @@ const Hero = ({ data }) => {
                   position: "relative",
                 }}
               >
-                {[...words].map((e, i) => {
+                {ticker.map((e, i) => {
                   return (
                     <motion.div
                       variants={notificationStackVariant}
                       sx={{
+                        display: "inline-flex",
+                        background: "beige",
                         position: "relative",
                         gridArea: "-1/1",
                         minWidth: "100%",
                         height: "100%",
-                        pb: "0.5rem",
                       }}
                       key={e + i}
                     >
-                      {e}
+                      <span
+                        sx={{
+                          boxShadow: "0 0 0 1px currentColor",
+                          borderRadius: "small",
+                          pt: "0.25rem",
+                          pb: "0.45rem",
+                          px: ".5rem",
+                        }}
+                      >
+                        {" "}
+                        {e}
+                      </span>
                     </motion.div>
                   );
                 })}
