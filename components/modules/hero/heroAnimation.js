@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 import { path } from "./heroPaths";
 import { useThemeUI } from "theme-ui";
 import theme from "../../../public/theme";
@@ -122,11 +122,12 @@ const liquidateVariant = {
 };
 
 const notificationStackParentVariant = {
+  hidden: {
+    opacity: 0,
+  },
   visible: {
+    opacity: 1,
     transition: {
-      // type: "spring",
-      // duration: 3,
-      delayChildren: 2,
       staggerChildren: 3,
     },
   },
@@ -137,7 +138,7 @@ const notificationStackVariant = {
     y: [0, 0, -10, -10, -10, -10],
     opacity: [0, 0, 1, 1, 1, 0],
     transition: {
-      when: "afterChildren",
+      // when: "afterChildren",
       repeat: Infinity,
       repeatType: "loop",
       repeatDelay: 4,
@@ -160,7 +161,7 @@ const offsiteVariant = {
   },
 };
 
-export const HeroAnimation = ({ loop }) => {
+export const HeroAnimation = ({ loop, id }) => {
   const context = useThemeUI();
   switch (loop) {
     case "introPaths":
@@ -380,12 +381,14 @@ export const HeroAnimation = ({ loop }) => {
               stroke="currentColor"
             />
             <motion.rect
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{
-                opacity: [0.2, 0.2, 0.2, 0.2, 0.1],
-                scale: [1, 1, 1, 1.2, 1.8],
+              variants={{
+                hidden: { opacity: 0, scale: 1 },
+                visible: {
+                  opacity: [0.2, 0.2, 0.2, 0.2, 0.1],
+                  scale: [1, 1, 1, 1.2, 1.8],
+                  transition: { ...checkReviewTransition },
+                },
               }}
-              transition={checkReviewTransition}
               x="9"
               y="14"
               width="18"
@@ -394,12 +397,14 @@ export const HeroAnimation = ({ loop }) => {
               fill="currentColor"
             />
             <motion.rect
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{
-                opacity: [0.5, 0.5, 0.5, 1, 0],
-                scale: [1, 1, 1, 1.2, 0],
+              variants={{
+                hidden: { opacity: 0, scale: 1 },
+                visible: {
+                  opacity: [0.5, 0.5, 0.5, 1, 0],
+                  scale: [1, 1, 1, 1.2, 0],
+                  transition: { ...checkReviewTransition },
+                },
               }}
-              transition={checkReviewTransition}
               x="9"
               y="14"
               width="18"
@@ -436,13 +441,17 @@ export const HeroAnimation = ({ loop }) => {
             );
             <motion.g variants={fadeInVariant}>
               <motion.g
-                initial={{ "--offset": "0%" }}
-                animate={{ "--offset": "100%" }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
+                variants={{
+                  hidden: { "--offset": "0%" },
+                  visible: {
+                    "--offset": "100%",
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                    },
+                  },
                 }}
                 style={{
                   offsetDistance: "var(--offset)",
@@ -500,14 +509,16 @@ export const HeroAnimation = ({ loop }) => {
                 stroke="currentColor"
               />
               <motion.rect
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: [0.1, 0.1, 0.2, 0.5, 0, 0.1],
-                }}
-                transition={{
-                  ...checkReviewTransition,
-                  delay: 7,
-                  repeatDelay: 14,
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: [0.1, 0.1, 0.2, 0.5, 0, 0.1],
+                    transition: {
+                      ...checkReviewTransition,
+                      delay: 7,
+                      repeatDelay: 14,
+                    },
+                  },
                 }}
                 x="8"
                 y="44"
@@ -534,13 +545,17 @@ export const HeroAnimation = ({ loop }) => {
             );
             <motion.g variants={fadeInVariant}>
               <motion.g
-                initial={{ "--offset": "0%" }}
-                animate={{ "--offset": "100%" }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
+                variants={{
+                  hidden: { "--offset": "0%" },
+                  visible: {
+                    "--offset": "100%",
+                    transition: {
+                      duration: 5,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                    },
+                  },
                 }}
                 style={{
                   offsetDistance: "var(--offset)",
@@ -593,19 +608,21 @@ export const HeroAnimation = ({ loop }) => {
             />
             <g>
               <motion.g
-                initial={{ opacity: 0, y: 4 }}
-                animate={{
-                  y: [4, 4, 0, 0, 0, 0],
-                  opacity: [0, 0, 1, 1, 1, 1, 0],
-                }}
-                transition={{
-                  type: "spring",
-                  times: [0.14, 0.22, 0.32, 0.56, 0.7, 0.84, 1],
-                  duration: 10,
-                  repeat: Infinity,
-                  delay: 7,
-                  repeatDelay: 7,
-                  repeatType: "loop",
+                variants={{
+                  hidden: { opacity: 0, y: 4 },
+                  visible: {
+                    y: [4, 4, 0, 0, 0, 0],
+                    opacity: [0, 0, 1, 1, 1, 1, 0],
+                    transition: {
+                      type: "spring",
+                      times: [0.14, 0.22, 0.32, 0.56, 0.7, 0.84, 1],
+                      duration: 10,
+                      repeat: Infinity,
+                      delay: 7,
+                      repeatDelay: 7,
+                      repeatType: "loop",
+                    },
+                  },
                 }}
               >
                 <rect
@@ -626,16 +643,18 @@ export const HeroAnimation = ({ loop }) => {
                   </g>
 
                   <motion.path
-                    initial={{ scale: 1.1 }}
-                    animate={{
-                      scale: [1.1, 1.1, 1, 1, 1, 0.9],
-                    }}
-                    transition={{
-                      duration: 10,
-                      repeat: Infinity,
-                      delay: 7,
-                      repeatDelay: 7,
-                      repeatType: "loop",
+                    variants={{
+                      hidden: { scale: 1.1 },
+                      visible: {
+                        scale: [1.1, 1.1, 1, 1, 1, 0.9],
+                        transition: {
+                          duration: 10,
+                          repeat: Infinity,
+                          delay: 7,
+                          repeatDelay: 7,
+                          repeatType: "loop",
+                        },
+                      },
                     }}
                     d={path.cardText3}
                     fill={theme.colors.text}
@@ -652,15 +671,19 @@ export const HeroAnimation = ({ loop }) => {
           );
           <motion.g variants={fadeInVariant}>
             <motion.g
-              initial={{ "--offset": "0%" }}
-              animate={{ "--offset": "100%" }}
-              transition={{
-                delay: 2,
-                duration: 18,
-                repeat: Infinity,
-                repeatDelay: 2,
-                repeatType: "mirror",
-                ease: "easeInOut",
+              variants={{
+                hidden: { "--offset": "0%" },
+                visible: {
+                  "--offset": "100%",
+                  transition: {
+                    delay: 2,
+                    duration: 18,
+                    repeat: Infinity,
+                    repeatDelay: 2,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                  },
+                },
               }}
               style={{
                 offsetDistance: "var(--offset)",
@@ -700,15 +723,19 @@ export const HeroAnimation = ({ loop }) => {
           );
           <motion.g variants={fadeInVariant}>
             <motion.g
-              initial={{ "--offset": "0%" }}
-              animate={{ "--offset": "100%" }}
-              transition={{
-                delay: 2,
-                duration: 40,
-                repeat: Infinity,
-                repeatDelay: 2,
-                repeatType: "mirror",
-                ease: "easeInOut",
+              variants={{
+                hidden: { "--offset": "0%" },
+                visible: {
+                  "--offset": "100%",
+                  transition: {
+                    delay: 2,
+                    duration: 40,
+                    repeat: Infinity,
+                    repeatDelay: 2,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                  },
+                },
               }}
               style={{
                 offsetDistance: "var(--offset)",
@@ -745,11 +772,7 @@ export const HeroAnimation = ({ loop }) => {
 
     case "globalNotifications":
       return (
-        <motion.g
-          initial="hidden"
-          animate="visible"
-          variants={notificationStackParentVariant}
-        >
+        <motion.g variants={notificationStackParentVariant}>
           <svg
             sx={{ overflow: "visible" }}
             x="512"
@@ -979,18 +1002,21 @@ export const HeroAnimation = ({ loop }) => {
           className="css-mbumtg-Hero"
         >
           <defs>
-            <motion.linearGradient id="grad" variants={intersectionVariant}>
+            <motion.linearGradient
+              id={`${id}-heroGrad`}
+              variants={intersectionVariant}
+            >
               <stop offset="0%" stopColor="black" />
               <stop offset="100%" stopColor="white" />
             </motion.linearGradient>
-            <mask id="mask">
-              <rect width="100%" height="100%" fill="url(#grad)" />
+            <mask id={`${id}-hero`}>
+              <rect width="100%" height="100%" fill={`url(#${id}-heroGrad)`} />
             </mask>
           </defs>
 
           <motion.path
             sx={{ width: "100%", height: "100%" }}
-            mask="url(#mask)"
+            mask={`url(#${id}-hero)`}
             fillRule="evenodd"
             clipRule="evenodd"
             d={path.intersections}

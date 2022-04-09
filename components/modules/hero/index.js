@@ -1,7 +1,7 @@
 import { Themed, Flex, Button, Text, Heading, Paragraph } from "theme-ui";
 import { Width } from "../../width";
 import NextLink from "next/link";
-import { motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 import { HeroAnimation } from "./heroAnimation";
 import cursor from "../../../public/youcursor.png";
 import cursor2x from "../../../public/youcursor@2x.png";
@@ -129,35 +129,37 @@ const Hero = ({ data }) => {
           }}
           value={[12, 12, 8]}
         >
-          <motion.svg
-            sx={{ overflow: "visible" }}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 897.5 1041.5"
-            aria-labelledby="hero-"
-            className="css-mbumtg-Hero"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={parentVariant}
-          >
-            <HeroAnimation loop="intersectingLines" />
-            <HeroAnimation loop="introPaths" />
+          <LayoutGroup id={`${data._key}`}>
+            <motion.svg
+              sx={{ overflow: "visible" }}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 897.5 1041.5"
+              aria-labelledby="hero-"
+              className="css-mbumtg-Hero"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={parentVariant}
+            >
+              <HeroAnimation id={data._key} loop="intersectingLines" />
+              <HeroAnimation id={data._key} loop="introPaths" />
 
-            <HeroAnimation loop="flow-1" />
-            <HeroAnimation loop="flow-2" />
-            <HeroAnimation loop="flow-3" />
-            <HeroAnimation loop="flow-4" />
+              <HeroAnimation loop="flow-1" />
+              <HeroAnimation loop="flow-2" />
+              <HeroAnimation loop="flow-3" />
+              <HeroAnimation loop="flow-4" />
 
-            <HeroAnimation loop="secondaryCards" />
-            <HeroAnimation loop="liquidateCard" />
-            <HeroAnimation loop="checkReview" />
+              <HeroAnimation loop="secondaryCards" />
+              <HeroAnimation loop="liquidateCard" />
+              <HeroAnimation loop="checkReview" id={data._key} />
 
-            <HeroAnimation loop="globalNotifications" />
-            <HeroAnimation loop="liquidate" />
-            <HeroAnimation loop="taxManager" />
-            <HeroAnimation loop="taxAdvisor" />
-            <HeroAnimation loop="offSite" />
-          </motion.svg>
+              <HeroAnimation loop="globalNotifications" />
+              <HeroAnimation loop="liquidate" id={data._key} />
+              <HeroAnimation loop="taxManager" />
+              <HeroAnimation loop="taxAdvisor" />
+              <HeroAnimation loop="offSite" />
+            </motion.svg>
+          </LayoutGroup>
         </Width>
       </div>
     </section>

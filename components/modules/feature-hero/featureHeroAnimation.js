@@ -14,14 +14,6 @@ const intersectionVariant = {
   },
 };
 
-// const intersectionVariant = {
-//   hidden: { opacity: 0 },
-//   visible: {
-//     opacity: 1,
-//     transition: { duration: 7 },
-//   },
-// };
-
 const parentVariant = {
   visible: {
     transition: {
@@ -183,20 +175,24 @@ export const FeatureHeroAnimation = ({ id }) => {
       >
         <defs>
           <motion.linearGradient
-            id={`${id}-grad`}
+            id={`${id}-featureHeroGrad`}
             variants={intersectionVariant}
           >
             <stop offset="0%" stopColor="black" />
             <stop offset="80%" stopColor="white" />
           </motion.linearGradient>
           {/* <mask id={`${id}-featureHeroIntersection`}> */}
-          <mask id={`${id}featureHero`}>
-            <rect width="100%" height="100%" fill={`url(#${id}-grad)`} />
+          <mask id={`${id}-featureHero`}>
+            <rect
+              width="100%"
+              height="100%"
+              fill={`url(#${id}-featureHeroGrad)`}
+            />
           </mask>
         </defs>
         <motion.path
           // mask={`url(#${id}-featureHeroIntersection)`}
-          mask={`url(#${id}featureHero)`}
+          mask={`url(#${id}-featureHero)`}
           fillRule="evenodd"
           clipRule="evenodd"
           d={path.intersection}
