@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { heroPath } from "./heroPaths";
+import { path } from "./heroPaths";
 import { useThemeUI } from "theme-ui";
 import theme from "../../../public/theme";
 
@@ -354,7 +354,7 @@ export const HeroAnimation = ({ loop }) => {
               />
               <path
                 transform="translate(13,40)"
-                d={heroPath.cardText1}
+                d={path.cardText1}
                 fill="white"
               />
             </g>
@@ -414,7 +414,7 @@ export const HeroAnimation = ({ loop }) => {
             />
             <path
               transform="translate(38,13)"
-              d={heroPath.notificationText1}
+              d={path.notificationText1}
               fill="currentColor"
             />
             <rect
@@ -522,7 +522,7 @@ export const HeroAnimation = ({ loop }) => {
                 strokeLinecap="round"
               />
               <g transform="translate(15, 16)">
-                <path d={heroPath.notificationText2} fill="currentColor" />
+                <path d={path.notificationText2} fill="currentColor" />
               </g>
               <path
                 d="M179.918 13H180.938C181.008 13 181.038 12.97 181.038 12.9V6.1C181.038 6.03 181.008 6 180.938 6H180.378C180.318 6 180.268 6.02 180.218 6.05L178.568 6.94C178.508 6.97 178.458 7.02 178.458 7.09V8.16C178.458 8.23 178.488 8.25 178.538 8.25C178.568 8.25 178.598 8.24 178.638 8.22L179.818 7.56V12.9C179.818 12.97 179.848 13 179.918 13Z"
@@ -588,7 +588,7 @@ export const HeroAnimation = ({ loop }) => {
 
             <path
               transform="translate(13,40)"
-              d={heroPath.cardText2}
+              d={path.cardText2}
               fill="white"
             />
             <g>
@@ -637,7 +637,7 @@ export const HeroAnimation = ({ loop }) => {
                       repeatDelay: 7,
                       repeatType: "loop",
                     }}
-                    d={heroPath.cardText3}
+                    d={path.cardText3}
                     fill={theme.colors.text}
                   />
                 </g>
@@ -788,7 +788,7 @@ export const HeroAnimation = ({ loop }) => {
 
               <path
                 transform="translate(38,13)"
-                d={heroPath.notificationText3}
+                d={path.notificationText3}
                 fill="currentColor"
               />
               <rect
@@ -837,7 +837,7 @@ export const HeroAnimation = ({ loop }) => {
 
               <path
                 transform="translate(38,13)"
-                d={heroPath.notificationText4}
+                d={path.notificationText4}
                 fill="currentColor"
               />
               <rect
@@ -884,7 +884,7 @@ export const HeroAnimation = ({ loop }) => {
 
               <path
                 transform="translate(38,13)"
-                d={heroPath.notificationText5}
+                d={path.notificationText5}
                 fill="currentColor"
               />
               <rect
@@ -993,7 +993,7 @@ export const HeroAnimation = ({ loop }) => {
             mask="url(#mask)"
             fillRule="evenodd"
             clipRule="evenodd"
-            d={heroPath.intersections}
+            d={path.intersections}
             fill="currentColor"
           />
         </motion.svg>
