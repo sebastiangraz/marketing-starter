@@ -19,6 +19,11 @@ export default {
         source: 'title',
         maxLength: 96
       }
+    },
+    {
+      title: 'SEO / Share Settings',
+      name: 'seo',
+      type: 'seo'
     }
   ]
 }

@@ -2,7 +2,6 @@ import React, {
   useRef,
   useReducer,
   useEffect,
-  useLayoutEffect,
   useState,
   memo,
   useCallback,
@@ -73,7 +72,7 @@ const Parallax = memo(({ data = {} }) => {
   const isSolo = length === 1;
   const [index, setIndex] = useState([]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = ref && ref.current;
     const elChild = el.querySelector(".inner-container");
 
@@ -180,7 +179,7 @@ const Parallax = memo(({ data = {} }) => {
     });
   }, [parallaxContainer, motionActive]);
 
-  useLayoutEffect(() => setIndex(0), []);
+  useEffect(() => setIndex(0), []);
 
   const handleClick = useCallback(
     (i) => () => {

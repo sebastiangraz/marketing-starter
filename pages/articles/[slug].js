@@ -1,4 +1,4 @@
-import { getAllDocSlugs, getArticle } from "../../data";
+import { getArticle, getAllDocSlugs } from "../../data";
 import BlockContent from "../../components/block-content";
 import Layout from "../../components/layout";
 import Reveal from "../../components/reveal";

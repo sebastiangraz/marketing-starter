@@ -51,11 +51,11 @@ const Site = ({ Component, pageProps, router }) => {
 
   return (
     <>
-      {isPageTransition && (
+      {/* {isPageTransition && (
         <Head>
           <title>Loading...</title>
         </Head>
-      )}
+      )} */}
       <AnimatePresence
         exitBeforeEnter
         onExitComplete={() => {

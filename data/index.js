@@ -62,6 +62,7 @@ export async function getArticle(slug, preview) {
         "id": _id,
         title,
         slug,
+        seo,
         content[]
       },
       ${queries.site}

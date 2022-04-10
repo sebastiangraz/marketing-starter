@@ -42,6 +42,11 @@ export default {
       title: 'Page Content',
       name: 'content',
       type: 'complexPortableText'
+    },
+    {
+      title: 'SEO / Share Settings',
+      name: 'seo',
+      type: 'seo'
     }
   ],
   preview: {

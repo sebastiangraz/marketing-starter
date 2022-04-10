@@ -39,6 +39,7 @@ export async function getStaticProps({ preview, previewData }) {
         "id": _id,
         title,
         slug,
+        seo,
         content[]
       }
     `,
