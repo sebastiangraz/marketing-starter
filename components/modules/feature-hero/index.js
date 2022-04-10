@@ -3,6 +3,8 @@ import Reveal from "../../reveal";
 import { Width } from "../../width";
 import { transparentize } from "@theme-ui/color";
 import { FeatureHeroAnimation } from "./featureHeroAnimation";
+import { List } from "../../list";
+import React from "react";
 
 const FeatureHero = ({ data }) => {
   const { header, lead, featureHeader, features } = data;
@@ -112,12 +114,12 @@ const FeatureHero = ({ data }) => {
                         {featureDescription}
                       </Paragraph>
 
-                      <ul>
+                      <List>
                         {listItems.featureList.map((item) => {
                           const { id, string } = item;
-                          return <li key={id}>{string}</li>;
+                          return <Paragraph key={id}>{string}</Paragraph>;
                         })}
-                      </ul>
+                      </List>
                     </div>
                     <div sx={{ mt: "2rem", mr: "2rem" }}>
                       <svg

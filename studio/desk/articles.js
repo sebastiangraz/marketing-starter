@@ -6,7 +6,6 @@ import { standardViews } from './previews/standard'
 // Our exported "Shop" Menu
 export const articleMenu = S.listItem()
   .title('Articles')
-  .id('article')
   .child(
     S.documentTypeList('article')
       .title('Articles')

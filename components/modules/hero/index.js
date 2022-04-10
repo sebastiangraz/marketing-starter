@@ -54,7 +54,7 @@ const Hero = ({ data }) => {
       transition: {
         repeat: Infinity,
         repeatType: "loop",
-        repeatDelay: 2 * (ticker.length - 1),
+        repeatDelay: 2 * (ticker?.length - 1),
         duration: 2,
         type: "spring",
       },
@@ -90,7 +90,7 @@ const Hero = ({ data }) => {
                   position: "relative",
                 }}
               >
-                {ticker.map((e, i) => {
+                {ticker?.map((e, i) => {
                   return (
                     <motion.div
                       variants={notificationStackVariant}
