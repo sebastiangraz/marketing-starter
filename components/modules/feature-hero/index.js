@@ -108,18 +108,11 @@ const FeatureHero = ({ data }) => {
                       <Themed.h4
                         sx={{ maxWidth: "26ch", fontWeight: 500, mb: "1rem" }}
                       >
-                        {featureDescription}
+                        {featureTitle}
                       </Themed.h4>
                       <Paragraph sx={{ maxWidth: "28ch" }}>
                         {featureDescription}
                       </Paragraph>
-
-                      <List>
-                        {listItems.featureList.map((item) => {
-                          const { id, string } = item;
-                          return <Paragraph key={id}>{string}</Paragraph>;
-                        })}
-                      </List>
                     </div>
                     <div sx={{ mt: "2rem", mr: "2rem" }}>
                       <svg
@@ -137,6 +130,17 @@ const FeatureHero = ({ data }) => {
                         />
                       </svg>
                     </div>
+
+                    <List sx={{ gridColumn: "span 2" }}>
+                      {listItems.featureList.map((item) => {
+                        const { id, string } = item;
+                        return (
+                          <Paragraph variant="label" key={id}>
+                            {string}
+                          </Paragraph>
+                        );
+                      })}
+                    </List>
                   </div>
                 );
               })}

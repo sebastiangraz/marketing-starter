@@ -221,8 +221,17 @@ export const site = `
       message,
       "link": link->{"type": _type, "slug": slug.current}
     },
+
     "articleList": *[_type == "article"]{${articleList}},
     "header": *[_type == "headerSettings"][0]{
+      "promo": *[_type == "promoSettings"][0]{
+        enabled,
+        display,
+        text,
+        "link": link->{
+          ${page}
+        }
+      },
       menuDesktopLeft->{
         items[]{
           ${link},

@@ -149,6 +149,11 @@ const theme = {
       letterSpacing: "body",
       fontSize: ["14px", "16px", "18px"],
     },
+    small: {
+      fontSize: "14px",
+      fontWeight: 500,
+      letterSpacing: "0.02em",
+    },
     link: {
       color: "inherit",
       textDecoration: "underline",

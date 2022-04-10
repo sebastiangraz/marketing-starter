@@ -2,6 +2,7 @@ import { isBrowser } from "../lib/helpers";
 import { motion } from "framer-motion";
 import Menu from "../components/menu";
 import Link from "next/link";
+import PromoBar from "../components/promo-bar";
 
 const rotate = {
   show: {
@@ -75,7 +76,7 @@ const style = {
 
 const Header = ({ data = {} }) => {
   // expand our header data
-  const { menuMobilePrimary, menuMobileSecondary } = data;
+  const { promo, menuMobilePrimary, menuMobileSecondary } = data;
 
   // setup menu toggle event
   const toggleMobileNav = (state) => {
@@ -86,6 +87,7 @@ const Header = ({ data = {} }) => {
 
   return (
     <>
+      <PromoBar data={promo} />
       <header sx={style.navStyle}>
         <div sx={style.navWrapper}>
           <div className="logo">

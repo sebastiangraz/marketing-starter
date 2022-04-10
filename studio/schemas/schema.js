@@ -9,6 +9,7 @@ import colorSetting from './objects/colorSetting'
 
 import generalSettings from './documents/settings-general'
 import cookieSettings from './documents/settings-cookie'
+import promoSettings from './documents/settings-promo'
 import headerSettings from './documents/settings-header'
 import footerSettings from './documents/settings-footer'
 import seoSettings from './documents/settings-seo'
@@ -68,6 +69,7 @@ export default createSchema({
 
     generalSettings,
     cookieSettings,
+    promoSettings,
     headerSettings,
     footerSettings,
     seoSettings,

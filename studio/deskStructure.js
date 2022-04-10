@@ -12,6 +12,7 @@ const hiddenDocTypes = listItem =>
     'productVariant',
     'generalSettings',
     'cookieSettings',
+    'promoSettings',
     'headerSettings',
     'footerSettings',
     'seoSettings',

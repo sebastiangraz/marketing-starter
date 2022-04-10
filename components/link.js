@@ -39,6 +39,7 @@ const Link = ({ link, children, ...rest }) => {
   } else {
     const isDynamic = getDynamicRoute(link.page?.type);
     const isHome = link.page?.isHome;
+    const isArticle = link.page?.type === "article";
 
     return (
       <NextLink
@@ -47,7 +48,9 @@ const Link = ({ link, children, ...rest }) => {
             ? "/"
             : isStatic !== false
             ? `/${isStatic}`
-            : `/${isDynamic ? `${isDynamic}/` : ""}${link.page?.slug}`
+            : `${isArticle ? "/articles" : ""}/${
+                isDynamic ? `${isDynamic}/` : ""
+              }${link.page?.slug}`
         }
         scroll={false}
       >

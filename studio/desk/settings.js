@@ -55,6 +55,15 @@ export const settingsMenu = S.listItem()
               .documentId('cookieSettings')
           )
           .icon(Cookie),
+        S.listItem()
+          .title('Promo Bar')
+          .child(
+            S.editor()
+              .id('promoSettings')
+              .schemaType('promoSettings')
+              .documentId('promoSettings')
+          )
+          .icon(FlagBanner),
         S.divider(),
         S.listItem()
           .title('Default SEO / Share')

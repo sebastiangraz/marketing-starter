@@ -3,6 +3,7 @@ import S from '@sanity/base/structure-builder'
 const singletons = [
   'generalSettings',
   'cookieSettings',
+  'promoSettings',
   'headerSettings',
   'footerSettings',
   'seoSettings'
