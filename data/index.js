@@ -74,4 +74,26 @@ export async function getArticle(slug, preview) {
   return data;
 }
 
+export async function getArticles(preview) {
+  const query = `
+  {
+    "page": *[_type == "articles"][0]{
+      "id": _id,
+      "posts": *[_type == "article"]{
+        "id": _id,
+        title,
+        slug,
+        content[]
+      },
+      title,
+      seo
+    },
+    ${queries.site}
+  }`;
+
+  const data = await getSanityClient(preview).fetch(query);
+
+  return data;
+}
+
 export { queries };

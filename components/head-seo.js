@@ -1,39 +1,39 @@
-import React from 'react'
-import Head from 'next/head'
-import { imageBuilder } from '../lib/sanity'
+import React from "react";
+import Head from "next/head";
+import { imageBuilder } from "../lib/sanity";
 
 const HeadSEO = ({ site = {}, page = {}, schema }) => {
   // set <head> variables
-  const siteTitle = site.title
-
-  const siteFavicon = site.seo?.favicon || '/favicon.svg'
-  const siteFaviconLegacy = site.seo?.faviconLegacy || '/favicon.ico'
-  const siteTouchIcon = site.seo?.touchIcon
+  const siteTitle = site.title;
+  const siteFavicon = site.seo?.favicon || "/favicon.svg";
+  const siteFaviconLegacy = site.seo?.faviconLegacy || "/favicon.ico";
+  const siteTouchIcon = site.seo?.touchIcon;
 
   const templateTags = [
     {
-      tag: '{{page_title}}',
+      tag: "{{page_title}}",
       value: page.title,
     },
     {
-      tag: '{{site_title}}',
+      tag: "{{site_title}}",
       value: siteTitle,
     },
-  ]
+  ];
 
   const metaTitle = replaceTemplateTags(
     page.seo?.metaTitle || site.seo?.metaTitle,
     templateTags
-  )
-  const metaDesc = page.seo?.metaDesc || site.seo?.metaDesc
+  );
+  const metaDesc = page.seo?.metaDesc || site.seo?.metaDesc;
 
   const shareTitle = replaceTemplateTags(
     page.seo?.shareTitle || site.seo?.shareTitle,
     templateTags
-  )
-  const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc
+  );
+
+  const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc;
   const shareGraphic =
-    page.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset
+    page.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset;
 
   return (
     <Head>
@@ -104,18 +104,18 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
         />
       )}
     </Head>
-  )
-}
+  );
+};
 
-export default HeadSEO
+export default HeadSEO;
 
 // replace template tags with values
 function replaceTemplateTags(string, templateTags = []) {
-  let newString = string
+  let newString = string;
 
   templateTags.map((v) => {
-    newString = newString && newString.replace(new RegExp(v.tag, 'g'), v.value)
-  })
+    newString = newString && newString.replace(new RegExp(v.tag, "g"), v.value);
+  });
 
-  return newString
+  return newString;
 }

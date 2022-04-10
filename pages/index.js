@@ -8,7 +8,7 @@ import { Module } from "../components/modules";
 
 const Home = ({ data }) => {
   const { site, page } = data;
-  console.log(data);
+
   if (!page) {
     return (
       <Error

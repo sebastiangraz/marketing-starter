@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Themed } from "theme-ui";
 import Layout from "../../components/layout";
-import { getStaticPage } from "../../data";
+import { getArticles } from "../../data";
 
 const Blog = ({ data }) => {
   const { site, page } = data;
@@ -11,7 +11,7 @@ const Blog = ({ data }) => {
       <div sx={{ variant: "layout.row", my: 3 }}>
         <Themed.h1>Articles</Themed.h1>
 
-        {page.map(({ id, title = "", slug = "", publishedAt = "" }) => {
+        {page.posts.map(({ id, title = "", slug = "", publishedAt = "" }) => {
           return (
             slug && (
               <li key={id}>
@@ -22,7 +22,6 @@ const Blog = ({ data }) => {
                 >
                   <a sx={{ variant: "text.link" }}>{title}</a>
                 </Link>{" "}
-                {/* ({new Date(publishedAt).toDateString()}) */}
               </li>
             )
           );
@@ -33,25 +32,14 @@ const Blog = ({ data }) => {
 };
 
 export async function getStaticProps({ preview, previewData }) {
-  const articleData = await getStaticPage(
-    `
-      *[_type == "article"] {
-        "id": _id,
-        title,
-        slug,
-        seo,
-        content[]
-      }
-    `,
-    {
-      active: preview,
-      token: previewData?.token,
-    }
-  );
+  const articlesData = await getArticles({
+    active: preview,
+    token: previewData?.token,
+  });
 
   return {
     props: {
-      data: articleData,
+      data: articlesData,
     },
   };
 }

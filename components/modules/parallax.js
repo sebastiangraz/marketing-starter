@@ -274,8 +274,6 @@ const Parallax = memo(({ data = {} }) => {
         maxWidth: `calc(100vw)`,
       }}
     >
-      {/* {console.log("[[parallax.js rendered]]")} */}
-
       <div sx={style.container} ref={ref}>
         <div
           sx={{

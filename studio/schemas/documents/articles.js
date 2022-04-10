@@ -1,8 +1,10 @@
+import { Notebook } from 'phosphor-react'
+
 export default {
   name: 'articles',
   title: 'Articles',
   type: 'document',
-
+  icon: Notebook,
   fields: [
     {
       title: 'Display Title',

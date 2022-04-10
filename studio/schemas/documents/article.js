@@ -1,10 +1,10 @@
-import React from 'react'
-import { Gift, CloudArrowDown, ArrowsClockwise } from 'phosphor-react'
+import { NotePencil } from 'phosphor-react'
 
 export default {
   name: 'article',
   title: 'Article',
   type: 'document',
+  icon: NotePencil,
   // __experimental_actions: ['update', 'publish', 'delete'],
   fields: [
     {
