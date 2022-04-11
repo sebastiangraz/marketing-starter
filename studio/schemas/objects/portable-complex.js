@@ -82,7 +82,11 @@ export default {
                 title: 'Internal Page',
                 name: 'page',
                 type: 'reference',
-                to: [{ type: 'page' }, { type: 'articles' }],
+                to: [
+                  { type: 'page' },
+                  { type: 'articles' },
+                  { type: 'whitepapers' }
+                ],
                 hidden: ({ parent }) => parent.linkType !== 'internal'
               },
               {

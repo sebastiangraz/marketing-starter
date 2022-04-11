@@ -39,7 +39,13 @@ export default {
       title: 'Link',
       name: 'link',
       type: 'reference',
-      to: [{ type: 'page' }, { type: 'article' }, { type: 'articles' }],
+      to: [
+        { type: 'page' },
+        { type: 'article' },
+        { type: 'articles' },
+        { type: 'whitepaper' },
+        { type: 'whitepapers' }
+      ],
       description: '(optional) Select a page to link the promo banner to',
       hidden: ({ parent }) => !parent.enabled
     }

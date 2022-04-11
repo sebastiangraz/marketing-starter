@@ -9,6 +9,7 @@ const page = `
   "slug": slug.current,
   "isHome": _id == ${homeID},
   "isArticles": _id == ${articlesID},
+  "isWhitepapers": _id == ${articlesID},
 `;
 
 // Construct our "link" GROQ

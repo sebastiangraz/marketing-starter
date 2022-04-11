@@ -11,7 +11,7 @@ const Blog = ({ data }) => {
       <div sx={{ variant: "layout.row", my: 3 }}>
         <Themed.h1>Articles</Themed.h1>
 
-        {page.posts.map(({ id, title = "", slug = "", publishedAt = "" }) => {
+        {page?.posts?.map(({ id, title = "", slug = "", publishedAt = "" }) => {
           return (
             slug && (
               <li key={id}>

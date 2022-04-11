@@ -12,7 +12,7 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
   const templateTags = [
     {
       tag: "{{page_title}}",
-      value: page.title,
+      value: page?.title,
     },
     {
       tag: "{{site_title}}",
@@ -21,19 +21,19 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
   ];
 
   const metaTitle = replaceTemplateTags(
-    page.seo?.metaTitle || site.seo?.metaTitle,
+    page?.seo?.metaTitle || site.seo?.metaTitle,
     templateTags
   );
-  const metaDesc = page.seo?.metaDesc || site.seo?.metaDesc;
+  const metaDesc = page?.seo?.metaDesc || site.seo?.metaDesc;
 
   const shareTitle = replaceTemplateTags(
-    page.seo?.shareTitle || site.seo?.shareTitle,
+    page?.seo?.shareTitle || site.seo?.shareTitle,
     templateTags
   );
 
-  const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc;
+  const shareDesc = page?.seo?.shareDesc || site.seo?.shareDesc;
   const shareGraphic =
-    page.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset;
+    page?.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset;
 
   return (
     <Head>

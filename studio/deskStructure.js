@@ -4,11 +4,15 @@ import { settingsMenu } from './desk/settings'
 import { pagesMenu } from './desk/pages'
 import { menusMenu } from './desk/menus'
 import { articleMenu } from './desk/articles'
+import { whitepaperMenu } from './desk/whitepapers'
 
 const hiddenDocTypes = listItem =>
   ![
     'page',
     'articles',
+    'article',
+    'whitepapers',
+    'whitepaper',
     'productVariant',
     'generalSettings',
     'cookieSettings',
@@ -28,6 +32,8 @@ export default () =>
       pagesMenu,
       S.divider(),
       articleMenu,
+      S.divider(),
+      whitepaperMenu,
       S.divider(),
       menusMenu,
       S.divider(),

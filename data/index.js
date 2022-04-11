@@ -96,4 +96,45 @@ export async function getArticles(preview) {
   return data;
 }
 
+export async function getWhitepaper(slug, preview) {
+  const query = `
+    {
+      "page": *[_type == "whitepaper" && slug.current == "${slug}"][0]{
+        "id": _id,
+        title,
+        slug,
+        seo,
+        content[]
+      },
+      ${queries.site}
+    }
+  `;
+
+  const data = await getSanityClient(preview).fetch(query);
+
+  return data;
+}
+
+export async function getWhitepapers(preview) {
+  const query = `
+  {
+    "page": *[_type == "whitepapers"][0]{
+      "id": _id,
+      "posts": *[_type == "whitepaper"]{
+        "id": _id,
+        title,
+        slug,
+        content[]
+      },
+      title,
+      seo
+    },
+    ${queries.site}
+  }`;
+
+  const data = await getSanityClient(preview).fetch(query);
+
+  return data;
+}
+
 export { queries };

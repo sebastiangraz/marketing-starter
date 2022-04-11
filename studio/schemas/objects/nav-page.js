@@ -18,7 +18,7 @@ export default {
       title: 'Page',
       name: 'page',
       type: 'reference',
-      to: [{ type: 'page' }, { type: 'articles' }]
+      to: [{ type: 'page' }, { type: 'articles' }, { type: 'whitepapers' }]
     }
   ],
   preview: {

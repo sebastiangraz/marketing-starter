@@ -5,6 +5,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import page from './documents/page'
 import article from './documents/article'
 import articles from './documents/articles'
+
+import whitepaper from './documents/whitepaper'
+import whitepapers from './documents/whitepapers'
 import colorSetting from './objects/colorSetting'
 
 import generalSettings from './documents/settings-general'
@@ -64,6 +67,8 @@ export default createSchema({
     page,
     article,
     articles,
+    whitepaper,
+    whitepapers,
     author,
     colorSetting,
 
