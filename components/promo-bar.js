@@ -16,14 +16,21 @@ const PromoBar = React.memo(({ data = {} }) => {
   if (display === "home" && router.asPath !== "/") return null;
 
   return (
-    <div sx={{ display: "flex", justifyContent: "center", py: "0.5rem" }}>
+    <div
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        py: "0.5rem",
+        borderBottom: ["1px solid", "none"],
+      }}
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         sx={{
           flex: "1",
-          display: "flex",
+          display: ["none", "flex"],
           alignItems: "center",
           position: "relative",
         }}
@@ -60,17 +67,25 @@ const PromoBar = React.memo(({ data = {} }) => {
         ></motion.div>
       </motion.div>
 
-      <Text variant="small" sx={{ mx: "1rem" }}>
-        <span sx={{ mr: "0.5rem" }}>{text}</span>
-        <ConditionalWrapper
-          condition={link}
-          wrapper={(children) => (
-            <CustomLink link={{ ...{ page: link } }}>{children}</CustomLink>
-          )}
+      <div sx={{ display: [null, "contents"], variant: "layout.row" }}>
+        <Text
+          variant="small"
+          sx={{
+            px: ["0", "1rem"],
+            py: "0.5em",
+          }}
         >
-          <span sx={{ whiteSpace: "pre" }}>{"Read more"}</span>
-        </ConditionalWrapper>
-      </Text>
+          <span sx={{ mr: "0.5rem" }}>{text}</span>
+          <ConditionalWrapper
+            condition={link}
+            wrapper={(children) => (
+              <CustomLink link={{ ...{ page: link } }}>{children}</CustomLink>
+            )}
+          >
+            <span sx={{ whiteSpace: "pre" }}>{"Read more"}</span>
+          </ConditionalWrapper>
+        </Text>
+      </div>
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -78,7 +93,7 @@ const PromoBar = React.memo(({ data = {} }) => {
         exit={{ opacity: 0 }}
         sx={{
           flex: "1",
-          display: "flex",
+          display: ["none", "flex"],
           alignItems: "center",
           position: "relative",
           justifyContent: "flex-end",

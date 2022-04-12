@@ -18,6 +18,11 @@ export default {
       type: 'url',
       description: 'enter an external URL',
       validation: Rule => Rule.required()
+    },
+    {
+      title: 'Highlighted',
+      name: 'highlighted',
+      type: 'boolean'
     }
   ],
   preview: {

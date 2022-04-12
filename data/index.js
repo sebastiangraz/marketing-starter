@@ -100,11 +100,7 @@ export async function getWhitepaper(slug, preview) {
   const query = `
     {
       "page": *[_type == "whitepaper" && slug.current == "${slug}"][0]{
-        "id": _id,
-        title,
-        slug,
-        seo,
-        content[]
+        ${queries.whitepaper}
       },
       ${queries.site}
     }
@@ -121,10 +117,7 @@ export async function getWhitepapers(preview) {
     "page": *[_type == "whitepapers"][0]{
       "id": _id,
       "posts": *[_type == "whitepaper"]{
-        "id": _id,
-        title,
-        slug,
-        content[]
+        ${queries.whitepaper}
       },
       title,
       seo

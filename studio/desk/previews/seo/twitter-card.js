@@ -13,10 +13,8 @@ const urlFor = source => {
 }
 
 const author = {
-  name: 'Nick DiMatteo',
-  handle: 'ndimatteo',
-  image:
-    'https://pbs.twimg.com/profile_images/1174691001119756288/TbJJ6_2I_400x400.jpg'
+  name: 'Loctax',
+  handle: 'loctax'
 }
 
 class TwitterCard extends React.PureComponent {
@@ -51,7 +49,8 @@ class TwitterCard extends React.PureComponent {
             <div className={styles.seoItemCard}>
               <div className={styles.tweetWrapper} style={{ width }}>
                 <div className={styles.tweetAuthor}>
-                  <img
+                  <div className={styles.tweetAuthorAvatar}></div>
+                  {/* <img
                     className={styles.tweetAuthorAvatar}
                     src={
                       author && typeof author.image === 'object'
@@ -60,7 +59,7 @@ class TwitterCard extends React.PureComponent {
                             .url()
                         : author.image
                     }
-                  />
+                  /> */}
                   <span className={styles.tweetAuthorName}>{author.name}</span>
                   <span className={styles.tweetAuthorHandle}>
                     @{author.handle}

@@ -124,7 +124,14 @@ const Hero = ({ data }) => {
           </Themed.h1>
           <Paragraph sx={{ mb: "3rem", width: "20ch" }}>{lead}</Paragraph>
 
-          <Flex sx={{ gap: "1rem", zIndex: 1, position: "relative" }}>
+          <Flex
+            sx={{
+              gap: "1rem",
+              zIndex: 1,
+              position: "relative",
+              flexWrap: "wrap",
+            }}
+          >
             <NextLink href="/" passHref>
               <Button variant="primary">Book a demo</Button>
             </NextLink>

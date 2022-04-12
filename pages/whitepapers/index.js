@@ -3,6 +3,7 @@ import { Themed } from "theme-ui";
 import Layout from "../../components/layout";
 import { Width } from "../../components/width";
 import { getWhitepapers } from "../../data";
+import CustomLink from "../../components/link";
 
 const Blog = ({ data }) => {
   const { site, page } = data;
@@ -25,6 +26,7 @@ const Blog = ({ data }) => {
               display: "flex",
               listStyle: "none",
               maskSize: "100% 100%",
+              borderRadius: "default",
               minHeight: "360px",
               padding: "2rem",
               position: "relative",
@@ -34,6 +36,13 @@ const Blog = ({ data }) => {
                 "linear-gradient(45deg, #000 calc(100% - 44px), transparent calc(100% - 44px))",
               background:
                 "linear-gradient(45deg, #0000 calc(100% - 45px), #000 calc(100% - 45px), #000 calc(100% - 44px), #0000 calc(100% - 44px))",
+              "&:hover": {
+                maskImage: "none",
+                background: "none",
+                "&:after": {
+                  content: "none",
+                },
+              },
               "&:after": {
                 maskImage:
                   "linear-gradient(45deg, #000 calc(100% - 45px), transparent calc(100% - 45px))",
@@ -42,6 +51,7 @@ const Blog = ({ data }) => {
                 top: 0,
                 right: 0,
                 zIndex: -1,
+                borderRadius: "0 0 0 12px",
                 boxShadow: " 0 0 0 1px inset",
                 width: "63px",
                 height: "63px",
@@ -51,22 +61,19 @@ const Blog = ({ data }) => {
           }}
         >
           {page?.posts?.map(
-            ({ id, title = "", slug = "", publishedAt = "" }) => {
+            ({ url, id, title = "", slug = "", publishedAt = "" }) => {
+              console.log(url);
               return (
                 slug && (
                   <Width key={id} value={[12, 5, 3]}>
-                    <Link
-                      passHref
-                      scroll={false}
-                      href="/whitepapers/[slug]"
-                      as={`/whitepapers/${slug.current}`}
+                    <a
+                      target="_blank"
+                      sx={{ variant: "text.link" }}
+                      href={url && url}
+                      rel="noreferrer"
                     >
-                      <a sx={{ variant: "text.link" }}>
-                        <Themed.h4 sx={{ mt: 0, mr: "3rem" }}>
-                          {title}
-                        </Themed.h4>
-                      </a>
-                    </Link>
+                      <Themed.h4 sx={{ mt: 0, mr: "3rem" }}>{title}</Themed.h4>
+                    </a>
                   </Width>
                 )
               );

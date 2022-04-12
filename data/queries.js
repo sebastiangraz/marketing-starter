@@ -212,6 +212,14 @@ const articleList = `
 "date": publishedAt
 `;
 
+export const whitepaper = `
+  "id": _id,
+  title,
+  url,
+  slug,
+  description
+`;
+
 // Construct our "site" GROQ
 export const site = `
   "site": {

@@ -40,7 +40,6 @@ const Link = ({ link, children, ...rest }) => {
     const isDynamic = getDynamicRoute(link.page?.type);
     const isHome = link.page?.isHome;
     const isArticle = link.page?.type === "article";
-
     return (
       <NextLink
         href={

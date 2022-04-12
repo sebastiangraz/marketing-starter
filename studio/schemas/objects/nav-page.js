@@ -19,6 +19,11 @@ export default {
       name: 'page',
       type: 'reference',
       to: [{ type: 'page' }, { type: 'articles' }, { type: 'whitepapers' }]
+    },
+    {
+      title: 'Highlighted',
+      name: 'highlighted',
+      type: 'boolean'
     }
   ],
   preview: {

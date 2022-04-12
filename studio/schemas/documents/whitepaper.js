@@ -13,6 +13,11 @@ export default {
       type: 'string'
     },
     {
+      title: 'Url',
+      name: 'url',
+      type: 'url'
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
@@ -27,9 +32,9 @@ export default {
       type: 'datetime'
     },
     {
-      title: 'Page Content',
-      name: 'content',
-      type: 'complexPortableText'
+      title: 'Description',
+      name: 'description',
+      type: 'text'
     },
     {
       title: 'SEO / Share Settings',

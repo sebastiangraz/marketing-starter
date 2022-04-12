@@ -27,15 +27,19 @@ const rotate = {
 const style = {
   navStyle: {
     fontSize: 2,
+    position: "sticky",
+    top: 0,
+    zIndex: 10,
+    background: "background",
   },
   navWrapper: {
     variant: "layout.row",
     px: "0.5rem",
     display: "grid",
     gridTemplateColumns: `1fr 1fr 1fr`,
+    gridTemplateRows: "1fr 1fr 1fr",
     alignItems: "start",
-    height: "5rem",
-    mt: "2rem",
+    pt: "1.5rem",
     li: {
       whiteSpace: "pre",
       "&.is-active": {
@@ -102,7 +106,7 @@ const Header = ({ data = {} }) => {
               variants={rotate}
             >
               <Link href="/" scroll={false}>
-                <a sx={{ variant: "link" }}>Logo</a>
+                <a sx={{ variant: "text.link" }}>Logo</a>
               </Link>
             </motion.span>
           </div>

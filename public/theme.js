@@ -186,7 +186,7 @@ const theme = {
       letterSpacing: "body",
       WebkitFontSmoothing: "antialiased",
       MozOsxFontSmoothing: "grayscale",
-      scrollSnapType: "y proximity",
+      scrollSnapType: ["none", "y proximity"],
     },
     h1: {
       fontFamily: "heading",
