@@ -279,7 +279,7 @@ const Parallax = memo(({ data = {} }) => {
           sx={{
             position: "sticky",
             top: "0px",
-            pt: 3,
+            pt: "5.5rem",
             zIndex: 10,
             justifyContent: "space-between",
             alignItems: "center",
