@@ -4,6 +4,7 @@ import Menu from "../components/menu";
 import Link from "next/link";
 import PromoBar from "../components/promo-bar";
 import Icon from "./icon";
+import { transparentize } from "@theme-ui/color";
 import { useState } from "react";
 import { Text, Flex } from "theme-ui";
 import { useResponsiveValue } from "@theme-ui/match-media";
@@ -52,10 +53,10 @@ const Header = ({ data = {} }) => {
       variant: "layout.row",
       px: "0.5rem",
       display: "grid",
-      gridTemplateColumns: ["1fr", "1fr 1fr 1fr"],
+      gridTemplateColumns: ["1fr", "auto auto auto", "1fr 1fr 1fr"],
       gridTemplateRows: ["auto"],
       rowGap: "3rem",
-      alignItems: "start",
+      alignItems: "flex-start",
       pt: "1.5rem",
       pb: ["1.5rem", "3rem"],
       ...(isMobileNavOpen && {
@@ -96,16 +97,16 @@ const Header = ({ data = {} }) => {
       },
       ".menu": {
         width: "100%",
-        justifyContent: ["start", "center"],
-        alignItems: ["start", "center"],
-        alignSelf: ["start", "center"],
+        justifyContent: ["flex-start", "center"],
+        alignItems: ["flex-start", "center"],
+        alignSelf: ["flex-start", "center"],
         gridArea: ["2/1", "1/2"],
       },
       ".submenu": {
         width: "100%",
-        justifyContent: ["start", "flex-end"],
-        alignItems: ["start", "center"],
-        alignSelf: ["start", "center"],
+        justifyContent: ["flex-start", "flex-end"],
+        alignItems: ["flex-start", "center"],
+        alignSelf: ["flex-start", "center"],
         gridArea: ["3/1", "1/3"],
       },
       button: {
@@ -143,7 +144,15 @@ const Header = ({ data = {} }) => {
                     viewBox="0 0 80 20"
                     name="Logo"
                   />
-                  <Text onClick={() => toggleMobileNav(!isMobileNavOpen)}>
+                  <Text
+                    sx={{ cursor: "pointer" }}
+                    onClick={() => toggleMobileNav(!isMobileNavOpen)}
+                  >
+                    <Icon
+                      sx={{ width: "1rem", pr: "0.25rem" }}
+                      color={"currentColor"}
+                      name="Plus"
+                    />
                     Menu
                   </Text>
                 </Flex>,
