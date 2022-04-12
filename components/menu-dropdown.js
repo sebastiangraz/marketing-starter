@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Icon from "../components/icon";
 import { getStaticRoute, getActive } from "../lib/routes";
-
 import CustomLink from "../components/link";
 
 const Dropdown = ({ id, title, items, onClick }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  function menuInteraction(bool) {
+    setIsOpen(bool);
+  }
 
   const list = {
     visible: {
@@ -44,8 +47,8 @@ const Dropdown = ({ id, title, items, onClick }) => {
   return (
     <div
       sx={{ pr: 0 }}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={() => menuInteraction(true)}
+      onMouseLeave={() => menuInteraction(false)}
     >
       <button aria-expanded={isOpen} aria-controls={`dropdown-${id}`}>
         {title}
@@ -96,7 +99,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
 
             return (
               <motion.li
-                sx={{ fontSize: 1 }}
+                sx={{ variant: "text.small" }}
                 variants={listItem}
                 key={key}
                 className={isActive ? "is-active" : null}

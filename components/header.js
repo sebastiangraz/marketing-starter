@@ -37,9 +37,10 @@ const style = {
     px: "0.5rem",
     display: "grid",
     gridTemplateColumns: `1fr 1fr 1fr`,
-    gridTemplateRows: "1fr 1fr 1fr",
+
     alignItems: "start",
     pt: "1.5rem",
+    pb: "3rem",
     li: {
       whiteSpace: "pre",
       "&.is-active": {
