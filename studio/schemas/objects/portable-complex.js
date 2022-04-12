@@ -106,21 +106,8 @@ export default {
                 type: 'object',
                 fields: [
                   {
-                    title: 'Button Style',
-                    name: 'style',
-                    type: 'string',
-                    options: {
-                      list: [
-                        { title: 'Default', value: '' },
-                        { title: 'Primary', value: 'is-primary' },
-                        { title: 'White', value: 'is-white' }
-                      ],
-                      layout: 'radio'
-                    }
-                  },
-                  {
-                    title: 'Large Size',
-                    name: 'isLarge',
+                    title: 'Secondary',
+                    name: 'isSecondary',
                     type: 'boolean',
                     options: {
                       layout: 'checkbox'
@@ -128,8 +115,8 @@ export default {
                     initialValue: false
                   },
                   {
-                    title: 'Full Width',
-                    name: 'isBlock',
+                    title: 'Small Size',
+                    name: 'isSmall',
                     type: 'boolean',
                     options: {
                       layout: 'checkbox'

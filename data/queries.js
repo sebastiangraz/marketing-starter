@@ -18,6 +18,7 @@ const link = `
   _type,
   title,
   url,
+  highlighted,
   "page": page->{
     ${page}
   }
@@ -44,7 +45,7 @@ export const ptContent = `
     _type == "link" => {
       "url": @.url,
       "isButton": @.isButton,
-      "styles": @.styles{style, isLarge, isBlock},
+      "styles": @.styles{isSecondary, isSmall},
       "page":@.page->{
         ${page}
       }

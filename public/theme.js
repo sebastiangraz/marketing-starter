@@ -54,6 +54,7 @@ const buttonHover = {
 };
 
 const buttonBase = {
+  color: "text",
   fontWeight: 500,
   flexShrink: "0",
   display: "inline-flex",
@@ -126,11 +127,6 @@ const theme = {
     },
   },
   radii: { default: "1.5rem", small: "1rem", large: "2rem", pill: "99rem" },
-  // links: {
-  //   nav: {
-  //     color: "red",
-  //   },
-  // },
   text: {
     default: {
       lineHeight: 1.4,
@@ -159,6 +155,13 @@ const theme = {
       textDecoration: "underline",
       cursor: "pointer",
       "&:hover": { textDecoration: "none" },
+      highlighted: {
+        ...buttonBase,
+        fontWeight: "inherit",
+        boxShadow: "0 0 0 1px currentColor inset",
+        px: "0.85rem",
+        py: "0.25rem",
+      },
     },
   },
   buttons: {

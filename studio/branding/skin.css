@@ -92,9 +92,3 @@ li[class*='moving'] * {
 .btn.is-large * {
   font-weight: 400;
 }
-
-.btn.is-block {
-  box-sizing: border-box;
-  width: 100%;
-  text-align: center;
-}

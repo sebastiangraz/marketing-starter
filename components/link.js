@@ -5,9 +5,9 @@ import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, children, ...rest }) => {
   const isLink = !!link.url;
-  // const isLink = link?._type === "navLink";
+  const isHighlighted = !!link.highlighted;
   const isStatic = getStaticRoute(link.page?.type);
-
+  console.log(link.title, link.styles);
   // External Link
   if (isLink) {
     return (
@@ -17,19 +17,21 @@ const Link = ({ link, children, ...rest }) => {
         rel="noopener noreferrer"
         sx={{
           variant: "text.link",
+          ...(isHighlighted && {
+            variant: "text.link.highlighted",
+          }),
           ...(link.isButton && {
-            background: "currentColor",
-            color: "#fff",
+            variant: "buttons.primary",
+            ...(link.styles?.isSmall && {
+              px: "0.85rem",
+              py: "0.25rem",
+              display: "inline",
+            }),
+            ...(link.styles?.isSecondary && {
+              variant: "buttons.secondary",
+            }),
           }),
         }}
-        className={
-          link.isButton
-            ? cx("btn", link.styles?.style, {
-                "is-large": link.styles?.isLarge,
-                "is-block": link.styles?.isBlock,
-              })
-            : null
-        }
         {...rest}
       >
         {link.title || children}
@@ -58,16 +60,16 @@ const Link = ({ link, children, ...rest }) => {
             variant: "text.link",
             ...(link.isButton && {
               variant: "buttons.primary",
+              ...(link.styles?.isSmall && {
+                px: "0.85rem",
+                py: "0.25rem",
+                display: "inline",
+              }),
+              ...(link.styles?.isSecondary && {
+                variant: "buttons.secondary",
+              }),
             }),
           }}
-          className={
-            link.isButton
-              ? cx("btn", link.styles?.style, {
-                  "is-large": link.styles?.isLarge,
-                  "is-block": link.styles?.isBlock,
-                })
-              : null
-          }
           {...rest}
         >
           {link.title || children}
