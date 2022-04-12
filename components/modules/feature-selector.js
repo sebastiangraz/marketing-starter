@@ -51,7 +51,7 @@ const FeatureSelector = ({ data }) => {
               </Reveal>
             </Width>
 
-            <Width value={[12, 12, 3]} sx={{ order: [0, null, 1] }}>
+            <Width value={[12, 12, 4]} sx={{ order: [0, null, 1] }}>
               <nav>
                 <ul
                   sx={{

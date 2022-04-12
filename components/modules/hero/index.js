@@ -143,9 +143,10 @@ const Hero = ({ data }) => {
         <Width
           sx={{
             position: ["relative", null, "absolute"],
-            right: [0, null, -6],
+            right: [0, null, -8],
+            pr: [0, 0, 2],
           }}
-          value={[12, 12, 8]}
+          value={[12, 12, 9]}
         >
           <LayoutGroup id={`${data._key}`}>
             <motion.svg

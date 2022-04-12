@@ -2,7 +2,6 @@ import React from "react";
 import Freeform from "../../components/freeform";
 import AccordionList from "../../components/accordion-list";
 import ImageFeature from "../../components/image-feature";
-import { Width } from "../../components/width";
 import { motion } from "framer-motion";
 
 const Grid = ({ data = {} }) => {

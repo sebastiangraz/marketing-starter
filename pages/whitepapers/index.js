@@ -5,6 +5,9 @@ import { Width } from "../../components/width";
 import { getWhitepapers } from "../../data";
 import CustomLink from "../../components/link";
 
+const gap = 100 / (1288 / 56);
+const gapmath = (size) => -gap / (12 / size) + gap;
+
 const Blog = ({ data }) => {
   const { site, page } = data;
   console.log(data);
@@ -16,7 +19,7 @@ const Blog = ({ data }) => {
           sx={{
             display: "flex",
             flexWrap: "wrap",
-            gap: 4,
+            gap: 2,
             // gridTemplateColumns: "repeat(auto-fill, minmax(232px, 1fr))",
             padding: "0",
             a: {
@@ -65,7 +68,7 @@ const Blog = ({ data }) => {
               console.log(url);
               return (
                 slug && (
-                  <Width key={id} value={[12, 5, 3]}>
+                  <Width key={id} value={[12, 6, 4]}>
                     <a
                       target="_blank"
                       sx={{ variant: "text.link" }}

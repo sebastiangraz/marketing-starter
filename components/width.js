@@ -1,9 +1,7 @@
 export const Width = ({ value = [], outerPadding, children, ...rest }) => {
-  const padding = 48;
   let width = value.map((e) => {
-    const gapSize = 56;
-    const gap = 100 / (1288 / gapSize);
-    const gapmath = (size) => -gap / (12 / size);
+    const gap = 100 / (1288 / 56);
+    const gapmath = (size) => -gap / (12 / size) + gap;
     return `${e !== 12 ? (100 * e) / 12 - gapmath(e) : "100"}%`;
   });
   return (
