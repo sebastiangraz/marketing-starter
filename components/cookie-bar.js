@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { useHasMounted } from "../lib/helpers";
 
 import CustomLink from "../components/link";
-import { Button, Flex, Link, Text } from "theme-ui";
+import { Button, Flex, Text } from "theme-ui";
 
 const barAnim = {
   show: {
@@ -33,14 +33,14 @@ const CookieBar = ({ data = {} }) => {
 
   const hasMounted = useHasMounted();
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
+  const { rejectedCookies, onRejectCookies } = useRejectCookies();
 
   if (!enabled) return null;
-
   if (!hasMounted || !message) return null;
 
   return (
     <AnimatePresence>
-      {!acceptedCookies && (
+      {!acceptedCookies && !rejectedCookies && (
         <FocusTrap focusTrapOptions={{ allowOutsideClick: true }}>
           <motion.div
             sx={{
@@ -53,7 +53,7 @@ const CookieBar = ({ data = {} }) => {
               borderRadius: "default",
               right: ["1rem", null, "2rem"],
               zIndex: 100,
-              p: ".5rem .5rem .5rem 2rem",
+              p: [1, "1rem"],
             }}
             initial="hide"
             animate="show"
@@ -66,6 +66,7 @@ const CookieBar = ({ data = {} }) => {
               sx={{
                 alignItems: "center",
                 justifyContent: "space-between",
+                flexWrap: "wrap",
                 gap: "2rem",
               }}
             >
@@ -76,30 +77,54 @@ const CookieBar = ({ data = {} }) => {
                   flexWrap: "wrap",
                 }}
               >
-                <Text sx={{ m: 0, mt: "1rem", mb: "1rem" }}>
+                <Text
+                  variant="label"
+                  sx={{
+                    maxWidth: 320,
+                    mx: ["0.5rem", null, 0],
+                    my: ["0.5rem", null, 0],
+                  }}
+                >
                   {message.split("\n").map((text, i) => {
                     // using React.fragment to parse line breaks
                     return (
                       <React.Fragment key={i}>
                         {text} {message.split("\n")[i + 1] && <br />}
+                        {link && (
+                          <CustomLink
+                            link={{
+                              ...{ page: link },
+                              ...{ title: "Learn More" },
+                            }}
+                          />
+                        )}
                       </React.Fragment>
                     );
                   })}
                 </Text>
-                {link && (
-                  <CustomLink
-                    link={{ ...{ page: link }, ...{ title: "Learn More" } }}
-                  />
-                )}
               </Flex>
-
-              <Button
-                sx={{ placeSelf: "flex-end" }}
-                variant="secondary"
-                onClick={() => onAcceptCookies()}
+              <Flex
+                sx={{
+                  gap: "1rem",
+                  width: ["100%", "auto"],
+                  justifyContent: ["space-between", "flex-start"],
+                }}
               >
-                Accept
-              </Button>
+                <Button
+                  sx={{ placeSelf: "flex-end" }}
+                  variant="primary"
+                  onClick={() => onRejectCookies()}
+                >
+                  Reject
+                </Button>
+                <Button
+                  sx={{ placeSelf: "flex-end" }}
+                  variant="secondary"
+                  onClick={() => onAcceptCookies()}
+                >
+                  Accept
+                </Button>
+              </Flex>
             </Flex>
           </motion.div>
         </FocusTrap>
@@ -125,6 +150,26 @@ function useAcceptCookies(cookieName = "accept_cookies") {
   return {
     acceptedCookies,
     onAcceptCookies: acceptCookies,
+  };
+}
+
+function useRejectCookies(cookieName = "reject_cookies") {
+  const [rejectedCookies, setRejectedCookies] = useState(true);
+
+  useEffect(() => {
+    if (!Cookies.get(cookieName)) {
+      setRejectedCookies(false);
+    }
+  }, [cookieName]);
+
+  const rejectCookies = () => {
+    setRejectedCookies(true);
+    Cookies.set(cookieName, "rejected", { expires: 365 });
+  };
+
+  return {
+    rejectedCookies,
+    onRejectCookies: rejectCookies,
   };
 }
 
