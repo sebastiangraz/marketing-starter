@@ -4,34 +4,62 @@ import cx from "classnames";
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, children, ...rest }) => {
+  const isInternal = link.linkType === "internal";
   const isLink = !!link.url;
   const isHighlighted = !!link.highlighted;
   const isStatic = getStaticRoute(link.page?.type);
-  console.log(link.title, link.styles);
+
+  const style = {
+    linkStyle: {
+      variant: "text.link",
+      ...(isHighlighted && {
+        variant: "text.link.highlighted",
+      }),
+      ...(link.isButton && {
+        variant: "buttons.primary",
+        ...(link.styles?.isSmall && {
+          px: "0.85rem",
+          py: "0.25rem",
+          display: "inline",
+        }),
+        ...(link.styles?.isSecondary && {
+          variant: "buttons.secondary",
+        }),
+      }),
+    },
+  };
+
   // External Link
+  if (isInternal) {
+    const isDynamic = getDynamicRoute(link.page?.type);
+    const isHome = link.page?.isHome;
+    const isArticle = link.page?.type === "article";
+    return (
+      <NextLink
+        href={
+          isHome
+            ? "/"
+            : isStatic !== false
+            ? `/${isStatic}`
+            : `${isArticle ? "/articles" : ""}/${
+                isDynamic ? `${isDynamic}/` : ""
+              }${link.page?.slug}`
+        }
+        scroll={false}
+      >
+        <a sx={style.linkStyle} {...rest}>
+          {link.title || children}
+        </a>
+      </NextLink>
+    );
+  }
   if (isLink) {
     return (
       <a
         href={link.url}
         target={!link.url.match("^mailto:") ? "_blank" : null}
         rel="noopener noreferrer"
-        sx={{
-          variant: "text.link",
-          ...(isHighlighted && {
-            variant: "text.link.highlighted",
-          }),
-          ...(link.isButton && {
-            variant: "buttons.primary",
-            ...(link.styles?.isSmall && {
-              px: "0.85rem",
-              py: "0.25rem",
-              display: "inline",
-            }),
-            ...(link.styles?.isSecondary && {
-              variant: "buttons.secondary",
-            }),
-          }),
-        }}
+        sx={style.linkStyle}
         {...rest}
       >
         {link.title || children}
@@ -55,23 +83,7 @@ const Link = ({ link, children, ...rest }) => {
         }
         scroll={false}
       >
-        <a
-          sx={{
-            variant: "text.link",
-            ...(link.isButton && {
-              variant: "buttons.primary",
-              ...(link.styles?.isSmall && {
-                px: "0.85rem",
-                py: "0.25rem",
-                display: "inline",
-              }),
-              ...(link.styles?.isSecondary && {
-                variant: "buttons.secondary",
-              }),
-            }),
-          }}
-          {...rest}
-        >
+        <a sx={style.linkStyle} {...rest}>
           {link.title || children}
         </a>
       </NextLink>

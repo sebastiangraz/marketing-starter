@@ -81,15 +81,18 @@ const Dropdown = ({ id, title, items, onClick }) => {
           animate={isOpen ? "visible" : "hidden"}
           sx={{
             p: "0px",
-            pt: 2,
+            pt: "1rem",
             left: "0px",
             listStyle: "none",
             display: "flex",
-            position: "absolute",
+            position: ["relative", "absolute"],
             width: "100%",
-            justifyContent: "center",
-            "> * + * ": {
-              pl: 3,
+            justifyContent: ["flex-start", "center"],
+            "> * ": {
+              pr: 3,
+            },
+            "> *:last-child": {
+              pr: 0,
             },
           }}
         >

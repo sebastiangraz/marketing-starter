@@ -6,27 +6,15 @@ import { getStaticRoute, getActive } from "../lib/routes";
 import Dropdown from "../components/menu-dropdown";
 import CustomLink from "../components/link";
 
-const style = {
-  ul: {
-    padding: "0px",
-    margin: 0,
-    position: "relative",
-    display: "inline-flex",
-    listStyle: "none",
-    "> * + * ": {
-      pl: 5,
-    },
-  },
-};
-
 const Menu = ({ items, hasFocus = true, onClick, ...rest }) => {
   const router = useRouter();
 
   if (!items) return null;
 
   return (
-    <ul {...rest} sx={style.ul}>
+    <ul {...rest}>
       {items.map((item, key) => {
+        // console.log(item.title, item);
         const isDropdown = !!item.dropdownItems;
         const isStatic = getStaticRoute(item.page?.type);
         const isActive = getActive(isStatic, item?.page?.slug, router);

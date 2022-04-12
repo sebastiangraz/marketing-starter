@@ -27,6 +27,7 @@
     "@sanity/image-url": "^1.0.1",
     "@sanity/uuid": "^3.0.1",
     "@theme-ui/color": "^0.13.1",
+    "@theme-ui/match-media": "^0.14.2",
     "@vimeo/player": "^2.15.3",
     "axios": "^0.21.0",
     "babel-plugin-emotion": "^11.0.0",

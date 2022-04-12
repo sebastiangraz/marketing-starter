@@ -3,15 +3,31 @@ import { path } from "./heroPaths";
 import { useThemeUI } from "theme-ui";
 import theme from "../../../public/theme";
 
+// const childVariant = {
+//   hidden: { pathLength: 0, opacity: 0.5 },
+//   visible: {
+//     pathLength: 1,
+//     opacity: [1, 0],
+//     transition: {
+//       opacity: { delay: 2, duration: 3 },
+//       pathLength: { ease: [0.16, 1, 0.3, 1], duration: 2, delay: 0.5 },
+//     },
+//   },
+// };
+
 const childVariant = {
   hidden: { pathLength: 0, opacity: 0.5 },
-  visible: {
-    pathLength: 1,
-    opacity: [1, 0],
-    transition: {
-      opacity: { delay: 3, duration: 3 },
-      pathLength: { ease: [0.16, 1, 0.3, 1], duration: 2, delay: 0.5 },
-    },
+  visible: (i) => {
+    let index = i ? i : 1;
+    let delay = 1 + index * 0.05;
+    return {
+      pathLength: 1,
+      opacity: [1, 0],
+      transition: {
+        opacity: { delay: 3, duration: 3 },
+        pathLength: { ease: [0.72, 0.18, 0.01, 0.9], duration: 2, delay },
+      },
+    };
   },
 };
 
@@ -79,7 +95,7 @@ const fadeInVariant = {
       scale: 1,
       opacity: 1,
       transition: {
-        delay,
+        delay: 2 + delay,
         duration: 4,
         bounce: 0.3,
         type: "spring",
@@ -162,7 +178,7 @@ const offsiteVariant = {
     opacity: 1,
     transition: {
       when: "afterChildren",
-      delay: 2,
+      delay: 3.75,
       pathLength: { type: "spring", duration: 7, bounce: 0 },
     },
   },
@@ -171,11 +187,43 @@ const offsiteVariant = {
 export const HeroAnimation = ({ loop, id }) => {
   const context = useThemeUI();
   switch (loop) {
+    case "intersectingLines":
+      return (
+        <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 897.5 1041.5"
+          aria-labelledby="hero-"
+          className="css-mbumtg-Hero"
+        >
+          <defs>
+            <motion.linearGradient
+              id={`${id}-heroGrad`}
+              variants={intersectionVariant}
+            >
+              <stop offset="0%" stopColor="black" />
+              <stop offset="100%" stopColor="white" />
+            </motion.linearGradient>
+            <mask id={`${id}-hero`}>
+              <rect width="100%" height="100%" fill={`url(#${id}-heroGrad)`} />
+            </mask>
+          </defs>
+
+          <motion.path
+            sx={{ width: "100%", height: "100%" }}
+            mask={`url(#${id}-hero)`}
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d={path.intersections}
+            fill="currentColor"
+          />
+        </motion.svg>
+      );
     case "introPaths":
       return (
         <>
           <motion.path
             variants={childVariant}
+            custom={1}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
             fill="transparent"
@@ -183,6 +231,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={2}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -190,6 +239,7 @@ export const HeroAnimation = ({ loop, id }) => {
             d="M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281V252C281 267.464 268.464 280 253 280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560"
           />
           <motion.path
+            custom={3}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -197,6 +247,7 @@ export const HeroAnimation = ({ loop, id }) => {
             d="M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447"
           />
           <motion.path
+            custom={4}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -205,6 +256,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={5}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -213,6 +265,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={6}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -221,6 +274,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={7}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -229,6 +283,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={8}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -237,6 +292,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={9}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -245,6 +301,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={10}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -253,6 +310,7 @@ export const HeroAnimation = ({ loop, id }) => {
           />
 
           <motion.path
+            custom={11}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -260,6 +318,7 @@ export const HeroAnimation = ({ loop, id }) => {
             d="M449.004 0V224H561V336H617H673V392H617"
           />
           <motion.path
+            custom={12}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -267,6 +326,7 @@ export const HeroAnimation = ({ loop, id }) => {
             d="M449.004 0V224H617V280H673V336H729V392H673V448"
           />
           <motion.path
+            custom={13}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -274,6 +334,7 @@ export const HeroAnimation = ({ loop, id }) => {
             d="M449.004 0V224H617H673V280H729V336H785V392"
           />
           <motion.path
+            custom={14}
             variants={childVariant}
             shapeRendering="geometricPrecision"
             stroke="currentColor"
@@ -996,37 +1057,6 @@ export const HeroAnimation = ({ loop, id }) => {
         </>
       );
 
-    case "intersectingLines":
-      return (
-        <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 897.5 1041.5"
-          aria-labelledby="hero-"
-          className="css-mbumtg-Hero"
-        >
-          <defs>
-            <motion.linearGradient
-              id={`${id}-heroGrad`}
-              variants={intersectionVariant}
-            >
-              <stop offset="0%" stopColor="black" />
-              <stop offset="100%" stopColor="white" />
-            </motion.linearGradient>
-            <mask id={`${id}-hero`}>
-              <rect width="100%" height="100%" fill={`url(#${id}-heroGrad)`} />
-            </mask>
-          </defs>
-
-          <motion.path
-            sx={{ width: "100%", height: "100%" }}
-            mask={`url(#${id}-hero)`}
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d={path.intersections}
-            fill="currentColor"
-          />
-        </motion.svg>
-      );
     case "offSite":
       return (
         <svg

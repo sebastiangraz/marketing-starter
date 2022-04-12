@@ -136,8 +136,14 @@ export const modules = `
     header,
     lead,
     ticker,
-    primaryCTA,
-    secondaryCTA
+    primaryCTA{
+      title,
+      linkType,
+      url,
+      "page": page->{
+        ${page}
+      }
+    }
   },
   _type == 'dividerPhoto' => {
     _type,

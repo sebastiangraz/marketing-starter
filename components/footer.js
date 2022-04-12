@@ -21,6 +21,7 @@ const style = {
     p: "0px",
     flexDirection: "column",
     li: {
+      listStyle: "none",
       p: "0px",
       mt: "1rem",
       a: { textDecoration: "none" },

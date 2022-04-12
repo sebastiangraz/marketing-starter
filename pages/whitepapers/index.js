@@ -10,7 +10,7 @@ const gapmath = (size) => -gap / (12 / size) + gap;
 
 const Blog = ({ data }) => {
   const { site, page } = data;
-  console.log(data);
+
   return (
     <Layout site={site} page={page}>
       <div sx={{ variant: "layout.row", my: 3 }}>
@@ -65,7 +65,6 @@ const Blog = ({ data }) => {
         >
           {page?.posts?.map(
             ({ url, id, title = "", slug = "", publishedAt = "" }) => {
-              console.log(url);
               return (
                 slug && (
                   <Width key={id} value={[12, 6, 4]}>

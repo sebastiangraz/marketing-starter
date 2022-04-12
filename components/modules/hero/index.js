@@ -5,6 +5,7 @@ import { LayoutGroup, motion } from "framer-motion";
 import { HeroAnimation } from "./heroAnimation";
 import cursor from "../../../public/youcursor.png";
 import cursor2x from "../../../public/youcursor@2x.png";
+import CustomLink from "../../../components/link";
 
 const style = {
   hero: {
@@ -26,19 +27,18 @@ const style = {
   },
 };
 
-const parentVariant = {
-  visible: {
-    transition: {
-      type: "spring",
-      duration: 1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const Hero = ({ data }) => {
   const { header, lead, ticker } = data;
 
+  const parentVariant = {
+    visible: {
+      transition: {
+        type: "spring",
+        duration: 1,
+        staggerChildren: 0.1,
+      },
+    },
+  };
   const notificationStackParentVariant = {
     visible: {
       transition: {
@@ -132,12 +132,12 @@ const Hero = ({ data }) => {
               flexWrap: "wrap",
             }}
           >
-            <NextLink href="/" passHref>
-              <Button variant="primary">Book a demo</Button>
-            </NextLink>
-            <NextLink href="/" passHref>
-              <Button variant="secondary">Watch the video</Button>
-            </NextLink>
+            <CustomLink
+              sx={{ variant: "buttons.primary" }}
+              link={data.primaryCTA}
+            ></CustomLink>
+
+            <Button variant="secondary">Watch the video</Button>
           </Flex>
         </Width>
         <Width
@@ -160,8 +160,8 @@ const Hero = ({ data }) => {
               // viewport={{ once: true }}
               variants={parentVariant}
             >
-              <HeroAnimation id={data._key} loop="intersectingLines" />
               <HeroAnimation id={data._key} loop="introPaths" />
+              <HeroAnimation id={data._key} loop="intersectingLines" />
 
               <HeroAnimation loop="flow-1" />
               <HeroAnimation loop="flow-2" />
