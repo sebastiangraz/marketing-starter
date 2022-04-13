@@ -2,28 +2,56 @@ import { tint, darken } from "@theme-ui/color";
 import { Themed, Flex, Text, Avatar, Box, Grid, Paragraph } from "theme-ui";
 import Link from "next/link";
 import { Reveal } from "../../components/reveal";
-import imageUrlBuilder from "@sanity/image-url";
 import TimeAgo from "react-timeago";
-
-import { sanityClient } from "../../lib/sanity";
+import { Author } from "../../components/author";
 import Icon from "../icon";
 
-const builder = imageUrlBuilder(sanityClient);
-
-const urlFor = (source) => {
-  return builder.image(source);
+export const style = {
+  grid: {
+    gridTemplateColumns: "1fr minmax(max-content, 0.75fr)",
+    alignItems: ["start", "center"],
+    // gridAutoFlow: ["row ", "column"],
+    py: "1rem",
+    px: ["0.5rem", "1.5rem"],
+    boxShadow: (t) => `0 1px 0 0 ${tint("text", 0.1)(t)} inset`,
+    justifyContent: ["space-between"],
+    display: ["flex", "grid"],
+    rowGap: "0.5rem",
+    flexDirection: ["column", "row"],
+    transition:
+      ".8s cubic-bezier(.22,1,.36,1) background, .8s cubic-bezier(.22,1,.36,1) box-shadow",
+    "&:hover": {
+      background: (t) => `${tint("text", 0.91)(t)}`,
+      cursor: "pointer",
+    },
+  },
+  paragraph: {
+    whiteSpace: ["normal", null, "nowrap"],
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    m: 0,
+    display: "inline-block",
+  },
+  metaWrapper: {
+    display: "flex",
+    alignItems: ["center"],
+    justifyContent: "space-between",
+    gap: "2em",
+    justifySelf: "flex-end",
+  },
+  author: {
+    display: "flex",
+    gap: "1rem",
+    height: "100%",
+    whiteSpace: "pre",
+    alignItems: "center",
+  },
+  date: {
+    display: ["none", null, "block"],
+    lineHeight: "1.1",
+    whiteSpace: "pre",
+  },
 };
-
-const getInitials = (name) =>
-  name
-    .replace(/[^A-Za-z0-9À-ÿ ]/gi, "") // taking care of accented characters as well
-    .replace(/ +/gi, " ") // replace multiple spaces to one
-    .split(/ /) // break the name into parts
-    .reduce((acc, item) => acc + item[0], "") // assemble an abbreviation from the parts
-    .concat(name.substr(1)) // what if the name consist only one part
-    .concat(name) // what if the name is only one character
-    .substr(0, 2) // get the first two characters an initials
-    .toUpperCase();
 
 const ArticleList = ({ data, articleList }) => {
   const { header, limit } = data;
@@ -41,6 +69,7 @@ const ArticleList = ({ data, articleList }) => {
             {articleList.slice(0, limit ? limit : 5).map((article) => {
               const { _id, slug, title, author, name, authorImage, date } =
                 article;
+              console.log(authorImage);
               return (
                 <Link
                   key={_id}
@@ -49,109 +78,25 @@ const ArticleList = ({ data, articleList }) => {
                   href="/articles/[slug]"
                   as={`/articles/${slug}`}
                 >
-                  <Grid
-                    sx={{
-                      gridTemplateColumns: "1fr minmax(max-content, 0.75fr)",
-                      py: "1rem",
-                      px: "1.5rem",
-                      boxShadow: (t) =>
-                        `0 1px 0 0 ${tint("text", 0.1)(t)} inset`,
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      transition:
-                        ".8s cubic-bezier(.22,1,.36,1) background, .8s cubic-bezier(.22,1,.36,1) box-shadow",
-                      "&:hover": {
-                        background: (t) => `${tint("text", 0.91)(t)}`,
-                        cursor: "pointer",
-                      },
-                    }}
-                  >
-                    <Paragraph
-                      sx={{
-                        whiteSpace: ["normal", null, "nowrap"],
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        m: 0,
-                      }}
-                    >
-                      {title}
-                    </Paragraph>
+                  <Grid sx={style.grid}>
+                    <Paragraph sx={style.paragraph}>{title}</Paragraph>
 
-                    <Flex
-                      sx={{
-                        display: "flex",
-
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        gap: "1rem",
-                      }}
-                    >
-                      <Flex
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "1rem",
-                          height: "100%",
-                          alignItems: "center",
-                        }}
-                      >
-                        {author && (
-                          <>
-                            <Box
-                              sx={{
-                                overflow: "hidden",
-                                flexShrink: 0,
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                boxShadow: "0 0 0 1px currentColor",
-                                width: "2rem",
-                                height: "2rem",
-                                padding: "3px",
-                                borderRadius: "pill",
-                              }}
-                            >
-                              <Flex>
-                                {authorImage ? (
-                                  <Avatar
-                                    sx={{
-                                      objectFit: "cover",
-                                      height: "100%",
-                                      width: "100%",
-                                    }}
-                                    src={urlFor(authorImage.asset).width(100)}
-                                  />
-                                ) : (
-                                  <Text sx={{ m: 0 }}>
-                                    {name && getInitials(name)}
-                                  </Text>
-                                )}
-                              </Flex>
-                            </Box>
-
-                            <Text
-                              variant="label"
-                              sx={{ wordBreak: "break-word" }}
-                            >
-                              {name}
-                            </Text>
-                          </>
-                        )}
-                      </Flex>
-                      <Text
-                        variant="label"
-                        sx={{
-                          display: ["none", null, "block"],
-                          lineHeight: "1.1",
-                          whiteSpace: "pre",
-                        }}
-                      >
+                    <Flex sx={style.metaWrapper}>
+                      {author && (
+                        <Flex sx={style.author}>
+                          <Author name={name} asset={authorImage} />
+                        </Flex>
+                      )}
+                      <Text variant="label" sx={style.date}>
                         {date && (
                           <TimeAgo date={new Date(date).toDateString()} />
                         )}
                       </Text>
 
-                      <Icon sx={{ width: "1rem" }} name="Arrow" />
+                      <Icon
+                        sx={{ width: "0.75rem", display: ["none", "block"] }}
+                        name="Arrow"
+                      />
                     </Flex>
                   </Grid>
                 </Link>

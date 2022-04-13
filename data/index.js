@@ -79,14 +79,13 @@ export async function getArticles(preview) {
   {
     "page": *[_type == "articles"][0]{
       "id": _id,
+      title,
+      seo,
       "posts": *[_type == "article"]{
-        "id": _id,
-        title,
+        ${queries.articleList},
         slug,
         content[]
       },
-      title,
-      seo
     },
     ${queries.site}
   }`;

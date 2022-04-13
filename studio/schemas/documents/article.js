@@ -19,7 +19,8 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       title: 'Published At',
@@ -32,12 +33,6 @@ export default {
       type: 'reference',
       to: [{ type: 'author' }]
     },
-    {
-      title: 'Description',
-      name: 'description',
-      type: 'simplePortableText'
-    },
-
     {
       title: 'Page Content',
       name: 'content',

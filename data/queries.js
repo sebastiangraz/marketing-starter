@@ -209,7 +209,7 @@ export const modules = `
   },
 `;
 
-const articleList = `
+export const articleList = `
 "_id": _id, 
 "slug": slug.current,
 "title": title,
