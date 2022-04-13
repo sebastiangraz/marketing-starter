@@ -80,8 +80,9 @@ export async function getArticles(preview) {
     "page": *[_type == "articles"][0]{
       "id": _id,
       title,
+      heading,
       seo,
-      "posts": *[_type == "article"]{
+      "posts": *[_type == "article"] | order(dateTime(publishedAt) asc){
         ${queries.articleList},
         slug,
         content[]

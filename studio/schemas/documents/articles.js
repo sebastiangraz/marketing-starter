@@ -7,7 +7,7 @@ export default {
   icon: Notebook,
   fields: [
     {
-      title: 'Display Title',
+      title: 'Link Title',
       name: 'title',
       type: 'string',
       initialValue: 'Articles',
@@ -21,6 +21,11 @@ export default {
         source: 'title',
         maxLength: 96
       }
+    },
+    {
+      title: 'Display Title',
+      name: 'heading',
+      type: 'string'
     },
     {
       title: 'SEO / Share Settings',

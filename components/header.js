@@ -121,49 +121,32 @@ const Header = ({ data = {} }) => {
       <header sx={style.navStyle}>
         <div sx={style.navWrapper}>
           <div className="logo">
-            <span
-              sx={{
-                display: "flex",
-
-                willChange: "transform",
-              }}
-            >
-              {useResponsiveValue([
-                <Flex
-                  key={"1"}
-                  sx={{ width: "100%", justifyContent: "space-between " }}
-                >
-                  <Icon
-                    sx={{ width: "4rem" }}
-                    color={"currentColor"}
-                    viewBox="0 0 82 20"
-                    name="Logo"
-                  />
-                  <Text
-                    sx={{ cursor: "pointer" }}
-                    onClick={() => toggleMobileNav(!isMobileNavOpen)}
-                  >
-                    <Icon
-                      sx={{ width: "1rem", pr: "0.25rem" }}
-                      color={"currentColor"}
-                      name="Plus"
-                    />
-                    Menu
-                  </Text>
-                </Flex>,
-                <Link key={"2"} href="/" scroll={false} passHref>
-                  <Text variant="text.navlink">
-                    <Icon
-                      sx={{ width: "4rem" }}
-                      color={"currentColor"}
-                      viewBox="0 0 82 20"
-                      name="Logo"
-                    />
-                  </Text>
-                </Link>,
-              ])}
-            </span>
+            <Link key={"2"} href="/" scroll={false} passHref>
+              <Text variant="text.navlink">
+                <Icon
+                  sx={{ width: "4rem" }}
+                  color={"currentColor"}
+                  viewBox="0 0 82 20"
+                  name="Logo"
+                />
+              </Text>
+            </Link>
           </div>
+
+          <ul sx={{ gridArea: "1/3", display: ["flex", "none"] }}>
+            <Text
+              variant="text.navlink"
+              sx={{ cursor: "pointer" }}
+              onClick={() => toggleMobileNav(!isMobileNavOpen)}
+            >
+              <Icon
+                sx={{ width: "1rem", pr: "0.25rem" }}
+                color={"currentColor"}
+                name="Plus"
+              />
+              Menu
+            </Text>
+          </ul>
 
           {menuMobilePrimary?.items && (
             <Menu className="menu" items={menuMobilePrimary.items} />

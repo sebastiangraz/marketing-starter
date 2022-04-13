@@ -2,7 +2,8 @@ import { getArticle, getAllDocSlugs } from "../../data";
 import BlockContent from "../../components/block-content";
 import Layout from "../../components/layout";
 import Reveal from "../../components/reveal";
-import { Themed } from "theme-ui";
+import { Button, Text, Themed } from "theme-ui";
+import Link from "next/link";
 
 //https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
 // do this
@@ -24,6 +25,9 @@ const Article = ({ data }) => {
           <section sx={{ maxWidth: "65ch" }}>
             <BlockContent blocks={page?.content} />
           </section>
+          <Link scroll={false} href={"/articles/"} passHref>
+            <Button sx={{ mt: 3 }}>Back to articles</Button>
+          </Link>
         </Reveal>
       </article>
     </Layout>

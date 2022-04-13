@@ -21,7 +21,7 @@ const style = {
     justifyContent: "space-between",
     background: "beige",
     variant: "layout.row",
-    "&:hover, &:hover button": {
+    "&:hover, &:hover button, a": {
       cursor: `-webkit-image-set( url(${cursor.src}) 1x, url(${cursor2x.src}) 2x), auto`,
     },
   },

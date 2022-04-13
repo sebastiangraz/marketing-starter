@@ -10,10 +10,13 @@ import Photo from "../../components/photo";
 
 const Blog = ({ data = {} }) => {
   const { site, page } = data;
+
   return (
     <Layout site={site} page={page}>
       <div sx={{ variant: "layout.row", my: 3 }}>
-        <Themed.h1>Articles</Themed.h1>
+        <Themed.h1 sx={{ mb: [4, 5], maxWidth: "12ch" }}>
+          {page.heading}
+        </Themed.h1>
 
         {page?.posts?.map((article) => {
           const {

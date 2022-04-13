@@ -215,19 +215,19 @@ const theme = {
       fontSize: [5, 5, 6],
     },
     h2: {
-      lineHeight: 1.2,
+      lineHeight: 1.16,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 4, 5],
     },
     h3: {
-      lineHeight: 1.3,
+      lineHeight: 1.2,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: [3, 3, 4],
     },
     h4: {
-      lineHeight: 1.36,
+      lineHeight: 1.24,
       fontWeight: "normal",
       letterSpacing: "heading",
       fontSize: 3,
