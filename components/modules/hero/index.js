@@ -132,10 +132,7 @@ const Hero = ({ data }) => {
               flexWrap: "wrap",
             }}
           >
-            <CustomLink
-              sx={{ variant: "buttons.primary" }}
-              link={data.primaryCTA}
-            ></CustomLink>
+            <Button as={CustomLink} cta link={data.primaryCTA}></Button>
 
             <Button variant="secondary">Watch the video</Button>
           </Flex>

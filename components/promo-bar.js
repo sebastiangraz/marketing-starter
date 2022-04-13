@@ -79,7 +79,9 @@ const PromoBar = React.memo(({ data = {} }) => {
           <ConditionalWrapper
             condition={link}
             wrapper={(children) => (
-              <CustomLink link={{ ...{ page: link } }}>{children}</CustomLink>
+              <CustomLink cta link={{ ...{ page: link } }}>
+                {children}
+              </CustomLink>
             )}
           >
             <span sx={{ whiteSpace: "pre" }}>{"Read more"}</span>

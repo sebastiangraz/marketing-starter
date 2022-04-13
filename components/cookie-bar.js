@@ -92,6 +92,7 @@ const CookieBar = ({ data = {} }) => {
                         {text} {message.split("\n")[i + 1] && <br />}
                         {link && (
                           <CustomLink
+                            cta
                             link={{
                               ...{ page: link },
                               ...{ title: "Learn More" },

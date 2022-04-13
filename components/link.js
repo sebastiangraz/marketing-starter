@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import cx from "classnames";
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
-const Link = ({ link, children, ...rest }) => {
+const Link = ({ link, cta, children, ...rest }) => {
   const isInternal = link.linkType === "internal";
   const isLink = !!link.url;
   const isHighlighted = !!link.highlighted;
@@ -11,9 +11,15 @@ const Link = ({ link, children, ...rest }) => {
 
   const style = {
     linkStyle: {
-      variant: "text.link",
+      ...(!cta
+        ? {
+            variant: "text.navlink",
+          }
+        : {
+            variant: "text.link",
+          }),
       ...(isHighlighted && {
-        variant: "text.link.highlighted",
+        variant: "text.navlink.highlighted",
       }),
       ...(link.isButton && {
         variant: "buttons.primary",

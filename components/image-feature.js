@@ -14,7 +14,7 @@ const ImageFeature = ({ data = {} }) => {
       textAlign: align,
     },
     image: {
-      height: "10rem",
+      height: "5rem",
       display: "block",
       width: "100%",
       mb: "2rem",

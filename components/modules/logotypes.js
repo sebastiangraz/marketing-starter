@@ -2,6 +2,7 @@ import { Text, Image, Flex, Grid } from "theme-ui";
 import imageUrlBuilder from "@sanity/image-url";
 import { sanityClient } from "../../lib/sanity";
 import { Width } from "../width";
+import { Reveal } from "../reveal";
 
 const Logotypes = ({ data }) => {
   const builder = imageUrlBuilder(sanityClient);
@@ -26,7 +27,7 @@ const Logotypes = ({ data }) => {
         >
           <Text sx={{ m: 0 }}>{header}</Text>
           <Width value={[12, 12, 7]} sx={{ gap: "1.5rem" }}>
-            <Grid
+            <Reveal
               sx={{
                 width: "100%",
                 display: "inline-grid",
@@ -41,19 +42,20 @@ const Logotypes = ({ data }) => {
                 const { logoImage } = logo;
 
                 return (
-                  <Image
-                    alt={"logo"}
-                    key={logoImage.asset._ref}
-                    sx={{
-                      objectFit: "contain",
-                      height: "1rem",
-                      width: "auto",
-                    }}
-                    src={urlFor(logoImage.asset).width(100)}
-                  />
+                  <div key={logoImage.asset._ref}>
+                    <Image
+                      alt={"logo"}
+                      sx={{
+                        objectFit: "contain",
+                        height: "1rem",
+                        width: "auto",
+                      }}
+                      src={urlFor(logoImage.asset).width(100)}
+                    />
+                  </div>
                 );
               })}
-            </Grid>
+            </Reveal>
           </Width>
         </Flex>
       </div>

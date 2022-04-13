@@ -86,7 +86,7 @@ export const blockSerializers = {
   },
   marks: {
     link: ({ mark, children }) => {
-      return <CustomLink link={{ ...mark, ...{ title: children[0] } }} />;
+      return <CustomLink cta link={{ ...mark, ...{ title: children[0] } }} />;
     },
   },
   list: (props) => <Text>{<List props={props} />}</Text>,

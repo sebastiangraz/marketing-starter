@@ -112,11 +112,6 @@ const Header = ({ data = {} }) => {
       button: {
         variant: "styles.buttonReset",
       },
-      "a, button": {
-        cursor: "pointer",
-        textDecoration: "none",
-        "&:hover": { opacity: 0.6 },
-      },
     },
   };
 
@@ -156,19 +151,17 @@ const Header = ({ data = {} }) => {
                     Menu
                   </Text>
                 </Flex>,
-                <Icon
-                  sx={{ width: "4rem" }}
-                  key={"1"}
-                  color={"currentColor"}
-                  viewBox="0 0 80 20"
-                  name="Logo"
-                />,
+                <Link key={"2"} href="/" scroll={false} passHref>
+                  <Text variant="text.navlink">
+                    <Icon
+                      sx={{ width: "4rem" }}
+                      color={"currentColor"}
+                      viewBox="0 0 80 20"
+                      name="Logo"
+                    />
+                  </Text>
+                </Link>,
               ])}
-              {/* <Link href="/" scroll={false}>
-                <a sx={{ variant: "text.link" }}>
-                  <div sx={{ width: "4rem" }}></div>
-                </a>
-              </Link> */}
             </span>
           </div>
 

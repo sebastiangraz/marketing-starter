@@ -1,4 +1,5 @@
-import { NotePencil } from 'phosphor-react'
+import { NotePencil, Image } from 'phosphor-react'
+import customImage from '../../lib/custom-image'
 
 export default {
   name: 'article',
@@ -26,6 +27,19 @@ export default {
       title: 'Published At',
       name: 'publishedAt',
       type: 'datetime'
+    },
+    {
+      title: 'Post Image',
+      name: 'postImage',
+      type: 'object',
+      icon: Image,
+      fields: [customImage()]
+    },
+    {
+      title: 'Featured',
+      name: 'featured',
+      type: 'boolean',
+      initialValue: false
     },
     {
       title: 'Author',

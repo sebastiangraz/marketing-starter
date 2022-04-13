@@ -24,8 +24,6 @@ const style = {
       listStyle: "none",
       p: "0px",
       mt: "1rem",
-      a: { textDecoration: "none" },
-      "&:hover": { opacity: 0.6 },
     },
   },
 };

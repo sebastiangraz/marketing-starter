@@ -8,11 +8,11 @@ import Icon from "../icon";
 
 export const style = {
   grid: {
-    gridTemplateColumns: "1fr minmax(max-content, 0.75fr)",
+    gridTemplateColumns: (t) => `1fr minmax(max-content, 0.75fr)`,
     alignItems: ["start", "center"],
     // gridAutoFlow: ["row ", "column"],
-    py: "1rem",
-    px: ["0.5rem", "1.5rem"],
+    py: "1.5rem",
+    px: [2, "1.5rem"],
     boxShadow: (t) => `0 1px 0 0 ${tint("text", 0.1)(t)} inset`,
     justifyContent: ["space-between"],
     display: ["flex", "grid"],
@@ -21,7 +21,7 @@ export const style = {
     transition:
       ".8s cubic-bezier(.22,1,.36,1) background, .8s cubic-bezier(.22,1,.36,1) box-shadow",
     "&:hover": {
-      background: (t) => `${tint("text", 0.91)(t)}`,
+      background: (t) => `${darken("background", 0.03)(t)}`,
       cursor: "pointer",
     },
   },
@@ -78,7 +78,9 @@ const ArticleList = ({ data, articleList }) => {
                   as={`/articles/${slug}`}
                 >
                   <Grid sx={style.grid}>
-                    <Paragraph sx={style.paragraph}>{title}</Paragraph>
+                    <Themed.h4 sx={{ ...style.paragraph, m: 0 }}>
+                      {title}
+                    </Themed.h4>
 
                     <Flex sx={style.metaWrapper}>
                       {author && (

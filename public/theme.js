@@ -110,7 +110,7 @@ const theme = {
 
   colors: {
     text: "#0C002B",
-    background: "#F9F7FD",
+    background: "#FFFBF9",
     ui: "#fff",
     primary: brandColors.salmon,
     ...brandColors,
@@ -135,6 +135,7 @@ const theme = {
     },
     paragraph: {
       variant: "text.default",
+      mb: "1rem",
     },
     block: {
       variant: "text.paragraph",
@@ -155,12 +156,24 @@ const theme = {
       textDecoration: "underline",
       cursor: "pointer",
       "&:hover": { textDecoration: "none" },
+    },
+    navlink: {
+      variant: "text.link",
+      transition: "opacity 0.2s ease-in-out",
+      textDecoration: "none",
+      "&:hover": {
+        opacity: 0.6,
+      },
       highlighted: {
         ...buttonBase,
+        transition: "opacity 0.2s ease-in-out",
         fontWeight: "inherit",
         boxShadow: "0 0 0 1px currentColor inset",
         px: "0.85rem",
         py: "0.25rem",
+        "&:hover": {
+          opacity: 0.6,
+        },
       },
     },
   },
@@ -227,7 +240,8 @@ const theme = {
 
     buttonReset: {
       all: "unset",
-      variant: "text.link",
+      color: "inherit",
+      cursor: "pointer",
     },
   },
 };

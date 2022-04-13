@@ -86,7 +86,7 @@ export const blocks = `
     align,
     "image": image.photo{
         ${imageMeta}
-      }
+    }
   }
 
 `;
@@ -202,6 +202,10 @@ export const articleList = `
 "_id": _id, 
 "slug": slug.current,
 "title": title,
+"featured": featured,
+"image": postImage.photo{
+  ${imageMeta}
+},
 "author": author, 
 "name": author->name,
 "authorImage": author->picture,

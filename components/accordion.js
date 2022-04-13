@@ -20,7 +20,8 @@ const style = {
     width: "100%",
   },
   accordionButton: {
-    variant: "styles.buttonReset",
+    all: "unset",
+    variant: "text.navlink",
     width: "100%",
     alignItems: "center",
     display: "flex",
@@ -76,7 +77,7 @@ const Accordion = ({
               },
             }}
           >
-            <Icon name="Chevron Down" />
+            <Icon name="Chevron Down" color="currentColor" />
           </div>
         </button>
       )}

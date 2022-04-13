@@ -46,11 +46,14 @@ const Dropdown = ({ id, title, items, onClick }) => {
 
   return (
     <div
-      sx={{ pr: 0 }}
       onMouseEnter={() => menuInteraction(true)}
       onMouseLeave={() => menuInteraction(false)}
     >
-      <button aria-expanded={isOpen} aria-controls={`dropdown-${id}`}>
+      <a
+        sx={{ variant: "text.navlink" }}
+        aria-expanded={isOpen}
+        aria-controls={`dropdown-${id}`}
+      >
         {title}
         <div
           sx={{
@@ -72,7 +75,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
         >
           <Icon color="currentColor" name="Plus"></Icon>
         </div>
-      </button>
+      </a>
 
       <div id={`dropdown-${id}`} sx={{ width: "0px" }}>
         <motion.ul
