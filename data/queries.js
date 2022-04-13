@@ -173,10 +173,21 @@ export const modules = `
     header,
     lead,
     featureHeader,
+    primaryCTA{
+      title,
+      linkType,
+      url,
+      "page": page->{
+        ${page}
+      }
+    },
     features[]{
       "id": _key,
       featureTitle,
       featureDescription,
+      "image": image.photo{
+        ${imageMeta}
+      },
       listItems{
         "id": _key,
         size,

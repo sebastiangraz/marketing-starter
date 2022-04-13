@@ -1,6 +1,6 @@
 import { TextAlignLeft } from 'phosphor-react'
 import { Avatar } from '@sanity/ui'
-
+import React from 'react'
 import { getTypeTitles } from '../../lib/helpers'
 
 export default {

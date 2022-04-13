@@ -1,11 +1,13 @@
 import * as React from "react";
-import cursor2x from "../public/listBullet.svg";
+import bullet from "../public/listBullet.svg";
 
 export const List = ({ children, ...rest }) => {
   return (
     <ul
       {...rest}
       sx={{
+        display: "flex",
+        flexDirection: "column",
         padding: 0,
         counterReset: "item",
         "& > li": {
@@ -24,7 +26,7 @@ export const List = ({ children, ...rest }) => {
             content: '""',
             maskPosition: "center",
             maskRepeat: "no-repeat",
-            maskImage: `url(${cursor2x.src})`,
+            maskImage: `url(${bullet.src})`,
             background: "currentColor",
           },
         },

@@ -1,4 +1,5 @@
 import { GridFour } from 'phosphor-react'
+import React from 'react'
 
 import { getTypeTitles } from '../../lib/helpers'
 
