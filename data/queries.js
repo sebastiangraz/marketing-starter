@@ -64,7 +64,6 @@ export const blocks = `
     content[]{
       ${ptContent}
     },
-    textAlign,
     maxWidth
   },
   _type == 'accordions' => {
@@ -110,6 +109,7 @@ export const modules = `
     content[]{
       ${ptContent}
     },
+    theme,
     maxWidth,
     bgType,
     photos{

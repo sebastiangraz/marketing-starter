@@ -25,6 +25,7 @@ export default ({ hasDisplayOptions = true, ...props } = {}) => {
                 isHighlighted: true,
                 list: crops
               },
+              initialValue: crops[0].value,
               validation: Rule => {
                 return Rule.custom((field, context) =>
                   'asset' in context.parent && field === undefined

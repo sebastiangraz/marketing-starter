@@ -14,13 +14,7 @@ export default {
       name: 'content',
       type: 'complexPortableText'
     },
-    { title: 'Text max width', name: 'maxWidth', type: 'maxWidth' },
-    {
-      title: 'Center Vertically',
-      name: 'textAlign',
-      type: 'boolean',
-      description: 'Vertically centers the text'
-    }
+    { title: 'Text max width', name: 'maxWidth', type: 'maxWidth' }
   ],
   preview: {
     select: {

@@ -9,7 +9,7 @@ import { style } from "../../components/modules/articleList";
 
 const Blog = ({ data }) => {
   const { site, page } = data;
-  console.log(data);
+
   return (
     <Layout site={site} page={page}>
       <div sx={{ variant: "layout.row", my: 3 }}>
@@ -48,22 +48,6 @@ const Blog = ({ data }) => {
             </Link>
           );
         })}
-
-        {/* {page?.posts?.map(({ id, title = "", slug = "", publishedAt = "" }) => {
-          return (
-            slug && (
-              <li key={id}>
-                <Link
-                  scroll={false}
-                  href="/articles/[slug]"
-                  as={`/articles/${slug.current}`}
-                >
-                  <a sx={{ variant: "text.link" }}>{title}</a>
-                </Link>{" "}
-              </li>
-            )
-          );
-        })} */}
       </div>
     </Layout>
   );

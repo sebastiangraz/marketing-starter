@@ -13,6 +13,12 @@ export default {
       name: 'content',
       type: 'complexPortableText'
     },
+    {
+      title: 'Dark theme',
+      name: 'theme',
+      type: 'boolean',
+      initialValue: true
+    },
     { title: 'Text max width', name: 'maxWidth', type: 'maxWidth' },
     {
       title: 'Background Type',

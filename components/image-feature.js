@@ -6,7 +6,7 @@ import { Flex, Themed } from "theme-ui";
 
 const ImageFeature = ({ data = {} }) => {
   const { title, content, align, image } = data;
-  console.log(data);
+
   const style = {
     component: {
       flexDirection: "column",
@@ -28,7 +28,7 @@ const ImageFeature = ({ data = {} }) => {
 
   return (
     <>
-      <Themed.h4 sx={{ mt: 0 }}>{title}</Themed.h4>
+      {title && <Themed.h4 sx={{ mt: 0 }}>{title}</Themed.h4>}
       <Photo
         layout="contain"
         photo={image}

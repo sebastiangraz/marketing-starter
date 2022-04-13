@@ -9,6 +9,7 @@ const style = {
     display: "grid",
     overflow: "hidden",
     position: "relative",
+    minHeight: "50vh",
   },
   mediaOverlay: {
     variant: "layout.row",
@@ -31,14 +32,15 @@ const style = {
 };
 
 const Media = ({ data = {} }) => {
-  const { content, bgType, photos, maxWidth } = data;
-  console.log(content);
+  const { content, bgType, photos, maxWidth, theme } = data;
+
+  console.log(theme);
   return (
     <section
       sx={{
         ...style.media,
         ...(content && {
-          color: "#fff",
+          color: theme ? "white" : "text",
           "&:before": {
             position: "absolute",
             left: "0px",
@@ -47,7 +49,7 @@ const Media = ({ data = {} }) => {
             height: "100%",
             zIndex: 2,
             content: `""`,
-            background: "#000",
+            background: theme ? "text" : "background",
             opacity: 0.4,
           },
         }),

@@ -1,4 +1,3 @@
-import React from 'react'
 import { TextAlignLeft } from 'phosphor-react'
 import { Avatar } from '@sanity/ui'
 
