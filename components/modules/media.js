@@ -32,7 +32,7 @@ const style = {
 
 const Media = ({ data = {} }) => {
   const { content, bgType, photos, maxWidth } = data;
-
+  console.log(content);
   return (
     <section
       sx={{

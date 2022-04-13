@@ -5,8 +5,8 @@ import Photo from "../components/photo";
 import { Flex, Themed } from "theme-ui";
 
 const ImageFeature = ({ data = {} }) => {
-  const { title, content, photo, align } = data;
-
+  const { title, content, align, image } = data;
+  console.log(data);
   const style = {
     component: {
       flexDirection: "column",
@@ -14,9 +14,9 @@ const ImageFeature = ({ data = {} }) => {
       textAlign: align,
     },
     image: {
+      height: "10rem",
       display: "block",
       width: "100%",
-      maxWidth: "10rem",
       mb: "2rem",
     },
     block: {
@@ -30,14 +30,11 @@ const ImageFeature = ({ data = {} }) => {
     <>
       <Themed.h4 sx={{ mt: 0 }}>{title}</Themed.h4>
       <Photo
-        sx={style.image}
-        photo={photo.photo}
-        width={1600}
         layout="contain"
-        srcSizes={[800, 1000, 1200, 1600]}
-        sizes="100vw"
+        photo={image}
+        sx={style.image}
+        hasPlaceholder={false}
       />
-
       <BlockContent sx={style.block} blocks={content} />
     </>
   );

@@ -69,7 +69,6 @@ const ArticleList = ({ data, articleList }) => {
             {articleList.slice(0, limit ? limit : 5).map((article) => {
               const { _id, slug, title, author, name, authorImage, date } =
                 article;
-              console.log(authorImage);
               return (
                 <Link
                   key={_id}

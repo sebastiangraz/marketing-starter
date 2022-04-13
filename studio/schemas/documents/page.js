@@ -30,7 +30,6 @@ export default {
         { type: 'grid' },
         { type: 'media' },
         { type: 'hero' },
-        { type: 'dividerPhoto' },
         { type: 'articleList' },
         { type: 'featureSelector' },
         { type: 'featureHero' },

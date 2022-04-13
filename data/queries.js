@@ -85,13 +85,9 @@ export const blocks = `
     title,
     content,
     align,
-    "photo": image{
-      ...,
-      photo{
-        ...,
-        ${ptContent}
+    "image": image.photo{
+        ${imageMeta}
       }
-    }
   }
 
 `;
@@ -143,13 +139,6 @@ export const modules = `
       "page": page->{
         ${page}
       }
-    }
-  },
-  _type == 'dividerPhoto' => {
-    _type,
-    _key,
-    photo{
-      ${imageMeta}
     }
   },
   _type == 'parallax' => {

@@ -14,7 +14,6 @@ const Menu = ({ items, hasFocus = true, onClick, ...rest }) => {
   return (
     <ul {...rest}>
       {items.map((item, key) => {
-        // console.log(item.title, item);
         const isDropdown = !!item.dropdownItems;
         const isStatic = getStaticRoute(item.page?.type);
         const isActive = getActive(isStatic, item?.page?.slug, router);
