@@ -244,7 +244,7 @@ const Parallax = memo(({ data = {} }) => {
           onClick={onClick}
           style={{
             borderRadius: "20px",
-            boxShadow: "0 0 0 1px rgba(0,0,0,1)",
+            boxShadow: `0 0 0 1px var(--theme-ui-colors-text)`,
             position: "absolute",
             left: 0,
             top: 0,

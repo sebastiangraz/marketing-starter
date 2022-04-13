@@ -31,8 +31,6 @@ const buttonHover = {
     pointerEvents: "none",
     content: `""`,
     boxShadow: "0 0 0 1px currentColor inset",
-    maskSize: "1px 400%",
-    maskImage: "linear-gradient(to bottom, #000 50%, transparent 90%)",
     borderRadius: `calc(1rem - ${buttonpadding}px)`,
     left: `${buttonpadding}px`,
     top: `${buttonpadding}px`,
@@ -42,8 +40,10 @@ const buttonHover = {
     position: "absolute",
     opacity: 0,
     willChange: "transform",
-    maskPosition: "1px 100%",
     transition: "ease 0.8s all",
+    maskSize: "1px 400%",
+    maskImage: "linear-gradient(to bottom, #000 50%, transparent 90%)",
+    maskPosition: "1px 100%",
   },
   "&:hover": {
     "&:after": {
@@ -52,7 +52,16 @@ const buttonHover = {
     },
   },
 };
-
+const maskTransition = {
+  maskImage: "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.6) 65%)",
+  maskPosition: "100% 1px",
+  maskRepeat: "repeat-y",
+  maskSize: "300% 1px",
+  transition: "all 0.4s ease",
+  "&:hover": {
+    maskPosition: "0% 1px",
+  },
+};
 const buttonBase = {
   color: "text",
   fontWeight: 500,
@@ -159,21 +168,15 @@ const theme = {
     },
     navlink: {
       variant: "text.link",
-      transition: "opacity 0.2s ease-in-out",
       textDecoration: "none",
-      "&:hover": {
-        opacity: 0.6,
-      },
+      ...maskTransition,
       highlighted: {
         ...buttonBase,
-        transition: "opacity 0.2s ease-in-out",
         fontWeight: "inherit",
         boxShadow: "0 0 0 1px currentColor inset",
         px: "0.85rem",
         py: "0.25rem",
-        "&:hover": {
-          opacity: 0.6,
-        },
+        ...maskTransition,
       },
     },
   },

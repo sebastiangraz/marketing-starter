@@ -31,9 +31,6 @@ const style = {
     px: "0px",
     fontSize: 2,
     textDecoration: "none",
-    "&:hover": {
-      opacity: "0.6",
-    },
   },
   accordionContent: {
     overflow: "hidden",

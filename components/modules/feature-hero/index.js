@@ -98,7 +98,7 @@ const FeatureHero = ({ data }) => {
                   <div
                     key={id}
                     sx={{
-                      boxShadow: (t) => `0 -1px 0 0 ${t.colors.text}`,
+                      boxShadow: `0 0 0 1px var(--theme-ui-colors-text)`,
                       listStyle: "none",
                       display: "grid",
                       gridTemplateColumns: "1fr auto",

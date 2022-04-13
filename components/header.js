@@ -136,7 +136,7 @@ const Header = ({ data = {} }) => {
                   <Icon
                     sx={{ width: "4rem" }}
                     color={"currentColor"}
-                    viewBox="0 0 80 20"
+                    viewBox="0 0 82 20"
                     name="Logo"
                   />
                   <Text
@@ -156,7 +156,7 @@ const Header = ({ data = {} }) => {
                     <Icon
                       sx={{ width: "4rem" }}
                       color={"currentColor"}
-                      viewBox="0 0 80 20"
+                      viewBox="0 0 82 20"
                       name="Logo"
                     />
                   </Text>
