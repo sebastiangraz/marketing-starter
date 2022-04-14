@@ -16,8 +16,9 @@ import {
   LayoutGroup,
 } from "framer-motion";
 
+import { useResponsiveValue } from "@theme-ui/match-media";
 import { ParallaxCard } from "../parallaxCard";
-import { Button, Text, Themed } from "theme-ui";
+import { Themed } from "theme-ui";
 
 const Parallax = memo(({ data = {} }) => {
   console.log(data);
@@ -230,7 +231,11 @@ const Parallax = memo(({ data = {} }) => {
     innerContainer: {
       display: "grid",
       gridAutoFlow: "column",
-      gridAutoColumns: explicitWidths.join(" "),
+      gridAutoColumns: useResponsiveValue([
+        "100%",
+        "100%",
+        explicitWidths.join(" "),
+      ]),
       position: isSolo || columnCountEqualTo12 ? "relative" : "sticky",
       top: "0px",
       bottom: "0px",
@@ -356,7 +361,7 @@ const Parallax = memo(({ data = {} }) => {
           className="inner-container"
           sx={style.innerContainer}
           style={{
-            x: xSpring,
+            x: useResponsiveValue([null, xSpring]),
           }}
         >
           {parallaxContainer.map((e, i) => {

@@ -6,26 +6,6 @@ import Icon from "./icon";
 import { useState } from "react";
 import { Button, Text } from "theme-ui";
 
-const rotate = {
-  show: {
-    rotate: 0,
-    transition: {
-      duration: 1,
-      ease: "linear",
-      when: "beforeChildren",
-    },
-  },
-  hide: {
-    rotate: 360,
-    transition: {
-      // repeat: Infinity,
-      duration: 1,
-      ease: "linear",
-      when: "afterChildren",
-    },
-  },
-};
-
 const Header = ({ data = {} }) => {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const { promo, menuMobilePrimary, menuMobileSecondary } = data;

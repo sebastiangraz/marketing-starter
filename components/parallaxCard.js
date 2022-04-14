@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Box, Grid, Text, Themed, useThemeUI } from "theme-ui";
 import { List } from "./list";
 import Photo from "./photo";
-
+import { useResponsiveValue } from "@theme-ui/match-media";
 const style = {
   section: {
     maxWidth: "1288px",
@@ -74,7 +74,6 @@ export const ParallaxCard = memo(
   ({ data, index, isSolo, columnCountEqualTo12, onClick }) => {
     const context = useThemeUI();
     const textColor = getTextColorFromBg(data.color, context);
-
     const { color, heading, id, image, lead, listItems, sizes, title } = data;
     return (
       <motion.div
@@ -112,8 +111,8 @@ export const ParallaxCard = memo(
             >
               <Box
                 sx={{
-                  pt: "4rem",
-                  px: "4rem",
+                  pt: ["3rem", "4rem"],
+                  px: ["3rem", "4rem"],
                   maxWidth: "62ch",
                   gridArea: "1/1",
                   gridColumn: "span 2",
@@ -127,24 +126,28 @@ export const ParallaxCard = memo(
                 photo={image}
                 hasPlaceholder={false}
                 sx={{
-                  height: "100%",
-                  width: "30rem",
-                  gridArea: "2/2",
+                  height: ["14rem", "100%"],
+                  width: ["100%", "28rem"],
+                  gridArea: ["-1/1 / span 1 / span 2", "2/2"],
+
                   placeSelf: "end",
                   "img.object-contain": {
                     objectFit: "contain",
-                    objectPosition: "100% 100%",
+                    objectPosition: ["right 0", "100% 100%"],
+                    pl: [5, 0],
                   },
                 }}
               />
               <List
                 large={listItems?.size === "large"}
                 sx={{
-                  maxWidth: "50ch",
+                  width: ["100%", "25rem", "25rem", "30rem"],
+                  // maxWidth: "50ch",
                   gridArea: "2/1",
-                  pb: "4rem",
-                  px: "4rem",
+                  pb: ["3rem", "4rem"],
+                  px: ["3rem", "4rem"],
                   alignSelf: "end",
+                  gridColumn: ["span 2", "span 1"],
                 }}
               >
                 {listItems?.featureList.map((item) => {

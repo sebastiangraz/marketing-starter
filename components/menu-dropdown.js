@@ -53,7 +53,9 @@ const Dropdown = ({ id, title, items, onClick }) => {
         sx={{ all: "unset", variant: "text.navlink", paddingRight: "1rem" }}
         aria-expanded={isOpen}
         aria-controls={`dropdown-${id}`}
-        onClick={() => menuInteraction(!isOpen)}
+        onClick={() => {
+          menuInteraction(true);
+        }}
       >
         {title}
         <div
