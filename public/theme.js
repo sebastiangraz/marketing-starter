@@ -193,6 +193,22 @@ const theme = {
       color: "text",
       ...buttonHover,
     },
+    primarySmall: {
+      ...buttonBase,
+      background: "text",
+      color: "#fff",
+      px: "1rem",
+      py: "0.4rem",
+      ...buttonHover,
+    },
+    secondarySmall: {
+      ...buttonBase,
+      background: "#fff",
+      color: "text",
+      px: "1rem",
+      py: "0.4rem",
+      ...buttonHover,
+    },
   },
   styles: {
     root: {

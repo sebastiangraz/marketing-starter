@@ -50,10 +50,10 @@ const CookieBar = ({ data = {} }) => {
               maxWidth: "960px",
               color: "#fff",
               bottom: ["1rem", null, "2rem"],
-              borderRadius: "default",
+              borderRadius: ["default", "large"],
               right: ["1rem", null, "2rem"],
               zIndex: 100,
-              p: [1, "1rem"],
+              p: [1, 1, "1rem 1rem 1rem 1.5rem"],
             }}
             initial="hide"
             animate="show"
@@ -78,11 +78,11 @@ const CookieBar = ({ data = {} }) => {
                 }}
               >
                 <Text
-                  variant="label"
+                  variant="small"
                   sx={{
                     maxWidth: 320,
-                    mx: ["0.5rem", null, 0],
-                    my: ["0.5rem", null, 0],
+                    mx: ["0.5rem", 0, 0],
+                    my: ["0.5rem", 0, 0],
                   }}
                 >
                   {message.split("\n").map((text, i) => {
@@ -113,14 +113,14 @@ const CookieBar = ({ data = {} }) => {
               >
                 <Button
                   sx={{ placeSelf: "flex-end" }}
-                  variant="primary"
+                  variant="primarySmall"
                   onClick={() => onRejectCookies()}
                 >
                   Reject
                 </Button>
                 <Button
                   sx={{ placeSelf: "flex-end" }}
-                  variant="secondary"
+                  variant="secondarySmall"
                   onClick={() => onAcceptCookies()}
                 >
                   Accept
