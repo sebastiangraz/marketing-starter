@@ -3,7 +3,6 @@ import { Text } from "theme-ui";
 import bullet from "../public/listBullet.svg";
 
 export const List = ({ large, children, ...rest }) => {
-  console.log(large);
   return (
     <ul
       {...rest}

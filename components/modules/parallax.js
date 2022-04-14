@@ -18,10 +18,10 @@ import {
 
 import { useResponsiveValue } from "@theme-ui/match-media";
 import { ParallaxCard } from "../parallaxCard";
-import { Themed } from "theme-ui";
+import { Flex, Themed } from "theme-ui";
+import { wrap } from "../../lib/helpers";
 
 const Parallax = memo(({ data = {} }) => {
-  console.log(data);
   const settings = {
     springOptions: {
       damping: 12,
@@ -40,6 +40,7 @@ const Parallax = memo(({ data = {} }) => {
       elWidth: 0,
       totalChildWidth: 0,
       childWidthArray: [],
+      childHeightArray: [],
     }
   );
 
@@ -51,6 +52,7 @@ const Parallax = memo(({ data = {} }) => {
     elWidth,
     totalChildWidth,
     childWidthArray,
+    childHeightArray,
   } = state;
 
   const { parallaxContainer, header } = data;
@@ -73,6 +75,7 @@ const Parallax = memo(({ data = {} }) => {
   }, 0);
   const columnCountEqualTo12 = calcColumnSum === 12;
   const isSolo = length === 1;
+
   const [index, setIndex] = useState([]);
 
   useEffect(() => {
@@ -229,7 +232,7 @@ const Parallax = memo(({ data = {} }) => {
       variant: "layout.row",
     },
     innerContainer: {
-      display: "grid",
+      display: ["block", "grid"],
       gridAutoFlow: "column",
       gridAutoColumns: useResponsiveValue([
         "100%",
@@ -257,7 +260,7 @@ const Parallax = memo(({ data = {} }) => {
             top: 0,
             width: "100%",
             height: "28px",
-            zIndex: -1,
+            zIndex: 1,
           }}
           layoutId="outline"
           transition={{ type: "spring", bounce: 0.12 }}
@@ -286,82 +289,93 @@ const Parallax = memo(({ data = {} }) => {
           sx={{
             position: "sticky",
             top: "0px",
-            pt: "5.5rem",
+            paddingBottom: ["2rem", "100vh"],
+            pointerEvents: "none",
             zIndex: 10,
-            justifyContent: "space-between",
-            alignItems: "center",
-            display: "flex",
-            flexWrap: "wrap",
           }}
         >
-          <Themed.h1
+          <Flex
             sx={{
-              pr: 3,
-              my: "1rem",
-              maxWidth: "32rem",
+              position: "absolute",
+              width: "100%",
+              top: ["5.5rem", "17vh"],
+              pb: 2,
+              alignItems: "center",
+              flexWrap: "wrap",
+              background: ["background", "transparent"],
+              justifyContent: "space-between",
             }}
           >
-            {header ? header : "Features"}
-          </Themed.h1>
+            <Themed.h1
+              sx={{
+                pr: 3,
+                my: "1rem",
+                maxWidth: "32rem",
+              }}
+            >
+              {header ? header : "Features"}
+            </Themed.h1>
 
-          <div sx={{ display: "flex", flexWrap: "wrap" }}>
-            {parallaxContainer.map((e, i) => {
-              return (
-                e.title && (
-                  <div
-                    key={e + i}
-                    sx={{
-                      mr: "0.5rem",
-                      display: "grid",
-                      position: "relative",
-                    }}
-                  >
-                    <LayoutGroup id={parallaxContainer[0].heading}>
-                      <Item
-                        isSelected={i === index}
-                        // onClick={() => setSelected}
-                      />
-                    </LayoutGroup>
-
-                    <button
+            <div sx={{ display: "flex", flexWrap: "wrap" }}>
+              {parallaxContainer.map((e, i) => {
+                return (
+                  e.title && (
+                    <div
+                      key={e + i}
                       sx={{
-                        all: "unset",
-                        cursor: "pointer",
-                        height: "28px",
-                        display: "inline-flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: "0 0.5rem",
-                        whiteSpace: "pre",
-                        borderRadius: "small",
-                        "&:hover, &:focus-visible": {
-                          boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
-                        },
+                        pointerEvents: "all",
+                        mr: "0.5rem",
+                        display: "grid",
+                        position: "relative",
                       }}
-                      onClick={handleClick(i)}
                     >
-                      <span
+                      <LayoutGroup id={parallaxContainer[0].heading}>
+                        <Item
+                          isSelected={i === index}
+                          // onClick={() => setSelected}
+                        />
+                      </LayoutGroup>
+
+                      <button
                         sx={{
-                          maxWidth: "80vw",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
+                          all: "unset",
+                          cursor: "pointer",
+                          height: "28px",
+                          display: "inline-flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          padding: "0 0.5rem",
+                          whiteSpace: "pre",
+                          borderRadius: "small",
+                          "&:hover, &:focus-visible": {
+                            boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
+                          },
                         }}
+                        onClick={handleClick(i)}
                       >
-                        {e.title}
-                      </span>
-                    </button>
-                  </div>
-                )
-              );
-            })}
-          </div>
+                        <span
+                          sx={{
+                            maxWidth: "80vw",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {e.title}
+                        </span>
+                      </button>
+                    </div>
+                  )
+                );
+              })}
+            </div>
+          </Flex>
         </div>
 
         <motion.div
           className="inner-container"
           sx={style.innerContainer}
           style={{
-            x: useResponsiveValue([null, xSpring]),
+            x: useResponsiveValue([0, xSpring]),
           }}
         >
           {parallaxContainer.map((e, i) => {
@@ -372,6 +386,7 @@ const Parallax = memo(({ data = {} }) => {
                 gapWidth={56}
                 data={e}
                 key={e.id}
+                active={index === i}
                 index={i}
                 isSolo={isSolo}
                 columnCountEqualTo12={columnCountEqualTo12}

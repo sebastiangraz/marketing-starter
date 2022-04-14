@@ -28,7 +28,7 @@ const Header = ({ data = {} }) => {
     },
     navWrapper: {
       variant: "layout.row",
-      px: "0.5rem",
+      px: ["0.1rem", "0.25rem"],
       display: "grid",
       gridTemplateColumns: ["1fr", "auto auto auto", "1fr 1fr 1fr"],
       gridTemplateRows: ["auto"],
@@ -98,7 +98,6 @@ const Header = ({ data = {} }) => {
             <Link href="/" scroll={false} passHref>
               <a
                 sx={{
-                  p: "0.25rem",
                   variant: "text.navlink",
                   textDecoration: "none",
                   color: "inherit",

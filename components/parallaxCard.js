@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Box, Grid, Text, Themed, useThemeUI } from "theme-ui";
 import { List } from "./list";
@@ -6,8 +6,11 @@ import Photo from "./photo";
 import { useResponsiveValue } from "@theme-ui/match-media";
 const style = {
   section: {
+    position: ["sticky", "relative"],
+    top: "2rem",
     maxWidth: "1288px",
-    height: "100vh",
+    height: ["100vh"],
+    flexDirection: "column",
     "&:first-of-type": {
       "& > *": {
         ml: "0px",
@@ -15,37 +18,17 @@ const style = {
     },
   },
   innerSection: {
-    mt: "25vh",
-    // p: [3, 4],
+    mt: ["0", "25vh"],
     gridColumn: "span 12",
-    height: `calc(65%)`,
-    maxHeight: "100vmin",
+    height: ["calc(100%)", "65%"],
+    maxHeight: ["calc(100% - 16rem)", "100vmin"],
+    top: ["12rem", 0],
+    position: "relative",
     borderRadius: "3rem",
     overflow: "hidden",
     pointerEvents: "none",
     transition: "background 1s ease, box-shadow 1s ease",
     background: "#fff",
-  },
-};
-
-const childVariant = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
-
-const childVariantInner = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 1.2,
-      when: "beforeChildren",
-    },
   },
 };
 
@@ -71,39 +54,32 @@ function getTextColorFromBg(data, context) {
 }
 
 export const ParallaxCard = memo(
-  ({ data, index, isSolo, columnCountEqualTo12, onClick }) => {
+  ({ data, index, isSolo, columnCountEqualTo12, onClick, active }) => {
     const context = useThemeUI();
     const textColor = getTextColorFromBg(data.color, context);
     const { color, heading, id, image, lead, listItems, sizes, title } = data;
     return (
-      <motion.div
+      <div
         data-index={index}
         sx={{
           ...style.section,
         }}
-        variants={childVariant}
-        initial="hidden"
-        whileInView="visible"
         onClick={isSolo || columnCountEqualTo12 ? null : onClick}
       >
-        <motion.div
+        <div
           sx={{
             ...style.innerSection,
             color: textColor,
+            transition: "opacity 0.4s ease",
+            opacity: [active ? 1 : 0, 1],
             background: color ? color : "ui",
           }}
         >
-          <motion.div
-            variants={childVariantInner}
-            whileInView="visible"
-            sx={{ height: "100%" }}
-            viewport={{ amount: 0.3 }}
-          >
+          <div sx={{ height: "100%" }} viewport={{ amount: 0.3 }}>
             <Grid
               sx={{
                 gap: 0,
                 height: "100%",
-                // gridAutoFlow: "dense columns",
                 gridTemplateColumns: "1fr 1fr",
                 gridTemplateRows: "auto 1fr",
                 alignContent: "stretch",
@@ -111,8 +87,8 @@ export const ParallaxCard = memo(
             >
               <Box
                 sx={{
-                  pt: ["3rem", "4rem"],
-                  px: ["3rem", "4rem"],
+                  pt: ["2rem", "3rem", "4rem"],
+                  px: ["2rem", "3rem", "4rem"],
                   maxWidth: "62ch",
                   gridArea: "1/1",
                   gridColumn: "span 2",
@@ -126,8 +102,8 @@ export const ParallaxCard = memo(
                 photo={image}
                 hasPlaceholder={false}
                 sx={{
-                  height: ["14rem", "100%"],
-                  width: ["100%", "28rem"],
+                  height: ["8.5rem", "16rem", "100%"],
+                  width: ["100%", "100%", "28rem"],
                   gridArea: ["-1/1 / span 1 / span 2", "2/2"],
 
                   placeSelf: "end",
@@ -144,8 +120,8 @@ export const ParallaxCard = memo(
                   width: ["100%", "25rem", "25rem", "30rem"],
                   // maxWidth: "50ch",
                   gridArea: "2/1",
-                  pb: ["3rem", "4rem"],
-                  px: ["3rem", "4rem"],
+                  pb: ["2rem", "3rem", "4rem"],
+                  px: ["2rem", "3rem", "4rem"],
                   alignSelf: "end",
                   gridColumn: ["span 2", "span 1"],
                 }}
@@ -156,9 +132,9 @@ export const ParallaxCard = memo(
                 })}
               </List>
             </Grid>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      </div>
     );
   }
 );
