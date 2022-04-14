@@ -6,7 +6,7 @@ import { useInView } from "react-cool-inview";
 
 const style = {
   ar: {
-    overflow: "hidden",
+    // overflow: "hidden",
     position: "relative",
     "&.has-fill": {
       bottom: "0px",

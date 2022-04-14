@@ -262,8 +262,8 @@ const theme = {
     h4: {
       lineHeight: 1.24,
       fontWeight: "normal",
-      letterSpacing: "heading",
-      fontSize: 3,
+      letterSpacing: ["body", "heading"],
+      fontSize: [2, 3],
     },
     a: {
       variant: "text.link",

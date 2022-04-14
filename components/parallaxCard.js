@@ -1,6 +1,8 @@
 import React, { memo } from "react";
 import { motion } from "framer-motion";
-import { Themed, useThemeUI } from "theme-ui";
+import { Box, Grid, Text, Themed, useThemeUI } from "theme-ui";
+import { List } from "./list";
+import Photo from "./photo";
 
 const style = {
   section: {
@@ -14,7 +16,7 @@ const style = {
   },
   innerSection: {
     mt: "25vh",
-    p: [3, 4],
+    // p: [3, 4],
     gridColumn: "span 12",
     height: `calc(65%)`,
     maxHeight: "100vmin",
@@ -73,6 +75,7 @@ export const ParallaxCard = memo(
     const context = useThemeUI();
     const textColor = getTextColorFromBg(data.color, context);
 
+    const { color, heading, id, image, lead, listItems, sizes, title } = data;
     return (
       <motion.div
         data-index={index}
@@ -88,15 +91,68 @@ export const ParallaxCard = memo(
           sx={{
             ...style.innerSection,
             color: textColor,
-            background: data.color ? data.color : "ui",
+            background: color ? color : "ui",
           }}
         >
           <motion.div
             variants={childVariantInner}
             whileInView="visible"
+            sx={{ height: "100%" }}
             viewport={{ amount: 0.3 }}
           >
-            <Themed.h3>{data.heading}</Themed.h3>
+            <Grid
+              sx={{
+                gap: 0,
+                height: "100%",
+                // gridAutoFlow: "dense columns",
+                gridTemplateColumns: "1fr 1fr",
+                gridTemplateRows: "auto 1fr",
+                alignContent: "stretch",
+              }}
+            >
+              <Box
+                sx={{
+                  pt: "4rem",
+                  px: "4rem",
+                  maxWidth: "62ch",
+                  gridArea: "1/1",
+                  gridColumn: "span 2",
+                }}
+              >
+                <Themed.h2 sx={{ m: 0 }}>{heading}</Themed.h2>
+                <Themed.h4>{lead}</Themed.h4>
+              </Box>
+              <Photo
+                layout="contain"
+                photo={image}
+                hasPlaceholder={false}
+                sx={{
+                  height: "100%",
+                  width: "30rem",
+                  gridArea: "2/2",
+                  placeSelf: "end",
+                  "img.object-contain": {
+                    objectFit: "contain",
+                    objectPosition: "100% 100%",
+                  },
+                }}
+              />
+              <List
+                large={listItems?.size === "large"}
+                sx={{
+                  maxWidth: "50ch",
+                  gridArea: "2/1",
+                  pb: "4rem",
+                  px: "4rem",
+                  alignSelf: "end",
+                }}
+              >
+                {listItems?.featureList.map((item) => {
+                  const { id, string } = item;
+                  return <React.Fragment key={id}>{string}</React.Fragment>;
+                })}
+              </List>
+            </Grid>
           </motion.div>
         </motion.div>
       </motion.div>

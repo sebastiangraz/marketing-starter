@@ -1,7 +1,9 @@
 import * as React from "react";
+import { Text } from "theme-ui";
 import bullet from "../public/listBullet.svg";
 
-export const List = ({ children, ...rest }) => {
+export const List = ({ large, children, ...rest }) => {
+  console.log(large);
   return (
     <ul
       {...rest}
@@ -21,11 +23,12 @@ export const List = ({ children, ...rest }) => {
             width: "11px",
             height: "11px",
             right: " 100%",
-            mt: "0.4rem",
+            mt: large ? "0.4rem" : "0.35rem",
             mr: "0.5rem",
             content: '""',
             maskPosition: "center",
             maskRepeat: "no-repeat",
+            maskSize: "11px",
             maskImage: `url(${bullet.src})`,
             background: "currentColor",
           },
@@ -33,7 +36,15 @@ export const List = ({ children, ...rest }) => {
       }}
     >
       {React.Children.map(children || null, (child, i) => {
-        return <li key={i}>{child}</li>;
+        return (
+          <li key={i}>
+            {large ? (
+              <Text>{child}</Text>
+            ) : (
+              <Text variant="label">{child}</Text>
+            )}
+          </li>
+        );
       })}
     </ul>
   );
