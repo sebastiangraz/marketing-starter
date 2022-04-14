@@ -230,6 +230,7 @@ const Parallax = memo(({ data = {} }) => {
       }),
       position: "relative",
       variant: "layout.row",
+      mb: ["11rem", 0],
     },
     innerContainer: {
       display: ["block", "grid"],
@@ -291,6 +292,7 @@ const Parallax = memo(({ data = {} }) => {
             top: "0px",
             paddingBottom: ["2rem", "100vh"],
             pointerEvents: "none",
+
             zIndex: 10,
           }}
         >
