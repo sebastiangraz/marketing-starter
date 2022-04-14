@@ -20,7 +20,7 @@ const style = {
   innerSection: {
     mt: ["0", "25vh"],
     gridColumn: "span 12",
-    height: ["calc(100%)", "65%"],
+    height: ["100%", "65%"],
     maxHeight: ["calc(100% - 16rem)", "100vmin"],
     top: ["12rem", 0],
     position: "relative",
@@ -70,12 +70,18 @@ export const ParallaxCard = memo(
           sx={{
             ...style.innerSection,
             color: textColor,
-            transition: "opacity 0.4s ease",
+            transition: "opacity 0.5s ease",
             opacity: [active ? 1 : 0, 1],
             background: color ? color : "ui",
           }}
         >
-          <div sx={{ height: "100%" }} viewport={{ amount: 0.3 }}>
+          <div
+            sx={{
+              height: "100%",
+              transition: "opacity 0.4s ease",
+              opacity: [active ? 1 : 0, 1],
+            }}
+          >
             <Grid
               sx={{
                 gap: 0,
@@ -102,14 +108,14 @@ export const ParallaxCard = memo(
                 photo={image}
                 hasPlaceholder={false}
                 sx={{
-                  height: ["8.5rem", "16rem", "100%"],
+                  height: ["17rem", "100%"],
                   width: ["100%", "100%", "28rem"],
                   gridArea: ["-1/1 / span 1 / span 2", "2/2"],
 
                   placeSelf: "end",
                   "img.object-contain": {
                     objectFit: "contain",
-                    objectPosition: ["right 0", "100% 100%"],
+                    objectPosition: ["100% 100%"],
                     pl: [5, 0],
                   },
                 }}
@@ -119,6 +125,7 @@ export const ParallaxCard = memo(
                 sx={{
                   width: ["100%", "25rem", "25rem", "30rem"],
                   // maxWidth: "50ch",
+                  display: ["none", "block"],
                   gridArea: "2/1",
                   pb: ["2rem", "3rem", "4rem"],
                   px: ["2rem", "3rem", "4rem"],
