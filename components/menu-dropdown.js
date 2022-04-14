@@ -54,7 +54,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
         aria-expanded={isOpen}
         aria-controls={`dropdown-${id}`}
         onClick={() => {
-          menuInteraction(true);
+          menuInteraction(!isOpen);
         }}
       >
         {title}
