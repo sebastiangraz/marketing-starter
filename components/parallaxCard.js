@@ -72,14 +72,15 @@ export const ParallaxCard = memo(
             color: textColor,
             transition: "opacity 0.5s ease",
             opacity: [active ? 1 : 0, 1],
+            willChange: "opacity",
             background: color ? color : "ui",
           }}
         >
           <div
             sx={{
               height: "100%",
-              transition: "opacity 0.4s ease",
-              opacity: [active ? 1 : 0, 1],
+              transition: "opacity 0.5s ease",
+              opacity: [active ? 1 : 0],
             }}
           >
             <Grid

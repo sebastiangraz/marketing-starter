@@ -300,8 +300,8 @@ const Parallax = memo(({ data = {} }) => {
             sx={{
               position: "absolute",
               width: "100%",
-              top: ["5.5rem", "16vh"],
-              py: 2,
+              top: ["5.5rem", "6rem"],
+              pt: "1rem",
               alignItems: "center",
               flexWrap: "wrap",
               background: ["background", "transparent"],
