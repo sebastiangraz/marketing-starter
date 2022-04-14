@@ -42,6 +42,7 @@ const Link = ({ link, cta, children, ...rest }) => {
     const isArticle = link.page?.type === "article";
     return (
       <NextLink
+        passHref
         href={
           isHome
             ? "/"
@@ -78,6 +79,7 @@ const Link = ({ link, cta, children, ...rest }) => {
     const isArticle = link.page?.type === "article";
     return (
       <NextLink
+        passHref
         href={
           isHome
             ? "/"

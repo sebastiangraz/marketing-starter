@@ -52,16 +52,21 @@ const buttonHover = {
     },
   },
 };
+
 const maskTransition = {
   maskImage: "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.6) 65%)",
   maskPosition: "100% 1px",
   maskRepeat: "repeat-y",
   maskSize: "300% 1px",
   transition: "all 0.4s ease",
+  "&:focus-visible": {
+    mask: "none",
+  },
   "&:hover": {
     maskPosition: "0% 1px",
   },
 };
+
 const buttonBase = {
   color: "text",
   fontWeight: 500,

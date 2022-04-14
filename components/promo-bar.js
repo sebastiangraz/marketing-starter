@@ -79,7 +79,7 @@ const PromoBar = React.memo(({ data = {} }) => {
           <ConditionalWrapper
             condition={link}
             wrapper={(children) => (
-              <CustomLink cta link={{ ...{ page: link } }}>
+              <CustomLink passHref cta link={{ ...{ page: link } }}>
                 {children}
               </CustomLink>
             )}

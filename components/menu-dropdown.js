@@ -50,7 +50,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
       onMouseLeave={() => menuInteraction(false)}
     >
       <a
-        sx={{ variant: "text.navlink" }}
+        sx={{ variant: "text.navlink", paddingRight: "1rem" }}
         aria-expanded={isOpen}
         aria-controls={`dropdown-${id}`}
       >
