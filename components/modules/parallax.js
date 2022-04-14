@@ -20,7 +20,7 @@ import { ParallaxCard } from "../parallaxCard";
 import { Button, Text, Themed } from "theme-ui";
 
 const Parallax = memo(({ data = {} }) => {
-  // console.log(data);
+  console.log(data);
   const settings = {
     springOptions: {
       damping: 12,
