@@ -63,7 +63,9 @@ export async function getArticle(slug, preview) {
         title,
         slug,
         seo,
-        content[]
+        content[]{
+          ${queries.ptContent}
+        },
       },
       ${queries.site}
     }
@@ -85,7 +87,6 @@ export async function getArticles(preview) {
       "posts": *[_type == "article"] | order(dateTime(publishedAt) asc){
         ${queries.articleList},
         slug,
-        content[]
       },
     },
     ${queries.site}

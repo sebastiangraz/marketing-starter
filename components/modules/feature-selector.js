@@ -78,13 +78,18 @@ const FeatureSelector = ({ data }) => {
                     childDelay={0.25}
                   >
                     {data?.features.map((item) => (
-                      <li
+                      <button
                         sx={{
+                          all: "unset",
                           display: ["inline-block"],
                           position: "relative",
                           cursor: "pointer",
                           listStyle: "none",
                           padding: "0.5rem 1.25rem",
+                          borderRadius: "24px",
+                          "&:hover, &:focus-visible": {
+                            boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
+                          },
                         }}
                         key={item.featureTitle}
                         className={item === selectedTab ? "selected" : ""}
@@ -110,7 +115,7 @@ const FeatureSelector = ({ data }) => {
                             layoutId="underline"
                           />
                         ) : null}
-                      </li>
+                      </button>
                     ))}
                   </Reveal>
                 </ul>

@@ -26,6 +26,7 @@ const space = [...Array(17).keys()].map((e, i) => {
 
 const bp = ["40em", "64em", "100em"];
 const buttonpadding = 4;
+
 const buttonHover = {
   "&:after": {
     pointerEvents: "none",
@@ -45,7 +46,7 @@ const buttonHover = {
     maskImage: "linear-gradient(to bottom, #000 50%, transparent 90%)",
     maskPosition: "1px 100%",
   },
-  "&:hover": {
+  "&:hover, &:focus-visible": {
     "&:after": {
       opacity: 1,
       maskPosition: "1px 0%",
@@ -54,11 +55,12 @@ const buttonHover = {
 };
 
 const maskTransition = {
-  maskImage: "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.6) 65%)",
+  maskImage:
+    "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.56) 65%)",
   maskPosition: "100% 1px",
   maskRepeat: "repeat-y",
   maskSize: "300% 1px",
-  transition: "all 0.4s ease",
+  transition: "-webkit-mask 0.4s ease, mask 0.4s ease",
   "&:focus-visible": {
     mask: "none",
   },

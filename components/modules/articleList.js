@@ -1,5 +1,14 @@
 import { tint, darken } from "@theme-ui/color";
-import { Themed, Flex, Text, Avatar, Box, Grid, Paragraph } from "theme-ui";
+import {
+  Themed,
+  Flex,
+  Text,
+  Avatar,
+  Box,
+  Grid,
+  Paragraph,
+  NavLink,
+} from "theme-ui";
 import Link from "next/link";
 import { Reveal } from "../../components/reveal";
 import TimeAgo from "react-timeago";
@@ -77,29 +86,31 @@ const ArticleList = ({ data, articleList }) => {
                   href="/articles/[slug]"
                   as={`/articles/${slug}`}
                 >
-                  <Grid sx={style.grid}>
-                    <Themed.h4 sx={{ ...style.paragraph, m: 0 }}>
-                      {title}
-                    </Themed.h4>
+                  <a sx={{ textDecoration: "none", color: "inherit" }}>
+                    <Grid sx={style.grid}>
+                      <Themed.h4 sx={{ ...style.paragraph, m: 0 }}>
+                        {title}
+                      </Themed.h4>
 
-                    <Flex sx={style.metaWrapper}>
-                      {author && (
-                        <Flex sx={style.author}>
-                          <Author name={name} asset={authorImage} />
-                        </Flex>
-                      )}
-                      <Text variant="label" sx={style.date}>
-                        {date && (
-                          <TimeAgo date={new Date(date).toDateString()} />
+                      <Flex sx={style.metaWrapper}>
+                        {author && (
+                          <Flex sx={style.author}>
+                            <Author name={name} asset={authorImage} />
+                          </Flex>
                         )}
-                      </Text>
+                        <Text variant="label" sx={style.date}>
+                          {date && (
+                            <TimeAgo date={new Date(date).toDateString()} />
+                          )}
+                        </Text>
 
-                      <Icon
-                        sx={{ width: "0.75rem", display: ["none", "block"] }}
-                        name="Arrow"
-                      />
-                    </Flex>
-                  </Grid>
+                        <Icon
+                          sx={{ width: "0.75rem", display: ["none", "block"] }}
+                          name="Arrow"
+                        />
+                      </Flex>
+                    </Grid>
+                  </a>
                 </Link>
               );
             })}

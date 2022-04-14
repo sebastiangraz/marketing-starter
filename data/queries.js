@@ -8,8 +8,7 @@ const page = `
   "type": _type,
   "slug": slug.current,
   "isHome": _id == ${homeID},
-  "isArticles": _id == ${articlesID},
-  "isWhitepapers": _id == ${articlesID},
+  "isArticles": _id == ${articlesID}
 `;
 
 // Construct our "link" GROQ
@@ -148,7 +147,21 @@ export const modules = `
     parallaxContainer[]{
       "id": _key,
       sizes,
+      title,
       heading,
+      lead,
+      "image": image.photo{
+        ${imageMeta}
+      },
+      listItems{
+        "id": _key,
+        size,
+        featureList[]{
+          "id": _key,
+          string,
+          soon
+        }
+      },
       "color" : color.colorValue.value
     }
   },

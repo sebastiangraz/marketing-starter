@@ -133,7 +133,6 @@ const Hero = ({ data }) => {
             }}
           >
             <Button as={CustomLink} cta link={data.primaryCTA}></Button>
-            <Button variant="secondary">Watch the video</Button>
           </Flex>
         </Width>
         <Width

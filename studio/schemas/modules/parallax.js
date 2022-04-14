@@ -1,4 +1,5 @@
 import { ArchiveBox, Cards } from 'phosphor-react'
+import customImage from '../../lib/custom-image'
 
 export default {
   title: 'Parallax',
@@ -19,9 +20,71 @@ export default {
           icon: ArchiveBox,
           fields: [
             {
+              title: 'Title',
+              name: 'title',
+              type: 'string'
+            },
+            {
               title: 'Heading',
               name: 'heading',
               type: 'string'
+            },
+            {
+              title: 'Lead',
+              name: 'lead',
+              type: 'text'
+            },
+            {
+              title: 'List Items',
+              name: 'listItems',
+              type: 'object',
+              fields: [
+                {
+                  title: 'Size',
+                  name: 'size',
+                  type: 'string',
+                  options: {
+                    layout: 'radio',
+                    direction: 'horizontal',
+                    list: [
+                      { value: 'default', title: 'Default' },
+                      { value: 'large', title: 'Large' }
+                    ]
+                  },
+
+                  initialValue: 'default'
+                },
+                {
+                  title: 'Feature List',
+                  name: 'featureList',
+                  type: 'array',
+                  of: [
+                    {
+                      type: 'object',
+                      fields: [
+                        {
+                          title: 'String',
+                          name: 'string',
+                          type: 'string'
+                        },
+                        {
+                          title: 'Coming soon',
+                          name: 'soon',
+                          type: 'boolean',
+                          initialValue: false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              title: 'Image',
+              name: 'image',
+              type: 'object',
+              icon: Image,
+              fields: [customImage()]
             },
             {
               title: 'Color',
@@ -60,7 +123,7 @@ export default {
       parallaxContainer: 'parallaxContainer'
     },
     prepare({ parallaxContainer, header }) {
-      const heading = parallaxContainer.map(e => e.heading)
+      const heading = parallaxContainer.map(e => e.title)
       const subtitle = heading
         .toString()
         .split(',')

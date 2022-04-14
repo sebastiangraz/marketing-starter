@@ -1,13 +1,10 @@
 import { isBrowser } from "../lib/helpers";
-import { motion } from "framer-motion";
 import Menu from "../components/menu";
 import Link from "next/link";
 import PromoBar from "../components/promo-bar";
 import Icon from "./icon";
-import { transparentize } from "@theme-ui/color";
 import { useState } from "react";
-import { Text, Flex } from "theme-ui";
-import { useResponsiveValue } from "@theme-ui/match-media";
+import { Text } from "theme-ui";
 
 const rotate = {
   show: {
@@ -121,15 +118,22 @@ const Header = ({ data = {} }) => {
       <header sx={style.navStyle}>
         <div sx={style.navWrapper}>
           <div className="logo">
-            <Link key={"2"} href="/" scroll={false} passHref>
-              <Text variant="text.navlink">
+            <Link href="/" scroll={false} passHref>
+              <a
+                sx={{
+                  variant: "text.navlink",
+                  textDecoration: "none",
+                  color: "inherit",
+                  display: "inline-flex",
+                }}
+              >
                 <Icon
                   sx={{ width: "4rem" }}
                   color={"currentColor"}
                   viewBox="0 0 82 20"
                   name="Logo"
                 />
-              </Text>
+              </a>
             </Link>
           </div>
 

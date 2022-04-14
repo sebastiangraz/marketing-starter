@@ -1,6 +1,5 @@
 import React from "react";
 import NextLink from "next/link";
-import cx from "classnames";
 import { getStaticRoute, getDynamicRoute } from "../lib/routes";
 
 const Link = ({ link, cta, children, ...rest }) => {
@@ -35,8 +34,9 @@ const Link = ({ link, cta, children, ...rest }) => {
     },
   };
 
-  // External Link
+  // Link that can be both
   if (isInternal) {
+    console.log(link);
     const isDynamic = getDynamicRoute(link.page?.type);
     const isHome = link.page?.isHome;
     const isArticle = link.page?.type === "article";
@@ -60,6 +60,7 @@ const Link = ({ link, cta, children, ...rest }) => {
       </NextLink>
     );
   }
+  // External Link
   if (isLink) {
     return (
       <a

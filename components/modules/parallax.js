@@ -15,8 +15,9 @@ import {
   useMotionValue,
   LayoutGroup,
 } from "framer-motion";
+
 import { ParallaxCard } from "../parallaxCard";
-import { Text, Themed } from "theme-ui";
+import { Button, Text, Themed } from "theme-ui";
 
 const Parallax = memo(({ data = {} }) => {
   const settings = {
@@ -296,54 +297,55 @@ const Parallax = memo(({ data = {} }) => {
           >
             {header ? header : "Features"}
           </Themed.h1>
+
           <div sx={{ display: "flex", flexWrap: "wrap" }}>
             {parallaxContainer.map((e, i) => {
               return (
-                <div
-                  key={e + i}
-                  sx={{
-                    mr: "0.5rem",
-                    display: "grid",
-                    position: "relative",
-                  }}
-                >
-                  <LayoutGroup id={parallaxContainer[0].heading}>
-                    <Item
-                      isSelected={i === index}
-                      // onClick={() => setSelected}
-                    />
-                  </LayoutGroup>
-
-                  <Text
-                    variant="label"
-                    style={{
-                      cursor: "pointer",
-                      height: "28px",
-                      display: "inline-flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: "0 0.5rem",
-                      whiteSpace: "pre",
-                    }}
+                e.title && (
+                  <div
+                    key={e + i}
                     sx={{
-                      "&:hover": {
-                        borderRadius: "small",
-                        boxShadow: "0 0 0 1px rgba(0,0,0,0.1)",
-                      },
+                      mr: "0.5rem",
+                      display: "grid",
+                      position: "relative",
                     }}
-                    onClick={handleClick(i)}
                   >
-                    <span
+                    <LayoutGroup id={parallaxContainer[0].heading}>
+                      <Item
+                        isSelected={i === index}
+                        // onClick={() => setSelected}
+                      />
+                    </LayoutGroup>
+
+                    <button
                       sx={{
-                        maxWidth: "80vw",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
+                        all: "unset",
+                        cursor: "pointer",
+                        height: "28px",
+                        display: "inline-flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: "0 0.5rem",
+                        whiteSpace: "pre",
+                        borderRadius: "small",
+                        "&:hover, &:focus-visible": {
+                          boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
+                        },
                       }}
+                      onClick={handleClick(i)}
                     >
-                      {e.heading}
-                    </span>
-                  </Text>
-                </div>
+                      <span
+                        sx={{
+                          maxWidth: "80vw",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {e.title}
+                      </span>
+                    </button>
+                  </div>
+                )
               );
             })}
           </div>
