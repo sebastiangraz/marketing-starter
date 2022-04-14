@@ -25,8 +25,10 @@ const Article = ({ data }) => {
           <section sx={{ maxWidth: "65ch" }}>
             <BlockContent blocks={page?.content} />
           </section>
-          <Link scroll={false} href={"/articles/"} passHref>
-            <Button sx={{ mt: 3 }}>Back to articles</Button>
+          <Link href="/articles" passHref>
+            <Button sx={{ mt: 3 }} as="a">
+              Back to articles
+            </Button>
           </Link>
         </Reveal>
       </article>

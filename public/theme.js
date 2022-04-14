@@ -106,6 +106,14 @@ const scroll = {
   },
 };
 
+const focusStyle = {
+  "&:is(a, button):focus-visible": {
+    textDecoration: "none",
+    outline: "1px solid currentColor",
+    outline: "-webkit-focus-ring-color auto 1px",
+  },
+};
+
 const theme = {
   space: space,
   sizes: [0, 8, 14, 20, 28, 40, 56, 84, 96, 112, 132, 168, 200, 256],
@@ -171,12 +179,14 @@ const theme = {
       color: "inherit",
       textDecoration: "underline",
       cursor: "pointer",
+      ...focusStyle,
       "&:hover": { textDecoration: "none" },
     },
     navlink: {
       variant: "text.link",
       textDecoration: "none",
       ...maskTransition,
+      ...focusStyle,
       highlighted: {
         ...buttonBase,
         fontWeight: "inherit",

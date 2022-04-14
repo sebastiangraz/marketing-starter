@@ -49,10 +49,11 @@ const Dropdown = ({ id, title, items, onClick }) => {
       onMouseEnter={() => menuInteraction(true)}
       onMouseLeave={() => menuInteraction(false)}
     >
-      <a
-        sx={{ variant: "text.navlink", paddingRight: "1rem" }}
+      <button
+        sx={{ all: "unset", variant: "text.navlink", paddingRight: "1rem" }}
         aria-expanded={isOpen}
         aria-controls={`dropdown-${id}`}
+        onClick={() => menuInteraction(!isOpen)}
       >
         {title}
         <div
@@ -75,7 +76,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
         >
           <Icon color="currentColor" name="Plus"></Icon>
         </div>
-      </a>
+      </button>
 
       <div id={`dropdown-${id}`} sx={{ width: "0px" }}>
         <motion.ul
@@ -92,7 +93,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
             width: "100%",
             justifyContent: ["flex-start", "center"],
             "> * ": {
-              pr: 3,
+              pr: 1,
             },
             "> *:last-child": {
               pr: 0,
@@ -105,7 +106,7 @@ const Dropdown = ({ id, title, items, onClick }) => {
 
             return (
               <motion.li
-                sx={{ variant: "text.small" }}
+                sx={{ variant: "text.small", a: { padding: "0.5rem" } }}
                 variants={listItem}
                 key={key}
                 className={isActive ? "is-active" : null}

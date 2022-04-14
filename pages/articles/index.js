@@ -30,7 +30,6 @@ const Blog = ({ data = {} }) => {
             authorImage,
             date,
           } = article;
-          console.log(image);
 
           return featured ? (
             <Grid
@@ -39,6 +38,9 @@ const Blog = ({ data = {} }) => {
                 py: "2rem",
                 px: [2, "1.5rem"],
                 rowGap: "2rem",
+                "&:hover": {
+                  background: "none",
+                },
               }}
             >
               <Flex sx={{ flexDirection: "column", order: [1, 0] }}>
@@ -54,6 +56,7 @@ const Blog = ({ data = {} }) => {
                   </Text>
                 </Flex>
                 <Themed.h2 sx={{ maxWidth: "30rem" }}>{title}</Themed.h2>
+
                 <Link
                   key={_id}
                   passHref
@@ -61,7 +64,9 @@ const Blog = ({ data = {} }) => {
                   href="/articles/[slug]"
                   as={`/articles/${slug?.current}`}
                 >
-                  <Button>Read</Button>
+                  <Button sx={{ mt: 3 }} as="a">
+                    Read
+                  </Button>
                 </Link>
               </Flex>
 

@@ -35,8 +35,8 @@ const Link = ({ link, cta, children, ...rest }) => {
   };
 
   // Link that can be both
+  // Todo make links explicit for internal or external, dont rely on isLink, because in the CMS it can be both sometimes.
   if (isInternal) {
-    console.log(link);
     const isDynamic = getDynamicRoute(link.page?.type);
     const isHome = link.page?.isHome;
     const isArticle = link.page?.type === "article";

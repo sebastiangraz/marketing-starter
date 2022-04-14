@@ -129,7 +129,6 @@ const FeatureHero = ({ data }) => {
                   listItems,
                   id,
                 } = feature;
-                console.log(image);
                 return (
                   <div
                     key={id}

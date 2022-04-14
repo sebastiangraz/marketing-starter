@@ -4,7 +4,7 @@ import Link from "next/link";
 import PromoBar from "../components/promo-bar";
 import Icon from "./icon";
 import { useState } from "react";
-import { Text } from "theme-ui";
+import { Button, Text } from "theme-ui";
 
 const rotate = {
   show: {
@@ -106,9 +106,6 @@ const Header = ({ data = {} }) => {
         alignSelf: ["flex-start", "center"],
         gridArea: ["3/1", "1/3"],
       },
-      button: {
-        variant: "styles.buttonReset",
-      },
     },
   };
 
@@ -121,6 +118,7 @@ const Header = ({ data = {} }) => {
             <Link href="/" scroll={false} passHref>
               <a
                 sx={{
+                  p: "0.25rem",
                   variant: "text.navlink",
                   textDecoration: "none",
                   color: "inherit",
@@ -138,9 +136,9 @@ const Header = ({ data = {} }) => {
           </div>
 
           <ul sx={{ gridArea: "1/3", display: ["flex", "none"] }}>
-            <Text
+            <Button
               variant="text.navlink"
-              sx={{ cursor: "pointer" }}
+              sx={{ all: "unset", cursor: "pointer" }}
               onClick={() => toggleMobileNav(!isMobileNavOpen)}
             >
               <Icon
@@ -149,7 +147,7 @@ const Header = ({ data = {} }) => {
                 name="Plus"
               />
               Menu
-            </Text>
+            </Button>
           </ul>
 
           {menuMobilePrimary?.items && (
@@ -161,14 +159,17 @@ const Header = ({ data = {} }) => {
           )}
         </div>
       </header>
-      <div
+      <button
+        tabIndex={0}
         sx={{
+          all: "unset",
           position: "fixed",
           top: 0,
           left: 0,
           height: "100vh",
           width: "100vw",
           pointerEvents: ["none"],
+          transition: "background 0.4s ease",
           background: ["rgba(0,0,0,0.1)", "transparent"],
           opacity: 0,
           zIndex: 9,
@@ -176,10 +177,13 @@ const Header = ({ data = {} }) => {
             pointerEvents: ["auto", "none"],
             opacity: 1,
           }),
+          "&:focus-visible": {
+            background: ["rgba(0,0,0,0.3)", "transparent"],
+          },
         }}
         className="mobileBackDrop"
         onClick={() => toggleMobileNav(false)}
-      ></div>
+      ></button>
 
       <span className="header--observer" />
     </>
