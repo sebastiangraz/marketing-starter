@@ -123,7 +123,8 @@ const theme = {
   breakpoints: bp,
   letterSpacings: {
     body: "-0.02em",
-    heading: "-0.036em",
+    lead: "-0.036em",
+    heading: "-0.05em",
     caps: "0.002em",
   },
 
@@ -246,7 +247,7 @@ const theme = {
       fontWeight: "500",
       lineHeight: 1,
       letterSpacing: "heading",
-      fontSize: [4, 4, 5, 6],
+      fontSize: [4, 5, 6, 6],
     },
     h2: {
       lineHeight: 1.16,
@@ -257,13 +258,13 @@ const theme = {
     h3: {
       lineHeight: 1.2,
       fontWeight: "normal",
-      letterSpacing: "heading",
+      letterSpacing: "lead",
       fontSize: [3, 3, 3, 4],
     },
     h4: {
       lineHeight: 1.24,
       fontWeight: "normal",
-      letterSpacing: ["body", "heading"],
+      letterSpacing: ["body", "lead"],
       fontSize: [2, 2, 2, 3],
     },
     a: {

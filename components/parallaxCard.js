@@ -24,7 +24,7 @@ const style = {
     maxHeight: ["calc(100% - 16rem)", "100vmin"],
     top: ["12rem", 0],
     position: "relative",
-    borderRadius: "3rem",
+    borderRadius: ["default", "large"],
     overflow: "hidden",
     pointerEvents: "none",
     transition: "background 1s ease, box-shadow 1s ease",
@@ -95,13 +95,13 @@ export const ParallaxCard = memo(
                 sx={{
                   pt: ["2rem", "3rem", "4rem"],
                   px: ["2rem", "3rem", "4rem"],
-                  maxWidth: "62ch",
+
                   gridArea: "1/1",
                   gridColumn: "span 2",
                 }}
               >
                 <Themed.h2 sx={{ m: 0 }}>{heading}</Themed.h2>
-                <Themed.h4>{lead}</Themed.h4>
+                <Themed.h4 sx={{ maxWidth: "37ch" }}>{lead}</Themed.h4>
               </Box>
               <Photo
                 layout="contain"
@@ -124,7 +124,6 @@ export const ParallaxCard = memo(
                 large={listItems?.size === "large"}
                 sx={{
                   width: ["100%", "25rem", "25rem", "30rem"],
-                  // maxWidth: "50ch",
                   display: ["none", "block"],
                   gridArea: "2/1",
                   pb: ["2rem", "3rem", "4rem"],
