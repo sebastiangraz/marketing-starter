@@ -16,7 +16,7 @@ const FeatureHero = ({ data }) => {
       <div
         sx={{
           background: "text",
-          borderRadius: "6rem",
+          borderRadius: ["default", "large", "4rem", "6rem"],
           overflow: "hidden",
           color: "purple",
           position: "relative",
@@ -35,32 +35,26 @@ const FeatureHero = ({ data }) => {
             delay={1.5}
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              alignSelf: "start",
+              flexDirection: ["column", "row"],
+              textAlign: ["center", "left"],
+              alignItems: ["center", "start"],
+              justifyContent: ["center", "space-between"],
               width: "100%",
-              pt: "6rem",
+              pt: ["4rem", "6rem"],
             }}
           >
-            <Themed.h1 sx={{ maxWidth: "13ch" }}>{header}</Themed.h1>
-            <Themed.h4 sx={{ maxWidth: "30ch", justifySelf: "flex-end" }}>
+            <Themed.h1 sx={{ maxWidth: ["13ch"], mr: ["0", "2rem"], mb: 0 }}>
+              {header}
+            </Themed.h1>
+            <Themed.h4
+              sx={{ maxWidth: ["26ch", "30ch"], justifySelf: "flex-end" }}
+            >
               {lead}
             </Themed.h4>
           </Reveal>
         </div>
-        <div
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            zIndex: 2,
-            width: "100%",
-            height: "44rem",
-            background: (t) =>
-              `linear-gradient(to bottom, ${transparentize(
-                "text",
-                0.18
-              )(t)} 30%, transparent 100%)`,
-          }}
-        ></div>
+
         <div
           sx={{
             variant: "layout.row",
@@ -72,8 +66,26 @@ const FeatureHero = ({ data }) => {
               zIndex: 1,
               position: "relative",
               mx: 2,
+              display: "flex",
+              minHeight: "28rem",
+              alignItems: "flex-end",
             }}
           >
+            <div
+              sx={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                zIndex: 2,
+                width: "100%",
+                pb: `calc((924/ 1177) * 100%)`,
+                background: (t) =>
+                  `linear-gradient(to bottom, ${transparentize(
+                    "text",
+                    0
+                  )(t)} 0%, transparent 100%)`,
+              }}
+            ></div>
             <FeatureHeroAnimation id={data._key} />
           </div>
           <div
