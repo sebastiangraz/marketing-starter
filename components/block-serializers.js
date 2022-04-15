@@ -19,19 +19,23 @@ export const blockSerializers = {
       // build our mock header styles
       if (style === "h1") {
         return (
-          <Themed.h1 className={cx("is-h1", { "has-btn": hasButton })}>
+          <Themed.h1 sx={{ all: hasButton && "unset" }} className={cx("is-h1")}>
             {props.children}
           </Themed.h1>
         );
       }
 
       if (style === "h2") {
-        return <Themed.h2>{props.children}</Themed.h2>;
+        return (
+          <Themed.h2 sx={{ all: hasButton && "unset" }}>
+            {props.children}
+          </Themed.h2>
+        );
       }
 
       if (style === "h3") {
         return (
-          <Themed.h3 className={cx("is-h3", { "has-btn": hasButton })}>
+          <Themed.h3 sx={{ all: hasButton && "unset" }} className={cx("is-h3")}>
             {props.children}
           </Themed.h3>
         );
@@ -39,7 +43,7 @@ export const blockSerializers = {
 
       if (style === "h4") {
         return (
-          <Themed.h4 className={cx("is-h4", { "has-btn": hasButton })}>
+          <Themed.h4 sx={{ all: hasButton && "unset" }} className={cx("is-h4")}>
             {props.children}
           </Themed.h4>
         );
@@ -49,7 +53,8 @@ export const blockSerializers = {
         return (
           <Text
             variant="label"
-            className={cx("label", { "has-btn": hasButton })}
+            sx={{ all: hasButton && "unset" }}
+            className={cx("label")}
           >
             {props.children}
           </Text>
@@ -58,10 +63,7 @@ export const blockSerializers = {
 
       if (style === "normal") {
         return (
-          <Paragraph
-            variant="block"
-            className={cx("paragraph", { "has-btn": hasButton })}
-          >
+          <Paragraph variant="block" className={cx("paragraph")}>
             {props.children}
           </Paragraph>
         );

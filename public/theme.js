@@ -244,6 +244,7 @@ const theme = {
       scrollBehavior: "smooth",
       scrollSnapType: ["none", "y proximity"],
     },
+
     h1: {
       fontFamily: "heading",
       fontWeight: "500",

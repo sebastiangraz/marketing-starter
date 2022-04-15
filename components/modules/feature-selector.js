@@ -6,10 +6,50 @@ import Reveal from "../reveal";
 import { Width } from "../width";
 
 const FeatureSelector = ({ data }) => {
+  const selectorVariant = {
+    hidden: {
+      opacity: 0,
+      y: 8,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+    hide: {
+      opacity: 0,
+      y: -8,
+    },
+  };
+
+  const selectorImageVariant = {
+    hidden: {
+      x: 8,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+    hide: {
+      x: 8,
+      opacity: 0,
+    },
+  };
+
+  const selectorTransition = {
+    type: "spring",
+    duration: 0.3,
+  };
+
+  const selectorTransitionDelay = {
+    type: "spring",
+    duration: 0.7,
+  };
+
   const [selectedTab, setSelectedTab] = useState(data?.features[0]);
-  console.log(data);
+
   return (
-    <LayoutGroup id={data.header}>
+    <LayoutGroup id={data._key}>
       <section className="section">
         <div sx={{ variant: "layout.row" }}>
           <Reveal>
@@ -31,22 +71,19 @@ const FeatureSelector = ({ data }) => {
                 flex: 1,
                 display: "grid",
                 background: "ui",
-                minHeight: ["360px", "50vh"],
+                minHeight: ["360px", "44vh"],
                 overflow: "hidden",
               }}
             >
               <Reveal childStyle={{ display: "flex" }} sx={{ display: "grid" }}>
                 <AnimatePresence exitBeforeEnter>
-                  <motion.div
-                    key={selectedTab ? selectedTab.featureTitle : "empty"}
-                    animate={{ opacity: 1, y: 0 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ type: "spring", duration: 0.25 }}
+                  <div
+                    key={selectedTab.featureTitle + data._key}
                     sx={{
-                      flex: 1,
+                      display: "grid",
                       position: "relative",
                       height: "100%",
+                      width: "100%",
                     }}
                   >
                     <Flex
@@ -55,32 +92,59 @@ const FeatureSelector = ({ data }) => {
                         flexDirection: "column",
                         justifyContent: "space-between",
                         height: "100%",
+                        gridArea: "-1/1",
                       }}
                     >
-                      <Themed.h4 sx={{ mt: 0, display: ["none", "block"] }}>
-                        {selectedTab ? selectedTab.featureTitle : "Empty"}
-                      </Themed.h4>
-                      <Themed.h1 sx={{ my: 0, maxWidth: "14ch" }}>
-                        {selectedTab ? selectedTab.featureDescription : "Empty"}
-                      </Themed.h1>
+                      <motion.div
+                        variants={selectorVariant}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hide"
+                        transition={selectorTransition}
+                      >
+                        <Themed.h4 sx={{ mt: 0, display: ["none", "block"] }}>
+                          {selectedTab ? selectedTab.featureTitle : "Empty"}
+                        </Themed.h4>
+                      </motion.div>
+
+                      <motion.div
+                        variants={selectorVariant}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hide"
+                        transition={selectorTransitionDelay}
+                      >
+                        <Themed.h1 sx={{ my: 0, maxWidth: "18ch" }}>
+                          {selectedTab
+                            ? selectedTab.featureDescription
+                            : "Empty"}
+                        </Themed.h1>
+                      </motion.div>
                     </Flex>
-                    <Photo
-                      photo={selectedTab.image}
-                      hasPlaceholder={false}
-                      layout="fill"
-                      sx={{
-                        margin: 0,
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        "img.object-cover": {
-                          objectPosition: ["80% 0", "inherit"],
-                        },
-                      }}
-                    />
-                  </motion.div>
+                    <motion.div
+                      variants={selectorImageVariant}
+                      transition={selectorTransitionDelay}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hide"
+                      sx={{ gridArea: "-1/1" }}
+                    >
+                      <Photo
+                        photo={selectedTab.image}
+                        hasPlaceholder={false}
+                        layout="fill"
+                        sx={{
+                          position: "relative",
+                          gridArea: "-1/1",
+                          width: "100%",
+                          height: "100%",
+                          "img.object-cover": {
+                            objectPosition: ["80% 0", "inherit"],
+                          },
+                        }}
+                      />
+                    </motion.div>
+                  </div>
                 </AnimatePresence>
               </Reveal>
             </Width>
@@ -102,7 +166,7 @@ const FeatureSelector = ({ data }) => {
                       flexWrap: "wrap",
                     }}
                     childStyle={{
-                      width: ["100%", "auto", "100%"],
+                      width: ["auto", null, "100%"],
                     }}
                     effect={[
                       { opacity: 0, y: -10 },
@@ -119,7 +183,7 @@ const FeatureSelector = ({ data }) => {
                           position: "relative",
                           cursor: "pointer",
                           listStyle: "none",
-                          padding: "0.5rem 1.25rem",
+                          padding: ["0.25rem 0.75rem", "0.5rem 1.25rem"],
                           borderRadius: "24px",
                           "&:hover, &:focus-visible": {
                             boxShadow: "0 0 0 1px rgba(0,0,0,0.2)",
