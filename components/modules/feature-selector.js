@@ -23,15 +23,15 @@ const FeatureSelector = ({ data }) => {
 
   const selectorImageVariant = {
     hidden: {
-      x: 8,
+      y: 8,
       opacity: 0,
     },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
     },
     hide: {
-      x: 8,
+      y: -12,
       opacity: 0,
     },
   };
