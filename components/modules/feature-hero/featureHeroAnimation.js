@@ -52,7 +52,7 @@ const flowTransition = {
 export const FeatureHeroAnimation = ({ id }) => {
   return (
     <motion.svg
-      sx={{ display: "block" }}
+      sx={{ display: "block", width: "100%" }}
       viewBox="0 0 1177 924"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

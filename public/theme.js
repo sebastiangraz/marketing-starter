@@ -122,8 +122,9 @@ const theme = {
   fontSizes: typescale,
   breakpoints: bp,
   letterSpacings: {
-    body: "-0.02em",
-    lead: "-0.036em",
+    body: "-0.01em",
+    lead: "-0.025em",
+    subheading: "-0.03em",
     heading: "-0.05em",
     caps: "0.002em",
   },
@@ -253,7 +254,7 @@ const theme = {
     h2: {
       lineHeight: 1.16,
       fontWeight: "normal",
-      letterSpacing: "heading",
+      letterSpacing: "subheading",
       fontSize: [3, 4, 4, 5],
     },
     h3: {

@@ -69,10 +69,11 @@ export const ParallaxCard = memo(
             ...style.innerSection,
             color: textColor,
             top: [`calc(14rem + ${index * 0.75}rem)`, 0],
-            // height: ["100%", "65%"],
-            height: [`calc(100dvh - 16rem - ${index * 0.75}rem)`, "100vmin"],
+            //Safari dynamic width fix
+            height: [`calc(100dvh - 16rem - ${index * 0.75}rem)`, "65%"],
+            height: [`calc(100vh - 16rem - ${index * 0.75}rem)`, "65%"],
             transition: "opacity 0.5s ease",
-            // opacity: [active ? 1 : 0, 1],
+
             willChange: "opacity",
             background: color ? color : "ui",
           }}

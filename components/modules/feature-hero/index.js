@@ -78,7 +78,7 @@ const FeatureHero = ({ data }) => {
                 left: 0,
                 zIndex: 2,
                 width: "100%",
-                pb: `calc((924/ 1177) * 100%)`,
+                pb: `calc(((924/ 1177) * 100%) + 2px)`,
                 background: (t) =>
                   `linear-gradient(to bottom, ${transparentize(
                     "text",
