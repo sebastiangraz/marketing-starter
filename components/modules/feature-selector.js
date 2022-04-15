@@ -1,12 +1,13 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { useState } from "react";
-import { Flex, Text, Themed } from "theme-ui";
+import { Box, Flex, Text, Themed } from "theme-ui";
+import Photo from "../photo";
 import Reveal from "../reveal";
 import { Width } from "../width";
 
 const FeatureSelector = ({ data }) => {
   const [selectedTab, setSelectedTab] = useState(data?.features[0]);
-
+  console.log(data);
   return (
     <LayoutGroup id={data.header}>
       <section className="section">
@@ -18,7 +19,8 @@ const FeatureSelector = ({ data }) => {
             sx={{
               justifyContent: "space-between",
               width: "100%",
-              flexDirection: ["column", null, "row"],
+              gap: 2,
+              flexDirection: ["column", "column", "row"],
             }}
           >
             <Width
@@ -26,12 +28,14 @@ const FeatureSelector = ({ data }) => {
               sx={{
                 order: [1, null, 0],
                 borderRadius: "default",
-                p: 4,
-                background: "beige",
-                minHeight: "50vh",
+                flex: 1,
+                display: "grid",
+                background: "ui",
+                minHeight: ["360px", "50vh"],
+                overflow: "hidden",
               }}
             >
-              <Reveal>
+              <Reveal childStyle={{ display: "flex" }} sx={{ display: "grid" }}>
                 <AnimatePresence exitBeforeEnter>
                   <motion.div
                     key={selectedTab ? selectedTab.featureTitle : "empty"}
@@ -39,13 +43,43 @@ const FeatureSelector = ({ data }) => {
                     initial={{ opacity: 0, y: 20 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ type: "spring", duration: 0.25 }}
+                    sx={{
+                      flex: 1,
+                      position: "relative",
+                      height: "100%",
+                    }}
                   >
-                    <Themed.h2 sx={{ mt: 0 }}>
-                      {selectedTab ? selectedTab.featureTitle : "Empty"}
-                    </Themed.h2>
-                    <Text>
-                      {selectedTab ? selectedTab.featureDescription : "Empty"}
-                    </Text>
+                    <Flex
+                      sx={{
+                        p: 4,
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        height: "100%",
+                      }}
+                    >
+                      <Themed.h4 sx={{ mt: 0, display: ["none", "block"] }}>
+                        {selectedTab ? selectedTab.featureTitle : "Empty"}
+                      </Themed.h4>
+                      <Themed.h1 sx={{ my: 0, maxWidth: "14ch" }}>
+                        {selectedTab ? selectedTab.featureDescription : "Empty"}
+                      </Themed.h1>
+                    </Flex>
+                    <Photo
+                      photo={selectedTab.image}
+                      hasPlaceholder={false}
+                      layout="fill"
+                      sx={{
+                        margin: 0,
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        "img.object-cover": {
+                          objectPosition: ["80% 0", "inherit"],
+                        },
+                      }}
+                    />
                   </motion.div>
                 </AnimatePresence>
               </Reveal>

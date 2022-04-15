@@ -138,7 +138,7 @@ const theme = {
   colors: {
     text: "#0C002B",
     background: "#FFFBF9",
-    ui: "#fff",
+    ui: "#F9F1ED",
     primary: brandColors.salmon,
     ...brandColors,
   },

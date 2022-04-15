@@ -177,7 +177,10 @@ export const modules = `
     header,
     features[]{
       featureTitle,
-      featureDescription
+      featureDescription,
+      "image": image.photo{
+        ${imageMeta}
+      },
     }
   },
   _type == 'featureHero' => {

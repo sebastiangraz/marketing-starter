@@ -1,4 +1,5 @@
 import { Pill } from 'phosphor-react'
+import customImage from '../../lib/custom-image'
 
 export default {
   title: 'Feature Selector',
@@ -28,6 +29,13 @@ export default {
               title: 'Feature Description',
               name: 'featureDescription',
               type: 'string'
+            },
+            {
+              title: 'Image',
+              name: 'image',
+              type: 'object',
+              icon: Image,
+              fields: [customImage()]
             }
           ]
         }
