@@ -10,6 +10,7 @@ const style = {
     top: "0",
     maxWidth: "1288px",
     height: "100vh",
+    pointerEvents: "none",
     flexDirection: "column",
     "&:first-of-type": {
       "& > *": {
@@ -24,7 +25,7 @@ const style = {
     position: "relative",
     borderRadius: ["default", "large"],
     overflow: "hidden",
-    pointerEvents: "none",
+    pointerEvents: "all",
     transition: "background 1s ease, box-shadow 1s ease",
     background: "#fff",
   },
@@ -62,9 +63,9 @@ export const ParallaxCard = memo(
         sx={{
           ...style.section,
         }}
-        onClick={isSolo || columnCountEqualTo12 ? null : onClick}
       >
         <div
+          onClick={isSolo || columnCountEqualTo12 ? null : onClick}
           sx={{
             ...style.innerSection,
             color: textColor,
@@ -126,7 +127,7 @@ export const ParallaxCard = memo(
               <List
                 large={listItems?.size === "large"}
                 sx={{
-                  width: ["100%", "25rem", "25rem", "30rem"],
+                  width: ["100%", "25rem", "30rem"],
                   display: ["none", "block"],
                   gridArea: "2/1",
                   pb: ["2rem", "3rem", "4rem"],

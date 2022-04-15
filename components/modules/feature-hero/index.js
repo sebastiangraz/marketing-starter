@@ -152,13 +152,13 @@ const FeatureHero = ({ data }) => {
                       mb: "5rem",
                     }}
                   >
-                    <div>
+                    <div sx={{ gridColumn: ["span 2", null, "auto"] }}>
                       <Themed.h4
                         sx={{ maxWidth: "26ch", fontWeight: 500, mb: "1rem" }}
                       >
                         {featureTitle}
                       </Themed.h4>
-                      <Paragraph sx={{ maxWidth: "28ch" }}>
+                      <Paragraph sx={{ maxWidth: "32ch", mr: ["2rem"] }}>
                         {featureDescription}
                       </Paragraph>
                     </div>
@@ -168,15 +168,20 @@ const FeatureHero = ({ data }) => {
                       photo={image}
                       hasPlaceholder={false}
                       sx={{
-                        height: "5rem",
+                        height: ["5rem", null, "5rem"],
+                        width: ["7.5rem", null, "7.5rem"],
+                        mb: ["0", null, "2rem"],
+                        mt: ["0", null, "1.5rem"],
                         display: "block",
-                        width: "7.5rem",
-                        mb: "2rem",
-                        mt: "1.5rem",
                       }}
                     />
 
-                    <List sx={{ gridColumn: "span 2", maxWidth: "32ch" }}>
+                    <List
+                      sx={{
+                        gridColumn: "span 2",
+                        maxWidth: ["100%", null, "32ch"],
+                      }}
+                    >
                       {listItems.featureList.map((item) => {
                         const { id, string } = item;
                         return (
