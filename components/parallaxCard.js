@@ -20,9 +20,6 @@ const style = {
   innerSection: {
     mt: ["0", "25vh"],
     gridColumn: "span 12",
-    height: ["100%", "65%"],
-    maxHeight: ["calc(100% - 18rem)", "100vmin"],
-    // maxHeight: ["calc(100vh - 16rem)", "100vmin"],
     top: ["14rem", 0],
     position: "relative",
     borderRadius: ["default", "large"],
@@ -71,6 +68,9 @@ export const ParallaxCard = memo(
           sx={{
             ...style.innerSection,
             color: textColor,
+            top: [`calc(14rem + ${index * 0.75}rem)`, 0],
+            // height: ["100%", "65%"],
+            height: [`calc(100dvh - 16rem - ${index * 0.75}rem)`, "100vmin"],
             transition: "opacity 0.5s ease",
             // opacity: [active ? 1 : 0, 1],
             willChange: "opacity",
