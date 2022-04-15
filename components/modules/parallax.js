@@ -230,7 +230,7 @@ const Parallax = memo(({ data = {} }) => {
       }),
       position: "relative",
       variant: "layout.row",
-      mb: ["11rem", 0],
+      mb: ["0", 0],
     },
     innerContainer: {
       display: ["block", "grid"],
@@ -290,7 +290,7 @@ const Parallax = memo(({ data = {} }) => {
           sx={{
             position: "sticky",
             top: "0px",
-            paddingBottom: ["2rem", "100vh"],
+            paddingBottom: ["0", "100vh"],
             pointerEvents: "none",
 
             zIndex: 10,
@@ -300,7 +300,7 @@ const Parallax = memo(({ data = {} }) => {
             sx={{
               position: "absolute",
               width: "100%",
-              top: ["5.5rem", "6rem"],
+              top: ["4.5rem"],
               pt: "1rem",
               alignItems: "center",
               flexWrap: "wrap",
@@ -426,6 +426,7 @@ const Parallax = memo(({ data = {} }) => {
                 style={{
                   top: sanitise(childWidthArray[i]) * sanitise(ratioFormula),
                 }}
+                id={`${e.id}`}
                 sx={{
                   width: "100%",
                   position: "absolute",

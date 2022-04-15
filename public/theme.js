@@ -240,6 +240,7 @@ const theme = {
       letterSpacing: "body",
       WebkitFontSmoothing: "antialiased",
       MozOsxFontSmoothing: "grayscale",
+      scrollBehavior: "smooth",
       scrollSnapType: ["none", "y proximity"],
     },
     h1: {

@@ -7,9 +7,9 @@ import { useResponsiveValue } from "@theme-ui/match-media";
 const style = {
   section: {
     position: ["sticky", "relative"],
-    top: "2rem",
+    top: "0",
     maxWidth: "1288px",
-    height: ["100vh"],
+    height: "100vh",
     flexDirection: "column",
     "&:first-of-type": {
       "& > *": {
@@ -21,8 +21,9 @@ const style = {
     mt: ["0", "25vh"],
     gridColumn: "span 12",
     height: ["100%", "65%"],
-    maxHeight: ["calc(100% - 16rem)", "100vmin"],
-    top: ["12rem", 0],
+    maxHeight: ["calc(100% - 18rem)", "100vmin"],
+    // maxHeight: ["calc(100vh - 16rem)", "100vmin"],
+    top: ["14rem", 0],
     position: "relative",
     borderRadius: ["default", "large"],
     overflow: "hidden",
@@ -71,7 +72,7 @@ export const ParallaxCard = memo(
             ...style.innerSection,
             color: textColor,
             transition: "opacity 0.5s ease",
-            opacity: [active ? 1 : 0, 1],
+            // opacity: [active ? 1 : 0, 1],
             willChange: "opacity",
             background: color ? color : "ui",
           }}
