@@ -102,14 +102,16 @@ const FeatureHero = ({ data }) => {
             <Flex
               sx={{
                 flexWrap: "wrap",
-                mb: "4rem",
+                mb: ["2rem", "4rem"],
                 justifyContent: "space-between",
                 alignItems: "flex-end",
+                rowGap: "2rem",
               }}
             >
-              <Width value={[6]}>
-                <Themed.h1 sx={{ mb: 0 }}>{featureHeader}</Themed.h1>
-              </Width>
+              <Themed.h1 sx={{ mb: 0, maxWidth: "14ch" }}>
+                {featureHeader}
+              </Themed.h1>
+
               {data.primaryCTA && (
                 <Button
                   sx={{ placeSelf: "end" }}
@@ -179,7 +181,7 @@ const FeatureHero = ({ data }) => {
                     <List
                       sx={{
                         gridColumn: "span 2",
-                        maxWidth: ["100%", null, "32ch"],
+                        maxWidth: ["100%"],
                       }}
                     >
                       {listItems.featureList.map((item) => {
