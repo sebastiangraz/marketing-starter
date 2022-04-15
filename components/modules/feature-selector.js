@@ -31,7 +31,7 @@ const FeatureSelector = ({ data }) => {
       opacity: 1,
     },
     hide: {
-      y: -12,
+      y: -14,
       opacity: 0,
     },
   };
