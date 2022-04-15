@@ -254,6 +254,7 @@ const Parallax = memo(({ data = {} }) => {
         <motion.div
           onClick={onClick}
           style={{
+            pointerEvents: "none",
             borderRadius: "20px",
             boxShadow: `0 0 0 1px var(--theme-ui-colors-text)`,
             position: "absolute",
