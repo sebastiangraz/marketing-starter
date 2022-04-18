@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Themed } from "theme-ui";
+import { Paragraph, Themed } from "theme-ui";
 import Layout from "../../components/layout";
 import { Width } from "../../components/width";
 import { getWhitepapers } from "../../data";
@@ -30,51 +30,80 @@ const Blog = ({ data }) => {
               listStyle: "none",
               maskSize: "100% 100%",
               borderRadius: "default",
+              zIndex: 1,
               minHeight: "360px",
               padding: "2rem",
               position: "relative",
+              overflow: "hidden",
               boxShadow: " 0 0 0 1px inset",
               mt: "3rem",
+              backgroundColor: "background",
               maskImage:
                 "linear-gradient(45deg, #000 calc(100% - 44px), transparent calc(100% - 44px))",
               background:
                 "linear-gradient(45deg, #0000 calc(100% - 45px), #000 calc(100% - 45px), #000 calc(100% - 44px), #0000 calc(100% - 44px))",
-              "&:hover": {
-                maskImage: "none",
-                background: "none",
-                "&:after": {
-                  content: "none",
-                },
-              },
+
               "&:after": {
+                content: `""`,
+                transform: "translate(0px, 0px)",
+                transition: "all 0.4s ease",
+                position: "absolute",
+                left: "0px",
+                top: "0px",
+                zIndex: -2,
+                borderRadius: "default",
+                width: "100%",
+                height: "100%",
+                boxShadow: "0 0 0 1px currentColor inset",
+              },
+              "&:before": {
                 maskImage:
                   "linear-gradient(45deg, #000 calc(100% - 45px), transparent calc(100% - 45px))",
                 content: `""`,
                 position: "absolute",
                 top: 0,
+                background: "background",
                 right: 0,
                 zIndex: -1,
                 borderRadius: "0 0 0 12px",
-                boxShadow: " 0 0 0 1px inset",
+                boxShadow: "0 0 0 1px inset",
                 width: "63px",
                 height: "63px",
                 display: "block",
+              },
+              "&:hover, &:focus-visible": {
+                maskImage: "none",
+                background: "background",
+                "&:before": {
+                  content: "none",
+                },
+                "&:after": {
+                  transform: "translate(0, 6px)",
+                },
               },
             },
           }}
         >
           {page?.posts?.map(
-            ({ url, id, title = "", slug = "", publishedAt = "" }) => {
+            ({
+              url,
+              id,
+              title = "",
+              description,
+              slug = "",
+              publishedAt = "",
+            }) => {
               return (
                 slug && (
                   <Width key={id} value={[12, 6, 4]}>
                     <a
                       target="_blank"
-                      sx={{ variant: "text.link" }}
+                      sx={{ variant: "text.link", flexDirection: "column" }}
                       href={url && url}
                       rel="noreferrer"
                     >
-                      <Themed.h4 sx={{ mt: 0, mr: "3rem" }}>{title}</Themed.h4>
+                      <Themed.h3 sx={{ mt: 0, mr: "3rem" }}>{title}</Themed.h3>
+                      <Paragraph variant="label"> {description}</Paragraph>
                     </a>
                   </Width>
                 )
