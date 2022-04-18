@@ -33,6 +33,7 @@ const Blog = ({ data = {} }) => {
 
           return featured ? (
             <Grid
+              key={_id}
               sx={{
                 ...style.grid,
                 py: "2rem",

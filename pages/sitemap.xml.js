@@ -18,6 +18,7 @@ let sitemap = null;
 const addUrls = async (smStream) => {
   const allPages = await getAllDocSlugs("page");
   const allArticles = await getAllDocSlugs("article");
+  const allWhitepapers = await getAllDocSlugs("whitepaper");
 
   allPages.map((page) => {
     smStream.write({
@@ -33,9 +34,23 @@ const addUrls = async (smStream) => {
     priority: 0.8,
   });
 
+  smStream.write({
+    url: `/whitepapers`,
+    changefreq: "weekly",
+    priority: 0.8,
+  });
+
   allArticles.map((page) => {
     smStream.write({
       url: `articles/${page.slug}`,
+      changefreq: "weekly",
+      priority: 0.8,
+    });
+  });
+
+  allWhitepapers.map((page) => {
+    smStream.write({
+      url: `whitepapers/${page.slug}`,
       changefreq: "weekly",
       priority: 0.8,
     });
