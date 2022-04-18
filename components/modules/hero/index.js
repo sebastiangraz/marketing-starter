@@ -35,7 +35,7 @@ const Hero = ({ data }) => {
       transition: {
         type: "spring",
         duration: 1,
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -135,21 +135,24 @@ const Hero = ({ data }) => {
             <Button as={CustomLink} cta link={data.primaryCTA}></Button>
           </Flex>
         </Width>
-        <Width
+        <div
           sx={{
+            maskImage: [
+              `linear-gradient(225deg, black 91%, transparent 91%)`,
+              null,
+              "none",
+            ],
             position: ["relative", null, "absolute"],
-            right: [0, null, -8],
-            pr: [0, 0, 2],
+            ml: [null, null, "43.5%", 20],
+            left: 0,
+            width: ["100%", "100%", "897px", "897px"],
           }}
-          value={[12, 12, 9]}
         >
           <LayoutGroup id={`${data._key}`}>
             <motion.svg
               sx={{ overflow: "visible" }}
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 897.5 1041.5"
-              aria-labelledby="hero-"
-              className="css-mbumtg-Hero"
+              viewBox="0 0 896.5 727.5"
               initial="hidden"
               whileInView="visible"
               // viewport={{ once: true }}
@@ -174,7 +177,7 @@ const Hero = ({ data }) => {
               <HeroAnimation loop="offSite" />
             </motion.svg>
           </LayoutGroup>
-        </Width>
+        </div>
       </div>
     </section>
   );
