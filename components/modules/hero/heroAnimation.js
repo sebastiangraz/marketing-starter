@@ -57,7 +57,7 @@ const flowVariant = {
   hidden: { "--offset": "10%", scale: 0 },
   visible: (i) => {
     let index = i ? i : 1;
-    let delay = 1 + index * 1;
+    let delay = 1 + index * 2;
     return {
       "--offset": ["10%", "100%"],
       scale: [0, 1, 1, 1, 1, 0.1],
@@ -357,7 +357,7 @@ export const HeroAnimation = ({ loop, id }) => {
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
             offsetPath: `path(
-          "M449.004 0V224H393V336H281V392V448H337H393V504H449V448H505V504H561V448H617V504H673V448H729V392H785V392C799.912 392 812 404.088 812 419V448"
+          "M448.5 112.5V168.5V224.5H504.5V280.5H448.5V336.5H504.5V392.5V448.5H560.5V504.5"
           )`,
           }}
         />
@@ -374,7 +374,7 @@ export const HeroAnimation = ({ loop, id }) => {
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
-            offsetPath: `path("M449.004 0V112H421.004C405.54 112 393.004 124.536 393.004 140V168H337V224H281V252C281 267.464 268.464 280 253 280H169V336H113V448H169V504H85C69.536 504 57 516.536 57 532V560")`,
+            offsetPath: `path("M419.5 280C419.5 295.188 407.188 307.5 392 307.5C376.812 307.5 364.5 295.188 364.5 280C364.5 264.812 376.812 252.5 392 252.5C407.188 252.5 419.5 264.812 419.5 280Z")`,
           }}
         />
       );
@@ -390,7 +390,7 @@ export const HeroAnimation = ({ loop, id }) => {
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
-            offsetPath: `path("M449.004 0V168H393V224H337V336H169V392H225V448H169V504H197C212.464 504 225 491.464 225 476V447")`,
+            offsetPath: `path("M336.5 168.5V224.5H280.5V252.5C280.5 267.964 267.964 280.5 252.5 280.5H168.5V392.5H224.5V476.5C224.5 491.964 211.964 504.5 196.5 504.5H168.5H112.5V532.5C112.5 547.964 99.964 560.5 84.5 560.5H56.5H28.5C13.036 560.5 0.5 573.036 0.5 588.5V728")`,
           }}
         />
       );
@@ -406,7 +406,7 @@ export const HeroAnimation = ({ loop, id }) => {
           style={{
             offsetDistance: "var(--offset)",
             offsetRotate: "0deg",
-            offsetPath: `path("M449.004 0V112H477C492.464 112 505 124.536 505 140V168H589C604.464 168 617 180.536 617 196V224H701C716.464 224 729 236.536 729 252V280H757C772.464 280 785 292.536 785 308V336H813C828.464 336 841 348.536 841 364V476C841 491.464 853.536 504 869 504H897")`,
+            offsetPath: `path("M616.5 280.5V336.5H672.5V392.5H616.5V448.5H812.5")`,
           }}
         />
       );
@@ -996,7 +996,7 @@ export const HeroAnimation = ({ loop, id }) => {
         <>
           <motion.g variants={fadeInVariant} custom={1}>
             <rect
-              x="409"
+              x="408"
               y="128"
               width="80"
               height="80"
@@ -1008,9 +1008,9 @@ export const HeroAnimation = ({ loop, id }) => {
 
           <motion.g variants={fadeInVariant} custom={2}>
             <rect
-              x="358"
+              x="352"
               y="242"
-              width="125"
+              width="136"
               height="76"
               opacity="0.1"
               fill={context.theme.colors.text}
@@ -1020,7 +1020,7 @@ export const HeroAnimation = ({ loop, id }) => {
 
           <motion.g variants={fadeInVariant} custom={3}>
             <rect
-              x="527"
+              x="526"
               y="242"
               width="125"
               height="76"
@@ -1033,7 +1033,7 @@ export const HeroAnimation = ({ loop, id }) => {
             <rect
               x="576"
               y="353"
-              width="138"
+              width="136"
               height="78"
               opacity="0.1"
               fill={context.theme.colors.text}

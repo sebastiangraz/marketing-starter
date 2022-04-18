@@ -19,7 +19,7 @@ const style = {
     flexDirection: "column",
     borderRadius: "large",
     justifyContent: "space-between",
-    background: "beige",
+    background: ["beige"],
     variant: "layout.row",
     "&:hover, &:hover button, a": {
       cursor: `-webkit-image-set( url(${cursor.src}) 1x, url(${cursor2x.src}) 2x), auto`,
@@ -64,7 +64,7 @@ const Hero = ({ data }) => {
   return (
     <section
       sx={{
-        "--heroColor": "text",
+        "--heroColor": (t) => `${t.colors.text}`,
         ...style.hero,
       }}
     >
@@ -96,7 +96,6 @@ const Hero = ({ data }) => {
                       variants={notificationStackVariant}
                       sx={{
                         display: "inline-flex",
-                        background: "beige",
                         position: "relative",
                         gridArea: "-1/1",
                         minWidth: "100%",
