@@ -31,7 +31,7 @@ const Blog = ({ data }) => {
               maskSize: "100% 100%",
               borderRadius: "default",
               zIndex: 1,
-              minHeight: "360px",
+              minHeight: "440px",
               padding: "2rem",
               position: "relative",
               overflow: "hidden",
