@@ -1,6 +1,5 @@
 import { Themed, Flex, Button, Text, Heading, Paragraph } from "theme-ui";
 import { Width } from "../../width";
-import NextLink from "next/link";
 import { LayoutGroup, motion } from "framer-motion";
 import { HeroAnimation } from "./heroAnimation";
 import cursor from "../../../public/youcursor.png";
@@ -15,7 +14,9 @@ const style = {
   },
   heroInner: {
     position: "relative",
-    display: "flex",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gridTemplateRows: "auto auto",
     flexDirection: "column",
     borderRadius: "large",
     justifyContent: "space-between",
@@ -69,73 +70,104 @@ const Hero = ({ data }) => {
       }}
     >
       <div sx={style.heroInner}>
-        <Width sx={{ pl: 4, py: 4, pr: 2, flexShrink: 0 }} value={[12]}>
-          <Themed.h1
-            sx={{ mt: 0, mb: "5rem", maxWidth: "16ch", width: "100%" }}
+        <Themed.h1
+          sx={{
+            pr: [4, 4, 0],
+            pl: [4, 4, 4],
+            py: 4,
+            m: 0,
+            borderBottom: ["1px solid", null, "none"],
+
+            maxWidth: ["100%", "100%", "18ch", "18ch"],
+            width: "100%",
+            gridArea: "1/1/ span 1 / span 2",
+          }}
+        >
+          <span>{header} </span>
+          {/* test */}
+          <motion.div
+            sx={{
+              display: "inline-grid",
+              position: "relative",
+              pr: "1ch",
+            }}
           >
-            <span>{header} </span>
-            {/* test */}
             <motion.div
+              variants={notificationStackParentVariant}
+              animate="visible"
               sx={{
                 display: "inline-grid",
                 position: "relative",
-                pr: "1ch",
               }}
             >
-              <motion.div
-                variants={notificationStackParentVariant}
-                animate="visible"
-                sx={{
-                  display: "inline-grid",
-                  position: "relative",
-                }}
-              >
-                {ticker?.map((e, i) => {
-                  return (
-                    <motion.div
-                      variants={notificationStackVariant}
+              {ticker?.map((e, i) => {
+                return (
+                  <motion.div
+                    variants={notificationStackVariant}
+                    sx={{
+                      display: "inline-flex",
+                      position: "relative",
+                      gridArea: "-1/1",
+                      minWidth: "100%",
+                      height: "100%",
+                    }}
+                    key={e + i}
+                  >
+                    <span
                       sx={{
-                        display: "inline-flex",
-                        position: "relative",
-                        gridArea: "-1/1",
-                        minWidth: "100%",
-                        height: "100%",
+                        boxShadow: "0 0 0 1px currentColor",
+                        borderRadius: "small",
+                        pt: "0.25rem",
+                        pb: "0.45rem",
+                        px: ".5rem",
                       }}
-                      key={e + i}
                     >
-                      <span
-                        sx={{
-                          boxShadow: "0 0 0 1px currentColor",
-                          borderRadius: "small",
-                          pt: "0.25rem",
-                          pb: "0.45rem",
-                          px: ".5rem",
-                        }}
-                      >
-                        {" "}
-                        {e}
-                      </span>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
+                      {" "}
+                      {e}
+                    </span>
+                  </motion.div>
+                );
+              })}
             </motion.div>
-          </Themed.h1>
-          <Paragraph sx={{ mb: "3rem", width: "20ch" }}>{lead}</Paragraph>
+          </motion.div>
+        </Themed.h1>
+        <Paragraph
+          sx={{
+            gridArea: "3/1/span 1/span 2",
+            ml: [0, 0, 4],
+            px: [4, 4, 0],
+            mb: ["1rem", "3rem"],
+            width: "100%",
+            maxWidth: ["100%", "32ch", "22ch", "22ch"],
+          }}
+        >
+          {lead}
+        </Paragraph>
 
-          <Flex
-            sx={{
-              gap: "1rem",
-              zIndex: 1,
-              position: "relative",
-              flexWrap: "wrap",
-            }}
-          >
-            <Button as={CustomLink} cta link={data.primaryCTA}></Button>
-          </Flex>
-        </Width>
+        <Flex
+          sx={{
+            pb: [4, 0, 4, 4],
+            pl: 4,
+            pr: [4, 8, 0, 0],
+            gridArea: [
+              "4/1/span 1/span 2",
+              "3/2/span 1/span 1",
+              "4/1/span 1/span 2",
+            ],
+            gap: "1rem",
+            zIndex: 1,
+            position: "relative",
+            flexWrap: "wrap",
+            placeSelf: ["start", "end", "start"],
+            mb: [0, "3rem", 0],
+          }}
+        >
+          <Button as={CustomLink} cta link={data.primaryCTA}></Button>
+        </Flex>
+
         <div
           sx={{
+            gridArea: ["2/1/span 1/span 2", null, "1/1/span 1/span 2"],
             maskImage: [
               `linear-gradient(225deg, black 91%, transparent 91%)`,
               null,
@@ -143,8 +175,9 @@ const Hero = ({ data }) => {
             ],
             position: ["relative", null, "absolute"],
             ml: [null, null, "43.5%", 20],
-            left: 0,
-            width: ["100%", "100%", "897px", "897px"],
+            left: ["-30%", 0, null],
+            mb: ["-30%", "-10%", null],
+            width: ["160%", "100%", "897px", "897px"],
           }}
         >
           <LayoutGroup id={`${data._key}`}>
