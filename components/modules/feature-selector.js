@@ -23,7 +23,7 @@ const FeatureSelector = ({ data }) => {
 
   const selectorImageVariant = {
     hidden: {
-      y: 8,
+      y: 14,
       opacity: 0,
     },
     visible: {
@@ -34,11 +34,6 @@ const FeatureSelector = ({ data }) => {
       y: -14,
       opacity: 0,
     },
-  };
-
-  const selectorTransition = {
-    type: "spring",
-    duration: 0.3,
   };
 
   const selectorTransitionDelay = {
@@ -100,25 +95,13 @@ const FeatureSelector = ({ data }) => {
                         initial="hidden"
                         animate="visible"
                         exit="hide"
-                        transition={selectorTransition}
-                      >
-                        <Themed.h4 sx={{ mt: 0, display: ["none", "block"] }}>
-                          {selectedTab ? selectedTab.featureTitle : "Empty"}
-                        </Themed.h4>
-                      </motion.div>
-
-                      <motion.div
-                        variants={selectorVariant}
-                        initial="hidden"
-                        animate="visible"
-                        exit="hide"
                         transition={selectorTransitionDelay}
                       >
-                        <Themed.h1 sx={{ my: 0, maxWidth: "18ch" }}>
+                        <Themed.h2 sx={{ my: 0, mr: "3rem", maxWidth: "18ch" }}>
                           {selectedTab
                             ? selectedTab.featureDescription
                             : "Empty"}
-                        </Themed.h1>
+                        </Themed.h2>
                       </motion.div>
                     </Flex>
                     <motion.div
