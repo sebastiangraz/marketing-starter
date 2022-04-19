@@ -50,10 +50,13 @@ const Grid = ({ data = {} }) => {
             whileInView="visible"
             variants={parentVariant}
             sx={{
-              p: 4,
+              columnGap: 2,
               gridTemplateColumns: "repeat(12,minmax(0,1fr))",
               display: "grid",
-              columnGap: `calc(100% / ((1288 - 224) / 56))`,
+              ...(indented && {
+                p: 4,
+                columnGap: `calc(100% / ((1288 - 224) / 56))`,
+              }),
             }}
           >
             {columns.map((col, key) => {
