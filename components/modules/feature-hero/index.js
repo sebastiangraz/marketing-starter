@@ -32,7 +32,6 @@ const FeatureHero = ({ data }) => {
           }}
         >
           <Reveal
-            delay={1.5}
             sx={{
               display: "flex",
               alignSelf: "start",
@@ -75,9 +74,9 @@ const FeatureHero = ({ data }) => {
               sx={{
                 position: "absolute",
                 bottom: 0,
-                left: 0,
+                left: "-56px",
                 zIndex: 2,
-                width: "100%",
+                width: "calc(100% + 112px)",
                 pb: `calc(((924/ 1177) * 100%) + 2px)`,
                 background: (t) =>
                   `linear-gradient(to bottom, ${transparentize(

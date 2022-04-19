@@ -19,13 +19,13 @@ const childVariant = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i) => {
     let index = i ? i : 1;
-    let delay = 1 + index * 0.06;
+    let delay = index * 0.06;
     return {
       pathLength: 1,
       opacity: [1, 0],
       transition: {
-        opacity: { delay: 3, duration: 3 },
-        pathLength: { ease: [0.72, 0.18, 0.01, 0.9], duration: 2, delay },
+        pathLength: { duration: 1.5, delay },
+        opacity: { delay: 2, duration: 3 },
       },
     };
   },
@@ -39,7 +39,7 @@ const intersectionVariant = {
     y1: 2,
     y2: 2,
     transition: {
-      duration: 6,
+      duration: 4.5,
     },
   },
 };
@@ -89,12 +89,12 @@ const fadeInVariant = {
   hidden: { scale: 0.9, opacity: 0 },
   visible: (i) => {
     let index = i ? i : 1;
-    let delay = 1 + index * 0.2;
+    let delay = index * 0.2;
     return {
       scale: 1,
       opacity: 1,
       transition: {
-        delay: 2 + delay,
+        delay: 1 + delay,
         duration: 4,
         bounce: 0.3,
         type: "spring",
@@ -177,7 +177,7 @@ const offsiteVariant = {
     opacity: 1,
     transition: {
       when: "afterChildren",
-      delay: 3.75,
+      delay: 2.25,
       pathLength: { type: "spring", duration: 7, bounce: 0 },
     },
   },
@@ -213,7 +213,7 @@ export const HeroAnimation = ({ loop, id }) => {
               variants={intersectionVariant}
             >
               <stop offset="0%" stopColor="black" />
-              <stop offset="70%" stopColor="white" />
+              <stop offset="60%" stopColor="white" />
             </motion.linearGradient>
             <mask id={`${id}-hero`}>
               <rect width="100%" height="100%" fill={`url(#${id}-heroGrad)`} />
@@ -1062,7 +1062,7 @@ export const HeroAnimation = ({ loop, id }) => {
       return (
         <svg
           y="503.5"
-          x="895.75"
+          x="895.5"
           width="3000"
           height="2"
           viewBox="0 0 3000 1"

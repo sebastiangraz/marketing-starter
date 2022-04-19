@@ -138,7 +138,7 @@ const Hero = ({ data }) => {
             px: [4, 4, 0],
             mb: ["1rem", "3rem"],
             width: "100%",
-            maxWidth: ["100%", "32ch", "22ch", "22ch"],
+            maxWidth: ["100%", "32ch", "22ch", "30ch"],
           }}
         >
           {lead}
@@ -187,11 +187,11 @@ const Hero = ({ data }) => {
               viewBox="0 0 896.5 727.5"
               initial="hidden"
               whileInView="visible"
-              // viewport={{ once: true }}
+              viewport={{ once: true }}
               variants={parentVariant}
             >
-              <HeroAnimation id={data._key} loop="introPaths" />
               <HeroAnimation id={data._key} loop="intersectingLines" />
+              <HeroAnimation id={data._key} loop="introPaths" />
 
               <HeroAnimation loop="flow-1" />
               <HeroAnimation loop="flow-2" />
