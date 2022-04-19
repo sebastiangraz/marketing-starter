@@ -51,6 +51,7 @@ const Grid = ({ data = {} }) => {
             variants={parentVariant}
             sx={{
               columnGap: 2,
+              rowGap: "2rem",
               gridTemplateColumns: "repeat(12,minmax(0,1fr))",
               display: "grid",
               ...(indented && {
