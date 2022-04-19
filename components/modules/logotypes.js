@@ -35,6 +35,7 @@ const Logotypes = ({ data }) => {
                 gridAutoFlow: ["row", "column"],
                 gridTemplateColumns: ["auto auto auto auto", "unset"],
                 alignItems: "center",
+                justifyItems: "center",
                 justifyContent: ["space-between", "space-between"],
               }}
             >
@@ -42,17 +43,17 @@ const Logotypes = ({ data }) => {
                 const { logoImage } = logo;
 
                 return (
-                  <div key={logoImage.asset._ref}>
-                    <Image
-                      alt={"logo"}
-                      sx={{
-                        objectFit: "contain",
-                        height: "1rem",
-                        width: "auto",
-                      }}
-                      src={urlFor(logoImage.asset).width(100)}
-                    />
-                  </div>
+                  <Image
+                    key={logoImage.asset._ref}
+                    alt={"logo"}
+                    sx={
+                      {
+                        // height: "1.7rem",
+                        // width: "4.5rem",
+                      }
+                    }
+                    src={urlFor(logoImage.asset).width(100)}
+                  />
                 );
               })}
             </Reveal>
