@@ -95,6 +95,7 @@ export const modules = `
   _type == 'grid' => {
     _type,
     _key,
+    indented,
     columns[]{
       sizes,
       blocks[]{

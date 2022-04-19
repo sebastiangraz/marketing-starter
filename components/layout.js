@@ -61,20 +61,20 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         <CookieBar data={site.cookieConsent} />
         <div
           className="templateOverlay"
-          // sx={{
-          //   position: "fixed",
-          //   top: 0,
-          //   pointerEvents: "none",
-          //   left: "50%",
-          //   transform: "translate(-50%)",
-          //   maxWidth: "1288px",
-          //   height: "100vh",
-          //   width: "88%",
-          //   zIndex: 1000,
-          //   background:
-          //     "repeating-linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03) 2px, transparent 2px, transparent calc(100 / (1288 / 56) * 1%) )",
-          //   backgroundPosition: "-1px 0px",
-          // }}
+          sx={{
+            position: "fixed",
+            top: 0,
+            pointerEvents: "none",
+            left: "50%",
+            transform: "translate(-50%)",
+            maxWidth: "1288px",
+            height: "100vh",
+            width: "88%",
+            zIndex: 1000,
+            background:
+              "repeating-linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03) 2px, transparent 2px, transparent calc(100 / (1288 / 56) * 1%) )",
+            backgroundPosition: "-1px 0px",
+          }}
         />
         <main
           id="content"

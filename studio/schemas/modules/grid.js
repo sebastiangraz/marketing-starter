@@ -15,6 +15,12 @@ export default {
       type: 'array',
       of: [{ type: 'gridColumn' }],
       description: 'The columns that are part of this grid'
+    },
+    {
+      title: 'Indented',
+      name: 'indented',
+      type: 'boolean',
+      initialValue: false
     }
   ],
   preview: {

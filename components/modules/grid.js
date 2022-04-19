@@ -5,7 +5,7 @@ import ImageFeature from "../../components/image-feature";
 import { motion } from "framer-motion";
 
 const Grid = ({ data = {} }) => {
-  const { columns } = data;
+  const { columns, indented } = data;
 
   const parentVariant = {
     hidden: { opacity: 0 },
@@ -38,6 +38,10 @@ const Grid = ({ data = {} }) => {
       <div
         sx={{
           variant: "layout.row",
+          ...(indented && {
+            background: "ui",
+            borderRadius: "large",
+          }),
         }}
       >
         <div>
