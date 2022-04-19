@@ -36,34 +36,51 @@ const childVariant = {
   },
 };
 
+// const flowVariant = {
+//   hidden: { "--offset": "10%", scale: 0 },
+//   visible: { "--offset": ["10%", "100%"], scale: [0, 1, 1, 1, 1, 0.1] },
+// };
+
 const flowVariant = {
   hidden: { "--offset": "10%", scale: 0 },
-  visible: { "--offset": ["10%", "100%"], scale: [0, 1, 1, 1, 1, 0.1] },
-};
-
-const labelflowVariant = {
-  hidden: { "--offset": "50%", scale: 0.9, opacity: 0 },
-  visible: {
-    "--offset": ["50%", "65%", "95%"],
-    scale: [0.9, 1, 1, 1, 1, 0.9],
-    opacity: [0, 1, 1, 1, 1, 0],
+  visible: (i) => {
+    let index = i ? i : 1;
+    let delay = index * 2;
+    return {
+      "--offset": ["10%", "100%"],
+      scale: [0, 1, 1, 1, 1, 0.1],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: delay,
+        delay,
+        type: "linear",
+        duration: 25,
+      },
+    };
   },
 };
 
-const flowTransition = {
-  repeat: Infinity,
-  repeatType: "loop",
-  repeatDelay: 1,
-  ease: "linear",
-  duration: 30,
-};
-
-const labelflowTransition = {
-  repeat: Infinity,
-  repeatType: "loop",
-  repeatDelay: 1,
-  type: "spring",
-  duration: 20,
+const labelflowVariant = {
+  hidden: { "--offset": "50%", scale: 0 },
+  visible: (i) => {
+    let index = i ? i : 1;
+    let delay = index * 1;
+    return {
+      "--offset": ["50%", "65%", "95%"],
+      scale: [0.9, 1, 1, 1, 1, 1, 1],
+      opacity: [0, 1, 1, 1, 1, 1, 0],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: delay,
+        delay,
+        type: "spring",
+        duration: 20,
+        when: "afterChildren",
+      },
+    };
+  },
 };
 
 export const FeatureHeroAnimation = ({ id }) => {
@@ -71,6 +88,7 @@ export const FeatureHeroAnimation = ({ id }) => {
     <motion.svg
       sx={{ display: "block", width: "100%", overflow: "visible" }}
       viewBox="0 0 1177 924"
+      // transform="translate(0.5, 0.5)"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       variants={parentVariant}
@@ -84,7 +102,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 0 }}
+        custom={0}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -99,7 +117,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 1 }}
+        custom={1}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -114,7 +132,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 2 }}
+        custom={2}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -129,7 +147,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 3 }}
+        custom={3}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -144,7 +162,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 4 }}
+        custom={4}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -159,7 +177,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 5 }}
+        custom={4}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -174,7 +192,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         y="3"
         fill="currentColor"
         variants={flowVariant}
-        transition={{ ...flowTransition, delay: 6 }}
+        custom={5}
         style={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -186,7 +204,6 @@ export const FeatureHeroAnimation = ({ id }) => {
 
       <motion.svg
         sx={{ display: "block" }}
-        // preserveAspectRatio="xMinYMin slice"
         viewBox="0 0 1177 924"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +216,6 @@ export const FeatureHeroAnimation = ({ id }) => {
             <stop offset="0%" stopColor="black" />
             <stop offset="80%" stopColor="white" />
           </motion.linearGradient>
-          {/* <mask id={`${id}-featureHeroIntersection`}> */}
           <mask id={`${id}-featureHero`}>
             <rect
               width="100%"
@@ -209,7 +225,6 @@ export const FeatureHeroAnimation = ({ id }) => {
           </mask>
         </defs>
         <motion.path
-          // mask={`url(#${id}-featureHeroIntersection)`}
           mask={`url(#${id}-featureHero)`}
           fillRule="evenodd"
           clipRule="evenodd"
@@ -372,7 +387,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         x="400"
         y="400"
         variants={labelflowVariant}
-        transition={{ ...labelflowTransition, delay: 0 }}
+        custom={0}
         sx={{
           offsetDistance: "var(--offset)",
           offsetAnchor: "10px 1px",
@@ -396,7 +411,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         x="400"
         y="400"
         variants={labelflowVariant}
-        transition={{ ...labelflowTransition, delay: 1 }}
+        custom={1}
         sx={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -419,7 +434,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         x="400"
         y="400"
         variants={labelflowVariant}
-        transition={{ ...labelflowTransition, delay: 2 }}
+        custom={3}
         sx={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -442,7 +457,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         x="400"
         y="400"
         variants={labelflowVariant}
-        transition={{ ...labelflowTransition, delay: 3 }}
+        custom={2}
         sx={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -464,7 +479,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         x="400"
         y="400"
         variants={labelflowVariant}
-        transition={{ ...labelflowTransition, delay: 4 }}
+        custom={4}
         sx={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",
@@ -486,7 +501,7 @@ export const FeatureHeroAnimation = ({ id }) => {
         x="400"
         y="400"
         variants={labelflowVariant}
-        transition={{ ...labelflowTransition, delay: 5 }}
+        custom={2}
         sx={{
           offsetDistance: "var(--offset)",
           offsetRotate: "0deg",

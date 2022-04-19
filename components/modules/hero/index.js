@@ -180,14 +180,14 @@ const Hero = ({ data }) => {
             width: ["160%", "100%", "897px", "897px"],
           }}
         >
-          <LayoutGroup id={`${data._key}`}>
+          <LayoutGroup id={data._key}>
             <motion.svg
               sx={{ overflow: "visible" }}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 896.5 727.5"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
               variants={parentVariant}
             >
               <HeroAnimation id={data._key} loop="intersectingLines" />

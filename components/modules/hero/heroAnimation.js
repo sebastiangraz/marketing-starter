@@ -186,24 +186,6 @@ const offsiteVariant = {
 export const HeroAnimation = ({ loop, id }) => {
   const context = useThemeUI();
   switch (loop) {
-    // case "intersectingLines":
-    //   return (
-    //     <svg
-    //       width="897"
-    //       height="728"
-    //       viewBox="0 0 897 728"
-    //       fill="none"
-    //       xmlns="http://www.w3.org/2000/svg"
-    //     >
-    //       <path
-    //         fillRule="evenodd"
-    //         clipRule="evenodd"
-    //         d="..."
-    //         fill="currentColor"
-    //       />
-    //     </svg>
-    //   );
-
     case "intersectingLines":
       return (
         <motion.svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 897 728">

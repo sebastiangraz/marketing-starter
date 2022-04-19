@@ -7,6 +7,7 @@ import { List } from "../../list";
 import React from "react";
 import Photo from "../../photo";
 import CustomLink from "../../../components/link";
+import { LayoutGroup } from "framer-motion";
 
 const FeatureHero = ({ data }) => {
   const { header, lead, featureHeader, features } = data;
@@ -62,9 +63,13 @@ const FeatureHero = ({ data }) => {
         >
           <div
             sx={{
+              maxWidth: ["auto", null, "100%", "1177px"],
+              width: ["auto", null, null, "100%"],
               zIndex: 1,
               position: "relative",
-              mx: 2,
+              mx: [-15, 0, 2],
+              mb: [0, -2, 0],
+              mt: ["4rem", 0],
               display: "flex",
               minHeight: "28rem",
               alignItems: "flex-end",
@@ -78,14 +83,22 @@ const FeatureHero = ({ data }) => {
                 zIndex: 2,
                 width: "calc(100% + 112px)",
                 pb: `calc(((924/ 1177) * 100%) + 2px)`,
-                background: (t) =>
+                background: (t) => [
+                  `linear-gradient(to bottom, ${transparentize(
+                    "text",
+                    0
+                  )(t)} 0%, transparent 80%, var(--theme-ui-colors-text) 100%)`,
                   `linear-gradient(to bottom, ${transparentize(
                     "text",
                     0
                   )(t)} 0%, transparent 100%)`,
+                ],
               }}
             ></div>
-            <FeatureHeroAnimation id={data._key} />
+
+            <LayoutGroup id={data._key}>
+              <FeatureHeroAnimation id={data._key} />
+            </LayoutGroup>
           </div>
           <div
             sx={{
