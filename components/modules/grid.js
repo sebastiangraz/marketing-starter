@@ -50,11 +50,10 @@ const Grid = ({ data = {} }) => {
             whileInView="visible"
             variants={parentVariant}
             sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              columnGap: `${gap}%`,
-              rowGap: "4rem",
+              p: 4,
+              gridTemplateColumns: "repeat(12,minmax(0,1fr))",
+              display: "grid",
+              columnGap: `calc(100% / ((1288 - 224) / 56))`,
             }}
           >
             {columns.map((col, key) => {
@@ -66,11 +65,13 @@ const Grid = ({ data = {} }) => {
                   key={key}
                   variants={childVariant}
                   sx={{
-                    width: [
-                      `calc( 100% * ${12} / 12 - ${gapmath(12)}% )`,
-                      `calc( 100% * ${6} / 12 - ${gapmath(6)}% )`,
-                      `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}% )`,
-                    ],
+                    // background: "#aaa",
+                    gridColumn: `span ${sizes}/span 1`,
+                    // width: [
+                    //   `calc( 100% * ${12} / 12 - ${gapmath(12)}% )`,
+                    //   `calc( 100% * ${6} / 12 - ${gapmath(6)}% )`,
+                    //   `calc( 100% * ${sizes} / 12 - ${gapmath(sizes)}% )`,
+                    // ],
                   }}
                 >
                   {blocks.map((block, key) => (
