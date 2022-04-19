@@ -230,9 +230,11 @@ const Parallax = memo(({ data = {} }) => {
       }),
       position: "relative",
       variant: "layout.row",
+      display: ["grid", "inherit"],
       mb: ["0", 0],
     },
     innerContainer: {
+      gridArea: ["-1/1", "unset"],
       display: ["block", "grid"],
       gridAutoFlow: "column",
       gridAutoColumns: useResponsiveValue([
@@ -290,6 +292,8 @@ const Parallax = memo(({ data = {} }) => {
         <div
           sx={{
             position: "sticky",
+            gridArea: ["-1/1", "unset"],
+            height: ["100vh", "auto"],
             top: "0px",
             paddingBottom: ["0", "100vh"],
             pointerEvents: "none",
