@@ -38,7 +38,8 @@ export default {
       of: [
         { type: 'freeform' },
         { type: 'accordions' },
-        { type: 'imageFeature' }
+        { type: 'imageFeature' },
+        { type: 'horizontalCard' }
       ]
     }
   ],

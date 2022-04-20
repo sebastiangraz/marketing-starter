@@ -5,6 +5,7 @@ import { HeroAnimation } from "./heroAnimation";
 import cursor from "../../../public/youcursor.png";
 import cursor2x from "../../../public/youcursor@2x.png";
 import CustomLink from "../../../components/link";
+import ScrollParallax from "../../scroll-parallax";
 
 const style = {
   hero: {

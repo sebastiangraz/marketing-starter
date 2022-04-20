@@ -3,7 +3,7 @@ import React from "react";
 import BlockContent from "../block-content";
 import Photo from "../photo";
 import { getMaxWidth } from "../../lib/helpers";
-
+import ScrollParallax from "../scroll-parallax";
 const style = {
   media: {
     variant: "layout.row",
@@ -15,7 +15,6 @@ const style = {
   },
   mediaOverlay: {
     p: 4,
-
     position: "relative",
     zIndex: 2,
     display: "flex",
@@ -28,6 +27,11 @@ const style = {
   },
   mediaBg: {
     gridArea: " 1/-1",
+    position: "absolute",
+    width: "110%",
+    height: "120%",
+    left: "-5%",
+    top: "-10%",
     "&.is-mobile": {
       display: ["block", "none"],
     },
@@ -67,32 +71,33 @@ const Media = ({ data = {} }) => {
             </div>
           </div>
         )}
-
-        {bgType === "photo" && (
-          <>
-            {photos?.desktopPhoto && (
-              <Photo
-                photo={photos.desktopPhoto}
-                width={1600}
-                srcSizes={[800, 1000, 1200, 1600]}
-                sizes="100vw"
-                layout="fill"
-                sx={style.mediaBg}
-                className=" is-desktop"
-              />
-            )}
-            {photos?.mobilePhoto && (
-              <Photo
-                photo={photos.mobilePhoto}
-                width={800}
-                sizes="100vw"
-                layout="fill"
-                sx={style.mediaBg}
-                className=" is-mobile"
-              />
-            )}
-          </>
-        )}
+        <ScrollParallax offset={20} sx={style.mediaBg}>
+          {bgType === "photo" && (
+            <>
+              {photos?.desktopPhoto && (
+                <Photo
+                  photo={photos.desktopPhoto}
+                  width={1600}
+                  srcSizes={[800, 1000, 1200, 1600]}
+                  sizes="100vw"
+                  layout="fill"
+                  sx={style.mediaBg}
+                  className="is-desktop"
+                />
+              )}
+              {photos?.mobilePhoto && (
+                <Photo
+                  photo={photos.mobilePhoto}
+                  width={800}
+                  sizes="100vw"
+                  layout="fill"
+                  sx={style.mediaBg}
+                  className=" is-mobile"
+                />
+              )}
+            </>
+          )}
+        </ScrollParallax>
       </div>
     </section>
   );

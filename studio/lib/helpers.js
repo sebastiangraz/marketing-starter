@@ -10,6 +10,8 @@ export const getTypeTitles = types => {
         return 'Accordions'
       case 'imageFeature':
         return 'Feature'
+      case 'horizontalCard':
+        return 'Horizontal Card'
       default:
         return null
     }

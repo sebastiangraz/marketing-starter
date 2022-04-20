@@ -2,6 +2,7 @@ import React from "react";
 import Freeform from "../../components/freeform";
 import AccordionList from "../../components/accordion-list";
 import ImageFeature from "../../components/image-feature";
+import HorizontalCard from "../../components/horizontal-card";
 import { motion } from "framer-motion";
 
 const Grid = ({ data = {} }) => {
@@ -32,7 +33,7 @@ const Grid = ({ data = {} }) => {
 
   const gap = 100 / (1288 / 56);
   const gapmath = (size) => -gap / (12 / size) + gap;
-
+  const indentGap = 4;
   return (
     <section className="section">
       <div
@@ -54,9 +55,10 @@ const Grid = ({ data = {} }) => {
               rowGap: "2rem",
               gridTemplateColumns: "repeat(12,minmax(0,1fr))",
               display: "grid",
+              justifyContent: "space-between",
               ...(indented && {
-                p: 4,
-                columnGap: `calc(100% / ((1288 - 224) / 56))`,
+                p: indentGap,
+                columnGap: `calc(100% / ((1288 - ${indentGap * 56}) / 56))`,
               }),
             }}
           >
@@ -69,8 +71,11 @@ const Grid = ({ data = {} }) => {
                   key={key}
                   variants={childVariant}
                   sx={{
-                    // background: "#aaa",
-                    gridColumn: `span ${sizes}/span 1`,
+                    gridColumn: [
+                      `span ${12}/span 1`,
+                      `span ${sizes === 12 ? 12 : 6}/span 1`,
+                      `span ${sizes}/span 1`,
+                    ],
                     // width: [
                     //   `calc( 100% * ${12} / 12 - ${gapmath(12)}% )`,
                     //   `calc( 100% * ${6} / 12 - ${gapmath(6)}% )`,
@@ -101,6 +106,8 @@ const GridBlock = ({ block }) => {
       return <AccordionList data={block} />;
     case "imageFeature":
       return <ImageFeature data={block} />;
+    case "horizontalCard":
+      return <HorizontalCard data={block} />;
     default:
       return null;
   }

@@ -1,9 +1,9 @@
-import React, { memo, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Box, Grid, Text, Themed, useThemeUI } from "theme-ui";
+import React, { memo } from "react";
+
+import { Box, Grid, Themed, useThemeUI } from "theme-ui";
 import { List } from "./list";
 import Photo from "./photo";
-import { useResponsiveValue } from "@theme-ui/match-media";
+
 const style = {
   section: {
     position: ["sticky", "relative"],

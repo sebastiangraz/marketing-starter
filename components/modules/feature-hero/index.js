@@ -8,6 +8,7 @@ import React from "react";
 import Photo from "../../photo";
 import CustomLink from "../../../components/link";
 import { LayoutGroup } from "framer-motion";
+import ScrollParallax from "../../scroll-parallax";
 
 const FeatureHero = ({ data }) => {
   const { header, lead, featureHeader, features } = data;
@@ -32,27 +33,29 @@ const FeatureHero = ({ data }) => {
             zIndex: 3,
           }}
         >
-          <Reveal
-            sx={{
-              display: "flex",
-              alignSelf: "start",
-              flexDirection: ["column", "row"],
-              textAlign: ["center", "left"],
-              alignItems: ["center", "start"],
-              justifyContent: ["center", "space-between"],
-              width: "100%",
-              pt: ["4rem", "6rem"],
-            }}
-          >
-            <Themed.h1 sx={{ maxWidth: ["13ch"], mr: ["0", "2rem"], mb: 0 }}>
-              {header}
-            </Themed.h1>
-            <Themed.h4
-              sx={{ maxWidth: ["26ch", "30ch"], justifySelf: "flex-end" }}
+          <ScrollParallax offset={-32} sx={{ width: "100%", height: "100%" }}>
+            <Reveal
+              sx={{
+                display: "flex",
+                alignSelf: "start",
+                flexDirection: ["column", "row"],
+                textAlign: ["center", "left"],
+                alignItems: ["center", "start"],
+                justifyContent: ["center", "space-between"],
+                width: "100%",
+                pt: ["4rem", "6rem"],
+              }}
             >
-              {lead}
-            </Themed.h4>
-          </Reveal>
+              <Themed.h1 sx={{ maxWidth: ["13ch"], mr: ["0", "2rem"], mb: 0 }}>
+                {header}
+              </Themed.h1>
+              <Themed.h4
+                sx={{ maxWidth: ["26ch", "30ch"], justifySelf: "flex-end" }}
+              >
+                {lead}
+              </Themed.h4>
+            </Reveal>
+          </ScrollParallax>
         </div>
 
         <div

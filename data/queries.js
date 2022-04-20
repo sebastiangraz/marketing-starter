@@ -86,6 +86,16 @@ export const blocks = `
     "image": image.photo{
         ${imageMeta}
     }
+  },
+  _type == 'horizontalCard' => {
+    _type,
+    _key,
+    "id": _key,
+    title,
+    lead,
+    "image": image.photo{
+        ${imageMeta}
+    }
   }
 
 `;

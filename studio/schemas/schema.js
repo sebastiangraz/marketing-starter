@@ -50,6 +50,7 @@ import accordions from './objects/accordions'
 import accordion from './objects/accordion'
 
 import imageFeature from './objects/image-feature'
+import horizontalCard from './objects/horizontal-card'
 import author from './objects/author'
 
 /*  ------------------------------------------ */
@@ -110,6 +111,7 @@ export default createSchema({
     freeform,
     accordions,
     accordion,
-    imageFeature
+    imageFeature,
+    horizontalCard
   ])
 })
